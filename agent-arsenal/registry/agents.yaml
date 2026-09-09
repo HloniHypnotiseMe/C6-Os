@@ -1,0 +1,47 @@
+schema_version: "0.1"
+agent_families:
+  - id: jarvis_core
+    name: J.A.R.V.I.S Core
+    sources:
+      - J.A.R.V.I.S_V5_Apex_Enterprise/ai_company/01_core_agents
+      - agent-os/agents/jarvis
+      - C6_COMMAND_CENTRE/AGENTS
+      - c6-neural-forge-v2/AGENTS/jarvis
+    roles: [orchestration, research, execution, business_operations]
+  - id: project_fire
+    name: PROJECT FIRE Agent OS
+    sources: [PROJECT_FIRE_V2/agent-os, PROJECT_FIRE/PROJECT_FIRE/agents]
+    roles: [agent_os, skills, trading, orchestration]
+  - id: c6_aios
+    name: C6Group.AiOS
+    sources: [agent-os/integrations/C6Group.AiOS/agents]
+    roles: [c6_operations, agent_execution]
+  - id: ubernie_business
+    name: Ubernie Business Agent Stack
+    sources: [workspace-ubernie/ubernie/app/Agents, workspace-ubernie/ubernie/resources/views/agent]
+    roles: [business_audit, recommendations, industry_analysis, activation]
+  - id: diesel_dispatch
+    name: DIESEL Dispatch Agent
+    sources: [DIESEL CONNECT/agents/dispatch-agent]
+    roles: [dispatch, workflow_automation]
+  - id: trading_cluster
+    name: Trading Agent Cluster
+    sources: [TradingAgents/tradingagents/agents, agent-os/integrations/FinceptTerminal/fincept-qt/scripts/agents]
+    roles: [financial_research, trading_analysis]
+    risk: high
+  - id: agency_cluster
+    name: Agency Specialist Cluster
+    sources: [agency-agents/integrations, PROJECT_FIRE/PROJECT_FIRE/agents/agency-agents]
+    roles: [specialist_agents, role_based_execution]
+  - id: paperclip_teams
+    name: Paperclip Agent Teams
+    sources: [J.A.R.V.I.S_V5_Apex_Enterprise/ai_company/05_content_media/paperclip/packages/teams-catalog]
+    roles: [team_orchestration, product, software_development]
+  - id: n8n_agent_runtime
+    name: n8n Agent Runtime
+    sources: [DIESEL CONNECT/n8n/packages/@n8n/agents, DIESEL CONNECT/n8n/packages/@n8n/instance-ai]
+    roles: [workflow_automation, agent_workflows, subagents]
+  - id: openviking_memory
+    name: OpenViking Memory Agents
+    sources: [OpenViking/openviking, OpenViking/bot/vikingbot/agent]
+    roles: [memory, retrieval, context]
