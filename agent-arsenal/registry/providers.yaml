@@ -1,0 +1,421 @@
+schema_version: "0.1"
+registry: c6-agent-arsenal
+status_semantics:
+  registered: "Catalogued; not a health or installation claim."
+  local_presence_confirmed: "Observed in the supplied C6 workspace inventory."
+  candidate: "Approved as a resource candidate; local presence not established."
+version_policy:
+  production_pin_required: true
+  accepted_pin_types: [commit_sha, signed_tag, immutable_release]
+  unverified_pin_value: null
+
+providers:
+  - id: tradingagents
+    name: TradingAgents
+    category: finance
+    source: https://github.com/verazuo/TradingAgents
+    source_type: upstream
+    registry_status: registered
+    local_presence: confirmed
+    local_instances: 2
+    capabilities: [financial_research, trading_analysis, multi_agent_finance]
+    risk: high
+    permissions: [network, market_data, filesystem_read]
+    runtime: vps
+    pin: null
+
+  - id: clawteam
+    name: ClawTeam
+    category: orchestration
+    source: https://github.com/HKUDS/ClawTeam
+    source_type: upstream
+    registry_status: registered
+    local_presence: confirmed
+    local_instances: 1
+    capabilities: [multi_agent_orchestration, agent_coordination]
+    risk: controlled
+    permissions: [filesystem_read, network]
+    runtime: vps
+    pin: null
+
+  - id: metagpt
+    name: MetaGPT
+    category: orchestration
+    source: https://github.com/geekan/MetaGPT
+    source_type: upstream
+    registry_status: registered
+    local_presence: confirmed
+    local_instances: 3
+    capabilities: [multi_agent_orchestration, software_team_simulation, research]
+    risk: controlled
+    permissions: [filesystem_read, network]
+    runtime: vps
+    pin: null
+
+  - id: crewai_examples
+    name: CrewAI-Examples
+    category: orchestration
+    source: https://github.com/joaomdmoura/crewAI-examples
+    source_type: upstream
+    registry_status: registered
+    local_presence: confirmed
+    capabilities: [multi_agent_orchestration, workflow_patterns, industry_agents]
+    risk: controlled
+    permissions: [filesystem_read, network]
+    runtime: vps
+    pin: null
+
+  - id: openviking
+    name: OpenViking
+    category: memory
+    source: https://github.com/volcengine/OpenViking
+    source_type: upstream
+    registry_status: registered
+    local_presence: confirmed
+    local_instances: 4
+    capabilities: [agent_memory, context_management, retrieval]
+    risk: controlled
+    permissions: [filesystem_read, filesystem_write]
+    runtime: vps
+    pin: null
+
+  - id: context_hub
+    name: Context-Hub
+    category: knowledge
+    source: https://github.com/andrewyng/context-hub
+    source_type: upstream
+    registry_status: registered
+    local_presence: confirmed
+    capabilities: [context_retrieval, documentation, knowledge_resources]
+    risk: low
+    permissions: [filesystem_read, network]
+    runtime: vps
+    pin: null
+
+  - id: oh_my_codex
+    name: Oh-My-Codex
+    category: coding_agents
+    source: https://github.com/Yeachan-Heo/oh-my-codex
+    source_type: upstream
+    registry_status: registered
+    local_presence: confirmed
+    capabilities: [coding_agent_orchestration, subagents, development_automation]
+    risk: controlled
+    permissions: [filesystem_read, filesystem_write, network]
+    runtime: vps
+    pin: null
+
+  - id: agency_agents
+    name: Agency-Agents
+    category: agent_library
+    source: https://github.com/msitarzewski/agency-agents
+    source_type: upstream
+    registry_status: registered
+    local_presence: confirmed
+    local_instances: 3
+    capabilities: [specialist_agents, role_based_agents]
+    risk: controlled
+    permissions: [filesystem_read, network]
+    runtime: vps
+    pin: null
+
+  - id: hf_agents
+    name: hf-agents
+    category: agent_library
+    source: https://github.com/huggingface/hf-agents
+    source_type: upstream
+    registry_status: registered
+    local_presence: confirmed
+    capabilities: [agent_patterns, model_agents, research]
+    risk: controlled
+    permissions: [network, filesystem_read]
+    runtime: vps
+    pin: null
+
+  - id: openmaic
+    name: OpenMAIC
+    category: agent_application
+    source: https://github.com/THU-MAIC/OpenMAIC
+    source_type: upstream
+    registry_status: registered
+    local_presence: confirmed
+    capabilities: [agent_application, content_generation, research]
+    risk: controlled
+    permissions: [network, filesystem_read, filesystem_write]
+    runtime: vps
+    pin: null
+
+  - id: opensandbox
+    name: OpenSandbox
+    category: execution
+    source: https://github.com/alibaba/OpenSandbox
+    source_type: upstream
+    registry_status: registered
+    local_presence: confirmed
+    local_instances: 5
+    capabilities: [sandbox_execution, code_interpreter, isolated_execution]
+    risk: high
+    permissions: [sandbox, filesystem, network]
+    runtime: sandbox
+    pin: null
+
+  - id: headlessx
+    name: HeadlessX
+    category: browser_execution
+    source: https://github.com/saifyxpro/HeadlessX
+    source_type: upstream
+    registry_status: registered
+    local_presence: confirmed
+    capabilities: [browser_automation, web_interaction]
+    risk: high
+    permissions: [browser, network]
+    runtime: vps
+    pin: null
+
+  - id: scrapling
+    name: Scrapling
+    category: web_data
+    source: https://github.com/Scrapling/Scrapling
+    source_type: upstream
+    registry_status: registered
+    local_presence: confirmed
+    capabilities: [web_scraping, data_extraction]
+    risk: high
+    permissions: [network, filesystem_write]
+    runtime: vps
+    pin: null
+
+  - id: page_agent
+    name: Page-Agent
+    category: browser_agents
+    source: https://github.com/alibaba/page-agent
+    source_type: upstream
+    registry_status: registered
+    local_presence: confirmed
+    capabilities: [browser_agents, web_interaction, page_understanding]
+    risk: high
+    permissions: [browser, network]
+    runtime: vps
+    pin: null
+
+  - id: goose
+    name: goose
+    category: coding_agents
+    source: https://github.com/aaif-goose/goose
+    source_type: upstream
+    registry_status: registered
+    local_presence: confirmed
+    local_instances: 2
+    capabilities: [coding_agents, subagents, mcp_integration]
+    risk: controlled
+    permissions: [filesystem_read, filesystem_write, network]
+    runtime: vps
+    pin: null
+
+  - id: diesel_connect
+    name: DIESEL CONNECT
+    category: internal_platform
+    source: https://github.com/HloniHypnotiseMe/diesel-connect
+    source_type: internal
+    registry_status: registered
+    local_presence: confirmed
+    capabilities: [dispatch, scheduling, workflow_automation]
+    risk: controlled
+    permissions: [network, filesystem_read, filesystem_write]
+    runtime: vps
+    pin: null
+
+  - id: c6_os
+    name: C6-Os
+    category: c6_core
+    source: https://github.com/HloniHypnotiseMe/C6-Os
+    source_type: internal
+    registry_status: registered
+    local_presence: confirmed
+    capabilities: [agent_registry, orchestration_control, policy_control]
+    risk: controlled
+    permissions: [filesystem_read, filesystem_write, network]
+    runtime: vps
+    pin: null
+
+  - id: n8n
+    name: n8n
+    category: workflow_automation
+    source: https://github.com/n8n-io/n8n
+    source_type: upstream
+    registry_status: registered
+    local_presence: confirmed
+    capabilities: [workflow_automation, integrations, event_automation]
+    risk: high
+    permissions: [network, credentials_vault, filesystem_read, filesystem_write]
+    runtime: vps
+    pin: null
+
+  - id: calcom
+    name: Cal.com
+    category: scheduling
+    source: https://github.com/calcom/cal.com
+    source_type: upstream
+    registry_status: registered
+    local_presence: confirmed
+    capabilities: [scheduling, booking, agent_scheduling]
+    risk: controlled
+    permissions: [network, database]
+    runtime: vps
+    pin: null
+
+  - id: coolify
+    name: Coolify
+    category: infrastructure
+    source: https://github.com/coollabsio/coolify
+    source_type: upstream
+    registry_status: registered
+    local_presence: confirmed
+    capabilities: [self_hosted_deployment, infrastructure_management]
+    risk: high
+    permissions: [network, infrastructure, filesystem_write]
+    runtime: vps
+    pin: null
+
+  - id: documenso
+    name: Documenso
+    category: documents
+    source: https://github.com/documenso/documenso
+    source_type: upstream
+    registry_status: registered
+    local_presence: confirmed
+    capabilities: [document_signing, document_workflows]
+    risk: controlled
+    permissions: [network, database]
+    runtime: vps
+    pin: null
+
+  - id: excalidraw
+    name: Excalidraw
+    category: visual_collaboration
+    source: https://github.com/excalidraw/excalidraw
+    source_type: upstream
+    registry_status: registered
+    local_presence: confirmed
+    capabilities: [diagramming, visual_collaboration]
+    risk: low
+    permissions: [filesystem_read, network]
+    runtime: vps
+    pin: null
+
+  - id: immich
+    name: Immich
+    category: media
+    source: https://github.com/immich-app/immich
+    source_type: upstream
+    registry_status: candidate
+    local_presence: not_confirmed
+    capabilities: [photo_management, media_library]
+    risk: controlled
+    permissions: [filesystem_read, filesystem_write, database]
+    runtime: vps
+    pin: null
+
+  - id: supabase
+    name: Supabase
+    category: backend
+    source: https://github.com/supabase/supabase
+    source_type: upstream
+    registry_status: candidate
+    local_presence: not_confirmed
+    capabilities: [database, auth, storage, backend_services]
+    risk: high
+    permissions: [database, network, credentials_vault]
+    runtime: vps
+    pin: null
+
+  - id: nocodb
+    name: NocoDB
+    category: database_ui
+    source: https://github.com/nocodb/nocodb
+    source_type: upstream
+    registry_status: candidate
+    local_presence: not_confirmed
+    capabilities: [database_ui, internal_tools]
+    risk: controlled
+    permissions: [database, network]
+    runtime: vps
+    pin: null
+
+  - id: penpot
+    name: Penpot
+    category: design
+    source: https://github.com/penpot/penpot
+    source_type: upstream
+    registry_status: candidate
+    local_presence: not_confirmed
+    capabilities: [design, prototyping, collaboration]
+    risk: low
+    permissions: [network, database]
+    runtime: vps
+    pin: null
+
+  - id: posthog
+    name: PostHog
+    category: analytics
+    source: https://github.com/PostHog/posthog
+    source_type: upstream
+    registry_status: candidate
+    local_presence: not_confirmed
+    capabilities: [product_analytics, feature_flags, experimentation]
+    risk: high
+    permissions: [network, database]
+    runtime: vps
+    pin: null
+
+  - id: plausible
+    name: Plausible
+    category: analytics
+    source: https://github.com/plausible/analytics
+    source_type: upstream
+    registry_status: candidate
+    local_presence: not_confirmed
+    capabilities: [web_analytics, privacy_friendly_analytics]
+    risk: controlled
+    permissions: [network, database]
+    runtime: vps
+    pin: null
+
+  - id: appflowy
+    name: AppFlowy
+    category: knowledge
+    source: https://github.com/AppFlowy-IO/AppFlowy
+    source_type: upstream
+    registry_status: candidate
+    local_presence: not_confirmed
+    capabilities: [knowledge_management, collaboration]
+    risk: controlled
+    permissions: [filesystem_read, filesystem_write, network]
+    runtime: vps
+    pin: null
+
+  - id: listmonk
+    name: listmonk
+    category: messaging
+    source: https://github.com/knadh/listmonk
+    source_type: upstream
+    registry_status: candidate
+    local_presence: not_confirmed
+    capabilities: [email_marketing, mailing_lists]
+    risk: high
+    permissions: [network, database]
+    runtime: vps
+    pin: null
+
+  - id: docuseal
+    name: Docuseal
+    category: documents
+    source: https://github.com/docusealco/docuseal
+    source_type: upstream
+    registry_status: candidate
+    local_presence: not_confirmed
+    capabilities: [document_signing]
+    risk: controlled
+    permissions: [network, database]
+    runtime: vps
+    pin: null
