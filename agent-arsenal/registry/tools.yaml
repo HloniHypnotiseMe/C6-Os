@@ -1,0 +1,31 @@
+schema_version: "0.1"
+tools:
+  - id: github
+    purpose: "Source control, repository discovery, review, and controlled writes."
+    class: source_control
+    permissions: [network, repository_read, repository_write]
+  - id: n8n
+    provider: n8n
+    purpose: "Business and technical workflow automation."
+    class: automation
+    permissions: [network, credentials_vault]
+  - id: browser
+    providers: [headlessx, page_agent]
+    purpose: "Controlled browser interaction."
+    class: browser
+    permissions: [browser, network]
+  - id: web_scraper
+    provider: scrapling
+    purpose: "Public web data extraction."
+    class: data_collection
+    permissions: [network, filesystem_write]
+  - id: sandbox
+    provider: opensandbox
+    purpose: "Isolated code and workload execution."
+    class: execution
+    permissions: [sandbox]
+  - id: memory
+    providers: [openviking, context_hub]
+    purpose: "Agent context and knowledge retrieval."
+    class: memory
+    permissions: [filesystem_read, filesystem_write]
