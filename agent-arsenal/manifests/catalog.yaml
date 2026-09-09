@@ -1,0 +1,35 @@
+schema_version: "0.1"
+name: c6-agent-arsenal
+version: 0.1.0
+release_date: 2026-09-09
+resolution_order:
+  - capabilities
+  - providers
+  - permissions
+  - runtime
+  - adapter
+  - execute
+  - verify
+
+domains:
+  core:
+    capabilities: [multi_agent_orchestration, specialist_agents, agent_memory, context_retrieval]
+  execution:
+    capabilities: [browser_automation, web_scraping, sandbox_execution, code_interpreter]
+  research:
+    capabilities: [research, context_retrieval, financial_research]
+  finance:
+    capabilities: [financial_research, trading_analysis]
+  content:
+    capabilities: [specialist_agents, workflow_automation, media_management]
+  automation:
+    capabilities: [workflow_automation, scheduling, browser_automation]
+  business:
+    capabilities: [workflow_automation, backend_services, analytics, document_signing, scheduling]
+
+selection_rules:
+  - "Prefer a confirmed local resource when it satisfies the requirement."
+  - "Prefer the least-privileged provider that can complete the task."
+  - "Do not activate high-risk capabilities without an explicit workflow authorization."
+  - "Do not treat registered as installed or healthy."
+  - "Do not promote an unpinned provider to production."
