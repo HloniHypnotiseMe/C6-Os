@@ -1,0 +1,19 @@
+schema_version: "0.1"
+security:
+  secrets:
+    registry_allowed: false
+    source_control_allowed: false
+    environment_only: true
+  default_posture: deny_by_default
+  destructive_operations: human_approval_required
+  high_risk_capabilities: [trading_analysis, financial_research, browser_automation, web_scraping, sandbox_execution]
+  high_risk_requires:
+    - explicit_workflow_authorization
+    - scoped_permissions
+    - execution_logging
+    - result_verification
+  production_requirements:
+    - immutable_dependency_pin
+    - health_check
+    - rollback_path
+    - least_privilege
