@@ -12,6 +12,9 @@ capabilities:
   - id: context_retrieval
     purpose: "Resolve relevant documentation and knowledge before execution."
     providers: [context_hub, openviking]
+  - id: research
+    purpose: "Conduct structured research using reusable agent and knowledge resources."
+    providers: [context_hub, openviking, metagpt, hf_agents, openmaic]
   - id: coding_agent_orchestration
     purpose: "Coordinate coding agents, subagents, and development workflows."
     providers: [oh_my_codex, goose, metagpt]
