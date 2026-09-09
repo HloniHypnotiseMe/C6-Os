@@ -1,0 +1,59 @@
+schema_version: "0.1"
+classification:
+  upstream_repository: "Externally maintained Git repository consumed by C6."
+  internal_repository: "C6-owned repository under direct governance."
+  local_mirror: "Local workspace copy of an upstream or internal repository."
+  agent_framework: "Framework for constructing or coordinating agents."
+  execution_runtime: "Environment capable of executing workloads or agents."
+  memory_system: "Context, retrieval, or long-term memory resource."
+  skill_library: "Reusable agent skills, prompts, or role definitions."
+  tool: "Reusable technical or business operation."
+  infrastructure: "Deployment, data, network, or platform foundation."
+  reference: "Documentation or research material used for reasoning."
+
+local_inventory:
+  confirmed_frameworks:
+    - MetaGPT
+    - CrewAI
+    - OpenViking
+    - TradingAgents
+    - OpenSandbox
+    - Goose
+    - Agency-Agents
+    - OpenClaw
+    - Codex
+  confirmed_agent_patterns:
+    - .agents
+    - .codex
+    - .claude/agents
+    - integrations
+  confirmed_execution_resources:
+    - OpenSandbox
+    - HeadlessX
+    - RunAnywhere SDKs
+  confirmed_memory_resources:
+    - OpenViking
+    - Context-Hub
+    - Page-Agent
+    - Columba
+  confirmed_finance_resources:
+    - TradingAgents
+    - Vibe-Trading
+    - FinceptTerminal
+    - daily_stock_analysis
+  confirmed_content_resources:
+    - Paperclip
+    - Open-Higgsfield-AI
+    - MoneyPrinterV2
+  confirmed_audio_resources:
+    - LuxTTS
+    - VoxCPM
+    - personalized-podcast
+  confirmed_platform_resources:
+    - n8n
+    - Cal.com
+    - Coolify
+    - Documenso
+    - Excalidraw
+    - paygate-sdk
+    - Saleor
