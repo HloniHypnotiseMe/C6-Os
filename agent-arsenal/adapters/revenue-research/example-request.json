@@ -1,0 +1,12 @@
+{
+  "objective": "Identify the fastest path to 10 qualified C6 sales conversations this week.",
+  "market": "South Africa",
+  "customer_type": "SMEs that need practical AI and automation services",
+  "constraints": [
+    "Prioritize reachable prospects",
+    "Prefer evidence-backed pain points",
+    "Do not fabricate company facts"
+  ],
+  "evidence_required": true,
+  "max_risk": "controlled"
+}
