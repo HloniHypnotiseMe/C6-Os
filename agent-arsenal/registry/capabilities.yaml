@@ -1,0 +1,76 @@
+schema_version: "0.1"
+capabilities:
+  - id: multi_agent_orchestration
+    purpose: "Coordinate multiple specialist agents toward one objective."
+    providers: [clawteam, metagpt, crewai_examples, goose, hf_agents]
+  - id: specialist_agents
+    purpose: "Select reusable role-based specialist agents."
+    providers: [agency_agents, hf_agents]
+  - id: agent_memory
+    purpose: "Persist and retrieve agent context and long-lived knowledge."
+    providers: [openviking, context_hub]
+  - id: context_retrieval
+    purpose: "Resolve relevant documentation and knowledge before execution."
+    providers: [context_hub, openviking]
+  - id: coding_agent_orchestration
+    purpose: "Coordinate coding agents, subagents, and development workflows."
+    providers: [oh_my_codex, goose, metagpt]
+  - id: development_automation
+    purpose: "Automate repeatable software-engineering work."
+    providers: [oh_my_codex, goose]
+  - id: browser_automation
+    purpose: "Drive browser-based tasks and web interfaces."
+    providers: [headlessx, page_agent]
+  - id: web_scraping
+    purpose: "Collect and transform public web data."
+    providers: [scrapling]
+  - id: page_understanding
+    purpose: "Understand and act on page-level interfaces."
+    providers: [page_agent]
+  - id: sandbox_execution
+    purpose: "Run untrusted or isolated workloads in controlled environments."
+    providers: [opensandbox]
+  - id: code_interpreter
+    purpose: "Execute code in an isolated execution environment."
+    providers: [opensandbox]
+  - id: financial_research
+    purpose: "Perform structured market and financial research."
+    providers: [tradingagents]
+    risk: high
+  - id: trading_analysis
+    purpose: "Support quantitative/trading analysis workflows."
+    providers: [tradingagents]
+    risk: high
+  - id: workflow_automation
+    purpose: "Connect events, APIs, business processes, and actions."
+    providers: [n8n, diesel_connect]
+  - id: scheduling
+    purpose: "Coordinate bookings, availability, and scheduling workflows."
+    providers: [calcom]
+  - id: document_signing
+    purpose: "Run digital document signing workflows."
+    providers: [documenso, docuseal]
+  - id: self_hosted_deployment
+    purpose: "Deploy and operate self-hosted applications."
+    providers: [coolify]
+  - id: backend_services
+    purpose: "Provide database, auth, storage, and application backend primitives."
+    providers: [supabase]
+  - id: database_ui
+    purpose: "Expose operational data through configurable database interfaces."
+    providers: [nocodb]
+  - id: analytics
+    purpose: "Measure product and web behavior."
+    providers: [posthog, plausible]
+  - id: design_collaboration
+    purpose: "Create and collaborate on visual product designs."
+    providers: [penpot, excalidraw]
+  - id: media_management
+    purpose: "Manage self-hosted photo and media libraries."
+    providers: [immich]
+  - id: knowledge_management
+    purpose: "Organize reusable business and operational knowledge."
+    providers: [appflowy, context_hub]
+  - id: email_marketing
+    purpose: "Manage lists and outbound email campaigns."
+    providers: [listmonk]
