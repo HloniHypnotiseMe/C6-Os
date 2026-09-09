@@ -1,0 +1,31 @@
+schema_version: "0.1"
+default_permissions:
+  filesystem_read: false
+  filesystem_write: false
+  network: false
+  browser: false
+  database: false
+  credentials_vault: false
+  sandbox: false
+  infrastructure: false
+
+permission_sets:
+  research:
+    allow: [network, filesystem_read]
+  browser:
+    allow: [network, browser]
+  scraping:
+    allow: [network, filesystem_write]
+  sandboxed_code:
+    allow: [sandbox]
+  workflow:
+    allow: [network, credentials_vault]
+  memory:
+    allow: [filesystem_read, filesystem_write]
+  infrastructure:
+    allow: [network, infrastructure, filesystem_write]
+
+rules:
+  - "Grant only the permissions explicitly required by the resolved capability."
+  - "Provider declarations do not grant runtime permissions."
+  - "Credentials are injected at runtime through a secret manager or environment, never committed."
