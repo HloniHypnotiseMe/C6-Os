@@ -1,0 +1,22 @@
+schema_version: "0.1"
+runtimes:
+  - id: vps
+    purpose: "Primary persistent C6 execution environment."
+    status: planned
+    permissions_default: minimal
+    docker_required: false
+  - id: sandbox
+    purpose: "Isolated execution for untrusted or disposable workloads."
+    provider: opensandbox
+    status: registered
+    permissions_default: restricted
+  - id: local_workstation
+    purpose: "Development and forensic environment used to build the Arsenal."
+    status: development
+    constraints:
+      docker: unavailable
+  - id: browser
+    purpose: "Controlled browser execution surface."
+    providers: [headlessx, page_agent]
+    status: registered
+    permissions_default: restricted
