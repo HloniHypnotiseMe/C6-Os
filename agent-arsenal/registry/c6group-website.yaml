@@ -1,0 +1,5 @@
+
+product: C6-Group-Final-Website
+repo: https://github.com/HloniHypnotiseMe/C6-Group-Final-Website
+payment_adapter: agent-arsenal/adapters/payments/standardbank_unified.py
+shared_with: diesel-connect
