@@ -1,0 +1,21 @@
+{
+  "empire": "AI Empire - Execution Layer",
+  "version": "1.0",
+  "repos": 15,
+  "c6_bridge": {
+    "control_plane": "C6-Os/ARSENAL",
+    "execution_plane": "ai-empire/repos",
+    "resolver": "C6-Os/RESOLVER -> ai-empire"
+  },
+  "providers": {
+    "research": {"repo": "MetaGPT", "path": "repos/MetaGPT", "capability": "sop_software_company"},
+    "memory": {"repo": "OpenViking", "path": "repos/OpenViking", "capability": "rag_memory_91pct_token_save"},
+    "scraping": {"repo": "Scrapling", "path": "repos/Scrapling", "capability": "auto_crawl"},
+    "browser": {"repo": "HeadlessX", "path": "repos/HeadlessX", "capability": "browser_automation"},
+    "web_agent": {"repo": "Page-Agent", "path": "repos/Page-Agent", "capability": "page_agent_injection"},
+    "trading": {"repo": "TradingAgents", "path": "repos/TradingAgents", "capability": "multi_agent_trading"},
+    "building": {"repo": "Agency-Agents", "path": "repos/Agency-Agents", "capability": "61_specialized_builders"},
+    "workflow": {"repo": "Oh-My-Codex", "path": "repos/Oh-My-Codex", "capability": "durable_workflows"},
+    "local_llm": {"repo": "hf-agents", "path": "repos/hf-agents", "capability": "hardware_aware_local_coder"}
+  }
+}
