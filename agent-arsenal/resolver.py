@@ -24,7 +24,9 @@ class C6Resolver:
         if res["status"].startswith("READY"):
             sys.path.insert(0, res["path"])
             sys.path.insert(0, str(self.root))
-            print(f"C6 RESOLVED: {capability} -> {res["provider"]} at {res["path"]}")
+            prov = res.get("provider","?")
+            p = res.get("path","?")
+            print(f"C6 RESOLVED: {capability} -> {prov} at {p}")
             return res
         print(f"C6 FAILED: {capability} -> {res}")
         return res
@@ -33,7 +35,9 @@ class C6Resolver:
         for k,v in self.providers.items():
             p = self.root / v["path"]
             status = "OK" if p.exists() else "NO"
-            print(f"{status} {k:12} -> {v["repo"]:15} ({v["capability"]})")
+            repo = v.get("repo","?")
+            cap = v.get("capability","?")
+            print(f"{status} {k:12} -> {repo:15} ({cap})")
 
 if __name__ == "__main__":
     r = C6Resolver()
