@@ -1,0 +1,20 @@
+{
+  "name": "c6-arsenal-mcp",
+  "version": "0.1.0",
+  "description": "MCP server exposing the C6 Agent Arsenal: resolver, provider registry, capability map, and repository inventory.",
+  "type": "module",
+  "main": "server.mjs",
+  "bin": {
+    "c6-arsenal-mcp": "server.mjs"
+  },
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "yaml": "^2.5.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
