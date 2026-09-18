@@ -64,10 +64,12 @@ function category(repo) {
     ['crm_productivity', /crm|twenty|nocodb|calendar|cal\.|appflowy|penpot|documenso/],
     ['payments_finance', /pay|payment|finance|trading|stock|banking|hedge|position.*sizer|pokie|budget|money/],
     ['security_observability', /prowler|crowdsec|uptime|hyperdx|watchtower|adguard|portracker|otel/],
-    ['deployment_infrastructure', /deploy|coolify|cloudflare|contabo|tailscale|server|infra|tun2socks|lazyssh|firezone|dns|aws.?emulator|ministack|floci|localstack/],
     ['data_geo_documents', /graph|analytics|pdf|document|surya|thoth|formulator|tabularis|surrealdb/],
     ['learning_reference', /awesome|awesome-|skill|roadmap|book|learning|course|interview|handbook|algorithms|art.?of.?command|designer.skills|agent.skills/],
     ['orchestration', /agent|orchestrat|langgraph|crewai|metagpt|prefect|activepieces|n8n|huginn|autogen/],
+    ['secrets_identity', /vaultwarden|bitwarden|password.?manager|secrets?\b|keychain|vault\b|identity|auth0|keycloak/],
+    ['server_management', /\bssh\b|xpipe|nexterm|server.?manage|runtipi|homelab|self.?host|panel|webmin|cockpit|infra.?visual/],
+    ['deployment_infrastructure', /\bdeploy\b|coolify|cloudflare|contabo|tailscale|infra\b|tun2socks|lazyssh|firezone|\bdns\b|aws.?emulator|ministack|floci|localstack|paas|php.?app.?server|frankenphp|netgoat|scheduler|cronicle/],
   ];
   return rules.find(([, pattern]) => pattern.test(n))?.[0] ?? 'specialist_or_reference';
 }
