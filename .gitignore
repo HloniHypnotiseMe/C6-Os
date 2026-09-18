@@ -47,3 +47,5 @@ c6group-backend/prisma/migrations/dev.db*
 # Wrangler
 .wrangler/
 app/dist/
+*.bak*
+*.bak_pre_batch3
