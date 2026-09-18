@@ -1,0 +1,49 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Build output
+dist/
+build/
+.next/
+out/
+
+# Env
+.env
+.env.*
+!.env.example
+!.env.production.example
+
+# OS junk
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Backups / forensic dumps
+.c6-*-backup*/
+.c6-*-quarantine/
+.c6-gaplock-*/
+C6_FORENSIC_*/
+*.c6pre*.bak
+*.c6prebuild.bak
+*.bak-*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Logs
+logs/
+*.log
+
+# Prisma
+c6group-backend/prisma/*.db
+c6group-backend/prisma/migrations/dev.db*
+
+# Wrangler
+.wrangler/
+app/dist/

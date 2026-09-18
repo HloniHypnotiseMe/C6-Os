@@ -26,258 +26,540 @@ systems:
 
 capabilities:
   orchestration:
-    - agency-agents
-    - crewAI
-    - langgraph
-    - MetaGPT
-    - ClawTeam
-    - OpenClaw
-    - prefect
-    - n8n
     - activepieces
+    - agency-agents
+    - Agent-Reach
+    - AI-Scientist-v2
+    - autogen
+    - ClawTeam
+    - crewAI
+    - crewAI-examples
+    - deepteam
+    - goose
+    - hermes-agent
     - huginn
     - langchain
-    - autogen
-    - hermes-agent
-    - goose
+    - langflow
+    - langgraph
     - lobehub
-    - Agent-Reach
-    - crewAI-examples
-    - AI-Scientist-v2
     - medusa
-    - warp
-    - roborev
-    - oasis
-    - OpenHack
-    - deepteam
-    - superpowers
-    - oh-my-githubcopilot
+    - MetaGPT
+    - n8n
     - n8n-nodes-starter
     - n8n-workflows
+    - oasis
+    - OfficeCLI
+    - oh-my-githubcopilot
+    - OpenClaw
+    - OpenHack
+    - OpenMonoAgent.ai
+    - prefect
+    - roborev
+    - rocketride-server
+    - sim
+    - superpowers
+    - warp
   agent_routing:
     - ClawRouter
+    - LibreChat
     - OmniRoute
     - optillm
+    - wifi-cracking
   coding_agents:
-    - OpenHands
+    - agentfiles
+    - ai-job-search
     - aider
-    - claude-task-master
-    - oh-my-codex
-    - nanocoder
-    - everything-claude-code
+    - claude-ads
+    - claude-code-from-scratch
     - claude-code-local
+    - claude-mem
+    - claude-skills-collection
+    - claude-task-master
+    - cumora
+    - diagram-design
+    - ECC
+    - everything-claude-code
+    - free-claude-code
+    - get-shit-done
+    - graphify
+    - kilocode
+    - nanocoder
+    - oh-my-codex
+    - OpenContext
+    - OpenCreator
+    - OpenHands
+    - OpenMythos
+    - orca
+    - scientific-agent-skills
+    - sol-advisor
+    - tabularis
+    - Understand-Anything
   mcp_and_tools:
     - 50-essential-mcp-servers
+    - agent-device
     - awesome-mcp-servers
-    - n8n-mcp
-    - mcp-toolbox
     - brightdata-mcp
+    - dbx
+    - jadx-ai-mcp
+    - markdownify-mcp
+    - mcp-toolbox
+    - n8n-mcp
+    - repowise
   memory_rag:
     - Acontext
     - anything-llm
-    - supavec
-    - OpenViking
+    - awesome-llm-apps
+    - codebase-memory-mcp
     - Context-Hub
-    - mem0
+    - continuum
+    - crawlee
+    - dify
+    - gitagent
     - LightRAG
+    - mem0
+    - mirage
+    - OpenViking
+    - PraisonAI
     - Qdrant
+    - supavec
+    - supermemory
+    - vllm
   llm_inference:
-    - Ollama
-    - LocalAI
+    - foldergram
+    - gallery
+    - GPT-Image2-Skill
+    - gpt4all
+    - hf-agents
+    - kimi-k3-in-c
     - koboldcpp
+    - llama_index
+    - Llama-macOS
+    - LocalAI
+    - meetily
+    - nanoGPT
+    - Ollama
+    - open-webui
+    - parlor
+    - picolm
+    - Silicon-Studio
+    - sokuji
     - transformers
     - transformers.js
-    - nanoGPT
   browser_web:
+    - AIO-Video-Downloader
+    - ArchiveBox
+    - autoscraper
     - browser-use
-    - stagehand
     - camofox-browser
     - camoufox
-    - Scrapling
+    - clawless
+    - CloakBrowser
     - crawl4ai
     - crawly
-    - autoscraper
     - deepcrawl
+    - facex
+    - firecrawl
+    - freecut
+    - gods-eye-view
+    - Google-Maps-Scrapper
+    - HackTools
+    - plain-app
+    - removerized
+    - Scrapling
+    - scrapy
+    - skills
+    - stagehand
     - yt-dlp
-    - ArchiveBox
   voice_audio:
-    - whisper
+    - chatterbox
+    - ChatTTS-ui
     - F5-TTS
     - fish-speech
     - GPT-SoVITS
-    - chatterbox
     - index-tts
-    - supertonic
-    - pipecat
-    - Voicebox
-    - VoxCPM
+    - izwi
     - LuxTTS
+    - my-translator
+    - OmniVoice
+    - Open-LLM-VTuber
+    - OpenVoice
+    - pipecat
+    - Real-Time-Voice-Cloning
+    - Retrieval-based-Voice-Conversion-WebUI
+    - SadTalker
+    - speakr
+    - supertonic
+    - transcribe-anything
+    - TTS
+    - Voice-Recorder
+    - voicebox
+    - Voicebox
+    - voicetypr
+    - VoxCPM
+    - whisper
   image_video_content:
+    - Badget
     - ComfyUI
+    - coral
+    - deepface
     - Fooocus
-    - Wan2.2
+    - html-video
+    - hyperframes
     - ideogram4
+    - Magic-TryOn
+    - manim
+    - Manim
+    - MoneyPrinterV2
+    - Open-Generative-AI
     - Open-Higgsfield-AI
     - OpenCut
-    - MoneyPrinterV2
-    - VisoMaster-Fusion
-    - Manim
+    - opentoonz
     - paperclip
+    - tegaki
+    - TostUI
+    - VisoMaster-Fusion
+    - Wan2.2
+    - Website-downloader
   communications:
-    - BillionMail
-    - listmonk
-    - docker-mailserver
-    - Whatomate
+    - agentic-inbox
     - Arkesel
+    - BillionMail
+    - docker-mailserver
+    - email-verifier
+    - inbox-zero
+    - listmonk
+    - mailflare
+    - mercury-agent
+    - personal-ai-assistant
+    - relay
+    - skiff-apps
+    - SMS2Email
+    - SpamBlocker
     - telegraf
+    - whatomate
+    - Whatomate
+    - whatsapp-cloud-inbox
+    - whatsapp-wrapped
   crm_productivity:
-    - twenty
-    - nocodb
-    - cal.diy
-    - Cal.com
     - AppFlowy
-    - Penpot
+    - Cal.com
+    - cal.diy
+    - crm
+    - documenso
     - Documenso
+    - nocodb
+    - penpot
+    - Penpot
+    - twenty
   payments_finance:
+    - AutoHedge
+    - banking
+    - BBLA-Back-end
+    - FinceptTerminal
+    - nofx
+    - OpenStock
+    - opentrader
+    - PayGate
+    - paygate-sdk
+    - PokieTicker
+    - PositionSizer
+    - Python-NSE-Option-Chain-Analyzer
     - remote-pay-holdings
     - RemotePay
-    - paygate-sdk
-    - PayGate
-    - BBLA-Back-end
+    - smart-money-concepts
+    - the0
+    - trading-signals
     - TradingAgents
-    - FinceptTerminal
+    - Vibe-Trading
   security_observability:
-    - prowler
-    - crowdsec
-    - uptime-kuma
-    - hyperdx
-    - watchtower
     - AdGuardHome
+    - crowdsec
+    - hyperdx
+    - otel-gui
+    - portracker
+    - prowler
     - ServerKit
+    - uptime-kuma
+    - watchtower
   deployment_infrastructure:
+    - Antibot-Detector
     - c6-deploy
-    - Coolify
     - Cloudflare
     - Contabo
-    - tailscale
+    - Coolify
+    - frankenphp
     - iroh
+    - tailscale
+    - xyops
   data_geo_documents:
     - analytics
     - city2graph
+    - context7
+    - data-formulator
+    - DeepDive
+    - desktop
+    - health-auto-export
+    - humanize-text
+    - jobsync
     - kepler.gl
-    - surya
+    - markitdown
+    - paperless-ngx
+    - papermark
     - pdf-craft
     - pullmd
+    - Stirling-PDF
+    - surrealdb
+    - surya
+    - thoth-blueprint
   learning_reference:
+    - 30-seconds-of-code
     - andrej-karpathy-skills
     - application-skills
-    - Product-Manager-Skills
-    - developer-roadmap
-    - Ultimate-AI-Engineer-Roadmap-2026
-    - startup-skill
+    - autoskills
+    - Awesome_Math_Books
+    - awesome-ai-agents
+    - awesome-ai-software-development-agents
+    - awesome-cloudflare
+    - awesome-deep-trading
+    - Awesome-finance-skills
+    - awesome-foundation-agents
+    - awesome-free-apps
+    - awesome-gpt-image-2
+    - awesome-kan
+    - awesome-nano-banana-pro-prompts
+    - awesome-opensource-ai
+    - Awesome-Self-Evolving-Agents
     - book-to-skill
-    - free-programming-books
     - build-your-own-x
-
+    - coding-interview-university
+    - developer-roadmap
+    - free-programming-books
+    - investing-algorithm-framework
+    - javascript-algorithms
+    - mimeo
+    - open-notebook
+    - OpenMontage
+    - Product-Manager-Skills
+    - project-based-learning
+    - Recordly
+    - startup-skill
+    - stop-slop
+    - tech-interview-handbook
+    - the-art-of-command-line
+    - the-book-of-secret-knowledge
+    - TypeScript-Website
+    - ui-ux-pro-max-skill
+    - Ultimate-AI-Engineer-Roadmap-2026
+    - You-Dont-Know-JS
   reverse_engineering:
     - ghidra
     - IDAssist
+    - reverse-skill
+    - SunoSongsCreator
   security_networking:
     - airgorah
     - clearcam
     - curl-impersonate
     - iroh
   osint_investigation:
+    - GHOST-osint-crm
     - maigret
-    - sherlock
-    - seasearch
     - open-source-web-scanners
     - public-apis
+    - seasearch
+    - sherlock
   dev_tools:
-    - helix
-    - nushell
+    - ai-website-cloner-template
+    - amber
     - browsr
     - build-your-own-x
     - CodeNomad
+    - dashy
     - devildev
     - git-chain-malleator
-    - amber
+    - helix
+    - html-anything
+    - nushell
+    - open-photo-ai
     - pdm
-    - pyapp
     - pkgx
+    - pyapp
+    - transmute
   web_frontend:
     - advanced-react-patterns
-    - fluentui
-    - excalidraw
-    - capacitor
-    - web-to-app
+    - app.yumcut.com
+    - arcada
     - builder
+    - capacitor
+    - excalidraw
+    - fluentui
+    - open-dronelog
+    - shadcn-admin-kit
+    - Telegram-Drive
+    - tldraw
+    - web-to-app
   game_engine:
-    - Fio
-    - engine
     - athena-crisis
     - BotW-BetterVR
+    - engine
+    - Fio
+    - floci
+    - ministack
     - OpenHD
   file_sharing_sync:
+    - anytype-ts
     - FileSync
     - localsend
     - PolyUploader
-    - twake-drive
-    - anytype-ts
-    - timelinize
+    - syncthing
     - telegram-drive
+    - timelinize
+    - twake-drive
   media_servers:
-    - jellyfin
-    - jcorp-nomad
-    - qBittorrent
+    - dub
     - FreeTube
+    - jcorp-nomad
+    - jellyfin
+    - qBittorrent
+    - reiverr
+    - rmux
+    - wizarr
   agent_skills:
-    - flyai-skill
+    - awesome-design-md
+    - awesome-openclaw-agents
     - designer-skills
+    - flyai-skill
+    - freebuff
     - obsidian-skills
     - ponytail
-    - freebuff
-    - awesome-openclaw-agents
-    - awesome-design-md
     - x-cmd
   secrets_identity:
     - vaultwarden
   server_management:
-    - Nexterm
-    - xpipe
-    - lazyssh
-    - vps-audit
-    - homelable
-    - runtipi
-    - firezone
-    - tun2socks
-    - DnsServer
+    - coolify
     - dnsChanger-desktop
+    - DnsServer
+    - firezone
+    - Habo
+    - homelable
+    - job-ops
+    - ladder
+    - lazyssh
     - netgoat
+    - Nexterm
+    - odysseus
+    - openadserver
+    - runtipi
+    - tun2socks
+    - vps-audit
+    - xpipe
   music_generation:
     - ACE-Step-Studio
-    - stemdeck
-    - demucs
     - Antra
-    - Suno-API
+    - demucs
+    - stemdeck
     - suno_ai_meta_tags_guide
+    - Suno-API
     - tunee_ai
   audiobooks_podcasts:
     - audiobook_maker
     - audiobookshelf
-    - WiFiAudioStreaming-Desktop
     - VidBee
+    - WiFiAudioStreaming-Desktop
   photo_media_management:
     - immich
     - karakeep
     - worldview
-  '3d_vision':
+  3d_vision:
+    - BiRefNet
     - Matrix-3D
+    - MiniCPM-V
     - modly
     - opencap-monocular
     - VisionDepth3D
-    - BiRefNet
-    - MiniCPM-V
+  hardware_robotics:
+    - colota
+    - Ducky
+    - ESP32
+    - Fast-FoundationStereo
+    - frigate-nvr-guide
+    - Grid-Mobile
+    - Lock-Picking-Robot
+    - Low-Cost-Mocap
+    - RadioShield
+    - rPPG-Toolbox
+    - SysMocap
+  maps_geo:
+    - airplanejs
+    - freellmapi
+    - headway
+    - loop-engineering
+    - OfflineMapDownloader
+    - VerseCrafter
+  marketing_growth:
+    - awesome-ai-lead-generation
+    - awesome-launch-platforms
+    - awesome-seo
+    - COG-second-brain
+    - Marketing-for-Founders
+    - marketing-skills
+    - notfair-plugin
+    - open-seo
+    - open-seo-mcp-skills
+    - oransim
+    - posthog
+    - postiz-app
+    - ragflow
+    - seo-audit-skill
+  productivity_office:
+    - ModernWMS
+    - plane
+    - vcard-personal-portfolio
+  security_offensive:
+    - AntiHunter
+    - MHDDoS
+    - Netryx-Astra-V2-Geolocation-Tool
+    - RedTeam-Tools
+    - SearchPhone
+    - Sn1per
+    - strix
+    - WiFiDuck
+    - WireTapper
+    - xalgorix
+    - yesitsme
+  specialist_or_reference:
+    - ag-kit
+    - ai-file-sorter
+    - AI-Text-Humanizer-App
+    - Auto-Company
+    - bark
+    - bumblebee
+    - buzz
+    - core
+    - GENesis-AGI
+    - Ghost
+    - Ix
+    - Kai
+    - LUKSbox
+    - Maestro
+    - mini-qr
+    - motion-diffusion-model
+    - nango
+    - openai-python
+    - OpenAnt
+    - openclaw
+    - OpenJarvis
+    - optimizerDuck
+    - PhotoGIMP
+    - PyUIBuilder
+    - reefy
+    - RemoveWindowsAI
+    - RepoStore
+    - rota
+    - supabase
+    - univer
+    - vidaio-subnet
+    - whichllm
 internal_repositories:
   c6_platform:
     - C6-Os

@@ -1,0 +1,104 @@
+schema_version: "1.0"
+
+purpose: >
+  Governed metadata model for the C6 Universal Agent Arsenal.
+  Discovery is not approval. Repository metadata may propose classification,
+  while production readiness requires explicit validation.
+
+source_types:
+  C6_NATIVE: "C6-owned repository or first-party implementation"
+  OPEN_SOURCE: "Upstream open-source project"
+  THIRD_PARTY: "External provider or commercial dependency"
+  FORK: "Fork of an upstream repository"
+  EXPERIMENTAL: "Research or experimental repository"
+
+maturity:
+  UNKNOWN: "Insufficient evidence"
+  REFERENCE: "Useful reference, skills, patterns, or research"
+  PROTOTYPE: "Experimental implementation"
+  DEVELOPMENT: "Actively being developed or integrated"
+  BETA: "Validated but not yet production-critical"
+  PRODUCTION: "Validated production capability"
+
+status:
+  DISCOVERED: "Found through repository inventory"
+  CANDIDATE: "Potentially useful capability requiring review"
+  REGISTERED: "Accepted into the governed provider registry"
+  LOCAL: "Local presence has been confirmed"
+  PINNED: "Production dependency has an immutable version pin"
+  HEALTHY: "Runtime health has been verified"
+  AUTHORIZED: "Required permissions and approvals exist"
+  EXECUTABLE: "Provider can be invoked through an approved adapter/runtime"
+  VERIFIED: "Execution outcome has been independently verified"
+  PRODUCTION: "Approved for production use"
+  RESEARCH: "Research-only or controlled evaluation"
+  EXPERIMENTAL: "Experimental use only"
+  IGNORE: "Explicitly excluded from operational selection"
+
+capability_record:
+  required:
+    - repository
+    - source_type
+    - classification
+    - capabilities
+    - maturity
+    - status
+
+  optional:
+    - description
+    - license
+    - fork_status
+    - parent_repository
+    - default_branch
+    - runtime
+    - risk
+    - permissions
+    - local_presence
+    - local_path
+    - version_pin
+    - dependencies
+    - c6_relevance
+    - customer_relevance
+    - internal_usage
+    - composable_with
+    - revenue_hunter_relevance
+    - adapter
+    - health
+    - evidence
+    - notes
+    - repository_id
+    - discovery_source
+    - upstream_url
+    - upstream_owner
+    - upstream_repository
+    - duplicate_key
+    - update_signal
+    - maintenance_signal
+    - evidence_type
+    - evidence_timestamp
+
+risk:
+  allowed:
+    - low
+    - controlled
+    - high
+
+relevance:
+  scale:
+    - none
+    - reference
+    - useful
+    - strategic
+    - core
+
+selection_rules:
+  - "Capability must be resolved before provider selection."
+  - "Provider selection must consider risk, permissions, runtime and health."
+  - "Registered does not mean installed."
+  - "Installed does not mean healthy."
+  - "Healthy does not mean authorized."
+  - "Authorized does not mean production."
+  - "Production requires evidence and an immutable version pin where applicable."
+  - "Discovery must never activate a provider."
+  - "Forks must retain upstream provenance."
+  - "C6-native repositories must remain distinguishable from upstream repositories."
