@@ -35,26 +35,45 @@ async function listRepos() {
 }
 
 function category(repo) {
-  const n = repo.name.toLowerCase();
+  const n = `${repo.name} ${repo.description ?? ''} `.toLowerCase();
   const rules = [
-    ['orchestration', /agent|orchestrat|langgraph|crewai|metagpt|openclaw|prefect|activepieces|huginn|n8n/],
+    ['reverse_engineering', /ghidra|ida.?pro|idassist|reverse.?engineer|binary.?analy|disassem|debugger|frida|radare/],
+    ['security_networking', /wifi.*audit|airgorah|curl.?impersonate|security.*camera|clearcam|iroh|wifi.*secur/],
+    ['osint_investigation', /sherlock|maigret|seasearch|open.?source.?web.?scanner|web.?scanner|investigat/],
+    ['dev_tools', /\beditor\b|nushell|helix|text.?editor|git.?chain|build.?your.?own|codenomad|devildev|terminal.?file|browsr/],
+    ['web_frontend', /react|next\.?js|vue|svelte|fluentui|shadcn|component.?kit|tldraw|excalidraw|capacitor|website.?builder|web.?to.?app/],
+    ['game_engine', /\bgame\b|game.?engine|athena.?crisis|botw|emulator|procedural.?engine|world.?editor/],
+    ['file_sharing_sync', /file.?sync|send.?files|airdrop|localsend|polyuploader|telegram.?drive|twake|anytype|timelinize/],
+    ['security_offensive', /redteam|red-team|penetration|pentest|exploit|ddos|wifi.*duck|keystroke.*inject|osint|sn1per|strix|mhddos|antihunter|ghost-osint|netryx|searchphone|dork/],
+    ['hardware_robotics', /robot|mocap|motion.*capture|drone|arduino|esp32|raspberry|flight.*log|dronelog|ducky|picking.*robot|colota|grid.?mobile|stereo|rppg/],
+    ['media_servers', /jellyfin|emby|plex|media.*server|qbit|transmission|sonarr|radarr|karaoke|jcorp-nomad/],
+    ['marketing_growth', /marketing|seo|growth|launch.*platform|lead.*gen|outreach|semrush|ahrefs|posthog|postiz|oransim|causal.*digital/],
+    ['maps_geo', /\bmap\b|geo|osm|openstreetmap|leaflet|kepler|city2graph|navigation|routing/],
+    ['productivity_office', /\bwms\b|warehouse|jira|linear|monday|clickup|\bplane\b|project.*manage|dashboard|dashy|vcard.*portfolio/],
     ['agent_routing', /router|route|optillm/],
-    ['coding_agents', /codex|openhands|aider|nanocoder|task-master|claude/],
-    ['mcp_and_tools', /mcp/],
-    ['memory_rag', /memory|rag|viking|qdrant|mem0|context-hub|anything-llm/],
-    ['llm_inference', /ollama|localai|transformers|nanogpt|kobold/],
-    ['browser_web', /browser|scrap|crawl|crawly|stagehand|archivebox|yt-dlp|autoscraper/],
-    ['voice_audio', /voice|speech|whisper|tts|audio|pipecat/],
-    ['image_video_content', /video|image|comfy|fooocus|moneyprinter|paperclip|manim|creator/],
+    ['coding_agents', /codex|openhands|aider|nanocoder|task-master|claude|kilocode|orca/],
+    ['memory_rag', /memory|rag|viking|qdrant|mem0|context-hub|anything-llm|acontext|supermemory|supavec/],
+    ['mcp_and_tools', /\bmcp\b/],
+    ['llm_inference', /ollama|localai|transformers|nanogpt|kobold|llama|mlx|picolm|kimi-k3|gpt4all|on.?device|gallery|llama.?macos/],
+    ['browser_web', /browser|scrap|crawl|crawly|stagehand|archivebox|yt-dlp|autoscraper|free-tube/],
+    ['voice_audio', /voice|speech|whisper|tts|audio|pipecat|suno|chatterbox|clone|music|demucs|spotify|source.?separat|antra/],
+    ['image_video_content', /video|image|comfy|fooocus|moneyprinter|paperclip|manim|creator|montage|try.?on|sadtalker|studio|face|deepface|stereo|depth|vision|toonz|animation/],
     ['communications', /mail|email|whatsapp|sms|telegram|messag/],
     ['crm_productivity', /crm|twenty|nocodb|calendar|cal\.|appflowy|penpot|documenso/],
-    ['payments_finance', /pay|payment|finance|trading|stock/],
-    ['security_observability', /security|prowler|crowdsec|uptime|hyperdx|watchtower|adguard/],
-    ['deployment_infrastructure', /deploy|coolify|cloudflare|contabo|tailscale|server|infra/],
-    ['data_geo_documents', /geo|graph|analytics|pdf|document|surya/],
-    ['learning_reference', /skill|roadmap|book|learning|course/]
+    ['payments_finance', /pay|payment|finance|trading|stock|banking|hedge|position.*sizer|pokie|budget|money/],
+    ['security_observability', /prowler|crowdsec|uptime|hyperdx|watchtower|adguard|portracker|otel/],
+    ['deployment_infrastructure', /deploy|coolify|cloudflare|contabo|tailscale|server|infra|tun2socks|lazyssh|firezone|dns|aws.?emulator|ministack|floci|localstack/],
+    ['data_geo_documents', /graph|analytics|pdf|document|surya|thoth|formulator|tabularis|surrealdb/],
+    ['orchestration', /agent|orchestrat|langgraph|crewai|metagpt|prefect|activepieces|n8n|huginn|autogen/],
+    ['learning_reference', /skill|roadmap|book|learning|course|awesome|awesome-|interview|handbook|algorithms|art.?of.?command/]
   ];
   return rules.find(([, pattern]) => pattern.test(n))?.[0] ?? 'specialist_or_reference';
+}
+
+function sourceType(repo) {
+  if (repo.fork && repo.parent?.full_name) return 'FORK';
+  if (repo.full_name.toLowerCase().startsWith('hlonihypnotiseme/')) return 'C6_NATIVE';
+  return 'THIRD_PARTY';
 }
 
 function simplify(repo) {
@@ -72,7 +91,33 @@ function simplify(repo) {
     license: repo.license?.spdx_id ?? null,
     parent: repo.parent?.full_name ?? null,
     category: category(repo),
-    classification: repo.fork ? 'forked_upstream' : 'profile_repository'
+    classification: repo.fork ? 'forked_upstream' : 'profile_repository',
+    source_type: sourceType(repo),
+    repository_id: repo.full_name,
+    discovery_source: 'github_authenticated_inventory',
+    upstream_url: repo.parent?.html_url ?? null,
+    upstream_owner: repo.parent?.owner?.login ?? null,
+    upstream_repository: repo.parent?.full_name ?? null,
+    duplicate_key: repo.name.toLowerCase(),
+    update_signal: repo.pushed_at ? 'updated' : 'unknown',
+    maintenance_signal: repo.archived ? 'archived' : (repo.pushed_at ? 'active_signal' : 'unknown'),
+    evidence_type: 'github_metadata',
+    evidence_timestamp: new Date().toISOString(),
+    maturity: repo.archived ? 'UNKNOWN' : 'UNKNOWN',
+    status: repo.archived ? 'IGNORE' : 'DISCOVERED',
+    local_presence: 'UNKNOWN',
+    local_path: null,
+    version_pin: null,
+    dependencies: [],
+    c6_relevance: 'UNKNOWN',
+    customer_relevance: 'UNKNOWN',
+    internal_usage: 'UNKNOWN',
+    composable_with: [],
+    revenue_hunter_relevance: 'UNKNOWN',
+    adapter: null,
+    health: 'UNKNOWN',
+    evidence: ['github_metadata'],
+    notes: 'Inventory discovery does not establish installation, health, authorization, or production readiness.'
   };
 }
 

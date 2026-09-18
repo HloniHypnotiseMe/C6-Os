@@ -161,6 +161,58 @@ capabilities:
     - free-programming-books
     - build-your-own-x
 
+  reverse_engineering:
+    - ghidra
+    - IDAssist
+  security_networking:
+    - airgorah
+    - clearcam
+    - curl-impersonate
+    - iroh
+  osint_investigation:
+    - maigret
+    - sherlock
+    - seasearch
+    - open-source-web-scanners
+    - public-apis
+  dev_tools:
+    - helix
+    - nushell
+    - browsr
+    - build-your-own-x
+    - CodeNomad
+    - devildev
+    - git-chain-malleator
+    - amber
+    - pdm
+    - pyapp
+    - pkgx
+  web_frontend:
+    - advanced-react-patterns
+    - fluentui
+    - excalidraw
+    - capacitor
+    - web-to-app
+    - builder
+  game_engine:
+    - Fio
+    - engine
+    - athena-crisis
+    - BotW-BetterVR
+    - OpenHD
+  file_sharing_sync:
+    - FileSync
+    - localsend
+    - PolyUploader
+    - twake-drive
+    - anytype-ts
+    - timelinize
+    - telegram-drive
+  media_servers:
+    - jellyfin
+    - jcorp-nomad
+    - qBittorrent
+    - FreeTube
 internal_repositories:
   c6_platform:
     - C6-Os
