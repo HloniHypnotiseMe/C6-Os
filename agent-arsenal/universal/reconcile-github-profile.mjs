@@ -64,8 +64,8 @@ function category(repo) {
     ['security_observability', /prowler|crowdsec|uptime|hyperdx|watchtower|adguard|portracker|otel/],
     ['deployment_infrastructure', /deploy|coolify|cloudflare|contabo|tailscale|server|infra|tun2socks|lazyssh|firezone|dns|aws.?emulator|ministack|floci|localstack/],
     ['data_geo_documents', /graph|analytics|pdf|document|surya|thoth|formulator|tabularis|surrealdb/],
+    ['learning_reference', /awesome|awesome-|skill|roadmap|book|learning|course|interview|handbook|algorithms|art.?of.?command|designer.skills|agent.skills/],
     ['orchestration', /agent|orchestrat|langgraph|crewai|metagpt|prefect|activepieces|n8n|huginn|autogen/],
-    ['learning_reference', /skill|roadmap|book|learning|course|awesome|awesome-|interview|handbook|algorithms|art.?of.?command/]
   ];
   return rules.find(([, pattern]) => pattern.test(n))?.[0] ?? 'specialist_or_reference';
 }

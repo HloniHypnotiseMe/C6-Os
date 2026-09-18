@@ -36,6 +36,24 @@ capabilities:
     - n8n
     - activepieces
     - huginn
+    - langchain
+    - autogen
+    - hermes-agent
+    - goose
+    - lobehub
+    - Agent-Reach
+    - crewAI-examples
+    - AI-Scientist-v2
+    - medusa
+    - warp
+    - roborev
+    - oasis
+    - OpenHack
+    - deepteam
+    - superpowers
+    - oh-my-githubcopilot
+    - n8n-nodes-starter
+    - n8n-workflows
   agent_routing:
     - ClawRouter
     - OmniRoute
@@ -213,6 +231,15 @@ capabilities:
     - jcorp-nomad
     - qBittorrent
     - FreeTube
+  agent_skills:
+    - flyai-skill
+    - designer-skills
+    - obsidian-skills
+    - ponytail
+    - freebuff
+    - awesome-openclaw-agents
+    - awesome-design-md
+    - x-cmd
 internal_repositories:
   c6_platform:
     - C6-Os
