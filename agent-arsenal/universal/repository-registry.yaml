@@ -240,6 +240,44 @@ capabilities:
     - awesome-openclaw-agents
     - awesome-design-md
     - x-cmd
+  secrets_identity:
+    - vaultwarden
+  server_management:
+    - Nexterm
+    - xpipe
+    - lazyssh
+    - vps-audit
+    - homelable
+    - runtipi
+    - firezone
+    - tun2socks
+    - DnsServer
+    - dnsChanger-desktop
+    - netgoat
+  music_generation:
+    - ACE-Step-Studio
+    - stemdeck
+    - demucs
+    - Antra
+    - Suno-API
+    - suno_ai_meta_tags_guide
+    - tunee_ai
+  audiobooks_podcasts:
+    - audiobook_maker
+    - audiobookshelf
+    - WiFiAudioStreaming-Desktop
+    - VidBee
+  photo_media_management:
+    - immich
+    - karakeep
+    - worldview
+  '3d_vision':
+    - Matrix-3D
+    - modly
+    - opencap-monocular
+    - VisionDepth3D
+    - BiRefNet
+    - MiniCPM-V
 internal_repositories:
   c6_platform:
     - C6-Os
