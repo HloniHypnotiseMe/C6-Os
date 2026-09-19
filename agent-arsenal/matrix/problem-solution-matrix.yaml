@@ -1,0 +1,310 @@
+schema_version: "0.1"
+matrix_status: "initial_evidence_inventory"
+pricing:
+  explorer: "R0"
+  foundation_from: "R4,995/month"
+  accelerator_from: "R9,995/month"
+  domination_from: "R24,995/month"
+  bespoke: "custom"
+rows:
+  - pain_id: NO_WEBSITE
+    pain: "Business has no owned website or digital home."
+    evidence_required: "Business submission says no website and public search confirms no owned domain/site."
+    impact_category: Visibility
+    ai_can_fix: true
+    capability: website_creation
+    provider: c6group_website
+    adapter: c6-website
+    adapter_status: missing
+    package: Foundation
+    confidence: medium
+    gap: "Implement verified website creation/optimization adapter and business-specific evidence checks."
+    evidence_source: "audit_input + public_web"
+    evidence_strength: "candidate"
+    evidence_date: "2026-09-19"
+    evidence_population: "individual audited business"
+    validation_status: hypothesis
+    success_role: Growth Coach
+    success_intervention: "Recommend and, once activated and authorized, execute digital-home build."
+
+  - pain_id: LOW_DISCOVERABILITY
+    pain: "Customers may struggle to discover the business through search and local digital channels."
+    evidence_required: "Search audit shows weak/no owned presence, inconsistent business details, or poor visibility for relevant queries."
+    impact_category: Visibility
+    ai_can_fix: true
+    capability: web_scraping
+    provider: scrapling
+    adapter: c6-scraper
+    adapter_status: contract_only
+    package: Foundation
+    confidence: medium
+    gap: "Add evidence-backed SEO/local visibility analyzer and executable remediation adapter."
+    evidence_source: "audit_public_site + public_search"
+    evidence_strength: "candidate"
+    evidence_date: "2026-09-19"
+    evidence_population: "individual audited business"
+    validation_status: hypothesis
+    success_role: Growth Coach
+    success_intervention: "Prioritize discoverability fixes and measure search/visibility change."
+
+  - pain_id: SLOW_RESPONSE
+    pain: "Customer enquiries are not handled quickly or consistently."
+    evidence_required: "Business reports response delays or audit finds missing/limited enquiry channels and no response workflow."
+    impact_category: Lead
+    ai_can_fix: true
+    capability: workflow_automation
+    provider: n8n
+    adapter: c6-workflow
+    adapter_status: contract_only
+    package: Accelerator
+    confidence: medium
+    gap: "Verify receptionist/response automation path and response-time measurement."
+    evidence_source: "audit_input + channel_check"
+    evidence_strength: "candidate"
+    evidence_date: "2026-09-19"
+    evidence_population: "individual audited business"
+    validation_status: hypothesis
+    success_role: Customer Success Coach
+    success_intervention: "Automate safe first-response and track response-time outcomes."
+
+  - pain_id: NO_ONLINE_BOOKING
+    pain: "Customers cannot book appointments online."
+    evidence_required: "Relevant service business has no working online booking path."
+    impact_category: Lead
+    ai_can_fix: true
+    capability: scheduling
+    provider: calcom
+    adapter: c6-scheduling
+    adapter_status: contract_only
+    package: Foundation
+    confidence: medium
+    gap: "Verify booking adapter and business-specific deployment flow."
+    evidence_source: "public_web + audit_input"
+    evidence_strength: "candidate"
+    evidence_date: "2026-09-19"
+    evidence_population: "individual audited business"
+    validation_status: hypothesis
+    success_role: Customer Success Coach
+    success_intervention: "Deploy booking flow where appropriate and monitor booking completion."
+
+  - pain_id: FRAGMENTED_CUSTOMER_VIEW
+    pain: "Customer information is fragmented across channels or tools."
+    evidence_required: "Business identifies multiple customer-data stores with no shared record or workflow."
+    impact_category: Ops
+    ai_can_fix: true
+    capability: backend_services
+    provider: supabase
+    adapter: c6-backend
+    adapter_status: contract_only
+    package: Accelerator
+    confidence: low
+    gap: "Verify production backend integration and customer-data model."
+    evidence_source: "audit_input"
+    evidence_strength: "candidate"
+    evidence_date: "2026-09-19"
+    evidence_population: "individual audited business"
+    validation_status: hypothesis
+    success_role: Operations Coach
+    success_intervention: "Recommend unified customer record and automate safe synchronisation."
+
+  - pain_id: NO_CUSTOMER_DATABASE
+    pain: "Business has no usable customer database."
+    evidence_required: "Business confirms customer records are absent, unusable, or not centrally maintained."
+    impact_category: Revenue
+    ai_can_fix: true
+    capability: database_ui
+    provider: nocodb
+    adapter: c6-database-ui
+    adapter_status: contract_only
+    package: Accelerator
+    confidence: low
+    gap: "Verify production database/UI deployment and migration path."
+    evidence_source: "audit_input"
+    evidence_strength: "candidate"
+    evidence_date: "2026-09-19"
+    evidence_population: "individual audited business"
+    validation_status: hypothesis
+    success_role: Customer Success Coach
+    success_intervention: "Establish customer record and follow-up workflow."
+
+  - pain_id: REPEAT_CUSTOMER_LOSS
+    pain: "Business has weak or inconsistent repeat-customer activity."
+    evidence_required: "Customer/order history or owner evidence shows low repeat frequency, weak follow-up, or no retention process."
+    impact_category: Revenue
+    ai_can_fix: true
+    capability: analytics
+    provider: plausible
+    adapter: c6-analytics
+    adapter_status: contract_only
+    package: Accelerator
+    confidence: medium
+    gap: "Add retention-specific data inputs, segmentation and executable follow-up workflows."
+    evidence_source: "business_data + audit_input"
+    evidence_strength: "candidate"
+    evidence_date: "2026-09-19"
+    evidence_population: "individual audited business"
+    validation_status: hypothesis
+    success_role: Retention Assistant
+    success_intervention: "Identify repeat opportunities and execute approved retention actions."
+
+  - pain_id: MARKETING_ROI_BLINDNESS
+    pain: "Business cannot connect marketing activity to measurable outcomes."
+    evidence_required: "Marketing spend/activity exists but source-to-lead or lead-to-sale measurement is absent."
+    impact_category: Revenue
+    ai_can_fix: true
+    capability: analytics
+    provider: posthog
+    adapter: c6-analytics
+    adapter_status: contract_only
+    package: Accelerator
+    confidence: medium
+    gap: "Verify analytics deployment and campaign attribution model."
+    evidence_source: "audit_input + analytics_check"
+    evidence_strength: "candidate"
+    evidence_date: "2026-09-19"
+    evidence_population: "individual audited business"
+    validation_status: hypothesis
+    success_role: Marketing Coach
+    success_intervention: "Establish measurable campaign funnel and review performance."
+
+  - pain_id: COMPETITOR_BLINDNESS
+    pain: "Business lacks a current view of relevant competitors."
+    evidence_required: "No competitor list/process exists and public-market research can identify comparable businesses."
+    impact_category: Visibility
+    ai_can_fix: true
+    capability: research
+    provider: metagpt
+    adapter: c6-revenue-research
+    adapter_status: contract_only
+    package: Foundation
+    confidence: medium
+    gap: "Verify research provider execution and source/evidence collection."
+    evidence_source: "public_market_research + audit_input"
+    evidence_strength: "candidate"
+    evidence_date: "2026-09-19"
+    evidence_population: "individual audited business"
+    validation_status: hypothesis
+    success_role: Business Success Coach
+    success_intervention: "Produce competitor intelligence and prioritized actions."
+
+  - pain_id: CONTENT_INCONSISTENCY
+    pain: "Business publishes inconsistently or with conflicting messaging across channels."
+    evidence_required: "Public channels show missing cadence, inconsistent offers, or contradictory business information."
+    impact_category: Trust
+    ai_can_fix: true
+    capability: email_marketing
+    provider: listmonk
+    adapter: c6-email
+    adapter_status: contract_only
+    package: Foundation
+    confidence: medium
+    gap: "Add cross-channel content/brand audit and executable content workflow."
+    evidence_source: "public_channel_review"
+    evidence_strength: "candidate"
+    evidence_date: "2026-09-19"
+    evidence_population: "individual audited business"
+    validation_status: hypothesis
+    success_role: Marketing Coach
+    success_intervention: "Create and schedule an approved content cadence."
+
+  - pain_id: OWNER_DEPENDENCY
+    pain: "Key business processes depend heavily on the owner."
+    evidence_required: "Owner reports repeated manual intervention or audit identifies undocumented processes with single-person dependency."
+    impact_category: Ops
+    ai_can_fix: true
+    capability: workflow_automation
+    provider: n8n
+    adapter: c6-workflow
+    adapter_status: contract_only
+    package: Domination
+    confidence: medium
+    gap: "Add SOP/SOM capability registry entries and execution/measurement path."
+    evidence_source: "audit_input + process_review"
+    evidence_strength: "candidate"
+    evidence_date: "2026-09-19"
+    evidence_population: "individual audited business"
+    validation_status: hypothesis
+    success_role: Operations Coach
+    success_intervention: "Document, standardize and automate safe repeatable processes."
+
+  - pain_id: POWER_RESILIENCE
+    pain: "Business operations are vulnerable to power disruption."
+    evidence_required: "Business reports disruption or audit collects evidence of power-dependent operations without continuity measures."
+    impact_category: Ops
+    ai_can_fix: false
+    capability: workflow_automation
+    provider: n8n
+    adapter: c6-workflow
+    adapter_status: contract_only
+    package: Bespoke
+    confidence: low
+    gap: "C6 can map and automate resilience workflows but cannot provide physical power infrastructure."
+    evidence_source: "audit_input"
+    evidence_strength: "candidate"
+    evidence_date: "2026-09-19"
+    evidence_population: "individual audited business"
+    validation_status: hypothesis
+    success_role: Operations Coach
+    success_intervention: "Identify digital continuity steps and escalate physical infrastructure needs."
+
+  - pain_id: LATE_PAYMENTS
+    pain: "Customers pay later than agreed or collections lack a consistent process."
+    evidence_required: "Receivables data shows overdue invoices or owner confirms recurring late-payment/collection issues."
+    impact_category: Revenue
+    ai_can_fix: true
+    capability: workflow_automation
+    provider: n8n
+    adapter: c6-workflow
+    adapter_status: contract_only
+    package: Accelerator
+    confidence: medium
+    gap: "Verify invoicing/payment data integration, reminders and reconciliation workflow."
+    evidence_source: "business_financial_data + audit_input"
+    evidence_strength: "candidate"
+    evidence_date: "2026-09-19"
+    evidence_population: "individual audited business"
+    validation_status: hypothesis
+    success_role: Finance Success Coach
+    success_intervention: "Flag overdue receivables and execute approved collection reminders."
+
+  - pain_id: BUSINESS_FORMALISATION
+    pain: "Business records or statutory formalisation may be incomplete."
+    evidence_required: "Business-specific documentation or owner answers show missing/expired CIPC, tax, B-BBEE or related records."
+    impact_category: Trust
+    ai_can_fix: false
+    capability: document_signing
+    provider: documenso
+    adapter: c6-documents
+    adapter_status: contract_only
+    package: Bespoke
+    confidence: medium
+    gap: "Connect tax-secretarial agents and evidence contracts; keep regulated sign-off human."
+    evidence_source: "business_documents + owner_input"
+    evidence_strength: "candidate"
+    evidence_date: "2026-09-19"
+    evidence_population: "individual audited business"
+    validation_status: hypothesis
+    success_role: Compliance Coach
+    success_intervention: "Track evidence and deadlines; escalate required professional/statutory actions."
+
+  - pain_id: HIRING_DEPENDENCY
+    pain: "Growth is constrained because work requires adding people before processes are standardized."
+    evidence_required: "Owner identifies hiring as response to recurring work and process review shows automatable/repeatable tasks."
+    impact_category: Ops
+    ai_can_fix: true
+    capability: multi_agent_orchestration
+    provider: c6_os
+    adapter: c6-orchestrator
+    adapter_status: contract_only
+    package: Domination
+    confidence: low
+    gap: "Map specific repeatable work to executable AI Staff and prove quality/safety before claiming substitution."
+    evidence_source: "audit_input + process_review"
+    evidence_strength: "candidate"
+    evidence_date: "2026-09-19"
+    evidence_population: "individual audited business"
+    validation_status: hypothesis
+    success_role: Operations Coach
+    success_intervention: "Identify work C6 can safely absorb before recommending hiring."
+
+success_rule: "If C6 can safely do it, C6 does it. If owner decision is required, C6 recommends it. If regulated/human authority is required, C6 escalates it."
