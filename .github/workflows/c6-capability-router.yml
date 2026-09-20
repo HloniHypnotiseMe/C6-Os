@@ -1,0 +1,32 @@
+name: C6 Capability Router Tests
+
+on:
+  push:
+    branches: ["main", "feat/c6-capability-router"]
+    paths:
+      - "agent-arsenal/router/**"
+      - "agent-arsenal/mcp-server/**"
+      - "agent-arsenal/registry/**"
+      - ".github/workflows/c6-capability-router.yml"
+  pull_request:
+    paths:
+      - "agent-arsenal/router/**"
+      - "agent-arsenal/mcp-server/**"
+      - "agent-arsenal/registry/**"
+      - ".github/workflows/c6-capability-router.yml"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: agent-arsenal/mcp-server/package-lock.json
+      - name: Install Arsenal MCP dependencies
+        working-directory: agent-arsenal/mcp-server
+        run: npm ci
+      - name: Run Capability Router tests
+        run: node agent-arsenal/router/test-router.mjs
