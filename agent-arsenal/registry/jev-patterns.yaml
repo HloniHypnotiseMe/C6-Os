@@ -1,0 +1,89 @@
+schema_version: "0.1"
+registry: c6-jev-patterns
+purpose: "Evidence-backed Jev decision patterns that can inform C6 capability selection without becoming a runtime dependency."
+
+promotion_ladder:
+  - discussion_lead
+  - evidence_checked
+  - promotion_test
+  - promoted
+  - retired
+
+evidence_requirements:
+  public_source: true
+  concrete_scenario: true
+  typed_decision_shape: true
+  runnable_or_traceable_evidence: true
+  jev_relevance: true
+  generated_scaffold_only: false
+
+decision_categories:
+  classification_routing: "Typed choices used to classify or route work."
+  verification_guardrails: "Typed decisions used to verify claims, enforce gates, or escalate."
+  scoring_ranking: "Typed scores used to rank bounded candidates."
+  agent_decisions: "Typed decisions used inside autonomous or semi-autonomous agent workflows."
+  data_labeling_curation: "Typed decisions used to label, curate, or filter datasets and knowledge."
+  evaluation_benchmarking: "Typed decisions used to evaluate systems, agents, or outputs."
+  calibration_research: "Evidence about confidence, calibration, or decision quality."
+  infra_sdks_integrations: "Reusable infrastructure or SDK patterns for typed decisions."
+  compliance_legal: "Bounded decision patterns for compliance or legal workflows."
+  content_moderation: "Bounded decision patterns for content safety or policy."
+  finance_trading: "Bounded decision patterns for financial or trading workflows."
+  game_simulation: "Decision patterns used in games or simulations."
+  scientific_pipelines: "Decision patterns used in scientific or technical pipelines."
+  related_practices_discussions: "Adjacent practices useful for research but not yet strong enough for promotion."
+
+patterns:
+  - id: bounded_candidate_selection
+    category: classification_routing
+    status: promoted
+    scenario: "Select one or a small set of authorized candidates from a bounded catalogue."
+    decision_shape: "Choice<string> or Score<string>"
+    c6_use: "Capability Router candidate discovery before authorization."
+    evidence_basis: "Jev Skill Suggester pattern inspected in the C6 source review."
+    transfer_rule: "Keep candidate generation and policy control in deterministic code; use typed judgment only for bounded fit."
+
+  - id: typed_verification_gate
+    category: verification_guardrails
+    status: promoted
+    scenario: "Determine whether an observed condition is satisfied before an action proceeds."
+    decision_shape: "Boolean or Choice<verified|review_required|blocked>"
+    c6_use: "Verified Business State and activation gates."
+    evidence_basis: "awesome-jev curation rules require a concrete decision shape plus a gate or escalation path."
+    transfer_rule: "Unknown evidence must remain unknown; a judgment cannot manufacture missing evidence."
+
+  - id: bounded_scoring_for_ranking
+    category: scoring_ranking
+    status: promoted
+    scenario: "Rank already-authorized candidates against a task or context."
+    decision_shape: "Score<candidate>"
+    c6_use: "Future semantic ranking behind the existing Capability Router contract."
+    evidence_basis: "Jev ecosystem taxonomy and decision-pattern review."
+    transfer_rule: "Scores rank candidates; they do not authorize, execute, or imply calibrated probability."
+
+  - id: contrastive_evaluation
+    category: evaluation_benchmarking
+    status: promoted
+    scenario: "Compare labeled alternatives using the same decision contract."
+    decision_shape: "Choice or Score over fixed alternatives"
+    c6_use: "Capability and offer evaluation tests."
+    evidence_basis: "Nimble and Jev evaluation-pattern review."
+    transfer_rule: "Use labeled cases and deterministic pass/fail gates where possible."
+
+  - id: evidence_backed_promotion
+    category: infra_sdks_integrations
+    status: promoted
+    scenario: "Promote a discovered capability only after public evidence and runnable/depth checks."
+    decision_shape: "Choice<discussion|candidate|promoted|retired>"
+    c6_use: "Governed GitHub capability supply chain."
+    evidence_basis: "awesome-jev curation workflow and inclusion rules."
+    transfer_rule: "Repository discovery never equals capability approval."
+
+  - id: confidence_as_signal_not_authority
+    category: calibration_research
+    status: promoted
+    scenario: "Expose confidence as an advisory signal while policy remains deterministic."
+    decision_shape: "Typed decision + confidence"
+    c6_use: "Future C6 AI judge integration."
+    evidence_basis: "Jev guidance and C6 Capability Router contract."
+    transfer_rule: "Confidence is never permission, proof, or execution authority."

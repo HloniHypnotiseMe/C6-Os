@@ -81,6 +81,6 @@ C6-Os/
 
 `pin: null` means the exact production commit/tag has not yet been verified and pinned. The registry deliberately refuses to invent version information.
 
-## Operating destination
+## Decision-pattern evidence\n\n`registry/jev-patterns.yaml` is a bounded reference registry extracted from the Jev ecosystem. It records evidence-backed decision patterns that can inform capability design and evaluation. It is not a Jev runtime dependency, permission system, or execution path.\n\n## Operating destination
 
 C6-Os exists to make the C6 ecosystem composable: agents discover proven capabilities, orchestrators select them, adapters normalize them, and workflows turn them into customer outcomes and revenue.

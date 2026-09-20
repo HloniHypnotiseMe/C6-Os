@@ -1,4 +1,4 @@
-# C6 Agent Arsenal v0.1
+# C6 Agent Arsenal v0.3
 
 The Agent Arsenal is the C6 resource-discovery layer.
 
@@ -28,6 +28,13 @@ Every C6 agent should follow this sequence before building or installing anythin
 ## Important distinction
 
 The Arsenal is a catalogue, not a source-code warehouse. Upstream repositories remain upstream. C6 should pull, pin, wrap, test, and use them without silently forking or copying them into this repository.
+
+## Decision-pattern evidence
+
+- `registry/jev-patterns.yaml` — promoted Jev decision patterns and evidence gates.
+- `docs/jev-patterns.md` — rules for transferring Jev patterns into C6 without creating a second runtime.
+
+Decision-pattern evidence informs capability design and evaluation; it does not authorize or execute providers.
 
 ## Registry confidence
 

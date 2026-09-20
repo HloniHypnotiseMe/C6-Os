@@ -1,0 +1,27 @@
+name: C6 Jev Pattern Registry Tests
+
+on:
+  push:
+    branches: ["main", "feat/c6-jev-evidence-patterns"]
+    paths:
+      - "agent-arsenal/registry/jev-patterns.yaml"
+      - "agent-arsenal/docs/jev-patterns.md"
+      - "agent-arsenal/router/test-jev-patterns.mjs"
+      - ".github/workflows/c6-jev-patterns.yml"
+  pull_request:
+    paths:
+      - "agent-arsenal/registry/jev-patterns.yaml"
+      - "agent-arsenal/docs/jev-patterns.md"
+      - "agent-arsenal/router/test-jev-patterns.mjs"
+      - ".github/workflows/c6-jev-patterns.yml"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Validate Jev pattern registry
+        run: node agent-arsenal/router/test-jev-patterns.mjs
