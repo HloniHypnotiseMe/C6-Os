@@ -6,7 +6,7 @@ MCP server exposing the C6 Agent Arsenal.
 
 | Tool | Purpose |
 |---|---|
-| `resolve_capability` | Resolve a capability to a provider via `resolver/resolve.py` |
+| `suggest_capabilities` | Bounded local task-to-capability shortlist (no execution) |\n| `select_capability` | Deterministic explicit capability selection |\n| `resolve_capability` | Resolve a capability to a provider via `resolver/resolve.py` |
 | `list_capabilities` | All 25 capabilities with providers + adapters |
 | `get_provider` | Full metadata for one provider |
 | `find_repository` | Search 474+ registered repos by name |
