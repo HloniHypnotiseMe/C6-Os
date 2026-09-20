@@ -71,3 +71,25 @@ VERIFY
 ```
 
 The router never executes, installs, activates, grants permissions, or silently substitutes a capability. Its local fit signal is a ranking aid, not calibrated confidence. A future C6 AI judge may improve candidate selection behind the same contract without bypassing the resolver.
+
+## Evidence-backed decision patterns
+
+The Agent Arsenal also contains a bounded Jev pattern reference at `registry/jev-patterns.yaml`. It is research/evaluation input, not a parallel runtime.
+
+```text
+External project / pattern
+          ↓
+Evidence check
+          ↓
+Decision-pattern registry
+          ↓
+Capability design / evaluation
+          ↓
+Agent Arsenal
+          ↓
+Capability Router
+          ↓
+Resolver + policy
+```
+
+The pattern registry never grants execution authority. Confidence remains advisory, and missing evidence remains unknown.
