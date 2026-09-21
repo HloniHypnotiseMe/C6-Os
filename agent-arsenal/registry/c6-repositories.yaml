@@ -20,8 +20,9 @@ c6_owned_repositories:
     repo: C6-Group-Final-Website
     visibility: private
     branch: main
-    head: "23c981fd67ac0b808877a6c65eadfb4b14416712"
+    head: "657975ce255b3133debfdf162e4ea91a02b6acf5"
     role: "Public C6 website, lead capture, audit/report experience, package marketplace, deployment definitions"
+    latest_verified_change: "Added backend production smoke gate for /health and /readyz; workflow exists in source but production success is not inferred without a completed run."
   - id: c6_os
     repo: C6-Os
     visibility: private
