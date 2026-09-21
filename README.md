@@ -6,6 +6,9 @@ C6-Os is the control plane for the C6 agent ecosystem. It does **not** vendor or
 
 ### Prime directive
 
+**Current repository registry:** `agent-arsenal/registry/c6-repositories.yaml` is the 2026-09-21 reconciliation of the C6 GitHub repository estate. It distinguishes C6-owned repositories from controlled upstream forks and records verified default branches/HEADs where available.
+
+
 > **BEFORE BUILDING ANYTHING, CONSULT THE C6 AGENT ARSENAL.**
 
 The Agent Arsenal is the resource-discovery layer of C6-Os. Agents should resolve capabilities first, then activate the smallest suitable provider or internal resource.
