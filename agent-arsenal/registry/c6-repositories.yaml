@@ -1,0 +1,166 @@
+schema_version: "0.2"
+recon_date: "2026-09-21"
+github_owner: "HloniHypnotiseMe"
+
+status_semantics:
+  exists: "Repository/code is present."
+  works: "Execution has been demonstrated successfully."
+  verified: "Execution/test/runtime evidence has been recorded for the relevant claim."
+  live: "Production runtime and external routing have been directly verified."
+  fork: "GitHub repository is a fork/upstream-derived copy and is not automatically the C6 source of truth."
+
+source_of_truth_rule:
+  - "C6-owned repositories are the primary internal source of truth."
+  - "Controlled forks must be inspected before replacing, upstreaming, or duplicating functionality."
+  - "Do not infer production status from repository existence."
+  - "Do not invent pins, credentials, endpoints, or runtime health."
+
+c6_owned_repositories:
+  - id: c6_website
+    repo: C6-Group-Final-Website
+    visibility: private
+    branch: main
+    head: "23c981fd67ac0b808877a6c65eadfb4b14416712"
+    role: "Public C6 website, lead capture, audit/report experience, package marketplace, deployment definitions"
+  - id: c6_os
+    repo: C6-Os
+    visibility: private
+    branch: main
+    head: "803241824265f60524d9bdb1aac33dd1034af1fb"
+    role: "C6 agent control plane and Agent Arsenal registry"
+  - id: agent_os
+    repo: Agent-OS
+    visibility: private
+    branch: main
+    head: "68ef49393ff36aabd384735fae7094c743b90a3f"
+    role: "General autonomous AI OS and JARVIS owner interface"
+  - id: c6_saas_core
+    repo: c6-saas-core
+    visibility: private
+    branch: main
+    head: "02679b209e58e7be2d9b79665fd4cfd6e8a2286d"
+    role: "Shared multi-tenant SaaS foundation"
+  - id: c6_mail_services
+    repo: C6-Mail-Services
+    visibility: private
+    branch: main
+    head: "f6b6f49c4f2b69e7d82fbfe21238970ecc1ccc17"
+    role: "Central transactional mail and event API"
+  - id: c6_deploy
+    repo: c6-deploy
+    visibility: private
+    branch: main
+    head: "da977a24409e8d6984bc2c2bb0c1e1eb75710475"
+    role: "C6 deployment/control-room utilities"
+  - id: ubernie
+    repo: ubernie
+    visibility: private
+    branch: main
+    head: "4ead593d32886bb0ea6fc4fb6c88d7217a381e31"
+    role: "Business directory and Business-in-a-Box platform"
+  - id: remote_pay_holdings
+    repo: remote-pay-holdings
+    visibility: public
+    branch: main
+    head: "2bdfdc01acffc919c3b5c9d91e6646fb1682f324"
+    role: "Tax, secretarial, compliance and related agent work"
+  - id: c6_aios
+    repo: C6Group.AiOS
+    visibility: private
+    branch: main
+    head: "4463d0296aa0ccd8e29c6c1935ebbf76f359b251"
+    role: "C6 AI operations product/repository"
+  - id: c6_creator_suite
+    repo: C6-Creator-Suite
+    visibility: private
+    branch: main
+    head: "9f793fa3983c25005a260747de33c64b75853387"
+    role: "C6 creative AI toolkit"
+  - id: c6_association_os
+    repo: c6-association-os
+    visibility: private
+    branch: main
+    head: "166bdf53841935be77f9b9d0c6c30e4728dd5259"
+    role: "C6 association/Cloudflare worker project"
+  - id: bbla_backend
+    repo: BBLA-Back-end
+    visibility: private
+    branch: main
+    head: "967f5a20051156ee75fe66ee3b66a7690d0f5b19"
+    role: "RemotePay client backend"
+  - id: remotepay
+    repo: RemotePay-
+    visibility: private
+    branch: main
+    head: "4b208de7e484f2701f7ccec2ee483ba622fbc17e"
+    role: "RemotePay payment gateway application"
+  - id: nif
+    repo: Nif
+    visibility: private
+    branch: main
+    head: "e09b17229d2639eaf418097630d449bd3232218e"
+    role: "C6/client application repository"
+  - id: domains_manager
+    repo: domains-manager
+    visibility: private
+    branch: main
+    head: "e442faf6f971d5f87e17c9ddb6dd99c7c4a04bfd"
+    role: "Domain registration management"
+  - id: project_fire
+    repo: PROJECT_FIRE
+    visibility: public
+    branch: master
+    head: null
+    role: "Agent/automation platform and research base"
+    note: "Re-read HEAD before work."
+
+controlled_forks:
+  - id: crm
+    repo: crm
+    branch: release
+    head: "5303c4719ca9db355e60a629793104de68a21f71"
+    role: "AI-agent CRM; C6 lead webhook and self-hosted runtime integration"
+    fork: true
+  - id: mailflare
+    repo: mailflare
+    branch: main
+    head: "554744c5661ca1f851f081730d96d151dfa938a1"
+    role: "Mail/inbox platform used as a C6-owned runtime component"
+    fork: true
+  - id: n8n
+    repo: n8n
+    branch: master
+    head: "137c64f5b7a5a1442738733a22dbf0892985eda7"
+    role: "Workflow automation engine"
+    fork: true
+  - id: n8n_workflows
+    repo: n8n-workflows
+    branch: main
+    head: "94007c1445d9258a7da116646b79473e7c7c3282"
+    role: "Workflow/template collection"
+    fork: true
+  - id: mzansi_edge_tunnel
+    repo: MzansiEdgeTunnel
+    branch: main
+    head: "1da7b66ffeefe0def3c7be9e49372e216108988d"
+    role: "Cloudflare edge/tunnel infrastructure fork"
+    fork: true
+  - id: ghost_osint_crm
+    repo: GHOST-osint-crm
+    branch: main
+    head: null
+    role: "OSINT/CRM capability source"
+    fork: true
+  - id: cog_second_brain
+    repo: COG-second-brain
+    branch: main
+    head: null
+    role: "Agentic second-brain and memory workflow source"
+    fork: true
+
+agent_start_order:
+  - "Read Agent-OS/C6_REPO_STARTING_POINT.md."
+  - "Read C6-Os/agent-arsenal/registry/c6-repositories.yaml."
+  - "Resolve the required capability before selecting an implementation."
+  - "Inspect the target repository and its current default branch."
+  - "Verify tests/build/runtime evidence before declaring success."
