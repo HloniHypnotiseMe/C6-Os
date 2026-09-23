@@ -201,6 +201,12 @@
         "c6_os"
       ],
       "adapter": "c6-evidence-qa"
+    },
+    "company_operating_model": {
+      "providers": [
+        "c6_os"
+      ],
+      "adapter": "c6-company-operating-model"
     }
   },
   "providers": {
