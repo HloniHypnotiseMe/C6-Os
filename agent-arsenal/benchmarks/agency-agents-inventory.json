@@ -243,11 +243,11 @@
       "agent_slug": "engineering-api-platform-engineer",
       "source_path": "engineering/engineering-api-platform-engineer.md",
       "upstream_blob_sha": "127339a35491c63c35f7537aa7c318697efc0c16",
-      "triage": "UNREVIEWED",
+      "triage": "REVIEWED",
       "review_priority": "HIGH",
-      "c6_layer": "TO_CLASSIFY",
-      "c6_disposition": "RESEARCH",
-      "notes": "Inventory extraction only; inspect definition before reuse/adaptation/new/duplicate/out-of-scope decision."
+      "c6_layer": "Agent",
+      "c6_disposition": "ADAPT",
+      "notes": "Wave 2 semantic triage; see agent-arsenal/benchmarks/agency-agents-triage-wave-2.yaml"
     },
     {
       "id": "agency_engineering_engineering_ats_validator_architect",
@@ -327,11 +327,11 @@
       "agent_slug": "engineering-codebase-onboarding-engineer",
       "source_path": "engineering/engineering-codebase-onboarding-engineer.md",
       "upstream_blob_sha": "cc36ec153ebe38ebf51515d8591a44e1213e5aa1",
-      "triage": "UNREVIEWED",
+      "triage": "REVIEWED",
       "review_priority": "HIGH",
-      "c6_layer": "TO_CLASSIFY",
-      "c6_disposition": "RESEARCH",
-      "notes": "Inventory extraction only; inspect definition before reuse/adaptation/new/duplicate/out-of-scope decision."
+      "c6_layer": "Agent",
+      "c6_disposition": "ADAPT",
+      "notes": "Wave 2 semantic triage; see agent-arsenal/benchmarks/agency-agents-triage-wave-2.yaml"
     },
     {
       "id": "agency_engineering_engineering_data_engineer",
@@ -375,11 +375,11 @@
       "agent_slug": "engineering-database-reliability-engineer",
       "source_path": "engineering/engineering-database-reliability-engineer.md",
       "upstream_blob_sha": "970f502a96314d9d0d609b149abaaa8ef7a689f6",
-      "triage": "UNREVIEWED",
+      "triage": "REVIEWED",
       "review_priority": "HIGH",
-      "c6_layer": "TO_CLASSIFY",
-      "c6_disposition": "RESEARCH",
-      "notes": "Inventory extraction only; inspect definition before reuse/adaptation/new/duplicate/out-of-scope decision."
+      "c6_layer": "Agent",
+      "c6_disposition": "ADAPT",
+      "notes": "Wave 2 semantic triage; see agent-arsenal/benchmarks/agency-agents-triage-wave-2.yaml"
     },
     {
       "id": "agency_engineering_engineering_desktop_app_engineer",
@@ -399,11 +399,11 @@
       "agent_slug": "engineering-developer-tooling-engineer",
       "source_path": "engineering/engineering-developer-tooling-engineer.md",
       "upstream_blob_sha": "f737e1c6347463a542240b4273a47d64d60ef16a",
-      "triage": "UNREVIEWED",
+      "triage": "REVIEWED",
       "review_priority": "HIGH",
-      "c6_layer": "TO_CLASSIFY",
-      "c6_disposition": "RESEARCH",
-      "notes": "Inventory extraction only; inspect definition before reuse/adaptation/new/duplicate/out-of-scope decision."
+      "c6_layer": "Agent",
+      "c6_disposition": "ADAPT",
+      "notes": "Wave 2 semantic triage; see agent-arsenal/benchmarks/agency-agents-triage-wave-2.yaml"
     },
     {
       "id": "agency_engineering_engineering_devops_automator",
@@ -843,11 +843,11 @@
       "agent_slug": "engineering-software-architect",
       "source_path": "engineering/engineering-software-architect.md",
       "upstream_blob_sha": "1a69148c99b2c170e36e035a0c7a341e98e634e9",
-      "triage": "UNREVIEWED",
+      "triage": "REVIEWED",
       "review_priority": "HIGH",
-      "c6_layer": "TO_CLASSIFY",
-      "c6_disposition": "RESEARCH",
-      "notes": "Inventory extraction only; inspect definition before reuse/adaptation/new/duplicate/out-of-scope decision."
+      "c6_layer": "Agent",
+      "c6_disposition": "ADAPT",
+      "notes": "Wave 2 semantic triage; see agent-arsenal/benchmarks/agency-agents-triage-wave-2.yaml"
     },
     {
       "id": "agency_engineering_engineering_solidity_smart_contract_engineer",
@@ -2271,11 +2271,11 @@
       "agent_slug": "security-ai-generated-code-auditor",
       "source_path": "security/security-ai-generated-code-auditor.md",
       "upstream_blob_sha": "a09c474ef6a722cd75d0c064aca187155edbe206",
-      "triage": "UNREVIEWED",
+      "triage": "REVIEWED",
       "review_priority": "HIGH",
-      "c6_layer": "TO_CLASSIFY",
-      "c6_disposition": "RESEARCH",
-      "notes": "Inventory extraction only; inspect definition before reuse/adaptation/new/duplicate/out-of-scope decision."
+      "c6_layer": "Agent",
+      "c6_disposition": "NEW",
+      "notes": "Wave 2 semantic triage; see agent-arsenal/benchmarks/agency-agents-triage-wave-2.yaml"
     },
     {
       "id": "agency_security_security_appsec_engineer",
@@ -2283,11 +2283,11 @@
       "agent_slug": "security-appsec-engineer",
       "source_path": "security/security-appsec-engineer.md",
       "upstream_blob_sha": "e5f82dc0ad7c164d03e156cf4696f5570273453e",
-      "triage": "UNREVIEWED",
+      "triage": "REVIEWED",
       "review_priority": "HIGH",
-      "c6_layer": "TO_CLASSIFY",
-      "c6_disposition": "RESEARCH",
-      "notes": "Inventory extraction only; inspect definition before reuse/adaptation/new/duplicate/out-of-scope decision."
+      "c6_layer": "Agent",
+      "c6_disposition": "NEW",
+      "notes": "Wave 2 semantic triage; see agent-arsenal/benchmarks/agency-agents-triage-wave-2.yaml"
     },
     {
       "id": "agency_security_security_architect",
@@ -2295,11 +2295,11 @@
       "agent_slug": "security-architect",
       "source_path": "security/security-architect.md",
       "upstream_blob_sha": "0dbc227249d53ff75e282a32d982e8de5e666f0c",
-      "triage": "UNREVIEWED",
+      "triage": "REVIEWED",
       "review_priority": "HIGH",
-      "c6_layer": "TO_CLASSIFY",
-      "c6_disposition": "RESEARCH",
-      "notes": "Inventory extraction only; inspect definition before reuse/adaptation/new/duplicate/out-of-scope decision."
+      "c6_layer": "Agent",
+      "c6_disposition": "ADAPT",
+      "notes": "Wave 2 semantic triage; see agent-arsenal/benchmarks/agency-agents-triage-wave-2.yaml"
     },
     {
       "id": "agency_security_security_blockchain_security_auditor",
@@ -2355,11 +2355,11 @@
       "agent_slug": "security-penetration-tester",
       "source_path": "security/security-penetration-tester.md",
       "upstream_blob_sha": "8b415cc9573fe490d6b2b623dd08ea61f87a2807",
-      "triage": "UNREVIEWED",
+      "triage": "REVIEWED",
       "review_priority": "HIGH",
-      "c6_layer": "TO_CLASSIFY",
-      "c6_disposition": "RESEARCH",
-      "notes": "Inventory extraction only; inspect definition before reuse/adaptation/new/duplicate/out-of-scope decision."
+      "c6_layer": "Agent",
+      "c6_disposition": "ADAPT",
+      "notes": "Wave 2 semantic triage; see agent-arsenal/benchmarks/agency-agents-triage-wave-2.yaml"
     },
     {
       "id": "agency_security_security_secrets_credential_engineer",
@@ -2379,11 +2379,11 @@
       "agent_slug": "security-senior-secops",
       "source_path": "security/security-senior-secops.md",
       "upstream_blob_sha": "cd66610e133d71795f8832f0d379f505471a1f0a",
-      "triage": "UNREVIEWED",
+      "triage": "REVIEWED",
       "review_priority": "HIGH",
-      "c6_layer": "TO_CLASSIFY",
-      "c6_disposition": "RESEARCH",
-      "notes": "Inventory extraction only; inspect definition before reuse/adaptation/new/duplicate/out-of-scope decision."
+      "c6_layer": "Agent",
+      "c6_disposition": "ADAPT",
+      "notes": "Wave 2 semantic triage; see agent-arsenal/benchmarks/agency-agents-triage-wave-2.yaml"
     },
     {
       "id": "agency_security_security_threat_detection_engineer",
@@ -3279,11 +3279,11 @@
       "agent_slug": "testing-api-tester",
       "source_path": "testing/testing-api-tester.md",
       "upstream_blob_sha": "1ea5e50cba0bc36a9a8ec8bfd9ca997d9e450a5c",
-      "triage": "UNREVIEWED",
+      "triage": "REVIEWED",
       "review_priority": "HIGH",
-      "c6_layer": "TO_CLASSIFY",
-      "c6_disposition": "RESEARCH",
-      "notes": "Inventory extraction only; inspect definition before reuse/adaptation/new/duplicate/out-of-scope decision."
+      "c6_layer": "Agent",
+      "c6_disposition": "ADAPT",
+      "notes": "Wave 2 semantic triage; see agent-arsenal/benchmarks/agency-agents-triage-wave-2.yaml"
     },
     {
       "id": "agency_testing_testing_evidence_collector",
@@ -3303,11 +3303,11 @@
       "agent_slug": "testing-performance-benchmarker",
       "source_path": "testing/testing-performance-benchmarker.md",
       "upstream_blob_sha": "1845fb5f30af4063440dbae22a67cd8554c4c9bf",
-      "triage": "UNREVIEWED",
+      "triage": "REVIEWED",
       "review_priority": "HIGH",
-      "c6_layer": "TO_CLASSIFY",
-      "c6_disposition": "RESEARCH",
-      "notes": "Inventory extraction only; inspect definition before reuse/adaptation/new/duplicate/out-of-scope decision."
+      "c6_layer": "Agent",
+      "c6_disposition": "NEW",
+      "notes": "Wave 2 semantic triage; see agent-arsenal/benchmarks/agency-agents-triage-wave-2.yaml"
     },
     {
       "id": "agency_testing_testing_reality_checker",
@@ -3315,11 +3315,11 @@
       "agent_slug": "testing-reality-checker",
       "source_path": "testing/testing-reality-checker.md",
       "upstream_blob_sha": "e534cfbd20d3115d5265387f19db7d3b25649421",
-      "triage": "UNREVIEWED",
+      "triage": "REVIEWED",
       "review_priority": "HIGH",
-      "c6_layer": "TO_CLASSIFY",
-      "c6_disposition": "RESEARCH",
-      "notes": "Inventory extraction only; inspect definition before reuse/adaptation/new/duplicate/out-of-scope decision."
+      "c6_layer": "Agent",
+      "c6_disposition": "ADAPT",
+      "notes": "Wave 2 semantic triage; see agent-arsenal/benchmarks/agency-agents-triage-wave-2.yaml"
     },
     {
       "id": "agency_testing_testing_test_automation_engineer",
@@ -3327,11 +3327,11 @@
       "agent_slug": "testing-test-automation-engineer",
       "source_path": "testing/testing-test-automation-engineer.md",
       "upstream_blob_sha": "571f8e3ab9d678e56edcfb6d9d95f31c65ef98ca",
-      "triage": "UNREVIEWED",
+      "triage": "REVIEWED",
       "review_priority": "HIGH",
-      "c6_layer": "TO_CLASSIFY",
-      "c6_disposition": "RESEARCH",
-      "notes": "Inventory extraction only; inspect definition before reuse/adaptation/new/duplicate/out-of-scope decision."
+      "c6_layer": "Agent",
+      "c6_disposition": "ADAPT",
+      "notes": "Wave 2 semantic triage; see agent-arsenal/benchmarks/agency-agents-triage-wave-2.yaml"
     },
     {
       "id": "agency_testing_testing_test_results_analyzer",
