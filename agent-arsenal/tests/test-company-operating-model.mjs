@@ -1,8 +1,10 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { parse as parseYAML } from "yaml";
+import { createRequire } from "node:module";
 import { resolve } from "node:path";
 
+const require = createRequire(resolve("agent-arsenal/mcp-server/package.json"));
+const { parse: parseYAML } = require("yaml");
 const schema = parseYAML(await readFile(resolve("agent-arsenal/registry/company-operating-model.yaml"), "utf8"));
 assert.equal(schema.schema_version, "0.1");
 assert.deepEqual(schema.execution_layers, ["human","skill","agent","workflow","team","provider"]);
