@@ -1,0 +1,146 @@
+schema_version: "0.1"
+wave: 2
+benchmark:
+  provider: agency_agents
+  repository: msitarzewski/agency-agents
+  source_commit: "053ddbbf392a1688fc7043d81529f47ef2cf86c8"
+  scope: "Engineering + Security + Testing semantic triage"
+  rule: "Inspect definition, compare against C6 Arsenal, classify the smallest sufficient reusable layer."
+
+triage:
+  - id: agency_engineering_api_platform_engineer
+    source_path: engineering/engineering-api-platform-engineer.md
+    layer: Agent
+    disposition: ADAPT
+    capability: api_contract_engineering
+    skills: [api_contracts, versioning, backward_compatibility, idempotency, api_documentation]
+    evidence: [api_contract_record, compatibility_check, contract_test_results]
+    c6_reason: "C6 has backend_services, coding_agent_orchestration and workflow_automation foundations, but no dedicated API-contract specialist identity."
+
+  - id: agency_engineering_codebase_onboarding_engineer
+    source_path: engineering/engineering-codebase-onboarding-engineer.md
+    layer: Agent
+    disposition: ADAPT
+    capability: repository_onboarding
+    skills: [repository_forensics, execution_tracing, dependency_mapping, evidence_grounding]
+    evidence: [repo_map, traced_paths, inspected_files]
+    c6_reason: "Strong overlap with the new repository-forensics layer; adapt the useful execution-tracing/onboarding behavior instead of creating a duplicate agent."
+
+  - id: agency_engineering_database_reliability_engineer
+    source_path: engineering/engineering-database-reliability-engineer.md
+    layer: Agent
+    disposition: ADAPT
+    capability: database_reliability
+    skills: [backup_restore, migration_safety, connection_management, disaster_recovery]
+    evidence: [restore_test, migration_check, runtime_health, dr_drill_record]
+    c6_reason: "C6 operates PostgreSQL-backed self-hosted services; this fills an operational reliability specialist gap without copying the upstream implementation."
+
+  - id: agency_engineering_developer_tooling_engineer
+    source_path: engineering/engineering-developer-tooling-engineer.md
+    layer: Agent
+    disposition: ADAPT
+    capability: development_tooling
+    skills: [toolchain_analysis, developer_workflows, ci_automation, reproducible_setup]
+    evidence: [tooling_inventory, ci_result, reproducibility_check]
+    c6_reason: "Useful to C6 engineering operations, but should remain a specialist layer over existing coding/development automation providers."
+
+  - id: agency_engineering_software_architect
+    source_path: engineering/engineering-software-architect.md
+    layer: Agent
+    disposition: ADAPT
+    capability: software_architecture
+    skills: [system_architecture, boundaries, tradeoff_analysis, dependency_mapping]
+    evidence: [architecture_record, boundary_map, decision_record]
+    c6_reason: "Backend architecture already exists as an adapted candidate; use a broader architecture specialist only where the task spans product/service boundaries."
+
+  - id: agency_security_ai_generated_code_auditor
+    source_path: security/security-ai-generated-code-auditor.md
+    layer: Agent
+    disposition: NEW
+    capability: ai_generated_code_security
+    skills: [ai_code_audit, prompt_injection_review, insecure_pattern_detection, supply_chain_review]
+    evidence: [security_findings, cited_files, verification_results]
+    c6_reason: "C6's evidence and coding layers do not currently provide a dedicated AI-generated-code security specialist."
+
+  - id: agency_security_appsec_engineer
+    source_path: security/security-appsec-engineer.md
+    layer: Agent
+    disposition: NEW
+    capability: application_security
+    skills: [threat_modeling, secure_code_review, auth_review, dependency_risk]
+    evidence: [security_review, threat_model, remediation_verification]
+    c6_reason: "Security is a meaningful C6 capability gap; create a controlled specialist rather than treating generic code review as security certification."
+
+  - id: agency_security_security_architect
+    source_path: security/security-architect.md
+    layer: Agent
+    disposition: ADAPT
+    capability: security_architecture
+    skills: [architecture_review, threat_modeling, data_flow_mapping, control_mapping]
+    evidence: [security_architecture_record, threat_model, control_check]
+    c6_reason: "Can sit above the new AppSec layer for system-level security decisions; do not duplicate security controls inside every engineering agent."
+
+  - id: agency_security_penetration_tester
+    source_path: security/security-penetration-tester.md
+    layer: Agent
+    disposition: ADAPT
+    capability: authorized_security_testing
+    skills: [scope_validation, vulnerability_testing, evidence_capture, remediation_retest]
+    evidence: [test_scope, findings_report, retest_results]
+    permissions:
+      risk: high
+      required: explicit_authorization
+      forbidden: unauthorized_targets
+    c6_reason: "Useful only as an explicitly authorized high-risk specialist; never route ordinary builds into penetration testing automatically."
+
+  - id: agency_security_senior_secops
+    source_path: security/security-senior-secops.md
+    layer: Agent
+    disposition: ADAPT
+    capability: security_operations
+    skills: [runtime_monitoring, incident_triage, detection, containment]
+    evidence: [runtime_alert, incident_record, containment_log]
+    c6_reason: "Relevant to C6 self-hosted operations, but must be constrained to owned/authorized infrastructure."
+
+  - id: agency_testing_api_tester
+    source_path: testing/testing-api-tester.md
+    layer: Agent
+    disposition: ADAPT
+    capability: api_testing
+    skills: [contract_testing, endpoint_testing, auth_testing, negative_testing]
+    evidence: [api_test_results, response_captures, contract_check]
+    c6_reason: "Natural companion to API contract engineering and existing evidence-based QA."
+
+  - id: agency_testing_performance_benchmarker
+    source_path: testing/testing-performance-benchmarker.md
+    layer: Agent
+    disposition: NEW
+    capability: performance_verification
+    skills: [baseline_measurement, load_testing, bottleneck_analysis, regression_detection]
+    evidence: [performance_baseline, load_test_results, before_after_metrics]
+    c6_reason: "C6 has analytics but no specialist identity dedicated to proving performance claims."
+
+  - id: agency_testing_reality_checker
+    source_path: testing/testing-reality-checker.md
+    layer: Agent
+    disposition: ADAPT
+    capability: production_reality_check
+    skills: [claim_cross_check, visual_verification, journey_testing, evidence_review]
+    evidence: [screenshots, test_results, claim_evidence_record, journey_result]
+    c6_reason: "Directly reinforces C6's EXISTS/WORKS/VERIFIED/LIVE evidence contract; adapt the evidence discipline, not the upstream grading language."
+
+  - id: agency_testing_test_automation_engineer
+    source_path: testing/testing-test-automation-engineer.md
+    layer: Agent
+    disposition: ADAPT
+    capability: e2e_test_automation
+    skills: [playwright, deterministic_tests, fixture_isolation, ci_artifacts]
+    evidence: [test_results, traces, screenshots, ci_run]
+    c6_reason: "Fits C6's browser automation and evidence layers; adapt into the C6 verification contract."
+
+admission_rules:
+  - "No upstream agent is copied wholesale."
+  - "ADAPT means C6 owns the contract and routing; upstream remains provenance/reference."
+  - "NEW requires a real C6 capability gap and an evidence contract."
+  - "High-risk security agents require explicit authorization and constrained targets."
+  - "Claims about production readiness remain evidence-gated."
