@@ -37,7 +37,7 @@ const missing = await exec(process.execPath, [
   "/definitely/not/a/c6/repository"
 ]).catch(error => error);
 
-assert.equal(missing.status, 3);
+assert.equal(missing.code, 3);
 assert.match(missing.stderr, /target_repo_missing_start_here/);
 
 console.log("C6 Build Entry tests: PASS");
