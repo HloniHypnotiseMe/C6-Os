@@ -77,8 +77,8 @@ gaps:
     area: evidence_store
     scope: c6-saas-core
     status: partial
-    finding: "C6 SaaS Core now contains a canonical EvidenceRecord model plus a validated evidence contract endpoint, but persistence migrations and product integrations are not yet proven."
-    closure: "Run the shared-core test suite, add the database migration, then connect product outcome/events to the canonical evidence record and record runtime proof."
+    finding: "C6 SaaS Core now has the canonical EvidenceRecord model, PostgreSQL migration, persistent create/retrieve endpoints, and a Tax/Secretarial adapter targeting the persistent endpoint. Live database round-trip and authenticated tenant wiring are not yet proven."
+    closure: "Apply migration in the deployed C6 SaaS Core database, run the persistence round-trip tests against the deployed runtime, wire authenticated tenant context, and record runtime evidence before marking VERIFIED/LIVE."
 
 priority_order:
   - GAP-001
