@@ -1,4 +1,4 @@
-schema_version: "1.0"
+schema_version: "1.1"
 company:
   id: c6_group
   name: "C6 Group"
@@ -20,10 +20,12 @@ agents:
   - {id: "c6-group.sales-director", role: "AI Sales Director", department: "sales", reports_to: "c6-group.cro", mission: "Coordinate sales execution.", risk_class: "medium"}
   - {id: "c6-group.account-manager", role: "AI Account Manager", department: "sales", reports_to: "c6-group.cro", mission: "Manage customer opportunities and commercial follow-up.", risk_class: "medium"}
   - {id: "c6-group.revenue-hunter", role: "AI Revenue Hunter", department: "sales", reports_to: "c6-group.cro", mission: "Identify qualified business opportunities using approved discovery and audit tools.", risk_class: "medium"}
+  - {id: "c6-group.outbound-strategist", role: "AI Outbound Strategist", department: "sales", reports_to: "c6-group.sales-director", mission: "Turn verified buying signals into qualified C6 pipeline using evidence-backed targeted outreach.", risk_class: "medium", source: "agency-agents/sales/sales-outbound-strategist.md", definition: "agent-arsenal/workforce/c6-group/outbound-strategist.md"}
   - {id: "c6-group.cmo", role: "AI Chief Marketing Officer", department: "marketing", reports_to: "c6-group.ceo", mission: "Grow C6 Group visibility, demand and qualified inbound opportunities.", risk_class: "high"}
-  - {id: "c6-group.seo-analyst", role: "AI SEO Agent", department: "marketing", reports_to: "c6-group.cmo", mission: "Improve discoverability across search and agent-readable business surfaces.", risk_class: "medium"}
-  - {id: "c6-group.content-manager", role: "AI Content Agent", department: "marketing", reports_to: "c6-group.cmo", mission: "Create evidence-grounded commercial content.", risk_class: "medium"}
-  - {id: "c6-group.social-manager", role: "AI Social Agent", department: "marketing", reports_to: "c6-group.cmo", mission: "Distribute approved C6 content through connected channels.", risk_class: "medium"}
+  - {id: "c6-group.seo-analyst", role: "AI SEO Agent", department: "marketing", reports_to: "c6-group.cmo", mission: "Improve discoverability across search and agent-readable business surfaces.", risk_class: "medium", source: "agency-agents/marketing/marketing-seo-specialist.md", definition: "agent-arsenal/workforce/c6-group/seo-analyst.md"}
+  - {id: "c6-group.content-manager", role: "AI Content Agent", department: "marketing", reports_to: "c6-group.cmo", mission: "Create evidence-grounded commercial content.", risk_class: "medium", source: "agency-agents/marketing/marketing-content-creator.md", definition: "agent-arsenal/workforce/c6-group/content-manager.md"}
+  - {id: "c6-group.social-manager", role: "AI Social Agent", department: "marketing", reports_to: "c6-group.cmo", mission: "Distribute approved C6 content through connected channels.", risk_class: "medium", source: "agency-agents/marketing/marketing-social-media-strategist.md", definition: "agent-arsenal/workforce/c6-group/social-manager.md"}
+  - {id: "c6-group.growth-experimenter", role: "AI Growth Experimenter", department: "marketing", reports_to: "c6-group.cmo", mission: "Design and measure bounded growth experiments for acquisition, activation, retention or referral.", risk_class: "medium", source: "agency-agents/marketing/marketing-growth-hacker.md", definition: "agent-arsenal/workforce/c6-group/growth-experimenter.md"}
   - {id: "c6-group.agent-visibility", role: "AI Agent Visibility Agent", department: "marketing", reports_to: "c6-group.cmo", mission: "Make C6 and customer businesses understandable and actionable to AI agents.", risk_class: "medium"}
   - {id: "c6-group.cpo", role: "AI Chief Product Officer", department: "product", reports_to: "c6-group.ceo", mission: "Shape products around validated customer problems and measurable outcomes.", risk_class: "high"}
   - {id: "c6-group.product-manager", role: "AI Product Manager", department: "product", reports_to: "c6-group.cpo", mission: "Manage product objectives and delivery priorities.", risk_class: "medium"}
@@ -40,6 +42,7 @@ agents:
   - {id: "c6-group.risk-officer", role: "AI Chief Risk & Compliance Officer", department: "risk_compliance", reports_to: "c6-group.ceo", mission: "Challenge company execution, monitor controls and escalate risk.", risk_class: "critical"}
   - {id: "c6-group.risk-liaison", role: "AI Risk Liaison", department: "risk_compliance", reports_to: "c6-group.risk-officer", mission: "Route material risks to Holding Risk & Inversion.", risk_class: "critical"}
   - {id: "c6-group.compliance-auditor", role: "AI Compliance Auditor", department: "risk_compliance", reports_to: "c6-group.risk-officer", mission: "Audit claims, controls and evidence status.", risk_class: "high"}
+
 governance:
   control_plane: "c6-saas-core"
   arsenal: "C6-Os"
@@ -47,3 +50,5 @@ governance:
   mail_service: "C6-Mail-Services"
   evidence_rule: "CAPTURE -> PROVE -> REGISTER -> ESCALATE"
   status_rule: "EXISTS != WORKS != VERIFIED != LIVE"
+  extraction_contract: "agent-arsenal/governance/C6-CAPABILITY-EXTRACTION-CONTRACT.yaml"
+  extraction_manifest: "agent-arsenal/workforce/c6-group/AGENCY-EXTRACTION-MANIFEST.yaml"
