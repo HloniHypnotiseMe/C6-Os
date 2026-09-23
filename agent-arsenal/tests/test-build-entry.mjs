@@ -8,8 +8,8 @@ const script = resolve("agent-arsenal/workflows/c6-build-entry.mjs");
 
 const { stdout } = await exec(process.execPath, [
   script,
-  "--task",
-  "inspect repository before building",
+  "--capability",
+  "repository_drift_forensics",
   "--repo",
   process.cwd(),
   "--risk",
