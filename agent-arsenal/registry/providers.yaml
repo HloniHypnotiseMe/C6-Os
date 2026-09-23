@@ -445,3 +445,17 @@ providers:
     runtime: vps
     pin: null
     note: "C6-owned public repository; production activation requires an immutable commit/tag pin and runtime verification. Upstream-derived AGPLv3 software; preserve licence/source obligations."
+
+  - id: second_brain_os
+    name: C6 Second Brain OS
+    category: knowledge_memory
+    source: https://github.com/HloniHypnotiseMe/second-brain-os
+    source_type: controlled_fork
+    upstream: https://github.com/undefined-ui/second-brain-os
+    registry_status: registered
+    local_presence: not_confirmed
+    capabilities: [knowledge_capture, knowledge_retrieval, decision_memory, knowledge_graph]
+    risk: controlled
+    permissions: [filesystem_read, filesystem_write]
+    runtime: vps
+    pin: "ca92af9cea7815b5897f98733a7974ba80638c91"
