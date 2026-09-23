@@ -1,0 +1,67 @@
+schema_version: "0.1"
+company:
+  id: diesel_connect
+  product: diesel_connect
+  outcome: "Move a verified fuel requirement through quote, payment, dispatch and evidence-gated settlement."
+functions:
+  - id: rfq_intake
+    name: RFQ Intake
+    mission: "Capture buyer requirements and create a traceable RFQ."
+    triggers: [buyer_request]
+    inputs: [buyer_requirement]
+    outputs: [rfq]
+    owner: buyer_intake
+    execution:
+      layer: workflow
+      capability: workflow_automation
+      permissions: [filesystem_read, network]
+      approval: none
+    systems: [diesel_connect]
+    workflow: rfq_to_supplier_quotes
+    evidence: [rfq_record]
+    success: [rfq_created]
+  - id: supplier_verification
+    name: Supplier Verification
+    mission: "Verify supplier and quote evidence before buyer acceptance."
+    triggers: [rfq_created]
+    inputs: [supplier_identity, supplier_quote]
+    outputs: [verified_quote]
+    owner: supplier_verification
+    execution:
+      layer: agent
+      capability: evidence_based_qa
+      permissions: [filesystem_read, test_execution]
+      approval: none
+    systems: [diesel_connect]
+    workflow: supplier_quote_verification
+    evidence: [verification_record, source_documents]
+    success: [quote_verified]
+  - id: payment_and_dispatch
+    name: Payment and Dispatch
+    mission: "Coordinate payment verification and dispatch only after required gates."
+    triggers: [buyer_acceptance]
+    inputs: [accepted_quote, payment_event]
+    outputs: [dispatch_state, pod_evidence]
+    owner: operations
+    execution:
+      layer: workflow
+      capability: payments
+      permissions: [network, database]
+      approval: required_for_configured_financial_actions
+    systems: [remotepay, diesel_connect]
+    workflow: payment_to_dispatch_to_pod
+    evidence: [payment_verification, dispatch_record, pod]
+    success: [payment_verified, dispatch_confirmed, pod_captured]
+exceptions:
+  - condition: quote_not_verified
+    handoff: supplier_verification
+    owner: supplier_verification
+  - condition: payment_not_verified
+    handoff: payment_operations
+    owner: payment_operations
+  - condition: pod_missing
+    handoff: evidence_qa
+    owner: evidence_qa
+wins:
+  - metric: verified_completed_delivery
+    evidence: pod_and_evidence_record
