@@ -1,0 +1,20 @@
+schema_version: "0.1"
+entities:
+  company:
+    required: [id, product, outcome]
+  worker:
+    required: [id, role, layer, capability, status]
+  team:
+    required: [id, mission, members, capability]
+  execution:
+    required: [id, company_id, workflow, status, started_at]
+  evidence:
+    required: [id, execution_id, type, status, captured_at]
+  win:
+    required: [id, company_id, metric, evidence_id, status]
+  exception:
+    required: [id, execution_id, condition, owner, status]
+status:
+  execution: [queued, running, waiting_approval, blocked, failed, escalated, completed]
+  evidence: [missing, captured, verified, failed]
+  claim: [EXISTS, WORKS, VERIFIED, LIVE, GAP]
