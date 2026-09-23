@@ -1,0 +1,68 @@
+schema_version: "0.1"
+registry: c6-workforce
+worker_layers: [human, skill, agent, workflow, team, provider]
+roles:
+  - id: executive
+    domain: company_direction
+    resolution_priority: 100
+    capabilities: [product_catalog_resolution, company_operating_model]
+    human_approval: [strategic_decisions, configured_risk_controls]
+  - id: operations
+    domain: business_operations
+    resolution_priority: 90
+    capabilities: [workflow_automation, multi_agent_orchestration]
+    human_approval: [production_mutation, configured_risk_controls]
+  - id: sales
+    domain: revenue
+    resolution_priority: 80
+    capabilities: [research, workflow_automation]
+    human_approval: [commercial_commitments]
+  - id: payments
+    domain: financial_operations
+    resolution_priority: 100
+    capabilities: [payments, claim_evidence]
+    human_approval: [configured_financial_actions]
+  - id: verification
+    domain: evidence
+    resolution_priority: 100
+    capabilities: [evidence_based_qa, production_reality_check]
+    human_approval: []
+  - id: engineering
+    domain: software
+    resolution_priority: 90
+    capabilities: [development_automation, coding_agent_orchestration, software_architecture]
+    human_approval: [production_mutation]
+  - id: security
+    domain: security
+    resolution_priority: 100
+    capabilities: [application_security, security_architecture, security_operations]
+    human_approval: [high_risk_security_actions]
+  - id: customer_support
+    domain: customer_success
+    resolution_priority: 70
+    capabilities: [workflow_automation, knowledge_management]
+    human_approval: [refunds, policy_exceptions]
+workers:
+  - id: c6_repository_drift_forensics
+    role: engineering
+    layer: agent
+    capability: repository_drift_forensics
+    status: active
+  - id: c6_workflow_architect
+    role: operations
+    layer: agent
+    capability: workflow_architecture
+    status: active
+  - id: c6_evidence_qa
+    role: verification
+    layer: agent
+    capability: evidence_based_qa
+    status: active
+  - id: c6_company_architect
+    role: executive
+    layer: workflow
+    capability: company_operating_model
+    status: active
+admission:
+  required: [capability_resolution, provenance, permissions, evidence_contract, verification_plan]
+  forbidden: [duplicate_existing_capability, blind_upstream_copy, unapproved_production_mutation]
