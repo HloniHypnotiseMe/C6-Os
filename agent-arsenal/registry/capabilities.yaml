@@ -161,3 +161,16 @@ capabilities:
   - id: mail_server
     purpose: "Provide self-hosted SMTP, submission, IMAP/POP3 mailboxes, filtering, and mail administration."
     providers: [billionmail]
+
+  - id: knowledge_capture
+    purpose: "Convert raw C6 sources, decisions, project outputs, and evidence into durable linked knowledge."
+    providers: [second_brain_os]
+  - id: knowledge_retrieval
+    purpose: "Retrieve source-grounded C6 knowledge, decisions, evidence, and relationships before execution."
+    providers: [second_brain_os, context_hub]
+  - id: decision_memory
+    purpose: "Persist architectural and operating decisions with provenance, status, and affected systems."
+    providers: [second_brain_os]
+  - id: knowledge_graph
+    purpose: "Maintain measurable relationships among C6 concepts, projects, systems, decisions, sources, and evidence."
+    providers: [second_brain_os]
