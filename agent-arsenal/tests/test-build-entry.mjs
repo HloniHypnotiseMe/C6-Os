@@ -24,6 +24,7 @@ assert.equal(result.gate.start_here, "PASS");
 assert.equal(result.gate.capability_resolution, "PASS");
 assert.equal(result.gate.execution, "NOT_EXECUTED");
 assert.equal(result.authorization.required, true);
+assert.ok(result.required_sequence.includes("MAP_COMPANY_OPERATING_MODEL"));
 assert.ok(result.required_sequence.includes("BENCHMARK"));
 assert.ok(result.required_sequence.includes("CAPTURE_EVIDENCE"));
 assert.ok(result.forbidden.includes("blind_upstream_copy"));
