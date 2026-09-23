@@ -1,0 +1,38 @@
+schema_version: "0.1"
+registry: c6-company-operating-model
+execution_layers:
+  - human
+  - skill
+  - agent
+  - workflow
+  - team
+  - provider
+required_company_fields:
+  - id
+  - product
+  - outcome
+required_function_fields:
+  - id
+  - name
+  - mission
+  - triggers
+  - inputs
+  - outputs
+  - owner
+  - execution
+  - systems
+  - workflow
+  - evidence
+  - success
+required_execution_fields:
+  - layer
+  - capability
+  - permissions
+  - approval
+required_exception_fields:
+  - condition
+  - handoff
+  - owner
+required_win_fields:
+  - metric
+  - evidence
