@@ -1,0 +1,61 @@
+schema_version: "1.0"
+name: "C6 Minimum Necessary Capability Extraction Contract"
+purpose: "Reuse capabilities across C6 without copying whole repositories when a smaller sufficient component exists."
+
+principle: "C6 consumes capabilities, not repositories."
+
+reuse_hierarchy:
+  - order: 1
+    action: "reuse_existing_c6_capability"
+    rule: "Use an existing C6 capability directly when it satisfies the requirement."
+  - order: 2
+    action: "extend_existing_component"
+    rule: "Extend the existing C6 component when the gap is within its intended boundary."
+  - order: 3
+    action: "extract_from_controlled_fork"
+    rule: "Take only the smallest sufficient component from a controlled fork."
+  - order: 4
+    action: "extract_from_external_repository"
+    rule: "Take only the smallest sufficient component from an external source after licence, dependency and security review."
+  - order: 5
+    action: "build_new"
+    rule: "Build new code only after the preceding options are shown insufficient."
+
+non_negotiable_rules:
+  - "Do not copy, vendor or duplicate an entire repository when a smaller component is sufficient."
+  - "Do not introduce a dependency merely because its source repository is useful."
+  - "Prefer adapters and narrow interfaces over repository-wide coupling."
+  - "Preserve applicable licence and attribution obligations."
+  - "Inspect the dependency closure of every extracted component."
+  - "Record both imported material and deliberately excluded material."
+  - "Extracted code must be adapted to C6 governance, evidence, authorization and self-hosted boundaries."
+  - "Repository existence is not evidence that an extracted capability works."
+  - "No customer-facing claim may rely on an extracted component without the required evidence."
+
+required_extraction_record:
+  source_repo: "Repository containing the source capability."
+  source_component: "Exact agent, skill, module, workflow, adapter or other component taken."
+  capability_taken: "Specific capability being reused."
+  why_needed: "Concrete gap or requirement this capability closes."
+  dependencies_taken: "Only dependencies required by the extracted component."
+  license: "Applicable source licence and attribution requirement."
+  c6_adaptation: "Changes required to conform to C6 interfaces, governance and runtime."
+  files_imported: "Exact files or logical components imported."
+  files_not_imported: "Relevant source files/components deliberately excluded."
+  tests: "Tests run against the extracted/adapted capability."
+  proof: "Evidence supporting WORKS, VERIFIED or LIVE status."
+
+status_gate:
+  source_exists: "EXISTS"
+  extraction_successful: "EXISTS"
+  execution_demonstrated: "WORKS"
+  evidence_recorded: "VERIFIED"
+  production_runtime_verified: "LIVE"
+
+governance:
+  control_plane: c6-saas-core
+  arsenal: C6-Os
+  risk_controls: remote-pay-holdings
+  payment_truth: RemotePay-
+  mail_truth: C6-Mail-Services
+  evidence_rule: "CAPTURE -> PROVE -> REGISTER -> ESCALATE"
