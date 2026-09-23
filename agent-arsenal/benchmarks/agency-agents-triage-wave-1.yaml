@@ -1,0 +1,78 @@
+schema_version: "1.0"
+source:
+  repository: msitarzewski/agency-agents
+  ref: main
+  commit: "053ddbbf392a1688fc7043d81529f47ef2cf86c8"
+wave: 1
+purpose: "Semantic triage of directly relevant upstream specialist patterns against the existing C6 Arsenal."
+
+decisions:
+  - upstream_id: agency_engineering_code_reviewer
+    source_path: engineering/engineering-code-reviewer.md
+    c6_disposition: ADAPT
+    c6_layer: agent
+    capability: code_review
+    reason: "C6 has resolver, evidence and testing foundations but no dedicated code-review specialist. Reuse the upstream mission/checklist pattern while enforcing C6 evidence and START HERE gates."
+    required_skills: [repository_forensics, static_review, security_review, test_gap_analysis]
+    evidence: [review_report, cited_findings, verification_results]
+
+  - upstream_id: agency_engineering_backend_architect
+    source_path: engineering/engineering-backend-architect.md
+    c6_disposition: ADAPT
+    c6_layer: agent
+    capability: backend_architecture
+    reason: "Backend architecture is a recurring C6 build need but is not represented as a dedicated C6 specialist. Adapt the architecture/checklist pattern and bind it to C6 self-hosting and evidence constraints."
+    required_skills: [system_architecture, api_contracts, database_design, migration_safety]
+    evidence: [architecture_record, contract_checks, test_results]
+
+  - upstream_id: agency_engineering_devops_automator
+    source_path: engineering/engineering-devops-automator.md
+    c6_disposition: ADAPT
+    c6_layer: agent
+    capability: deployment_automation
+    reason: "C6 already has self-hosted deployment providers and VPS infrastructure, so the capability itself is not new. What is missing is a governed deployment specialist that selects the existing C6 stack instead of introducing paid platforms."
+    required_skills: [docker_deployment, ci_cd, runtime_health, rollback, infrastructure_verification]
+    evidence: [build_result, deployment_check, runtime_health, endpoint_check]
+
+  - upstream_id: agency_specialized_codebase_archaeologist
+    source_path: specialized/specialized-codebase-archaeologist.md
+    c6_disposition: NEW
+    c6_layer: agent
+    capability: repository_drift_forensics
+    reason: "C6 START HERE requires repository forensics, but no dedicated registered specialist currently owns multi-session drift, stale-config and doc/code divergence analysis."
+    required_skills: [repository_forensics, git_history_analysis, drift_detection, dependency_mapping]
+    evidence: [finding_registry, cited_files, commit_refs]
+
+  - upstream_id: agency_specialized_workflow_architect
+    source_path: specialized/specialized-workflow-architect.md
+    c6_disposition: NEW
+    c6_layer: agent
+    capability: workflow_architecture
+    reason: "C6 has a workflow layer reserved in the Arsenal but no registered workflow-architecture specialist. The upstream definition supplies a useful pattern for branches, failures, recovery and handoffs."
+    required_skills: [workflow_discovery, state_mapping, failure_analysis, handoff_contracts]
+    evidence: [workflow_spec, state_matrix, handoff_contract]
+
+  - upstream_id: agency_testing_evidence_collector
+    source_path: testing/testing-evidence-collector.md
+    c6_disposition: ADAPT
+    c6_layer: agent
+    capability: evidence_based_qa
+    reason: "C6 already has a claim/evidence contract, so the evidence concept exists. The missing layer is a specialist that executes QA and refuses unsupported completion claims."
+    required_skills: [qa, e2e_testing, visual_verification, evidence_capture]
+    evidence: [test_results, screenshots, runtime_checks, claim_evidence_record]
+
+admission_rule:
+  "These six are candidates for C6 specialist definitions, not copied upstream prompts. Their upstream definitions remain provenance references."
+
+next_wave:
+  - engineering
+  - specialized
+  - security
+  - design
+  - product
+  - marketing
+  - project-management
+  - sales
+  - finance
+  - support
+  - testing
