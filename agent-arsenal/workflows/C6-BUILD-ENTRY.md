@@ -28,7 +28,8 @@ Optional controls:
 
 1. Requires the target repository's START-HERE.md.
 2. Validates the mandatory C6 operating sequence.
-3. Resolves the smallest local capability candidate.
+3. Maps the product as a business/company operating model when ongoing business work is involved.
+4. Resolves the smallest local capability candidate.
 4. Uses the existing C6 capability router.
 5. Records visible repository markers without treating them as runtime proof.
 6. Produces a machine-readable plan.
@@ -41,6 +42,7 @@ It does not silently execute code, mutate production, grant permissions, or clai
 ~~~text
 START HERE
   -> INSPECT
+  -> MAP COMPANY OPERATING MODEL (when applicable)
   -> RESOLVE
   -> BENCHMARK
   -> SELECT SMALLEST LAYER
