@@ -1,0 +1,71 @@
+schema_version: "1.0"
+company: c6_group
+purpose: "Minimum necessary specialist capability extraction from agency-agents for the C6 Group AI workforce."
+
+source_repo: "HloniHypnotiseMe/agency-agents"
+source_license: "MIT"
+
+extractions:
+  - id: c6_group_seo_analyst
+    source_component: "marketing/marketing-seo-specialist.md"
+    capability_taken: "technical SEO, content optimization, search visibility strategy"
+    why_needed: "C6 Group needs an executable specialist beneath the AI CMO for search and agent-readable discoverability."
+    dependencies_taken: []
+    c6_adaptation: "Added C6 evidence, authorization, self-hosting and no-fabrication boundaries."
+    files_imported:
+      - "agent-arsenal/workforce/c6-group/seo-analyst.md"
+    files_deliberately_not_imported: "All other Agency repository content and integrations."
+    tests: "Registry/source inspection completed; runtime execution not yet exercised."
+    proof: "Source component exists in the controlled C6 fork and the adapted C6 definition is committed."
+
+  - id: c6_group_content_manager
+    source_component: "marketing/marketing-content-creator.md"
+    capability_taken: "content strategy and multi-format commercial content"
+    why_needed: "C6 Group needs an executable content specialist beneath the AI CMO."
+    dependencies_taken: []
+    c6_adaptation: "Evidence-first claims, C6 brand/product source-of-truth and authorization boundaries."
+    files_imported:
+      - "agent-arsenal/workforce/c6-group/content-manager.md"
+    files_deliberately_not_imported: "All other Agency repository content and integrations."
+    tests: "Registry/source inspection completed; runtime execution not yet exercised."
+    proof: "Adapted definition committed."
+
+  - id: c6_group_social_manager
+    source_component: "marketing/marketing-social-media-strategist.md"
+    capability_taken: "cross-platform social strategy and distribution"
+    why_needed: "C6 Group needs an executable social distribution specialist beneath the AI CMO."
+    dependencies_taken: []
+    c6_adaptation: "Connected-channel execution remains subject to C6 authorization and evidence."
+    files_imported:
+      - "agent-arsenal/workforce/c6-group/social-manager.md"
+    files_deliberately_not_imported: "All other Agency repository content and integrations."
+    tests: "Registry/source inspection completed; runtime execution not yet exercised."
+    proof: "Adapted definition committed."
+
+  - id: c6_group_outbound_strategist
+    source_component: "sales/sales-outbound-strategist.md"
+    capability_taken: "signal-based outbound strategy and sequence design"
+    why_needed: "C6 Group needs a specialist for evidence-backed pipeline generation beneath Sales."
+    dependencies_taken: []
+    c6_adaptation: "Uses C6 CRM, C6 Mail Services and existing Revenue Hunter capability; no independent payment or mail truth."
+    files_imported:
+      - "agent-arsenal/workforce/c6-group/outbound-strategist.md"
+    files_deliberately_not_imported: "All other Agency repository content and integrations."
+    tests: "Registry/source inspection completed; runtime execution not yet exercised."
+    proof: "Adapted definition committed."
+
+  - id: c6_group_growth_experimenter
+    source_component: "marketing/marketing-growth-hacker.md"
+    capability_taken: "bounded growth experimentation and measurement"
+    why_needed: "C6 Group needs a specialist for measurable acquisition/activation experiments."
+    dependencies_taken: []
+    c6_adaptation: "Added bounded experiments, stop conditions, C6 evidence and authorization controls."
+    files_imported:
+      - "agent-arsenal/workforce/c6-group/growth-experimenter.md"
+    files_deliberately_not_imported: "All other Agency repository content and integrations."
+    tests: "Registry/source inspection completed; runtime execution not yet exercised."
+    proof: "Adapted definition committed."
+
+selection_rule: "Only these specialist capabilities are extracted now. Select additional Agency specialists only when a verified C6 workforce gap requires them."
+runtime_status: "EXISTS"
+next_gate: "Register these agents in C6 SaaS Core and exercise delegated tool calls against the self-hosted runtime."
