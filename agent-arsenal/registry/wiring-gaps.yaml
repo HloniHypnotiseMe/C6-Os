@@ -77,8 +77,8 @@ gaps:
     area: evidence_store
     scope: c6-saas-core
     status: partial
-    finding: "C6 SaaS Core documents audit trail/product catalogue/entitlements, but a canonical materialized claim-evidence record model is not yet proven across all products."
-    closure: "Implement a shared evidence record contract/API and connect product outcome events to it."
+    finding: "C6 SaaS Core now contains a canonical EvidenceRecord model plus a validated evidence contract endpoint, but persistence migrations and product integrations are not yet proven."
+    closure: "Run the shared-core test suite, add the database migration, then connect product outcome/events to the canonical evidence record and record runtime proof."
 
 priority_order:
   - GAP-001
