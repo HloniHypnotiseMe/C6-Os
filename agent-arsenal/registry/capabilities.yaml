@@ -92,3 +92,15 @@ capabilities:
   - id: email_marketing
     purpose: "Manage lists and outbound email campaigns."
     providers: [listmonk]
+  - id: repository_drift_forensics
+    purpose: "Inspect repositories, trace real execution paths, and detect implementation drift before changes."
+    providers: [c6_os]
+  - id: workflow_architecture
+    purpose: "Recover workflows, state transitions, failure paths, and handoff contracts from implementation."
+    providers: [c6_os]
+  - id: evidence_based_qa
+    purpose: "Verify claims and acceptance criteria against reproducible implementation and runtime evidence."
+    providers: [c6_os]
+  - id: production_reality_check
+    purpose: "Cross-check production-readiness claims against actual implementation and evidence."
+    providers: [c6_os]
