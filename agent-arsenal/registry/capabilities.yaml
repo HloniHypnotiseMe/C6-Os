@@ -1,5 +1,20 @@
 schema_version: "0.1"
 capabilities:
+  - id: product_catalog_resolution
+    purpose: "Resolve C6 products, domain owners, platform consumers, and capability boundaries."
+    providers: [c6_os]
+  - id: claim_evidence
+    purpose: "Map customer-facing claims to evidence contracts, evidence records, and verification status."
+    providers: [c6_os, c6_saas_core]
+  - id: tax_services
+    purpose: "Provide tax product workflows and evidence-backed outcomes."
+    providers: [remote_pay_holdings]
+  - id: secretarial_services
+    purpose: "Provide secretarial/corporate governance product workflows and evidence-backed outcomes."
+    providers: [remote_pay_holdings]
+  - id: payments
+    purpose: "Create, verify, reconcile, and settle payment transactions."
+    providers: [remotepay]
   - id: multi_agent_orchestration
     purpose: "Coordinate multiple specialist agents toward one objective."
     providers: [clawteam, metagpt, crewai_examples, goose, hf_agents]
