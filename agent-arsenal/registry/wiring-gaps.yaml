@@ -91,3 +91,10 @@ priority_order:
   - GAP-008
   - GAP-004
   - GAP-006
+
+
+# Risk & Inversion implementation reconciliation — 2026-09-23
+# C6 SaaS Core now exposes runtime authorization, kill-switch, human override,
+# evaluation-case and agent-register contracts. C6 Group and Ubernie have
+# brand risk-liaison adapters. These remain source-level integrations until
+# deployed and exercised against the live self-hosted platform.
