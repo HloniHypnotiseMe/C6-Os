@@ -161,3 +161,13 @@ capabilities:
   - id: mail_server
     purpose: "Provide self-hosted SMTP, submission, IMAP/POP3 mailboxes, filtering, and mail administration."
     providers: [billionmail]
+
+  - id: decision_routing
+    purpose: "Use a small typed judgement layer to choose among explicit execution routes before expensive or materially different work."
+    providers: [jev]
+    risk: controlled
+
+  - id: agent_route_selection
+    purpose: "Select among existing C6 capability reuse, minimum extraction, specialist delegation, new build, or human review."
+    providers: [jev, c6_os]
+    risk: controlled

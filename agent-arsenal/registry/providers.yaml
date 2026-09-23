@@ -445,3 +445,17 @@ providers:
     runtime: vps
     pin: null
     note: "C6-owned public repository; production activation requires an immutable commit/tag pin and runtime verification. Upstream-derived AGPLv3 software; preserve licence/source obligations."
+
+  - id: jev
+    name: TypeSafe Jev
+    category: decision_intelligence
+    source: https://github.com/typesafe-ai/skills
+    source_type: upstream
+    registry_status: registered
+    local_presence: not_confirmed
+    capabilities: [decision_routing, agent_route_selection]
+    risk: controlled
+    permissions: [network]
+    runtime: vps
+    pin: null
+    note: "Registered as a decision provider only. Live installation, API connectivity, and production health are NOT claimed. Current TypeSafe docs use typesafe-sdk, TYPESAFE_API_KEY, and jev-latest. Review/pin the exact skill/runtime before production activation."
