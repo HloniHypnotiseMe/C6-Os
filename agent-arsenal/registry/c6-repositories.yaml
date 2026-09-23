@@ -169,7 +169,9 @@ controlled_forks:
     fork: true
 
 agent_start_order:
-  - "Read Agent-OS/C6_REPO_STARTING_POINT.md."
+  - "READ Agent-OS/START-HERE.md — mandatory entry point for every C6 build, repair, deployment, audit, and agent task."
+  - "Read Agent-OS/C6_REPO_STARTING_POINT.md for the detailed C6 system map."
+  - "Read C6-Os/README.md and consult the Agent Arsenal before implementation."
   - "Read C6-Os/agent-arsenal/registry/c6-repositories.yaml."
   - "Resolve the required capability before selecting an implementation."
   - "Inspect the target repository and its current default branch."
