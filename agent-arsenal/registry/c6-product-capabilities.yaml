@@ -96,7 +96,7 @@ platform:
   - id: c6_saas_core
     repo: c6-saas-core
     role: shared_platform
-    capabilities: [tenants, identity, entitlements, billing_abstraction, agent_access, documents, audit_trail, ai_integration, memory, postgres_isolation]
+    capabilities: [tenants, identity, entitlements, billing_abstraction, agent_access, documents, audit_trail, evidence_contract, evidence_records, ai_integration, memory, postgres_isolation]
 
   - id: c6_platform_supabase
     repo: supabase
