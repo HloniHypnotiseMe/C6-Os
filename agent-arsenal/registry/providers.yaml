@@ -422,7 +422,7 @@ providers:
   - id: remotepay
     name: RemotePay
     category: internal_payment_platform
-    source: https://github.com/HloniHypnotiseMe/remote-pay
+    source: https://github.com/HloniHypnotiseMe/RemotePay-
     source_type: internal
     registry_status: registered
     local_presence: not_confirmed
