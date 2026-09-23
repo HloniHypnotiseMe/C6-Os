@@ -1,0 +1,48 @@
+schema_version: "0.1"
+company:
+  id: remotepay
+  product: remotepay
+  outcome: "Move a payment from initiation to verified business outcome with evidence."
+functions:
+  - id: payment_operations
+    name: Payment Operations
+    mission: "Create, receive, verify and reconcile payment lifecycle events."
+    triggers: [payment_request, provider_event, reconciliation_cycle]
+    inputs: [payment_intent, provider_event]
+    outputs: [transaction_state, reconciliation_record]
+    owner: payment_operations
+    execution:
+      layer: workflow
+      capability: payments
+      permissions: [network, database]
+      approval: required_for_configured_financial_actions
+    systems: [remotepay, standard_bank_simplyblu]
+    workflow: payment_to_verification
+    evidence: [provider_event, webhook_event, database_record, reconciliation_record]
+    success: [transaction_verified, business_state_updated]
+  - id: evidence_control
+    name: Evidence Control
+    mission: "Prevent customer-facing payment claims from outrunning evidence."
+    triggers: [payment_state_change, customer_claim_request]
+    inputs: [transaction_state, evidence]
+    outputs: [claim_status]
+    owner: evidence_qa
+    execution:
+      layer: agent
+      capability: evidence_based_qa
+      permissions: [filesystem_read, test_execution]
+      approval: none
+    systems: [c6_os]
+    workflow: claim_evidence
+    evidence: [claim_evidence_record]
+    success: [claim_status_matches_evidence]
+exceptions:
+  - condition: provider_event_missing
+    handoff: payment_operations_human
+    owner: payment_operations
+  - condition: financial_exception
+    handoff: human_finance_authority
+    owner: finance_authority
+wins:
+  - metric: verified_completed_payment
+    evidence: transaction_record
