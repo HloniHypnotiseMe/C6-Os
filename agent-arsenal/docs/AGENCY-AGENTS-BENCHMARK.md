@@ -21,6 +21,7 @@ Branch inspected: `main`
 The upstream repository currently exposes:
 
 - 18 agent divisions in `divisions.json`;
+- 279 source agent definitions in the inspected `main` tree;
 - agent definitions organised by division;
 - `tools.json` describing multi-tool rendering/install contracts;
 - conversion/install support for multiple agent runtimes;
@@ -262,3 +263,24 @@ START HERE
 ```
 
 This is the anti-reinvention gate.
+
+
+## Current extraction status
+
+The full source inventory is now captured at:
+
+- `agent-arsenal/benchmarks/agency-agents-inventory.json` — 279 definitions with source blob SHAs, division, triage state and review priority.
+- `agent-arsenal/benchmarks/AGENCY-AGENTS-INVENTORY.md` — human-readable extraction summary.
+- `agent-arsenal/docs/SPECIALIST-AGENT-SCHEMA.md` — C6 admission/schema contract.
+
+The current upstream tree contains **279 agents**, not merely 230+.
+
+The inventory is intentionally marked **UNREVIEWED / RESEARCH** until each candidate is inspected against C6's existing capabilities. This prevents the benchmark from turning an upstream catalogue into 279 unverified C6 agents.
+
+### First inspected reference patterns
+
+- Codebase Archaeologist → repository drift/forensics pattern.
+- Workflow Architect → explicit workflow/failure/recovery/handoff pattern.
+- Evidence Collector → evidence-first QA/reality-checking pattern.
+
+These are benchmark references, not copied C6 agents.
