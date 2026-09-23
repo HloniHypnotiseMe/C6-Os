@@ -1,0 +1,93 @@
+schema_version: "0.1"
+recon_date: "2026-09-23"
+purpose: "Open wiring gaps discovered during the 519-repository C6 estate recon. Agents use this before claiming a capability is live."
+
+rules:
+  - "Do not close a gap by changing documentation alone when runtime wiring is missing."
+  - "A claim is customer-safe only when its required evidence gate is satisfied."
+  - "RemotePay is the financial source of truth."
+  - "C6 platform owns shared infrastructure; products own domain workflows/data."
+  - "No paid SaaS or AWS infrastructure may be introduced where the C6 self-hosted stack provides the capability."
+
+gaps:
+  - id: GAP-001
+    area: claim_evidence
+    scope: all_products
+    status: open
+    finding: "Product capability registry exists, but product claim surfaces are not yet mechanically required to resolve a claim_id/evidence_ref before customer-facing success language."
+    closure: "Add claim IDs/evidence refs to material product claims and enforce the gate in shared product/service paths."
+
+  - id: GAP-002
+    area: commodity_connect_backend
+    scope: COMMODITY-CONNECT
+    status: open
+    finding: "Repository README still identifies PocketBase as intended application data layer, conflicting with the current C6-owned self-hosted platform decision."
+    closure: "Migrate application data/auth/storage/workflows to the C6 platform component; remove PocketBase runtime/config once parity is verified; retain RemotePay as payment boundary."
+
+  - id: GAP-003
+    area: association_os_backend
+    scope: c6-association-os
+    status: open
+    finding: "Repository is still a Cloudflare Worker + D1 template rather than the intended C6 platform-backed Association OS product."
+    closure: "Replace template persistence/runtime assumptions with C6 platform integration and define association domain schema, auth/RLS and evidence events."
+
+  - id: GAP-004
+    area: domains_registrar
+    scope: domains-manager
+    status: open
+    finding: "Registrar adapter is deliberately blocked until a verified accredited registrar/API contract exists."
+    closure: "Select and contract a supported registrar/provider, configure secrets, execute a real registration/renewal test, persist provider evidence, then promote status to VERIFIED/LIVE."
+
+  - id: GAP-005
+    area: tax_secretarial_product
+    scope: remote-pay-holdings
+    status: partial
+    finding: "Tax and Secretarial are now classified as products, but their externally consumable product contracts and claim-to-evidence interfaces still need to be exposed through the shared product/platform boundary."
+    closure: "Publish product capabilities, service contracts, evidence contracts, entitlements and outcome events through C6 SaaS Core."
+
+  - id: GAP-006
+    area: payment_documentation
+    scope: RemotePay-
+    status: open
+    finding: "Repository README contains older PayFast-oriented language while current C6 architecture treats RemotePay as the payment boundary with SimplyBlu/approved provider adapters."
+    closure: "Align public/internal documentation with the actual provider architecture and verify all provider claims against current code/tests/runtime."
+
+  - id: GAP-007
+    area: mail_wiring
+    scope: customer_products
+    status: partial
+    finding: "C6 Mail Services exists as the central transactional mail API, but every customer product needs an explicit integration/evidence path rather than local mail assumptions."
+    closure: "Inventory outbound mail paths, route transactional messages through C6 Mail Services, persist delivery/audit evidence, and remove duplicate provider ownership."
+
+  - id: GAP-008
+    area: product_platform_boundary
+    scope: all_products
+    status: partial
+    finding: "The estate contains multiple historical infrastructure patterns and forks; each product must be checked for duplicate auth/database/payment/storage/hosting ownership."
+    closure: "For each production product, record platform consumers and reject duplicate global infrastructure unless explicitly justified."
+
+  - id: GAP-009
+    area: agent_resolution
+    scope: all_agents
+    status: works
+    finding: "C6-Os Agent Arsenal now contains product/capability and claim/evidence registries."
+    closure: "Integrate registry resolution into agent start/build workflows and CI so agents cannot silently bypass the catalogue."
+
+  - id: GAP-010
+    area: evidence_store
+    scope: c6-saas-core
+    status: partial
+    finding: "C6 SaaS Core documents audit trail/product catalogue/entitlements, but a canonical materialized claim-evidence record model is not yet proven across all products."
+    closure: "Implement a shared evidence record contract/API and connect product outcome events to it."
+
+priority_order:
+  - GAP-001
+  - GAP-010
+  - GAP-009
+  - GAP-005
+  - GAP-007
+  - GAP-002
+  - GAP-003
+  - GAP-008
+  - GAP-004
+  - GAP-006
