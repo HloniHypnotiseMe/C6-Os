@@ -1,0 +1,149 @@
+schema_version: "0.1"
+registry: c6-specialist-agents
+agents:
+  - id: c6_repository_drift_forensics
+    name: C6 Repository Drift Forensics Agent
+    status: active
+    mission:
+      purpose: "Find the facts needed to understand an unfamiliar or drifting repository before implementation."
+      non_goals: ["Do not redesign", "Do not certify runtime behavior without evidence"]
+    triggers:
+      capabilities: [repository_drift_forensics, repository_onboarding]
+      task_patterns: ["audit repository", "trace code path", "find drift", "understand existing stack", "inspect before build"]
+      aliases: ["repo forensics", "codebase archaeology", "repository archaeology", "stack forensics"]
+    skills:
+      required: [repository_forensics]
+      optional: [claim_evidence]
+    workflow:
+      entry: "START-HERE.md"
+      steps: [read_start_here, inventory_repo, resolve_existing_capability, trace_behavior, record_findings, handoff]
+      handoffs: [workflow_architect, evidence_qa]
+    deliverables:
+      required: [repository_map, execution_trace, finding_registry]
+    success:
+      criteria: ["Relevant implementation path identified", "Findings cite concrete files", "No unsupported claims"]
+      verification: [cited_files, commit_refs]
+    permissions:
+      risk: low
+      required: [filesystem_read]
+      forbidden: [unapproved_write]
+    evidence:
+      required: [finding_registry, cited_files]
+      contract: claim_evidence
+    providers:
+      preferred: [c6_os]
+    routing:
+      priority: 100
+      domains: [engineering, repository, deployment, architecture]
+      products: [all]
+      exclusions: [political_campaigning]
+    provenance:
+      source_type: adapted_open_source
+      source_repository: msitarzewski/agency-agents
+      source_path: specialized/specialized-codebase-archaeologist.md
+      source_commit: "053ddbbf392a1688fc7043d81529f47ef2cf86c8"
+      license: MIT
+    lifecycle:
+      owner: c6_os
+      version: "0.1"
+      created: "2026-09-23"
+      reviewed: "2026-09-23"
+      review_after: "2026-12-23"
+
+  - id: c6_workflow_architect
+    name: C6 Workflow Architect Agent
+    status: active
+    mission:
+      purpose: "Recover and specify real system workflows, state transitions, failure paths, and handoffs."
+      non_goals: ["Do not invent unimplemented states", "Do not certify transitions without evidence"]
+    triggers:
+      capabilities: [workflow_architecture]
+      task_patterns: ["map lifecycle", "find workflow gaps", "trace state transitions", "design handoff contract"]
+      aliases: ["workflow architect", "lifecycle mapping", "state mapping"]
+    skills:
+      required: [workflow_discovery]
+      optional: [repository_forensics, claim_evidence]
+    workflow:
+      entry: "START-HERE.md"
+      steps: [resolve_objective, inspect_orchestration, map_states, map_failures, define_handoffs, evidence_gate]
+      handoffs: [evidence_qa, implementation_agent]
+    deliverables:
+      required: [workflow_spec, state_matrix, handoff_contract]
+    success:
+      criteria: ["States are grounded in inspected implementation", "Failure paths are explicit", "Handoffs have evidence requirements"]
+      verification: [state_matrix, cited_files, contract_checks]
+    permissions:
+      risk: controlled
+      required: [filesystem_read]
+      forbidden: [unapproved_runtime_changes]
+    evidence:
+      required: [workflow_spec, state_matrix, handoff_contract]
+      contract: claim_evidence
+    providers:
+      preferred: [c6_os]
+    routing:
+      priority: 95
+      domains: [workflow, product_lifecycle, operations, integrations]
+      products: [all]
+      exclusions: []
+    provenance:
+      source_type: adapted_open_source
+      source_repository: msitarzewski/agency-agents
+      source_path: specialized/specialized-workflow-architect.md
+      source_commit: "053ddbbf392a1688fc7043d81529f47ef2cf86c8"
+      license: MIT
+    lifecycle:
+      owner: c6_os
+      version: "0.1"
+      created: "2026-09-23"
+      reviewed: "2026-09-23"
+      review_after: "2026-12-23"
+
+  - id: c6_evidence_qa
+    name: C6 Evidence QA Agent
+    status: active
+    mission:
+      purpose: "Verify claims and acceptance criteria against implementation and reproducible evidence."
+      non_goals: ["Do not infer live status from code existence", "Do not use subjective scoring as certification"]
+    triggers:
+      capabilities: [evidence_based_qa, production_reality_check]
+      task_patterns: ["verify claim", "acceptance test", "check button", "check link", "prove works", "production gate"]
+      aliases: ["evidence QA", "reality check", "verification agent"]
+    skills:
+      required: [evidence_based_qa]
+      optional: [browser_automation, repository_forensics]
+    workflow:
+      entry: "START-HERE.md"
+      steps: [resolve_claim, inspect_implementation, choose_test, execute_check, capture_evidence, classify_status]
+      handoffs: [win_ledger]
+    deliverables:
+      required: [claim_evidence_record, test_results, verification_summary]
+    success:
+      criteria: ["Every material claim has evidence or is marked GAP", "Tests are reproducible", "Status never exceeds evidence"]
+      verification: [test_results, runtime_checks, claim_evidence_record]
+    permissions:
+      risk: controlled
+      required: [filesystem_read, test_execution]
+      forbidden: [unapproved_production_mutation]
+    evidence:
+      required: [test_results, claim_evidence_record]
+      contract: claim_evidence
+    providers:
+      preferred: [c6_os]
+    routing:
+      priority: 100
+      domains: [qa, verification, evidence, deployment]
+      products: [all]
+      exclusions: []
+    provenance:
+      source_type: adapted_open_source
+      source_repository: msitarzewski/agency-agents
+      source_path: testing/testing-evidence-collector.md
+      source_commit: "053ddbbf392a1688fc7043d81529f47ef2cf86c8"
+      license: MIT
+    lifecycle:
+      owner: c6_os
+      version: "0.1"
+      created: "2026-09-23"
+      reviewed: "2026-09-23"
+      review_after: "2026-12-23"
