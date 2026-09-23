@@ -1,0 +1,44 @@
+schema_version: "1.0"
+name: "C6 Agent-Ready Business Contract"
+purpose: "Make C6-listed businesses understandable, comparable, trustworthy and actionable by AI agents without surrendering human control."
+principles:
+  - "Human customer retains final authority unless explicitly delegated."
+  - "Agents may discover and compare; consequential actions require scoped authorization."
+  - "Business facts must be structured and evidence-backed."
+  - "EXISTS != WORKS != VERIFIED != LIVE."
+  - "Never fabricate price, availability, credentials, delivery capability, reviews, payment state or outcomes."
+required_profile:
+  identity: [business_id, legal_name, display_name, description, category, locations]
+  contact: [website, email, phone]
+  offerings: [products, services]
+  commercial: [pricing, currency, purchasing_options]
+  operations: [hours, service_areas, delivery_options, availability]
+  trust: [credentials, policies, evidence]
+  agent_interaction: [capabilities, actions, contact_methods, machine_readable_endpoint]
+  governance: [last_verified_at, verification_status, data_owner]
+claim_statuses: [exists, works, verified, live, gap]
+agent_actions:
+  - discover
+  - compare
+  - request_information
+  - create_lead
+  - request_quote
+  - initiate_checkout
+  - request_human_review
+action_policy:
+  read_only: "Discovery and comparison may use published verified data."
+  consequential: "Quote, checkout, booking, payment or contractual actions require explicit scoped authorization and the relevant platform control."
+  payment: "Payment status must come from RemotePay; business agents must not invent payment state."
+  evidence: "Material business claims resolve to evidence before being presented as verified."
+c6_capabilities:
+  - product_catalog_resolution
+  - claim_evidence
+  - context_retrieval
+  - browser_automation
+  - web_scraping
+  - workflow_automation
+  - analytics
+  - email_marketing
+  - payments
+  - multi_agent_orchestration
+customer_value: "Businesses become discoverable not only to people and search engines, but to software agents that research, compare and act on behalf of customers."
