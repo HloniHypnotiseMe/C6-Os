@@ -431,3 +431,17 @@ providers:
     permissions: [network, database]
     runtime: vps
     pin: null
+
+  - id: billionmail
+    name: BillionMail
+    category: mail_server
+    source: https://github.com/HloniHypnotiseMe/BillionMail
+    source_type: internal
+    registry_status: registered
+    local_presence: confirmed
+    capabilities: [mail_server, smtp, smtp_submission, imap, pop3, email_marketing]
+    risk: high
+    permissions: [network, filesystem_read, filesystem_write, database]
+    runtime: vps
+    pin: null
+    note: "C6-owned public repository; production activation requires an immutable commit/tag pin and runtime verification. Upstream-derived AGPLv3 software; preserve licence/source obligations."
