@@ -102,14 +102,46 @@ If a new capability is created, record:
 - verification;
 - maintenance owner/path.
 
-## 10. Definition of done
+## 10. Build products that can operate like companies
+
+C6 products should be treated as businesses with an embedded digital workforce, not merely software with a chatbot.
+
+When the product requires ongoing business work, map the operating company before adding AI features:
+
+- business outcome;
+- customer journey;
+- business functions/jobs;
+- responsible human or agent;
+- systems/providers used;
+- permissions and approval boundaries;
+- workflow/state transitions;
+- evidence required for each material claim or action;
+- exception/handoff path;
+- measurable business win.
+
+Prefer the smallest sufficient operating layer:
+
+PRODUCT
+  -> COMPANY OPERATING MODEL
+  -> BUSINESS FUNCTION
+  -> CAPABILITY
+  -> SKILL / AGENT / WORKFLOW / TEAM
+  -> PROVIDER / SYSTEM
+  -> EVIDENCE
+  -> WIN
+
+Agents are workers, not decoration. A product agent must have a defined job, trigger, inputs, outputs, permissions, handoffs, success criteria, and evidence contract.
+
+Do not add an agent merely because an AI feature sounds useful. First determine whether the job belongs in an existing skill, specialist, workflow, team, or provider.
+
+Human approvals remain mandatory wherever policy, financial, legal, security, safety, or other configured risk controls require them.
+
+## 11. Definition of done
 
 DONE means:
 
-```
 CAPABILITY RESOLVED
 + IMPLEMENTATION COMPLETE
 + VERIFICATION PASSED
 + EVIDENCE CAPTURED
 + REUSABLE KNOWLEDGE REGISTERED
-```
