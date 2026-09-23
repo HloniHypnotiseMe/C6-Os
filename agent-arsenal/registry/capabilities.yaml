@@ -104,3 +104,6 @@ capabilities:
   - id: production_reality_check
     purpose: "Cross-check production-readiness claims against actual implementation and evidence."
     providers: [c6_os]
+  - id: company_operating_model
+    purpose: "Define the business functions, workforce layers, systems, permissions, evidence, exceptions, and wins required for a product to operate like a company."
+    providers: [c6_os]
