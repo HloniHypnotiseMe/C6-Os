@@ -4,15 +4,19 @@ on:
   push:
     branches: ["main", "feat/c6-capability-router"]
     paths:
+      - "START-HERE.md"
       - "agent-arsenal/router/**"
       - "agent-arsenal/mcp-server/**"
       - "agent-arsenal/registry/**"
+      - "agent-arsenal/tests/**"
       - ".github/workflows/c6-capability-router.yml"
   pull_request:
     paths:
+      - "START-HERE.md"
       - "agent-arsenal/router/**"
       - "agent-arsenal/mcp-server/**"
       - "agent-arsenal/registry/**"
+      - "agent-arsenal/tests/**"
       - ".github/workflows/c6-capability-router.yml"
 
 jobs:
@@ -30,3 +34,7 @@ jobs:
         run: npm ci
       - name: Run Capability Router tests
         run: node agent-arsenal/router/test-router.mjs
+      - name: Run Specialist Registry tests
+        run: node agent-arsenal/tests/test-specialist-registry.mjs
+      - name: Run START HERE gate tests
+        run: node agent-arsenal/tests/test-start-here-gate.mjs
