@@ -14,6 +14,7 @@ source_of_truth_rule:
   - "Controlled forks must be inspected before replacing, upstreaming, or duplicating functionality."
   - "Do not infer production status from repository existence."
   - "Do not invent pins, credentials, endpoints, or runtime health."
+  - "C6 consumes capabilities, not repositories; use the smallest sufficient component."
 
 c6_owned_repositories:
   - id: c6_website
@@ -174,5 +175,7 @@ agent_start_order:
   - "Read C6-Os/README.md and consult the Agent Arsenal before implementation."
   - "Read C6-Os/agent-arsenal/registry/c6-repositories.yaml."
   - "Resolve the required capability before selecting an implementation."
+  - "Prefer the smallest sufficient existing capability or component; do not copy whole repositories when a narrower extraction is enough."
+  - "For any extraction, record source repo, source component, capability, rationale, dependencies, licence, adaptation, imported files, excluded files, tests and proof per C6-CAPABILITY-EXTRACTION-CONTRACT.yaml."
   - "Inspect the target repository and its current default branch."
   - "Verify tests/build/runtime evidence before declaring success."
