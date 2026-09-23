@@ -1,0 +1,48 @@
+schema_version: "0.1"
+company:
+  id: c6_group
+  product: c6_company_os
+  outcome: "Build and operate C6 businesses with governed digital workforces."
+functions:
+  - id: opportunity_intake
+    name: Opportunity Intake
+    mission: "Capture a business objective and route it to the correct C6 capability."
+    triggers: [new_opportunity, customer_request, internal_objective]
+    inputs: [objective, product_context]
+    outputs: [qualified_objective, capability_route]
+    owner: c6_operations
+    execution:
+      layer: workflow
+      capability: product_catalog_resolution
+      permissions: [filesystem_read]
+      approval: none
+    systems: [c6_os]
+    workflow: c6_build_entry
+    evidence: [objective_record, capability_resolution]
+    success: [objective_resolved, capability_selected]
+  - id: delivery
+    name: Governed Delivery
+    mission: "Execute the smallest sufficient capability and verify the result."
+    triggers: [resolved_objective]
+    inputs: [capability_route, repository_context]
+    outputs: [implementation, verification]
+    owner: c6_operations
+    execution:
+      layer: team
+      capability: multi_agent_orchestration
+      permissions: [filesystem_read, test_execution]
+      approval: required_for_production_mutation
+    systems: [c6_os]
+    workflow: inspect_resolve_benchmark_execute_verify
+    evidence: [test_results, claim_evidence_record]
+    success: [verification_passed, evidence_captured]
+exceptions:
+  - condition: capability_missing
+    handoff: capability_admission
+    owner: c6_operations
+  - condition: high_risk_action
+    handoff: human_approval
+    owner: designated_human_authority
+wins:
+  - metric: verified_business_outcome
+    evidence: win_ledger_record
