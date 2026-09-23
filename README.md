@@ -2,6 +2,8 @@
 
 ## C6 Agent Operating System
 
+> **START HERE for every C6 build:** [`Agent-OS/START-HERE.md`](https://github.com/HloniHypnotiseMe/Agent-OS/blob/main/START-HERE.md). No implementation should begin before this protocol and the Agent Arsenal are consulted.
+
 C6-Os is the control plane for the C6 agent ecosystem. It does **not** vendor or fork the upstream projects that power the ecosystem. Instead, it provides a governed discovery layer, adapters, policies, workflows, and machine-readable manifests.
 
 ### Prime directive
