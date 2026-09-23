@@ -42,3 +42,5 @@ jobs:
         run: node agent-arsenal/tests/test-start-here-gate.mjs
       - name: Run Build Entry tests
         run: node agent-arsenal/tests/test-build-entry.mjs
+      - name: Run Company Operating Model tests
+        run: node agent-arsenal/tests/test-company-operating-model.mjs
