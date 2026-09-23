@@ -48,6 +48,14 @@ c6_owned_repositories:
     branch: main
     head: "f6b6f49c4f2b69e7d82fbfe21238970ecc1ccc17"
     role: "Central transactional mail and event API"
+  - id: billionmail
+    repo: BillionMail
+    visibility: public
+    branch: dev
+    head: null
+    role: "C6-owned self-hosted mail server runtime; Postfix, Dovecot, Rspamd, Roundcube, SMTP submission, IMAP/POP3 and mail administration"
+    licence: "AGPLv3"
+    status: "registered; production pin and runtime verification required"
   - id: c6_deploy
     repo: c6-deploy
     visibility: private
