@@ -49,7 +49,7 @@ gaps:
     area: payment_documentation
     scope: RemotePay-
     status: open
-    finding: "Repository README contains older PayFast-oriented language while current C6 architecture treats RemotePay as the payment boundary with SimplyBlu/approved provider adapters."
+    finding: "Documentation is now aligned to RemotePay as the payment boundary and SimplyBlu as the current implemented adapter, but legacy PayFast code paths remain and require explicit deprecation/removal or separate verification."
     closure: "Align public/internal documentation with the actual provider architecture and verify all provider claims against current code/tests/runtime."
 
   - id: GAP-007
