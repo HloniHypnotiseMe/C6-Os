@@ -1,0 +1,52 @@
+schema_version: "0.1"
+registry: c6-provider-fabric
+purpose: "Govern the binding between a C6 worker, resolved capability, registered provider, permissions, runtime and evidence."
+binding_contract:
+  required: [worker, capability, provider, runtime, permissions, approval, evidence]
+  pin_required_for_production: true
+  allowed_pin_types: [commit_sha, signed_tag, immutable_release]
+bindings:
+  - id: c6_orchestration
+    worker: c6_delivery_team
+    capability: multi_agent_orchestration
+    provider: c6_os
+    runtime: vps
+    permissions: [filesystem_read, network]
+    approval: [production_mutation, configured_risk_controls]
+    evidence: [execution_record, handoff_record, claim_evidence_record]
+  - id: c6_evidence
+    worker: c6_evidence_qa
+    capability: evidence_based_qa
+    provider: c6_os
+    runtime: vps
+    permissions: [filesystem_read, test_execution]
+    approval: []
+    evidence: [test_results, claim_evidence_record]
+  - id: remotepay_payments
+    worker: remotepay_payment_team
+    capability: payments
+    provider: remotepay
+    runtime: vps
+    permissions: [network, database]
+    approval: [configured_financial_actions]
+    evidence: [provider_event, webhook_event, database_record, reconciliation_record]
+  - id: workflow_automation
+    worker: operations
+    capability: workflow_automation
+    provider: n8n
+    runtime: vps
+    permissions: [network, credentials_vault, filesystem_read, filesystem_write]
+    approval: [credentialed_external_actions]
+    evidence: [workflow_execution, external_response, audit_log]
+policy:
+  forbidden:
+    - unregistered_provider
+    - missing_production_pin
+    - permission_escalation
+    - unapproved_high_risk_action
+    - paid_service_substitution_when_registered_c6_capability_exists
+  status_semantics:
+    registered: "Provider is catalogued."
+    bound: "Binding contract is defined."
+    verified: "Binding has reproducible runtime evidence."
+    live: "Binding is confirmed operating in production."
