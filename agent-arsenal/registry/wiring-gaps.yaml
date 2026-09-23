@@ -77,8 +77,8 @@ gaps:
     area: evidence_store
     scope: c6-saas-core
     status: partial
-    finding: "C6 SaaS Core now has the canonical EvidenceRecord model, PostgreSQL migration, persistent create/retrieve endpoints, and a Tax/Secretarial adapter targeting the persistent endpoint. Live database round-trip and authenticated tenant wiring are not yet proven."
-    closure: "Apply migration in the deployed C6 SaaS Core database, run the persistence round-trip tests against the deployed runtime, wire authenticated tenant context, and record runtime evidence before marking VERIFIED/LIVE."
+    finding: "C6 SaaS Core now has canonical EvidenceRecord and AuditEvent persistence contracts, runtime intent authorization, persistent kill-switch state, and human-override audit emission. Live database round-trip, authenticated tenant wiring, and enforcement across every consequential product action are not yet proven."
+    closure: "Apply migrations 001-003 in the deployed C6 SaaS Core database, authenticate the control plane, run evidence/audit/runtime-control round-trip tests against the deployed runtime, wire tenant identity into product calls, enforce authorization on consequential actions, and record runtime evidence before marking VERIFIED/LIVE."
 
 priority_order:
   - GAP-001
