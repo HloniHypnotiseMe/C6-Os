@@ -1,0 +1,26 @@
+schema_version: "1.0"
+operating_model: "C6 Product Company"
+source_of_truth: "Each product's governance/COMPANY-OPERATING-MODEL.yaml plus this contract."
+required_layers:
+  - CEO
+  - department_heads
+  - specialist_agents
+  - platform_dependencies
+  - evidence_and_risk_governance
+promotion:
+  EXISTS: "Operating-model files exist."
+  WORKS: "CEO/head routing has been exercised."
+  VERIFIED: "Roles, routing and evidence are verified against runtime."
+  LIVE: "Production product runtime uses the model and governance controls."
+role_contract:
+  ceo:
+    owns: ["company strategy", "cross-department priorities", "executive decisions", "business outcomes"]
+    cannot_bypass: ["C6 SaaS Core authorization", "Holding Risk & Inversion", "RemotePay payment truth", "evidence gates"]
+  department_head:
+    owns: ["department outcomes", "agent delegation", "department KPI/evidence"]
+    reports_to: "product CEO"
+  specialist_agent:
+    owns: ["delegated tasks", "department workflows", "evidence capture"]
+    reports_to: "department head"
+  human_authority:
+    rule: "Agent roles do not imply legal authority, human appointment, or regulated professional status."
