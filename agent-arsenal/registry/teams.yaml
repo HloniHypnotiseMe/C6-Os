@@ -1,0 +1,30 @@
+schema_version: "0.1"
+registry: c6-teams
+teams:
+  - id: c6_delivery_team
+    mission: "Take a resolved C6 objective from inspection through implementation and evidence."
+    members:
+      - c6_repository_drift_forensics
+      - c6_workflow_architect
+      - c6_evidence_qa
+    capability: multi_agent_orchestration
+    permissions: [filesystem_read, test_execution]
+    approval_boundary: [production_mutation, configured_risk_controls]
+    handoffs: [forensics_to_architecture, architecture_to_implementation, implementation_to_evidence]
+    evidence: [finding_registry, workflow_spec, claim_evidence_record]
+  - id: remotepay_payment_team
+    mission: "Operate payment lifecycle with financial controls and evidence gates."
+    members: [payment_operations, evidence_qa]
+    capability: payments
+    permissions: [network, database]
+    approval_boundary: [configured_financial_actions]
+    handoffs: [payment_to_verification, verification_to_reconciliation]
+    evidence: [provider_event, webhook_event, database_record, reconciliation_record]
+  - id: diesel_transaction_team
+    mission: "Coordinate RFQ, supplier verification, payment, dispatch, POD and evidence."
+    members: [buyer_intake, supplier_verification, payment_operations, operations, evidence_qa]
+    capability: workflow_automation
+    permissions: [network, database, filesystem_read]
+    approval_boundary: [configured_financial_actions, production_mutation]
+    handoffs: [rfq_to_verification, verification_to_acceptance, acceptance_to_payment, payment_to_dispatch, dispatch_to_pod, pod_to_evidence]
+    evidence: [rfq_record, verification_record, payment_verification, dispatch_record, pod, claim_evidence_record]
