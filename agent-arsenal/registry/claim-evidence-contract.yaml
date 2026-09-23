@@ -1,0 +1,47 @@
+schema_version: "0.1"
+purpose: "Canonical contract for proving product claims."
+rule: "EXISTS is not WORKS; WORKS is not VERIFIED; VERIFIED is not LIVE."
+
+claim:
+  required_fields:
+    - claim_id
+    - product_id
+    - capability_id
+    - claim_text
+    - status
+    - evidence_type
+    - evidence_ref
+    - recorded_at
+    - verifier
+  statuses: [exists, works, verified, live, gap]
+  evidence_types:
+    - test_result
+    - api_response
+    - webhook_event
+    - database_record
+    - deployment_check
+    - external_provider_confirmation
+    - document_evidence
+    - audit_log
+    - screenshot
+    - runtime_health
+
+gates:
+  - gate: implementation
+    passes_when: "Relevant code/path exists."
+  - gate: execution
+    passes_when: "Relevant workflow executes successfully."
+  - gate: evidence
+    passes_when: "Evidence is persisted or otherwise independently inspectable."
+  - gate: external
+    passes_when: "Required external provider confirms the state where applicable."
+  - gate: customer_claim
+    passes_when: "All preceding gates required by the claim are satisfied."
+
+agent_rule:
+  - "Before answering a customer or writing customer-facing copy, resolve the product and capability in c6-product-capabilities.yaml."
+  - "If the claim has no evidence_ref, report the claim as a gap rather than inventing proof."
+  - "Never upgrade a status because a repository, endpoint, UI, or migration merely exists."
+  - "For payment claims, use RemotePay as financial source of truth."
+  - "For email delivery claims, use C6 Mail Services evidence."
+  - "For product data claims, use the product's authoritative C6 platform data/evidence store."
