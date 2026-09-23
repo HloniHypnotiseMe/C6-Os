@@ -207,6 +207,84 @@
         "c6_os"
       ],
       "adapter": "c6-company-operating-model"
+    },
+    "api_contract_engineering": {
+      "providers": [
+        "c6_os"
+      ],
+      "adapter": "c6-api-contract-engineering"
+    },
+    "repository_onboarding": {
+      "providers": [
+        "c6_os"
+      ],
+      "adapter": "c6-repository-onboarding"
+    },
+    "database_reliability": {
+      "providers": [
+        "c6_os"
+      ],
+      "adapter": "c6-database-reliability"
+    },
+    "development_tooling": {
+      "providers": [
+        "c6_os"
+      ],
+      "adapter": "c6-development-tooling"
+    },
+    "software_architecture": {
+      "providers": [
+        "c6_os"
+      ],
+      "adapter": "c6-software-architecture"
+    },
+    "ai_generated_code_security": {
+      "providers": [
+        "c6_os"
+      ],
+      "adapter": "c6-ai-code-security"
+    },
+    "application_security": {
+      "providers": [
+        "c6_os"
+      ],
+      "adapter": "c6-appsec"
+    },
+    "security_architecture": {
+      "providers": [
+        "c6_os"
+      ],
+      "adapter": "c6-security-architecture"
+    },
+    "authorized_security_testing": {
+      "providers": [
+        "c6_os"
+      ],
+      "adapter": "c6-authorized-security-testing"
+    },
+    "security_operations": {
+      "providers": [
+        "c6_os"
+      ],
+      "adapter": "c6-security-operations"
+    },
+    "api_testing": {
+      "providers": [
+        "c6_os"
+      ],
+      "adapter": "c6-api-testing"
+    },
+    "performance_verification": {
+      "providers": [
+        "c6_os"
+      ],
+      "adapter": "c6-performance-verification"
+    },
+    "e2e_test_automation": {
+      "providers": [
+        "c6_os"
+      ],
+      "adapter": "c6-e2e-testing"
     }
   },
   "providers": {
