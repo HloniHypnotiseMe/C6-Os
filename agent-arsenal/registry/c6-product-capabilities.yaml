@@ -1,0 +1,158 @@
+schema_version: "0.1"
+recon_date: "2026-09-23"
+purpose: "Machine-readable product/capability/evidence map. Agents consult this before building or claiming capability."
+status_semantics:
+  exists: "Code or repository capability is present."
+  works: "Execution has been demonstrated."
+  verified: "Evidence for the relevant claim has been recorded."
+  live: "Production runtime and required external routing have been directly verified."
+  gap: "Required wiring/evidence is missing or not yet verified."
+
+products:
+  - id: c6_group
+    repo: C6-Group-Final-Website
+    domain: corporate_platform
+    product: true
+    capabilities: [lead_capture, business_audits, package_marketplace, revenue_hunter, customer_evidence]
+    consumers: [c6_saas_core, c6_mail_services, remotepay, n8n, c6_os]
+    claim_gate: "No customer-facing completion claim without evidence record."
+
+  - id: ubernie
+    repo: ubernie
+    domain: business_directory
+    product: true
+    capabilities: [business_directory, marketplace, business_intelligence, maturity_diagnosis, recommendations, revenue_hunter]
+    consumers: [c6_saas_core, remotepay, n8n, c6_os]
+    claim_gate: "Business listing, audit, maturity, payment and outcome claims require persisted evidence."
+
+  - id: diesel_connect
+    repo: diesel-connect
+    domain: fuel_logistics
+    product: true
+    capabilities: [rfq, supplier_quotes, buyer_acceptance, payment_verification, dispatch, pod, evidence_gated_release]
+    consumers: [c6_platform_supabase, remotepay, c6_os]
+    claim_gate: "Payment/release claims require RemotePay evidence plus order evidence."
+
+  - id: commodity_connect
+    repo: COMMODITY-CONNECT
+    domain: commodity_trade
+    product: true
+    capabilities: [commodity_matching, document_workflows, commission_chain, ncn_da_controls, remotepay]
+    consumers: [c6_platform_supabase, remotepay, c6_os]
+    claim_gate: "Trade, document, commission and payment claims require persisted evidence."
+
+  - id: domains_and_hosting
+    repo: domains-manager
+    domain: domains_hosting
+    product: true
+    capabilities: [domain_registration, dns, webhosting, business_email, provisioning, billing_records]
+    consumers: [c6_saas_core, c6_mail_services, mailflare, remotepay, c6_deploy]
+    claim_gate: "Do not claim registration/provisioning until external registrar/provider evidence exists."
+
+  - id: tax_secretarial
+    repo: remote-pay-holdings
+    path: tax-secretarial
+    domain: tax_secretarial
+    product: true
+    internal_use: true
+    capabilities: [tax, secretarial, compliance, corporate_governance, evidence_contracts]
+    consumers: [c6_saas_core, ubernie, revenue_hunter, c6_group]
+    claim_gate: "A tax/secretarial/compliance outcome is a product claim and must point to an evidence contract."
+
+  - id: remote_pay_holdings
+    repo: remote-pay-holdings
+    domain: governance_and_financial_structure
+    product: true
+    internal_use: true
+    capabilities: [tax_secretarial, governance, compliance, evidence_contracts, saas_platform_patterns]
+    consumers: [c6_saas_core, c6_group, revenue_hunter]
+    note: "This repository is both an internal operating system and a product source. It must not be classified as miscellaneous internal work."
+
+  - id: remote_pay
+    repo: RemotePay-
+    domain: payments
+    product: true
+    system_of_record: true
+    capabilities: [payment_links, provider_adapters, webhooks, transaction_state, ledger, settlement, reconciliation]
+    consumers: [c6_group, ubernie, diesel_connect, commodity_connect, domains_and_hosting]
+    claim_gate: "Payment status claims must originate from RemotePay evidence, not product-local assumptions."
+
+  - id: c6_aios
+    repo: C6Group.AiOS
+    domain: ai_operations
+    product: true
+    capabilities: [ai_operations, agent_execution]
+    consumers: [c6_os, c6_saas_core]
+
+  - id: c6_association_os
+    repo: c6-association-os
+    domain: association_management
+    product: true
+    capabilities: [association_management]
+    consumers: [c6_saas_core, c6_os]
+    current_gap: "Current repository is still a Cloudflare Worker/D1 template; platform re-homing is required before treating it as a C6-platform-backed product."
+
+platform:
+  - id: c6_saas_core
+    repo: c6-saas-core
+    role: shared_platform
+    capabilities: [tenants, identity, entitlements, billing_abstraction, agent_access, documents, audit_trail, ai_integration, memory, postgres_isolation]
+
+  - id: c6_platform_supabase
+    repo: supabase
+    role: shared_platform_component
+    capabilities: [postgres, auth, rest_api, realtime, storage, edge_functions]
+    hosting: c6_controlled_self_hosted
+    forbidden_alternative: "Supabase Cloud"
+
+  - id: c6_os
+    repo: C6-Os
+    role: agent_control_plane
+    capabilities: [repository_discovery, capability_resolution, policies, adapters, verification]
+
+  - id: c6_mail
+    repo: C6-Mail-Services
+    role: shared_service
+    capabilities: [transactional_email, event_mail_api]
+
+  - id: mail_inbox
+    repo: mailflare
+    role: shared_service_component
+    capabilities: [inbox, mailboxes, routing, mail_api, audit_logs]
+
+  - id: automation
+    repo: n8n
+    role: shared_service_component
+    capabilities: [workflow_automation, integrations, events]
+
+  - id: deployment
+    repo: c6-deploy
+    role: shared_service
+    capabilities: [deployment_control, service_operations]
+
+  - id: hosting_control
+    repo: coolify
+    role: infrastructure_component
+    capabilities: [self_hosted_deployment]
+
+wiring_gates:
+  - id: claim_to_evidence
+    required_for: [all_products]
+    rule: "Every material customer-facing claim resolves to an evidence contract and evidence record."
+    status: gap
+  - id: product_to_platform
+    required_for: [all_products]
+    rule: "Product uses C6 platform capabilities rather than owning duplicate global infrastructure."
+    status: partial
+  - id: payment_to_remotepay
+    required_for: [paid_products]
+    rule: "Payment claims resolve to RemotePay transaction/payment evidence."
+    status: partial
+  - id: mail_to_c6_mail
+    required_for: [customer_products]
+    rule: "Transactional notifications resolve to C6 Mail Services."
+    status: partial
+  - id: agent_to_arsenal
+    required_for: [all_agents]
+    rule: "Agents resolve capabilities from the C6 Agent Arsenal before building or installing."
+    status: works
