@@ -107,3 +107,55 @@ capabilities:
   - id: company_operating_model
     purpose: "Define the business functions, workforce layers, systems, permissions, evidence, exceptions, and wins required for a product to operate like a company."
     providers: [c6_os]
+  - id: api_contract_engineering
+    purpose: "Design and verify stable API contracts, compatibility, idempotency, versioning, and documentation."
+    providers: [c6_os]
+
+  - id: repository_onboarding
+    purpose: "Trace an unfamiliar repository from entry points through dependencies and execution paths."
+    providers: [c6_os]
+
+  - id: database_reliability
+    purpose: "Verify database migration safety, backups, restore paths, connections, and disaster recovery."
+    providers: [c6_os]
+
+  - id: development_tooling
+    purpose: "Improve reproducible developer tooling, CI automation, and development workflows."
+    providers: [c6_os]
+
+  - id: software_architecture
+    purpose: "Define system boundaries, dependencies, architecture decisions, and trade-offs."
+    providers: [c6_os]
+
+  - id: ai_generated_code_security
+    purpose: "Audit AI-generated code for insecure patterns, prompt injection exposure, and supply-chain risk."
+    providers: [c6_os]
+
+  - id: application_security
+    purpose: "Perform threat modeling, secure code review, authentication review, and dependency-risk analysis."
+    providers: [c6_os]
+
+  - id: security_architecture
+    purpose: "Map security controls, data flows, architecture threats, and required mitigations."
+    providers: [c6_os]
+
+  - id: authorized_security_testing
+    purpose: "Perform explicitly authorized security testing and remediation retesting."
+    providers: [c6_os]
+
+  - id: security_operations
+    purpose: "Monitor runtime security signals, triage incidents, and document containment."
+    providers: [c6_os]
+
+  - id: api_testing
+    purpose: "Test API contracts, endpoints, authentication, negative paths, and compatibility."
+    providers: [c6_os]
+
+  - id: performance_verification
+    purpose: "Measure performance baselines, load behaviour, bottlenecks, and regressions."
+    providers: [c6_os]
+
+  - id: e2e_test_automation
+    purpose: "Automate deterministic end-to-end tests with isolated fixtures and CI evidence."
+    providers: [c6_os]
+
