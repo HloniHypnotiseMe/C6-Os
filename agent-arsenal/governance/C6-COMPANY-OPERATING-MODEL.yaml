@@ -1,0 +1,26 @@
+schema_version: "1.0"
+model: "C6 Company Operating Model"
+purpose: "Every C6 product operates as a company with an accountable CEO, department heads, specialist agents, evidence gates and Holding governance."
+rules:
+  - "Every product has exactly one product CEO role."
+  - "Every department has one accountable head role, even when one agent temporarily holds multiple roles."
+  - "Department heads own outcomes; specialist agents execute within delegated capability boundaries."
+  - "CEO coordinates strategy and cross-department execution; it does not bypass C6 SaaS Core governance, RemotePay payment truth, C6 Mail, or Holding Risk & Inversion."
+  - "No role is evidence of a human appointment. Agent identity is an operating role unless explicitly assigned to a human."
+  - "EXISTS != WORKS != VERIFIED != LIVE."
+  - "Material claims require evidence."
+hierarchy:
+  - board_or_holding
+  - ceo
+  - executive_departments
+  - department_heads
+  - specialist_agents
+  - platform_services
+  - evidence_and_audit
+governance:
+  shared_control_plane: c6-saas-core
+  agent_arsenal: C6-Os/agent-arsenal
+  risk_inversion: remote-pay-holdings/risk-inversion
+  payment_truth: RemotePay-
+  transactional_mail: C6-Mail-Services
+  evidence_rule: "CAPTURE -> PROVE -> REGISTER -> ESCALATE"
