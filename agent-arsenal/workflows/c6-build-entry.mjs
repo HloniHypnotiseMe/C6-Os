@@ -64,7 +64,7 @@ const plan = {
   },
   repository_inspection:{observed_markers:await inspectRepo(repo),note:"Repository markers establish existence only; runtime health and production state require separate verification."},
   authorization:{required:true,risk,requested_permissions:permissions},
-  required_sequence:["INSPECT","RESOLVE","BENCHMARK","SELECT_SMALLEST_LAYER","AUTHORIZE","IMPLEMENT","TEST","VERIFY","CAPTURE_EVIDENCE","REGISTER_KNOWLEDGE","RECORD_WIN"],
+  required_sequence:["INSPECT","MAP_COMPANY_OPERATING_MODEL","RESOLVE","BENCHMARK","SELECT_SMALLEST_LAYER","AUTHORIZE","IMPLEMENT","TEST","VERIFY","CAPTURE_EVIDENCE","REGISTER_KNOWLEDGE","RECORD_WIN"],
   forbidden:["blind_upstream_copy","unapproved_production_mutation","claiming_live_from_repo_existence","claiming_verified_from_build_only","inventing_missing_evidence"]
 };
 console.log(JSON.stringify(plan, null, 2));
