@@ -1,0 +1,86 @@
+schema_version: "1.0"
+name: c6-department-view
+purpose: "Human-readable presentation layer over the precise 37-category Universal Arsenal taxonomy."
+source_of_truth: "agent-arsenal/universal/repository-registry.yaml"
+rules:
+  - "Do not replace, merge, rename, or delete Universal Arsenal categories."
+  - "Departments are presentation/operating views for humans."
+  - "Agents, resolver, adapters, and workflows resolve against precise categories."
+  - "A category may appear in multiple departments; primary_department is the default human home."
+  - "Customer-facing surfaces should use department names, not raw Arsenal categories."
+
+departments:
+  developers:
+    name: "Developers"
+    description: "Build, code, integrate, automate, debug, reverse engineer, and operate technical systems."
+    primary_categories: [coding_agents, dev_tools, reverse_engineering, mcp_and_tools, orchestration, agent_routing, llm_inference]
+    supporting_categories: [agent_skills, memory_rag, deployment_infrastructure, server_management, security_networking, game_engine, hardware_robotics]
+  designers:
+    name: "Designers"
+    description: "Create interfaces, visual assets, video, photography, 3D, and interactive experiences."
+    primary_categories: [web_frontend, image_video_content, photo_media_management, 3d_vision, game_engine]
+    supporting_categories: [maps_geo, llm_inference, agent_skills]
+  marketing:
+    name: "Marketing"
+    description: "Research markets, create demand, improve discoverability, acquire leads, and measure growth."
+    primary_categories: [marketing_growth, browser_web, data_geo_documents, maps_geo]
+    supporting_categories: [communications, image_video_content, web_frontend, memory_rag, osint_investigation]
+  social_media:
+    name: "Social Media"
+    description: "Create, publish, distribute, monitor, and manage social and multimedia communications."
+    primary_categories: [communications, voice_audio, music_generation, audiobooks_podcasts]
+    supporting_categories: [image_video_content, browser_web, marketing_growth, photo_media_management]
+  finance:
+    name: "Finance"
+    description: "Payments, financial research, trading analysis, financial records, and finance workflows."
+    primary_categories: [payments_finance]
+    supporting_categories: [data_geo_documents, security_observability, secrets_identity, communications, productivity_office]
+  small_business:
+    name: "Small Business"
+    description: "Run day-to-day business operations, CRM, productivity, infrastructure, files, and business systems."
+    primary_categories: [productivity_office, crm_productivity, deployment_infrastructure, server_management, file_sharing_sync, media_servers]
+    supporting_categories: [communications, data_geo_documents, orchestration, workflow_automation]
+  legal_ops:
+    name: "Legal / Operations"
+    description: "Governance, risk, security, identity, investigation, reference, compliance-supporting operations, and organisational controls."
+    primary_categories: [security_observability, secrets_identity, learning_reference, security_networking, osint_investigation, security_offensive, specialist_or_reference]
+    supporting_categories: [data_geo_documents, memory_rag, communications, server_management, deployment_infrastructure]
+
+category_map:
+  orchestration: [developers]
+  agent_routing: [developers]
+  coding_agents: [developers]
+  mcp_and_tools: [developers]
+  memory_rag: [developers, legal_ops]
+  llm_inference: [developers, designers]
+  browser_web: [marketing]
+  voice_audio: [social_media]
+  image_video_content: [designers, marketing, social_media]
+  communications: [social_media, marketing, small_business, finance, legal_ops]
+  crm_productivity: [small_business]
+  payments_finance: [finance]
+  security_observability: [legal_ops, small_business]
+  deployment_infrastructure: [small_business, developers]
+  data_geo_documents: [marketing, finance, small_business, legal_ops]
+  learning_reference: [legal_ops, developers]
+  reverse_engineering: [developers, legal_ops]
+  security_networking: [legal_ops, developers]
+  osint_investigation: [legal_ops, marketing]
+  dev_tools: [developers]
+  web_frontend: [designers, developers]
+  game_engine: [designers, developers]
+  file_sharing_sync: [small_business]
+  media_servers: [small_business, designers]
+  agent_skills: [developers, designers, legal_ops]
+  secrets_identity: [legal_ops, small_business, finance]
+  server_management: [small_business, developers]
+  music_generation: [social_media, designers]
+  audiobooks_podcasts: [social_media]
+  photo_media_management: [designers, social_media]
+  3d_vision: [designers, developers]
+  hardware_robotics: [developers, designers]
+  maps_geo: [marketing, designers]
+  marketing_growth: [marketing]
+  productivity_office: [small_business, finance]
+  security_offensive: [legal_ops, developers]
+  specialist_or_reference: [legal_ops, developers]
