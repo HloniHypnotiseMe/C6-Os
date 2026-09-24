@@ -285,6 +285,43 @@
         "c6_os"
       ],
       "adapter": "c6-e2e-testing"
+    },
+    "project_execution": {
+      "providers": [
+        "get_shit_done",
+        "c6_os"
+      ],
+      "adapter": "c6-project-execution"
+    },
+    "context_engineering": {
+      "providers": [
+        "get_shit_done",
+        "context_hub",
+        "openviking",
+        "c6_os"
+      ],
+      "adapter": "c6-context"
+    },
+    "spec_driven_development": {
+      "providers": [
+        "get_shit_done",
+        "c6_os"
+      ],
+      "adapter": "c6-spec-driven-development"
+    },
+    "development_workflow": {
+      "providers": [
+        "get_shit_done",
+        "c6_os"
+      ],
+      "adapter": "c6-development-workflow"
+    },
+    "verification_workflow": {
+      "providers": [
+        "get_shit_done",
+        "c6_os"
+      ],
+      "adapter": "c6-verification-workflow"
     }
   },
   "providers": {
@@ -569,6 +606,15 @@
       ],
       "runtime": "vps",
       "status": "candidate"
+    },
+    "get_shit_done": {
+      "risk": "controlled",
+      "permissions": [
+        "filesystem_read",
+        "filesystem_write"
+      ],
+      "runtime": "vps",
+      "status": "registered"
     }
   },
   "risk_order": [
