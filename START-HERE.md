@@ -12,7 +12,18 @@ Determine:
 - expected deliverable;
 - evidence required to call the work complete.
 
-## 2. Inspect before building
+## 2. Check what C6 has already built
+
+Before designing or implementing anything, read:
+
+- `knowledge/WHAT-WE-ALREADY-BUILT.md` — human-readable existing-capability index;
+- `knowledge/ALREADY-BUILT.yaml` — machine-readable duplicate-prevention index;
+- `knowledge/LESSONS-LEARNED.md` — prior discoveries, failures and anti-patterns;
+- `knowledge/DECISIONS.md` — durable architecture and operating decisions.
+
+**Do not rebuild a capability merely because it is not in the current target repository.** Search the C6 estate first.
+
+## 3. Inspect before building
 
 Do not invent a solution before checking the C6 Arsenal.
 
@@ -26,13 +37,13 @@ Read:
 - relevant workflows;
 - relevant product/repository manifests.
 
-## 3. Resolve capability
+## 4. Resolve capability
 
 Use the Arsenal resolver/router.
 
 Prefer an existing confirmed capability over new implementation.
 
-## 4. Benchmark external/open-source specialists
+## 5. Benchmark external/open-source specialists
 
 For specialist-agent work, benchmark:
 
@@ -50,7 +61,7 @@ Classify each useful capability:
 - OUT-OF-SCOPE
 - RESEARCH
 
-## 5. Select the execution layer
+## 6. Select the execution layer
 
 Use the smallest sufficient layer:
 
@@ -66,11 +77,11 @@ Do not create an agent when a skill is sufficient.
 
 Do not create a skill when an existing provider already supplies the capability.
 
-## 6. Execute with minimum permissions
+## 7. Execute with minimum permissions
 
 Follow provider/runtime risk and permission metadata.
 
-## 7. Verify
+## 8. Verify
 
 A task is not complete because an agent produced text or changed files.
 
@@ -85,15 +96,15 @@ Require appropriate evidence:
 - external confirmation;
 - source/repository evidence.
 
-## 8. Register the result
+## 9. Register the result
 
-Promote reusable capability knowledge back into the appropriate C6 registry, skill, workflow, agent, or evidence contract.
+Promote reusable capability knowledge back into the appropriate C6 registry, skill, workflow, agent, evidence contract, and `knowledge/ALREADY-BUILT.yaml` / `knowledge/WHAT-WE-ALREADY-BUILT.md` entry.
 
-## 9. Never reinvent silently
+## 10. Never reinvent silently
 
 If an existing capability was available but not used, record why.
 
-If a new capability is created, record:
+If a new capability is created, record it in the build-memory files and record:
 
 - why existing capability was insufficient;
 - source/provenance;
@@ -102,7 +113,7 @@ If a new capability is created, record:
 - verification;
 - maintenance owner/path.
 
-## 10. Build products that can operate like companies
+## 11. Build products that can operate like companies
 
 C6 products should be treated as businesses with an embedded digital workforce, not merely software with a chatbot.
 
@@ -136,7 +147,7 @@ Do not add an agent merely because an AI feature sounds useful. First determine 
 
 Human approvals remain mandatory wherever policy, financial, legal, security, safety, or other configured risk controls require them.
 
-## 11. Definition of done
+## 12. Definition of done
 
 DONE means:
 
