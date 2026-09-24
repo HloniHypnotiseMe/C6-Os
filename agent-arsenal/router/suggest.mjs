@@ -69,9 +69,10 @@ export async function suggestCapabilities(task, { maxCandidates = 3, allow = [] 
     return { status: "invalid", reason: "task_too_long", suggestion: null, candidates: [] };
   }
 
-  const [capRegistry, index] = await Promise.all([
+  const [capRegistry, index, catalog] = await Promise.all([
     loadCapabilitiesYAML(),
     loadResolutionIndex(),
+    catalogCandidates(request, 8),
   ]);
   const capabilities = capRegistry.capabilities || [];
   const allowed = allow.length
@@ -101,6 +102,7 @@ export async function suggestCapabilities(task, { maxCandidates = 3, allow = [] 
       reason: "no_local_candidate",
       suggestion: null,
       candidates: [],
+      repository_candidates: catalog,
       authorization_required: false,
       executes: false,
     };
@@ -113,6 +115,7 @@ export async function suggestCapabilities(task, { maxCandidates = 3, allow = [] 
     reason: "bounded_local_candidate_shortlist",
     suggestion: top,
     candidates,
+    repository_candidates: catalog,
     authorization_required: true,
     executes: false,
     semantic_judgement: false,
