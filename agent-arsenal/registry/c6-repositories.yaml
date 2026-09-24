@@ -134,6 +134,13 @@ c6_owned_repositories:
     note: "Re-read HEAD before work."
 
 controlled_forks:
+  - id: get_shit_done
+    repo: get-shit-done
+    branch: main
+    head: null
+    role: "Controlled fork of GSD; source of project-execution, context-engineering, spec-driven-development and verification workflow patterns."
+    fork: true
+    status: "registered; inspect current source before extraction; active development redirected to GSD Core."
   - id: crm
     repo: crm
     branch: release
