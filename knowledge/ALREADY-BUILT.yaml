@@ -1,0 +1,60 @@
+schema_version: "1.0"
+purpose: "Machine-readable index preventing duplicate implementation and preserving reusable C6 knowledge."
+status_semantics:
+  EXISTS: "Known to exist."
+  WORKS: "Execution demonstrated."
+  VERIFIED: "Relevant evidence recorded."
+  LIVE: "Production runtime and external routing directly verified."
+  DEPRECATED: "No longer preferred."
+  REPLACED: "Superseded."
+  FAILED: "Attempted and did not satisfy the requirement."
+  DO_NOT_REPEAT: "Known anti-pattern or rejected approach."
+entries:
+  - id: c6_os_arsenal
+    outcome: "Universal capability and repository discovery"
+    system: "C6-Os"
+    status: WORKS
+  - id: gsd_project_execution
+    outcome: "Project execution/context/spec/verification patterns"
+    system: "get-shit-done"
+    status: EXISTS
+  - id: c6_mail_stack
+    outcome: "Self-hosted mail and transactional messaging"
+    system: "C6-Mail-Services + BillionMail + Mailflare + Listmonk"
+    status: EXISTS
+  - id: c6_workflow_automation
+    outcome: "Workflow automation"
+    system: "n8n"
+    status: EXISTS
+  - id: c6_payments
+    outcome: "Payment gateway/integration"
+    system: "RemotePay"
+    status: EXISTS
+  - id: c6_domains_hosting
+    outcome: "Domain/hosting/email control plane"
+    system: "domains-manager"
+    status: EXISTS
+  - id: c6_website
+    outcome: "Public C6 website and lead capture"
+    system: "C6-Group-Final-Website"
+    status: VERIFIED
+  - id: ubernie
+    outcome: "Business directory and Business-in-a-Box"
+    system: "ubermie"
+    status: EXISTS
+  - id: commodity_connect
+    outcome: "Commodity transaction/evidence workflow"
+    system: "COMMODITY-CONNECT"
+    status: EXISTS
+  - id: diesel_connect
+    outcome: "Diesel RFQ/payment/dispatch/POD lifecycle"
+    system: "diesel-connect"
+    status: EXISTS
+  - id: remote_pay_holdings
+    outcome: "Tax/secretarial/compliance capabilities"
+    system: "remote-pay-holdings"
+    status: EXISTS
+  - id: evidence_gated_delivery
+    outcome: "Evidence-backed completion and claim verification"
+    system: "C6-Os"
+    status: WORKS
