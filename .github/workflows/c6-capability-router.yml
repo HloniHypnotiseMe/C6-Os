@@ -40,6 +40,8 @@ jobs:
         run: node agent-arsenal/tests/test-specialist-registry.mjs
       - name: Run START HERE gate tests
         run: node agent-arsenal/tests/test-start-here-gate.mjs
+      - name: Run Department View tests
+        run: node agent-arsenal/tests/test-department-view.mjs
       - name: Run Build Entry tests
         run: node agent-arsenal/tests/test-build-entry.mjs
       - name: Run Company Operating Model tests
