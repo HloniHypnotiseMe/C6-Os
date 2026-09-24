@@ -10,6 +10,19 @@ version_policy:
   unverified_pin_value: null
 
 providers:
+  - id: get_shit_done
+    name: Get Shit Done (GSD)
+    category: project_execution
+    source: https://github.com/HloniHypnotiseMe/get-shit-done
+    source_type: controlled_fork
+    registry_status: registered
+    local_presence: confirmed
+    capabilities: [project_execution, context_engineering, spec_driven_development, development_workflow, verification_workflow]
+    risk: controlled
+    permissions: [filesystem_read, filesystem_write]
+    runtime: vps
+    pin: null
+    provenance_note: "Controlled fork; current README redirects active development to GSD Core. Inspect exact source component before extraction."
   - id: tradingagents
     name: TradingAgents
     category: finance
