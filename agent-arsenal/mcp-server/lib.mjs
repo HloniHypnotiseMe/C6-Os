@@ -17,6 +17,7 @@ const PATHS = {
   capabilities: resolve(ARSENAL_ROOT, 'registry', 'capabilities.yaml'),
   repositoryRegistry: resolve(ARSENAL_ROOT, 'universal', 'repository-registry.yaml'),
   inventorySnapshot: resolve(ARSENAL_ROOT, 'universal', 'inventory-snapshot.json'),
+  repositoryEvidence: resolve(ARSENAL_ROOT, 'universal', 'repository-evidence.json'),
   resolverScript: resolve(ARSENAL_ROOT, 'resolver', 'resolve.py'),
 };
 
@@ -46,6 +47,10 @@ export async function loadRepositoryRegistry() {
 
 export async function loadInventorySnapshot() {
   return readJSON(PATHS.inventorySnapshot);
+}
+
+export async function loadRepositoryEvidence() {
+  return readJSON(PATHS.repositoryEvidence);
 }
 
 export async function invokeResolver(capability, opts = {}) {
