@@ -78,7 +78,7 @@ function category(repo) {
 }
 
 function sourceType(repo) {
-  if (repo.fork && repo.parent?.full_name) return 'FORK';
+  if (repo.fork) return 'FORK';
   if (repo.full_name.toLowerCase().startsWith('hlonihypnotiseme/')) return 'C6_NATIVE';
   return 'THIRD_PARTY';
 }
