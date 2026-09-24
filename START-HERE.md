@@ -23,6 +23,15 @@ Before designing or implementing anything, read:
 
 **Do not rebuild a capability merely because it is not in the current target repository.** Search the C6 estate first.
 
+## Department views: human vs machine taxonomy
+
+C6 uses two views over one capability registry:
+
+- **Machine view:** the precise Universal Arsenal categories in `agent-arsenal/universal/repository-registry.yaml`. Agents, resolver logic, adapters, and workflows use these categories.
+- **Human view:** the seven department presentation layer in `agent-arsenal/registry/departments.yaml`. Prospects, customers, website surfaces, and audit reports use department names.
+- **Do not collapse the Universal Arsenal taxonomy to seven departments.**
+- **Do not expose the raw 37-category Arsenal taxonomy as the default customer-facing vocabulary.**
+- **Categories may map to multiple departments; the department mapping is a presentation/operating view, not a routing replacement.**
 ## 3. Inspect before building
 
 Do not invent a solution before checking the C6 Arsenal.
