@@ -12,6 +12,8 @@ resolution_order:
   - verify
 
 domains:
+  project_delivery:
+    capabilities: [project_execution, context_engineering, spec_driven_development, development_workflow, verification_workflow]
   core:
     capabilities: [multi_agent_orchestration, specialist_agents, agent_memory, context_retrieval]
   execution:
