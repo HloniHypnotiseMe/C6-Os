@@ -1,5 +1,20 @@
 schema_version: "0.1"
 capabilities:
+  - id: project_execution
+    purpose: "Structure complex software work into explicit requirements, plans, execution units, context preparation, and verification."
+    providers: [get_shit_done, c6_os]
+  - id: context_engineering
+    purpose: "Prepare bounded, relevant execution context so agents work from explicit project state instead of rediscovering it repeatedly."
+    providers: [get_shit_done, context_hub, openviking, c6_os]
+  - id: spec_driven_development
+    purpose: "Turn objectives into explicit specifications, plans, acceptance conditions, and implementation checkpoints."
+    providers: [get_shit_done, c6_os]
+  - id: development_workflow
+    purpose: "Provide reusable development workflow patterns for inspect, plan, execute, test, and verify cycles."
+    providers: [get_shit_done, c6_os]
+  - id: verification_workflow
+    purpose: "Structure execution around explicit verification and completion evidence."
+    providers: [get_shit_done, c6_os]
   - id: product_catalog_resolution
     purpose: "Resolve C6 products, domain owners, platform consumers, and capability boundaries."
     providers: [c6_os]
