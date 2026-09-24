@@ -1,4 +1,4 @@
-import { loadCapabilitiesYAML, loadResolutionIndex, loadRepositoryRegistry, loadInventorySnapshot, loadRepositoryEvidence } from "../mcp-server/lib.mjs";
+import { loadCapabilitiesYAML, loadResolutionIndex, loadRepositoryRegistry, loadInventorySnapshot, loadRepositoryEvidence, loadDepartmentsYAML } from "../mcp-server/lib.mjs";
 
 const STOP = new Set([
   "a","an","and","are","as","at","be","before","by","for","from","how","i","in","is",
@@ -41,7 +41,17 @@ function scoreCatalog(taskTokens, name, category, description = "") {
 }
 
 async function catalogCandidates(task, maxCandidates = 8) {
-  const [registry, snapshot, evidence] = await Promise.all([loadRepositoryRegistry(), loadInventorySnapshot(), loadRepositoryEvidence()]);
+  const [registry, snapshot, evidence, departments] = await Promise.all([
+    loadRepositoryRegistry(),
+    loadInventorySnapshot(),
+    loadRepositoryEvidence(),
+    loadDepartmentsYAML(),
+  ]);
+  const categoryMap = departments.category_map || {};
+  const humanDepartments = (category) => (categoryMap[category] || []).map((id) => {
+    const item = departments.departments?.[id];
+    return item?.name || id;
+  });
   const byName = new Map((snapshot.repositories || []).map(r => [String(r.name).toLowerCase(), r]));
   const evidenceByName = new Map((evidence.repositories || []).map(r => [String(r.name).toLowerCase(), r]));
   const out = [];
@@ -54,6 +64,7 @@ async function catalogCandidates(task, maxCandidates = 8) {
       if (fit > 0) out.push({
         repository: name,
         category,
+        departments: humanDepartments(category),
         fit: Number(fit.toFixed(3)),
         description: meta.description || null,
         source: meta.full_name || ("HloniHypnotiseMe/" + name),
@@ -74,11 +85,20 @@ export async function suggestCapabilities(task, { maxCandidates = 3, allow = [] 
     return { status: "invalid", reason: "task_too_long", suggestion: null, candidates: [] };
   }
 
-  const [capRegistry, index, catalog] = await Promise.all([
+  const [capRegistry, index, catalog, departments] = await Promise.all([
     loadCapabilitiesYAML(),
     loadResolutionIndex(),
     catalogCandidates(request, 8),
+    loadDepartmentsYAML(),
   ]);
+  const categoryForCapability = (id) => {
+    const direct = Object.entries(departments.category_map || {}).find(([, ids]) => ids.includes(id));
+    return direct ? direct[0] : null;
+  };
+  const humanDepartmentsForCapability = (id) => {
+    const category = categoryForCapability(id);
+    return category ? (departments.category_map[category] || []).map((deptId) => departments.departments?.[deptId]?.name || deptId) : [];
+  };
   const capabilities = capRegistry.capabilities || [];
   const allowed = allow.length
     ? capabilities.filter((c) => allow.includes(c.id))
@@ -92,6 +112,7 @@ export async function suggestCapabilities(task, { maxCandidates = 3, allow = [] 
       return {
         capability: capability.id,
         purpose: capability.purpose,
+        departments: humanDepartmentsForCapability(capability.id),
         fit: Number(fit.toFixed(3)),
         providers: indexed.providers || capability.providers || [],
         adapter: indexed.adapter || null,
