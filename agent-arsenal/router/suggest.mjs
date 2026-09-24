@@ -85,20 +85,11 @@ export async function suggestCapabilities(task, { maxCandidates = 3, allow = [] 
     return { status: "invalid", reason: "task_too_long", suggestion: null, candidates: [] };
   }
 
-  const [capRegistry, index, catalog, departments] = await Promise.all([
+  const [capRegistry, index, catalog] = await Promise.all([
     loadCapabilitiesYAML(),
     loadResolutionIndex(),
     catalogCandidates(request, 8),
-    loadDepartmentsYAML(),
   ]);
-  const categoryForCapability = (id) => {
-    const direct = Object.entries(departments.category_map || {}).find(([, ids]) => ids.includes(id));
-    return direct ? direct[0] : null;
-  };
-  const humanDepartmentsForCapability = (id) => {
-    const category = categoryForCapability(id);
-    return category ? (departments.category_map[category] || []).map((deptId) => departments.departments?.[deptId]?.name || deptId) : [];
-  };
   const capabilities = capRegistry.capabilities || [];
   const allowed = allow.length
     ? capabilities.filter((c) => allow.includes(c.id))
@@ -112,7 +103,6 @@ export async function suggestCapabilities(task, { maxCandidates = 3, allow = [] 
       return {
         capability: capability.id,
         purpose: capability.purpose,
-        departments: humanDepartmentsForCapability(capability.id),
         fit: Number(fit.toFixed(3)),
         providers: indexed.providers || capability.providers || [],
         adapter: indexed.adapter || null,
