@@ -1,4 +1,4 @@
-import { loadCapabilitiesYAML, loadResolutionIndex, loadRepositoryRegistry, loadInventorySnapshot } from "../mcp-server/lib.mjs";
+import { loadCapabilitiesYAML, loadResolutionIndex, loadRepositoryRegistry, loadInventorySnapshot, loadRepositoryEvidence } from "../mcp-server/lib.mjs";
 
 const STOP = new Set([
   "a","an","and","are","as","at","be","before","by","for","from","how","i","in","is",
@@ -41,19 +41,24 @@ function scoreCatalog(taskTokens, name, category, description = "") {
 }
 
 async function catalogCandidates(task, maxCandidates = 8) {
-  const [registry, snapshot] = await Promise.all([loadRepositoryRegistry(), loadInventorySnapshot()]);
+  const [registry, snapshot, evidence] = await Promise.all([loadRepositoryRegistry(), loadInventorySnapshot(), loadRepositoryEvidence()]);
   const byName = new Map((snapshot.repositories || []).map(r => [String(r.name).toLowerCase(), r]));
+  const evidenceByName = new Map((evidence.repositories || []).map(r => [String(r.name).toLowerCase(), r]));
   const out = [];
   for (const [category, names] of Object.entries(registry.capabilities || {})) {
     for (const name of names || []) {
       const meta = byName.get(String(name).toLowerCase()) || {};
-      const fit = scoreCatalog(tokens(task), name, category, meta.description || "");
+      const ev = evidenceByName.get(String(name).toLowerCase()) || {};
+      const detected = new Set(ev.detected_capabilities || []);
+      const fit = scoreCatalog(tokens(task), name, category, meta.description || "") + (detected.size ? 0.05 : 0);
       if (fit > 0) out.push({
         repository: name,
         category,
         fit: Number(fit.toFixed(3)),
         description: meta.description || null,
-        source: meta.full_name || ("HloniHypnotiseMe/" + name)
+        source: meta.full_name || ("HloniHypnotiseMe/" + name),
+        evidence_status: ev.error ? "error" : (ev.evidence_source?.length ? "evidence_available" : "metadata_only"),
+        detected_capabilities: ev.detected_capabilities || []
       });
     }
   }
