@@ -62,6 +62,7 @@ const plan = {
     providers:selection.suggestion.providers || [],
     adapter:selection.suggestion.adapter || null
   },
+  repository_candidates:selection.repository_candidates || [],
   repository_inspection:{observed_markers:await inspectRepo(repo),note:"Repository markers establish existence only; runtime health and production state require separate verification."},
   authorization:{required:true,risk,requested_permissions:permissions},
   required_sequence:["INSPECT","MAP_COMPANY_OPERATING_MODEL","RESOLVE","BENCHMARK","SELECT_SMALLEST_LAYER","AUTHORIZE","IMPLEMENT","TEST","VERIFY","CAPTURE_EVIDENCE","REGISTER_KNOWLEDGE","RECORD_WIN"],
