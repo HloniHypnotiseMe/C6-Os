@@ -1,4 +1,4 @@
-import { loadCapabilitiesYAML, loadResolutionIndex } from "../mcp-server/lib.mjs";
+import { loadCapabilitiesYAML, loadResolutionIndex, loadRepositoryRegistry, loadInventorySnapshot } from "../mcp-server/lib.mjs";
 
 const STOP = new Set([
   "a","an","and","are","as","at","be","before","by","for","from","how","i","in","is",
@@ -30,6 +30,34 @@ function scoreTask(taskTokens, capability) {
 
   const raw = taskTokens.size ? overlap / Math.min(taskTokens.size, 8) : 0;
   return Math.min(1, raw + phraseBoost);
+}
+
+
+function scoreCatalog(taskTokens, name, category, description = "") {
+  const hay = tokens([name, category, description].join(" "));
+  let overlap = 0;
+  for (const token of taskTokens) if (hay.has(token)) overlap += 1;
+  return taskTokens.size ? overlap / Math.min(taskTokens.size, 8) : 0;
+}
+
+async function catalogCandidates(task, maxCandidates = 8) {
+  const [registry, snapshot] = await Promise.all([loadRepositoryRegistry(), loadInventorySnapshot()]);
+  const byName = new Map((snapshot.repositories || []).map(r => [String(r.name).toLowerCase(), r]));
+  const out = [];
+  for (const [category, names] of Object.entries(registry.capabilities || {})) {
+    for (const name of names || []) {
+      const meta = byName.get(String(name).toLowerCase()) || {};
+      const fit = scoreCatalog(tokens(task), name, category, meta.description || "");
+      if (fit > 0) out.push({
+        repository: name,
+        category,
+        fit: Number(fit.toFixed(3)),
+        description: meta.description || null,
+        source: meta.full_name || ("HloniHypnotiseMe/" + name)
+      });
+    }
+  }
+  return out.sort((a,b)=>b.fit-a.fit || a.repository.localeCompare(b.repository)).slice(0, maxCandidates);
 }
 
 export async function suggestCapabilities(task, { maxCandidates = 3, allow = [] } = {}) {
