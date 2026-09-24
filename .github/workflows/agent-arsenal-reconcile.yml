@@ -21,11 +21,20 @@ jobs:
           GITHUB_OWNER: HloniHypnotiseMe
         run: node agent-arsenal/universal/reconcile-github-profile.mjs
 
-      - name: Reconcile categorized repository registry\n        run: node agent-arsenal/universal/reconcile-registry.mjs\n\n      - name: Commit inventory refresh when changed
+      - name: Reconcile categorized repository registry
+        run: node agent-arsenal/universal/reconcile-registry.mjs
+
+      - name: Enrich repository capability evidence
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_OWNER: HloniHypnotiseMe
+        run: node agent-arsenal/universal/enrich-repository-evidence.mjs
+
+      - name: Commit inventory refresh when changed
         run: |
           git config user.name 'c6-agent-arsenal-bot'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add agent-arsenal/universal/inventory-snapshot.json agent-arsenal/universal/capability-diff.json agent-arsenal/universal/repository-registry.yaml
+          git add agent-arsenal/universal/inventory-snapshot.json agent-arsenal/universal/capability-diff.json agent-arsenal/universal/repository-registry.yaml agent-arsenal/universal/repository-evidence.json
           if git diff --cached --quiet; then
             echo 'No inventory changes.'
           else
