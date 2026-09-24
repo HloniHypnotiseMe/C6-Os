@@ -31,7 +31,7 @@ async function inspectRepo(root) {
 }
 
 const startHere = resolve(repo, "START-HERE.md");
-const osRoot = resolve(repo, "..");
+const osRoot = resolve(repo);
 const knowledgeFiles = [
   "knowledge/WHAT-WE-ALREADY-BUILT.md",
   "knowledge/ALREADY-BUILT.yaml",
@@ -51,6 +51,11 @@ for (const required of ["Inspect before building","Resolve capability","Benchmar
     console.error(JSON.stringify({status:"BLOCKED",reason:"start_here_gate_failed",missing:required}, null, 2));
     process.exit(4);
   }
+}
+
+if (Object.values(knowledgeStatus).some((present) => !present)) {
+  console.error(JSON.stringify({status:"BLOCKED",reason:"prior_build_memory_missing",knowledge:knowledgeStatus}, null, 2));
+  process.exit(4);
 }
 
 const selection = explicitCapability ? await suggestCapabilityById(explicitCapability) : await suggestCapabilities(task);
