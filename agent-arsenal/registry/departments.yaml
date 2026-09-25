@@ -84,3 +84,13 @@ category_map:
   productivity_office: [small_business, finance]
   security_offensive: [legal_ops, developers]
   specialist_or_reference: [legal_ops, developers]
+
+capability_map:
+  binary_executable_analysis: [developers]
+  malware_analysis: [developers, legal_ops]
+  protocol_network_reverse_engineering: [developers, legal_ops]
+  application_api_reverse_engineering: [developers]
+  firmware_embedded_analysis: [developers]
+  decompilation_disassembly: [developers]
+  vulnerability_research_reverse: [developers, legal_ops]
+  digital_forensics_reverse: [developers, legal_ops]
