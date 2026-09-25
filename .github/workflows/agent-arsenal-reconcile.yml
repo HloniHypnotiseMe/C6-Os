@@ -1,6 +1,7 @@
 name: Agent Arsenal Reconciliation
 # Cross-repository credential gate verified by C6_GITHUB_TOKEN
 # Verification trigger: repository secret has been provisioned.
+# Credential refresh verification trigger.
 on:
   workflow_dispatch:
   push:
