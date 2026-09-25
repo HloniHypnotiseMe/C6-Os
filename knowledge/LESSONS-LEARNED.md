@@ -37,3 +37,7 @@ Every material build should end with CAPTURE -> PROVE -> REGISTER -> ESCALATE.
 - Adding an agent where a skill/workflow already solves the job.
 - Claiming done from compilation alone.
 - Leaving important architectural decisions only in chat history.
+
+## Reverse Engineering
+
+Treat organisational departments as a presentation/operating layer, not a replacement for the Universal Arsenal taxonomy. Precise resolver categories must remain intact while humans receive simpler department labels. Existing specialist repositories must be inspected and registered by capability, provenance, permissions, risk, and verification status before reuse.
