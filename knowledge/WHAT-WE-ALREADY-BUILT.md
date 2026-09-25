@@ -64,3 +64,7 @@ Mandatory pre-build reference. Determine whether C6 already has the capability, 
 7. Add newly verified reusable knowledge here.
 
 This is an index, not authorization to use every listed system.
+
+## Reverse Engineering Department
+
+C6 now exposes Reverse Engineering as a first-class human department view over the precise Universal Arsenal taxonomy. The machine taxonomy remains unchanged at 37 categories. Registered C6-owned reverse-engineering resources include Ghidra, reverse-skill, and IDAssist. The department covers binary/executable analysis, malware analysis, protocol/network reverse engineering, application/API reverse engineering, firmware/embedded analysis, decompilation/disassembly, authorized vulnerability research, and digital-forensics reverse-engineering support. Reuse is capability-level; wholesale repository copying is prohibited.
