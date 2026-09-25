@@ -458,3 +458,46 @@ providers:
     runtime: vps
     pin: null
     note: "C6-owned public repository; production activation requires an immutable commit/tag pin and runtime verification. Upstream-derived AGPLv3 software; preserve licence/source obligations."
+ 
+  - id: ghidra
+    name: Ghidra
+    category: reverse_engineering
+    source: https://github.com/HloniHypnotiseMe/ghidra
+    source_type: controlled_fork
+    registry_status: registered
+    local_presence: confirmed
+    capabilities: [binary_executable_analysis, decompilation_disassembly, firmware_embedded_analysis, malware_analysis, digital_forensics_reverse]
+    risk: high
+    permissions: [filesystem_read, filesystem_write]
+    runtime: vps
+    pin: null
+    provenance: "C6-owned fork of Ghidra. Reuse capability through the source project; do not wholesale-copy source into C6-Os. Production use requires version/security-advisory verification and immutable pinning."
+
+  - id: reverse_skill
+    name: reverse-skill
+    category: reverse_engineering
+    source: https://github.com/HloniHypnotiseMe/reverse-skill
+    source_type: controlled_fork
+    registry_status: registered
+    local_presence: confirmed
+    capabilities: [binary_executable_analysis, malware_analysis, protocol_network_reverse_engineering, application_api_reverse_engineering, firmware_embedded_analysis, decompilation_disassembly, vulnerability_research_reverse, digital_forensics_reverse]
+    risk: high
+    permissions: [filesystem_read, filesystem_write, network, sandbox]
+    runtime: vps
+    pin: null
+    provenance: "C6-owned fork containing routing, skills, tool-index and evidence-oriented reverse-engineering workflows. Reuse the smallest required skill; do not wholesale-copy the repository."
+
+  - id: idassist
+    name: IDAssist
+    category: reverse_engineering
+    source: https://github.com/HloniHypnotiseMe/IDAssist
+    source_type: controlled_fork
+    registry_status: registered
+    local_presence: confirmed
+    capabilities: [binary_executable_analysis, application_api_reverse_engineering, decompilation_disassembly, vulnerability_research_reverse]
+    risk: high
+    permissions: [filesystem_read, filesystem_write, network]
+    runtime: vps
+    pin: null
+    provenance: "C6-owned fork of an IDA Pro plugin providing LLM-assisted binary analysis, function explanation, graph/RAG workflows and MCP/tool integration. Requires IDA Pro/Hex-Rays licensing where applicable; use only with authorized binaries."
+
