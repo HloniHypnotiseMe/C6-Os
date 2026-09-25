@@ -2,6 +2,12 @@ name: Agent Arsenal Reconciliation
 
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - 'agent-arsenal/universal/reconcile-github-profile.mjs'
+      - 'agent-arsenal/universal/reconcile-registry.mjs'
+      - 'agent-arsenal/universal/enrich-repository-evidence.mjs'
+      - '.github/workflows/agent-arsenal-reconcile.yml'
   schedule:
     - cron: '17 2 * * 1'
 
