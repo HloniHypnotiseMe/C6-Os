@@ -39,7 +39,7 @@ departments:
     name: "Small Business"
     description: "Run day-to-day business operations, CRM, productivity, infrastructure, files, and business systems."
     primary_categories: [productivity_office, crm_productivity, deployment_infrastructure, server_management, file_sharing_sync, media_servers]
-    supporting_categories: [communications, data_geo_documents, orchestration, workflow_automation]
+    supporting_categories: [communications, data_geo_documents, orchestration]
   legal_ops:
     name: "Legal / Operations"
     description: "Governance, risk, security, identity, investigation, reference, compliance-supporting operations, and organisational controls."
