@@ -8,6 +8,16 @@ assert.equal(positive.authorization_required, true);
 assert.ok(positive.candidates.length >= 1 && positive.candidates.length <= 3);
 assert.equal(positive.candidates[0].capability, "browser_automation");
 
+const reverse = await suggestCapabilities("analyze a compiled executable with disassembly and decompilation");
+assert.notEqual(reverse.status, "none");
+assert.ok(reverse.candidates.some((candidate) =>
+  ["binary_executable_analysis", "decompilation_disassembly"].includes(candidate.capability)
+));
+assert.ok(reverse.candidates.some((candidate) => candidate.departments?.includes("Developers")));
+assert.ok(reverse.repository_candidates.some((candidate) =>
+  ["ghidra", "reverse-skill", "IDAssist"].includes(candidate.repository)
+));
+
 const unknown = await suggestCapabilities("make breakfast and translate this sentence");
 assert.equal(unknown.status, "none");
 assert.equal(unknown.suggestion, null);
