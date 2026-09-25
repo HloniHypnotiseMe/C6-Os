@@ -1,4 +1,5 @@
 name: Agent Arsenal Reconciliation
+# Cross-repository credential gate verified by C6_GITHUB_TOKEN
 
 on:
   workflow_dispatch:
