@@ -1,9 +1,9 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { parse } from "yaml";
+import { loadRepositoryRegistry, loadDepartmentsYAML } from "../mcp-server/lib.mjs";
 
-const registry = parse(await readFile(new URL("../universal/repository-registry.yaml", import.meta.url), "utf8"));
-const departments = parse(await readFile(new URL("../registry/departments.yaml", import.meta.url), "utf8"));
+const registry = await loadRepositoryRegistry();
+const departments = await loadDepartmentsYAML();
 
 const categories = Object.keys(registry.capabilities || {});
 const departmentIds = Object.keys(departments.departments || {});
