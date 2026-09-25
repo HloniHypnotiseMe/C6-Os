@@ -176,3 +176,35 @@ capabilities:
   - id: mail_server
     purpose: "Provide self-hosted SMTP, submission, IMAP/POP3 mailboxes, filtering, and mail administration."
     providers: [billionmail]
+  - id: binary_executable_analysis
+    purpose: "Analyze compiled executables and binaries through disassembly, decompilation, graphing, scripting, and format-aware inspection."
+    providers: [ghidra, reverse_skill, idassist]
+    risk: high
+  - id: malware_analysis
+    purpose: "Perform authorized malware and malicious-code analysis using controlled reverse-engineering workflows and evidence capture."
+    providers: [reverse_skill, ghidra, idassist]
+    risk: high
+  - id: protocol_network_reverse_engineering
+    purpose: "Reverse engineer authorized network protocols, request flows, traffic captures, and application communication behaviour."
+    providers: [reverse_skill, idassist]
+    risk: high
+  - id: application_api_reverse_engineering
+    purpose: "Analyze authorized application, API, mobile, JavaScript, and client-side behaviour to recover implementation and protocol logic."
+    providers: [reverse_skill, idassist]
+    risk: high
+  - id: firmware_embedded_analysis
+    purpose: "Analyze authorized firmware, IoT, embedded binaries, images, and processor-specific code."
+    providers: [reverse_skill, ghidra]
+    risk: high
+  - id: decompilation_disassembly
+    purpose: "Convert compiled code into assembly and higher-level representations for authorized software analysis."
+    providers: [ghidra, idassist, reverse_skill]
+    risk: high
+  - id: vulnerability_research_reverse
+    purpose: "Support authorized vulnerability research by combining reverse engineering, code analysis, evidence capture, and controlled validation."
+    providers: [reverse_skill, idassist, ghidra]
+    risk: high
+  - id: digital_forensics_reverse
+    purpose: "Support authorized forensic examination of binaries, artifacts, and execution evidence where reverse engineering is required."
+    providers: [ghidra, reverse_skill, idassist]
+    risk: high
