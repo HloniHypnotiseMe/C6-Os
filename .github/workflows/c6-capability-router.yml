@@ -46,3 +46,5 @@ jobs:
         run: node agent-arsenal/tests/test-build-entry.mjs
       - name: Run Company Operating Model tests
         run: node agent-arsenal/tests/test-company-operating-model.mjs
+
+# Registry structure verification trigger
