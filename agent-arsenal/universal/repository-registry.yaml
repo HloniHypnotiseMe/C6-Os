@@ -654,7 +654,7 @@ internal_repositories:
     - ubernie
     - vps-audit
     - WiFiAudioStreaming-Desktop
-  c6_platform:
+c6_platform:
     - C6-Os
     - C6Group.AiOS
     - C6-Group-Final-Website
@@ -664,7 +664,7 @@ internal_repositories:
     - c6group-frontend
     - c6-deploy
     - c6-association-os
-  product:
+product:
     - Hlabi-Properties-Lifestyle-Hub
 
 selection_tiers:
