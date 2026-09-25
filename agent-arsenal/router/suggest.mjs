@@ -70,8 +70,13 @@ async function catalogCandidates(task, maxCandidates = 8) {
       const meta = byName.get(String(name).toLowerCase()) || {};
       const ev = evidenceByName.get(String(name).toLowerCase()) || {};
       const detected = new Set(ev.detected_capabilities || []);
+      const taskTokens = tokens(task);
       const providerCaps = providerCapabilities.get(String(name).toLowerCase()) || [];
-      const fit = scoreCatalog(tokens(task), name, category, [meta.description || "", ...providerCaps].join(" ")) + (detected.size ? 0.05 : 0);
+      const capabilityFit = scoreCatalog(taskTokens, "", "", providerCaps.join(" "));
+      const categoryFit = category === "reverse_engineering" && [...taskTokens].some((token) =>
+        ["reverse", "binary", "executable", "decompilation", "disassembly", "malware", "firmware", "protocol"].includes(token)
+      ) ? 0.35 : 0;
+      const fit = scoreCatalog(taskTokens, name, category, meta.description || "") + capabilityFit * 0.5 + categoryFit + (detected.size ? 0.05 : 0);
       if (fit > 0) out.push({
         repository: name,
         category,
