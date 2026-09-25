@@ -322,6 +322,67 @@
         "c6_os"
       ],
       "adapter": "c6-verification-workflow"
+    },
+    "binary_executable_analysis": {
+      "providers": [
+        "ghidra",
+        "reverse_skill",
+        "idassist"
+      ],
+      "adapter": "c6-reverse-binary"
+    },
+    "malware_analysis": {
+      "providers": [
+        "reverse_skill",
+        "ghidra",
+        "idassist"
+      ],
+      "adapter": "c6-reverse-malware"
+    },
+    "protocol_network_reverse_engineering": {
+      "providers": [
+        "reverse_skill",
+        "idassist"
+      ],
+      "adapter": "c6-reverse-protocol"
+    },
+    "application_api_reverse_engineering": {
+      "providers": [
+        "reverse_skill",
+        "idassist"
+      ],
+      "adapter": "c6-reverse-application"
+    },
+    "firmware_embedded_analysis": {
+      "providers": [
+        "reverse_skill",
+        "ghidra"
+      ],
+      "adapter": "c6-reverse-firmware"
+    },
+    "decompilation_disassembly": {
+      "providers": [
+        "ghidra",
+        "idassist",
+        "reverse_skill"
+      ],
+      "adapter": "c6-reverse-decompilation"
+    },
+    "vulnerability_research_reverse": {
+      "providers": [
+        "reverse_skill",
+        "idassist",
+        "ghidra"
+      ],
+      "adapter": "c6-reverse-vulnerability-research"
+    },
+    "digital_forensics_reverse": {
+      "providers": [
+        "ghidra",
+        "reverse_skill",
+        "idassist"
+      ],
+      "adapter": "c6-reverse-forensics"
     }
   },
   "providers": {
@@ -612,6 +673,43 @@
       "permissions": [
         "filesystem_read",
         "filesystem_write"
+      ],
+      "runtime": "vps",
+      "status": "registered"
+    },
+    "ghidra": {
+      "risk": "high",
+      "permissions": [
+        "filesystem_read",
+        "filesystem_write"
+      ],
+      "runtime": "vps",
+      "status": "registered"
+    },
+    "malware_analysis": {},
+    "protocol_network_reverse_engineering": {},
+    "application_api_reverse_engineering": {},
+    "firmware_embedded_analysis": {},
+    "decompilation_disassembly": {},
+    "vulnerability_research_reverse": {},
+    "digital_forensics_reverse": {},
+    "reverse_skill": {
+      "risk": "high",
+      "permissions": [
+        "filesystem_read",
+        "filesystem_write",
+        "network",
+        "sandbox"
+      ],
+      "runtime": "vps",
+      "status": "registered"
+    },
+    "idassist": {
+      "risk": "high",
+      "permissions": [
+        "filesystem_read",
+        "filesystem_write",
+        "network"
       ],
       "runtime": "vps",
       "status": "registered"
