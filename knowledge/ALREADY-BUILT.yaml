@@ -66,4 +66,4 @@ reverse_engineering_department:
   human_department: "Developers"
   capability_category: reverse_engineering
   registered_providers: [ghidra, reverse_skill, idassist]
-  verification: "Registry, provider, routing, provenance and department mapping registered; final CI green verification is the remaining gate."
+  verification: "Registry, provider, routing, provenance, department mapping, capability-router CI, and authenticated cross-repository reconciliation are green. Repository evidence enrichment completed for the authenticated estate."
