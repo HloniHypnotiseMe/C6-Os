@@ -24,3 +24,7 @@ Durable decisions that should influence future builds.
 - Important build knowledge must leave chat and enter C6-Os.
 - New reusable capabilities are registered after verification.
 - Failed, rejected and replaced approaches are recorded to prevent repeat work.
+
+## Department Views Do Not Replace the Universal Taxonomy
+
+C6 uses two views over one registry: the Universal Arsenal's 37 precise categories remain the machine source for agents, resolver and adapters; a smaller department taxonomy is the human-facing presentation layer for prospects, customers and audit reports. Departments may map many-to-many onto categories. Customer surfaces should not expose raw internal category identifiers unless explicitly required.
