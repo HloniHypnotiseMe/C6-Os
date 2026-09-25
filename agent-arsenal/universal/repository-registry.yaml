@@ -2,7 +2,7 @@ schema_version: "1.0"
 registry_id: c6-universal-agent-arsenal
 purpose: "Universal quick-reference for C6-Os, C6Group.AiOS, and connected C6 agents."
 source: "HloniHypnotiseMe GitHub profile fork inventory + C6 internal repositories"
-last_reconciled: "2026-09-17"
+last_reconciled: "2026-09-25"
 
 rules:
   - "Consult this registry before building, installing, or selecting a provider."
@@ -59,12 +59,18 @@ capabilities:
     - sim
     - superpowers
     - warp
+    - Aegis
+    - freebuff
+    - ponytail
+    - telegraf
+    - x-cmd
   agent_routing:
     - ClawRouter
     - LibreChat
     - OmniRoute
     - optillm
     - wifi-cracking
+    - C6-Creator-Suite
   coding_agents:
     - agentfiles
     - ai-job-search
@@ -94,6 +100,21 @@ capabilities:
     - sol-advisor
     - tabularis
     - Understand-Anything
+    - 50-essential-mcp-servers
+    - agentor
+    - andrej-karpathy-skills
+    - book-to-skill
+    - charlie-cfo-skill
+    - jev-skill-suggester
+    - n8n-mcp
+    - notebooklm-skill
+    - Product-Manager-Skills
+    - pullmd
+    - second-brain-os
+    - Skill_Seekers
+    - skill.color-expert
+    - translate-book
+    - tutor-skills
   mcp_and_tools:
     - 50-essential-mcp-servers
     - agent-device
@@ -105,6 +126,7 @@ capabilities:
     - mcp-toolbox
     - n8n-mcp
     - repowise
+    - activepieces
   memory_rag:
     - Acontext
     - anything-llm
@@ -124,6 +146,9 @@ capabilities:
     - supavec
     - supermemory
     - vllm
+    - memory-of-humanity
+    - nanobot
+    - sky-agent
   llm_inference:
     - foldergram
     - gallery
@@ -145,6 +170,7 @@ capabilities:
     - sokuji
     - transformers
     - transformers.js
+    - supertonic
   browser_web:
     - AIO-Video-Downloader
     - ArchiveBox
@@ -170,6 +196,7 @@ capabilities:
     - skills
     - stagehand
     - yt-dlp
+    - Agent-OS
   voice_audio:
     - chatterbox
     - ChatTTS-ui
@@ -220,6 +247,8 @@ capabilities:
     - VisoMaster-Fusion
     - Wan2.2
     - Website-downloader
+    - C6-Group-Video-Generator-AI
+    - watchtower
   communications:
     - agentic-inbox
     - Arkesel
@@ -271,6 +300,7 @@ capabilities:
     - trading-signals
     - TradingAgents
     - Vibe-Trading
+    - RemotePay-
   security_observability:
     - AdGuardHome
     - crowdsec
@@ -291,6 +321,11 @@ capabilities:
     - iroh
     - tailscale
     - xyops
+    - dnsChanger-desktop
+    - DnsServer
+    - firezone
+    - netgoat
+    - tun2socks
   data_geo_documents:
     - analytics
     - city2graph
@@ -311,6 +346,7 @@ capabilities:
     - surrealdb
     - surya
     - thoth-blueprint
+    - langgraph
   learning_reference:
     - 30-seconds-of-code
     - andrej-karpathy-skills
@@ -351,6 +387,21 @@ capabilities:
     - ui-ux-pro-max-skill
     - Ultimate-AI-Engineer-Roadmap-2026
     - You-Dont-Know-JS
+    - awesome-design-md
+    - awesome-jev
+    - awesome-openclaw-agents
+    - creative-director-skill
+    - designer-skills
+    - flyai-skill
+    - gtm-cofounder
+    - karakeep
+    - obsidian-skills
+    - oh-my-githubcopilot
+    - pdf-craft
+    - platform-design-skills
+    - superpowers
+    - terraform-skill
+    - youtube-skills
   reverse_engineering:
     - ghidra
     - IDAssist
@@ -385,6 +436,8 @@ capabilities:
     - pkgx
     - pyapp
     - transmute
+    - editor
+    - Fio
   web_frontend:
     - advanced-react-patterns
     - app.yumcut.com
@@ -398,6 +451,9 @@ capabilities:
     - Telegram-Drive
     - tldraw
     - web-to-app
+    - C6-Group-Final-Website
+    - OpenExecutive
+    - ServerKit
   game_engine:
     - athena-crisis
     - BotW-BetterVR
@@ -424,6 +480,7 @@ capabilities:
     - reiverr
     - rmux
     - wizarr
+    - crewAI
   agent_skills:
     - awesome-design-md
     - awesome-openclaw-agents
@@ -477,6 +534,7 @@ capabilities:
     - modly
     - opencap-monocular
     - VisionDepth3D
+    - engine
   hardware_robotics:
     - colota
     - Ducky
@@ -496,6 +554,10 @@ capabilities:
     - loop-engineering
     - OfflineMapDownloader
     - VerseCrafter
+    - city2graph
+    - ClawRouter
+    - kepler.gl
+    - Vibe-Skills
   marketing_growth:
     - awesome-ai-lead-generation
     - awesome-launch-platforms
@@ -511,10 +573,14 @@ capabilities:
     - postiz-app
     - ragflow
     - seo-audit-skill
+    - BillionMail
+    - C6-Mail-Services
+    - email-marketing-bible
   productivity_office:
     - ModernWMS
     - plane
     - vcard-personal-portfolio
+    - listmonk
   security_offensive:
     - AntiHunter
     - MHDDoS
@@ -561,6 +627,33 @@ capabilities:
     - vidaio-subnet
     - whichllm
 internal_repositories:
+    - ai-empire
+    - amber
+    - builder
+    - c6-association-os
+    - C6-Os
+    - c6-saas-core
+    - c6group-frontend
+    - C6Group.AiOS
+    - COMMODITY-CONNECT
+    - diesel-connect
+    - domains-manager
+    - FreeTube
+    - Hlabi-Properties-Lifestyle-Hub
+    - MzansiEdgeTunnel
+    - Nif
+    - nimble
+    - OpenCut
+    - OpenHD
+    - pdm
+    - pkgx
+    - pocketbase
+    - PROJECT_FIRE
+    - public-apis
+    - pyapp
+    - ubernie
+    - vps-audit
+    - WiFiAudioStreaming-Desktop
   c6_platform:
     - C6-Os
     - C6Group.AiOS
