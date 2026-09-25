@@ -60,7 +60,7 @@ entries:
     status: WORKS
 
 reverse_engineering_department:
-  status: WORKS
+  status: VERIFIED
   source: agent-arsenal/registry/departments.yaml
   machine_taxonomy_categories: 37
   human_department: "Developers"
