@@ -41,12 +41,22 @@ function scoreCatalog(taskTokens, name, category, description = "") {
 }
 
 async function catalogCandidates(task, maxCandidates = 8) {
-  const [registry, snapshot, evidence, departments] = await Promise.all([
+  const [registry, snapshot, evidence, departments, capRegistry] = await Promise.all([
     loadRepositoryRegistry(),
     loadInventorySnapshot(),
     loadRepositoryEvidence(),
     loadDepartmentsYAML(),
+    loadCapabilitiesYAML(),
   ]);
+  const providerCapabilities = new Map();
+  for (const capability of capRegistry.capabilities || []) {
+    for (const provider of capability.providers || []) {
+      const key = String(provider).toLowerCase();
+      const list = providerCapabilities.get(key) || [];
+      list.push(capability.id);
+      providerCapabilities.set(key, list);
+    }
+  }
   const categoryMap = departments.category_map || {};
   const humanDepartments = (category) => (categoryMap[category] || []).map((id) => {
     const item = departments.departments?.[id];
@@ -60,7 +70,8 @@ async function catalogCandidates(task, maxCandidates = 8) {
       const meta = byName.get(String(name).toLowerCase()) || {};
       const ev = evidenceByName.get(String(name).toLowerCase()) || {};
       const detected = new Set(ev.detected_capabilities || []);
-      const fit = scoreCatalog(tokens(task), name, category, meta.description || "") + (detected.size ? 0.05 : 0);
+      const providerCaps = providerCapabilities.get(String(name).toLowerCase()) || [];
+      const fit = scoreCatalog(tokens(task), name, category, [meta.description || "", ...providerCaps].join(" ")) + (detected.size ? 0.05 : 0);
       if (fit > 0) out.push({
         repository: name,
         category,
