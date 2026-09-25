@@ -85,11 +85,20 @@ export async function suggestCapabilities(task, { maxCandidates = 3, allow = [] 
     return { status: "invalid", reason: "task_too_long", suggestion: null, candidates: [] };
   }
 
-  const [capRegistry, index, catalog] = await Promise.all([
+  const [capRegistry, index, catalog, departments] = await Promise.all([
     loadCapabilitiesYAML(),
     loadResolutionIndex(),
     catalogCandidates(request, 8),
+    loadDepartmentsYAML(),
   ]);
+  const humanDepartmentsForCapability = (id) => {
+    const direct = departments.capability_map?.[id];
+    if (Array.isArray(direct) && direct.length) {
+      return direct.map((deptId) => departments.departments?.[deptId]?.name || deptId);
+    }
+    const category = Object.entries(departments.category_map || {}).find(([, ids]) => ids.includes(id))?.[0];
+    return category ? (departments.category_map[category] || []).map((deptId) => departments.departments?.[deptId]?.name || deptId) : [];
+  };
   const capabilities = capRegistry.capabilities || [];
   const allowed = allow.length
     ? capabilities.filter((c) => allow.includes(c.id))
@@ -103,6 +112,7 @@ export async function suggestCapabilities(task, { maxCandidates = 3, allow = [] 
       return {
         capability: capability.id,
         purpose: capability.purpose,
+        departments: humanDepartmentsForCapability(capability.id),
         fit: Number(fit.toFixed(3)),
         providers: indexed.providers || capability.providers || [],
         adapter: indexed.adapter || null,
@@ -140,10 +150,7 @@ export async function suggestCapabilities(task, { maxCandidates = 3, allow = [] 
 }
 
 export async function suggestCapabilityById(capabilityId) {
-  const [capRegistry, index] = await Promise.all([
-    loadCapabilitiesYAML(),
-    loadResolutionIndex(),
-  ]);
+  const [capRegistry, index, departments] = await Promise.all([loadCapabilitiesYAML(), loadResolutionIndex(), loadDepartmentsYAML()]);
   const capability = (capRegistry.capabilities || []).find((item) => item.id === capabilityId);
   if (!capability) {
     return { status: "unavailable", reason: "unknown_capability", suggestion: null, candidates: [] };
@@ -155,6 +162,7 @@ export async function suggestCapabilityById(capabilityId) {
     suggestion: {
       capability: capability.id,
       purpose: capability.purpose,
+      departments: departments.capability_map?.[capability.id]?.map((id) => departments.departments?.[id]?.name || id) || [],
       providers: indexed.providers || capability.providers || [],
       adapter: indexed.adapter || null,
     },
