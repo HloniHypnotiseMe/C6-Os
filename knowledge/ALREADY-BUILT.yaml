@@ -58,3 +58,12 @@ entries:
     outcome: "Evidence-backed completion and claim verification"
     system: "C6-Os"
     status: WORKS
+
+reverse_engineering_department:
+  status: WORKS
+  source: agent-arsenal/registry/departments.yaml
+  machine_taxonomy_categories: 37
+  human_department: "Developers"
+  capability_category: reverse_engineering
+  registered_providers: [ghidra, reverse_skill, idassist]
+  verification: "Registry, provider, routing, provenance and department mapping registered; final CI green verification is the remaining gate."
