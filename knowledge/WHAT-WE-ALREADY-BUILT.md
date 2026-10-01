@@ -80,3 +80,11 @@ Current standalone execution state after the latest merged application wave:
 - Revenue Hunter remains a custom/public acquisition capability rather than a normal standalone capacity-metered solution.
 
 Important implementation boundary: standalone execution must consume the exact active SolutionPurchase capacity and only complete consumption after the authoritative provider/system accepts the operation. Reservations have expiry handling and execution evidence. A green CI build does not establish LIVE production status; the Contabo deployment and external provider/runtime checks remain separate production gates.
+
+
+### Smart Funnel execution — verified build wave
+- Standalone Smart Funnel is now EXECUTABLE in C6-Group-Final-Website.
+- Authenticated customers with an active Smart Funnel entitlement can create tenant-owned public funnels with bearer tokens whose hashes are persisted; public lead submissions resolve to the owning tenant rather than trusting a browser-supplied user ID.
+- Lead submission reserves Smart Funnel capacity against an active SolutionPurchase and completes only after real C6 Mail notification/confirmation succeeds; execution evidence includes message IDs and execution ID.
+- Existing `lead.created` event integration is attempted as part of the funnel path; production provider/runtime success remains a separate LIVE gate.
+- PR #51 merged with build verification green; merge SHA `dd009b014d42f3af364df7041918ebe4b62fb9ed`.
