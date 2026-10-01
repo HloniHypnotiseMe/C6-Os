@@ -156,7 +156,54 @@ Do not add an agent merely because an AI feature sounds useful. First determine 
 
 Human approvals remain mandatory wherever policy, financial, legal, security, safety, or other configured risk controls require them.
 
-## 12. Definition of done
+## 12. Continuous Gap Intelligence
+
+Before building, while building, and before declaring the work complete, perform a **missing/overlooked sweep**.
+
+For every material claim or capability, map:
+
+**CLAIM → CAPABILITY → AUTHORITY → DEPENDENCIES → EXECUTION PATH → EVIDENCE → FAILURE/RECOVERY → SECURITY BOUNDARY → OWNER → OBSERVABILITY → LIFECYCLE STATE**
+
+Explicitly check for:
+
+- code that exists but is not connected at runtime;
+- UI claims that backend/provider evidence cannot prove;
+- legacy or duplicate runtimes/integrations;
+- payment paths that bypass the authoritative payment boundary;
+- webhooks/callbacks without authentication, idempotency or persistence;
+- data writes without tenant isolation, recovery or audit;
+- agents with permissions exceeding their job;
+- secrets crossing browser/log/report boundaries;
+- customer journeys that stop at a button, form or payment instruction;
+- failure, retry, timeout, duplicate and out-of-order event paths;
+- infrastructure/configuration that is named but not exercised;
+- monitoring, alerting, backup and restore gaps;
+- manual steps silently counted as complete;
+- external registrations/licences/compliance claims without external evidence;
+- contradictions against approved architecture or prior decisions.
+
+Ask the hidden-gap questions:
+
+1. What did we assume exists but never verify?
+2. What exists in code but is not connected?
+3. What works only on the happy path?
+4. What claim exceeds its evidence?
+5. What legacy path can still execute?
+6. What happens if the provider disagrees with local state?
+7. What happens after restart, duplicate delivery or partial failure?
+8. What customer action has no fulfilment path?
+9. What can break without an alert?
+10. What evidence would convince a skeptical third party?
+
+Classify findings as **CRITICAL / HIGH / MEDIUM / LOW / HUMAN / UNKNOWN**. Never silently convert UNKNOWN, SKIPPED or HUMAN into PASS.
+
+Every major checkpoint reports:
+
+**BUILT / PROVEN / MISSING / OVERLOOKED / BLOCKED / NEXT WIN**
+
+Use the smallest sufficient fix. Do not expand scope merely because a possible enhancement was discovered; surface it and preserve the current objective.
+
+## 13. Definition of done
 
 DONE means:
 
