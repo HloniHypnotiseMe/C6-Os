@@ -68,3 +68,15 @@ This is an index, not authorization to use every listed system.
 ## Reverse Engineering Department
 
 C6 now exposes Reverse Engineering as a first-class human department view over the precise Universal Arsenal taxonomy. The machine taxonomy remains unchanged at 37 categories. Registered C6-owned reverse-engineering resources include Ghidra, reverse-skill, and IDAssist. The department covers binary/executable analysis, malware analysis, protocol/network reverse engineering, application/API reverse engineering, firmware/embedded analysis, decompilation/disassembly, authorized vulnerability research, and digital-forensics reverse-engineering support. Reuse is capability-level; wholesale repository copying is prohibited.
+
+
+## C6 Smart Solutions — entitlement-aware execution
+
+The C6 Group website now has a 15-solution Smart Solutions catalogue with package/standalone separation, RemotePay-backed purchase flows, solution purchase types (BASE/TOP_UP), execution contracts, entitlement checks, capacity reservations and customer evidence patterns.
+
+Current standalone execution state after the latest merged application wave:
+- EXECUTABLE: Smart Books, Smart Calendar, Smart Income, Smart CRM, Smart WhatsApp, Smart SEO & GEO, Smart SECRETARIAT, Smart Retention, Smart Socials, Smart Analytics.
+- NOT_IMPLEMENTED / remaining capability work: Smart Inbox, Smart Funnel, Smart Reputation, Smart Ads.
+- Revenue Hunter remains a custom/public acquisition capability rather than a normal standalone capacity-metered solution.
+
+Important implementation boundary: standalone execution must consume the exact active SolutionPurchase capacity and only complete consumption after the authoritative provider/system accepts the operation. Reservations have expiry handling and execution evidence. A green CI build does not establish LIVE production status; the Contabo deployment and external provider/runtime checks remain separate production gates.
