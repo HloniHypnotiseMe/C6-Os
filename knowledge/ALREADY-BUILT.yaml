@@ -86,7 +86,19 @@ reverse_engineering_department:
       - smart-analytics
     remaining_not_implemented:
       - smart-inbox
-      - smart-funnel
       - smart-reputation
       - smart-ads
     notes: "Capacity is reserved against the exact SolutionPurchase and completed only after authoritative execution acceptance; production LIVE status remains a separate VPS/provider verification gate."
+
+  - id: smart_inbox_execution_core
+    outcome: "Tenant-owned Smart Inbox core with metered email/WhatsApp outbound execution"
+    system: "C6-Group-Final-Website + c6group-backend"
+    status: WORKS
+    contract: PROVIDER_REQUIRED
+    verified: "C6 Build Verification run 36874572955 passed; PR #52 merged as bfbc1af194c360260bd6b650d508988c456b3e91."
+    remaining_provider_gaps:
+      - inbound_email_adapter
+      - facebook_messenger_adapter
+      - instagram_dm_adapter
+      - tenant_routing_for_inbound_channels
+    notes: "Do not label Smart Inbox EXECUTABLE until the remaining inbound/provider claim surface is connected and proven."
