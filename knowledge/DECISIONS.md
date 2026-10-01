@@ -41,3 +41,9 @@ C6 uses two views over one registry: the Universal Arsenal's 37 precise categori
 ## Smart Funnel ownership boundary
 - Public Smart Funnel traffic must be bound to a server-created tenant funnel token; never accept a client-supplied user ID as proof of ownership.
 - Funnel capacity remains governed by SolutionPurchase entitlement reservation/completion, even though the public visitor is unauthenticated.
+
+
+## Smart Inbox provider boundary
+- Smart Inbox may expose and meter real tenant-owned outbound email/WhatsApp execution without implying full omnichannel coverage.
+- The standalone Smart Inbox contract remains `PROVIDER_REQUIRED` until inbound email, Facebook Messenger and Instagram DM adapters and tenant routing are connected and verified.
+- Provider gaps must be closed at the execution boundary; changing catalogue status alone is prohibited.
