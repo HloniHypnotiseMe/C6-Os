@@ -233,7 +233,7 @@ For the C6 Smart Solutions marketplace:
 - preserve evidence for reservations, successful execution and failures;
 - after every execution wave, update the C6 build-memory registry so future agents do not rebuild the same capability.
 
-Current verified standalone execution wave status is maintained in C6-Os knowledge, not only in chat. The latest application wave made Smart Income and Smart Retention executable; the remaining gaps must be resolved by capability evidence, not by changing labels.
+Current verified standalone execution wave status is maintained in C6-Os knowledge, not only in chat. The latest application waves made Smart Income, Smart Retention, and Smart Funnel executable; the remaining gaps must be resolved by capability evidence, not by changing labels.
 
 ## 15. Wave completion and memory-update gate
 
