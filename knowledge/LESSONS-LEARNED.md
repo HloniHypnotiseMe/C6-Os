@@ -53,3 +53,9 @@ Payment-link creation is also not proof of payment execution. Smart Income creat
 ## Smart Funnel lesson
 
 Public product execution cannot trust a browser-supplied tenant/user identifier. Smart Funnel ownership is bound server-side to a persisted funnel record and a hashed bearer token created only for an authenticated owner with an active entitlement. Public submissions resolve ownership from that token, then use the normal entitlement reservation path. This preserves tenant isolation while allowing an unauthenticated prospect to submit a lead.
+
+
+## Smart Inbox provider-boundary lesson
+
+A partial omnichannel implementation must not be promoted to a full commercial execution claim. Smart Inbox now has a real entitlement-aware tenant core and real outbound email/WhatsApp provider actions, but inbound email, Facebook Messenger and Instagram DM adapters plus tenant routing remain provider gaps. The correct state is `PROVIDER_REQUIRED` until those surfaces are connected and verified.
+
