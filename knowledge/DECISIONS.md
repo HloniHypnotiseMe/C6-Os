@@ -36,3 +36,8 @@ C6 uses two views over one registry: the Universal Arsenal's 37 precise categori
 - RemotePay remains the authoritative payment boundary for C6 solution purchases and payment-linked execution; do not introduce parallel payment paths.
 - Production deployment evidence remains distinct from repository/CI evidence. Contabo provisioning, DNS/HTTPS, secrets, persistence and external provider checks must be proven before claiming LIVE.
 - C6-Os build memory must be updated at the end of every material wave so future agents do not rely on stale chat context.
+
+
+## Smart Funnel ownership boundary
+- Public Smart Funnel traffic must be bound to a server-created tenant funnel token; never accept a client-supplied user ID as proof of ownership.
+- Funnel capacity remains governed by SolutionPurchase entitlement reservation/completion, even though the public visitor is unauthenticated.
