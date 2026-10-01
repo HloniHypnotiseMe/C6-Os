@@ -76,7 +76,9 @@ The C6 Group website now has a 15-solution Smart Solutions catalogue with packag
 
 Current standalone execution state after the latest merged application wave:
 - EXECUTABLE: Smart Books, Smart Calendar, Smart Income, Smart CRM, Smart WhatsApp, Smart SEO & GEO, Smart SECRETARIAT, Smart Retention, Smart Socials, Smart Analytics.
-- NOT_IMPLEMENTED / remaining capability work: Smart Inbox, Smart Funnel, Smart Reputation, Smart Ads.
+- EXECUTABLE: Smart Funnel.
+- PROVIDER_REQUIRED / remaining capability work: Smart Inbox.
+- NOT_IMPLEMENTED / remaining capability work: Smart Reputation, Smart Ads.
 - Revenue Hunter remains a custom/public acquisition capability rather than a normal standalone capacity-metered solution.
 
 Important implementation boundary: standalone execution must consume the exact active SolutionPurchase capacity and only complete consumption after the authoritative provider/system accepts the operation. Reservations have expiry handling and execution evidence. A green CI build does not establish LIVE production status; the Contabo deployment and external provider/runtime checks remain separate production gates.
@@ -88,3 +90,9 @@ Important implementation boundary: standalone execution must consume the exact a
 - Lead submission reserves Smart Funnel capacity against an active SolutionPurchase and completes only after real C6 Mail notification/confirmation succeeds; execution evidence includes message IDs and execution ID.
 - Existing `lead.created` event integration is attempted as part of the funnel path; production provider/runtime success remains a separate LIVE gate.
 - PR #51 merged with build verification green; merge SHA `dd009b014d42f3af364df7041918ebe4b62fb9ed`.
+
+
+### Smart Inbox execution core — verified build wave
+- Smart Inbox core is now merged in C6-Group-Final-Website with tenant-owned inboxes, conversation ownership, entitlement-aware capacity reservation, real C6 Mail email sending, real WhatsApp Cloud API sending, and execution evidence.
+- The standalone Smart Inbox contract remains `PROVIDER_REQUIRED`, not `EXECUTABLE`: the commercial claim also includes inbound email plus Facebook Messenger and Instagram DMs, and those provider adapters/tenant routing are not yet connected and proven.
+- PR #52 merged with C6 Build Verification green; merge SHA `bfbc1af194c360260bd6b650d508988c456b3e91`.
