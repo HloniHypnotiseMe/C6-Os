@@ -212,3 +212,37 @@ CAPABILITY RESOLVED
 + VERIFICATION PASSED
 + EVIDENCE CAPTURED
 + REUSABLE KNOWLEDGE REGISTERED
+
+
+## 14. Commercial capability claims and entitlement execution
+
+For C6 customer-facing products and solutions, never treat catalogue presence, pricing, a payment link, or UI as proof that the purchased capability can actually execute.
+
+Before exposing or selling a standalone solution, verify the chain:
+
+CLAIM -> SOLUTION CATALOGUE -> EXECUTION CONTRACT -> ACTIVE ENTITLEMENT -> CAPACITY RESERVATION -> REAL PROVIDER/SYSTEM ACTION -> COMPLETION -> CUSTOMER EVIDENCE
+
+Capacity must be consumed only when the authoritative execution boundary accepts the action. Failed provider actions must not consume completed capacity. Purchases, renewals and top-ups must remain isolated by exact purchase/entitlement so capacity cannot leak between grants.
+
+For the C6 Smart Solutions marketplace:
+- keep package pricing separate from individual solution pricing;
+- use the existing RemotePay/payment boundary rather than creating parallel payment paths;
+- mark a solution EXECUTABLE only when a real execution path exists and its boundary is verified;
+- mark missing provider/runtime capability NOT_IMPLEMENTED rather than simulating it;
+- distinguish EXISTS / WORKS / VERIFIED / LIVE at every checkpoint;
+- preserve evidence for reservations, successful execution and failures;
+- after every execution wave, update the C6 build-memory registry so future agents do not rebuild the same capability.
+
+Current verified standalone execution wave status is maintained in C6-Os knowledge, not only in chat. The latest application wave made Smart Income and Smart Retention executable; the remaining gaps must be resolved by capability evidence, not by changing labels.
+
+## 15. Wave completion and memory-update gate
+
+Every material build wave must finish with all four actions:
+1. BUILT — implementation merged or otherwise recorded.
+2. PROVEN — tests/build/runtime evidence captured at the level actually available.
+3. REGISTERED — reusable capability and current status added to knowledge/WHAT-WE-ALREADY-BUILT.md and knowledge/ALREADY-BUILT.yaml.
+4. LESSON/DECISION — any new anti-pattern, boundary, provider dependency, or durable architecture decision added to knowledge/LESSONS-LEARNED.md or knowledge/DECISIONS.md.
+
+If the implementation repository and C6-Os disagree, reconcile the C6-Os memory rather than allowing agents to work from stale chat context.
+
+A wave is not memory-complete until C6-Os has been updated.
