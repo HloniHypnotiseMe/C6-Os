@@ -48,3 +48,8 @@ Treat organisational departments as a presentation/operating layer, not a replac
 A marketplace entry is not an executable product. During the Smart Solutions waves, several catalogue entries initially appeared executable because package/public routes existed, but those routes did not consume standalone SolutionPurchase capacity. The correct fix was to audit the actual execution boundary and mark unsupported standalone routes NOT_IMPLEMENTED until a real entitlement-aware path exists.
 
 Payment-link creation is also not proof of payment execution. Smart Income creates a real payment link without consuming solution capacity, then consumes one unit only after the authoritative payment service reports PAID. Customer messaging follows the same rule: reserve first, complete only after the mail provider returns a real message identifier.
+
+
+## Smart Funnel lesson
+
+Public product execution cannot trust a browser-supplied tenant/user identifier. Smart Funnel ownership is bound server-side to a persisted funnel record and a hashed bearer token created only for an authenticated owner with an active entitlement. Public submissions resolve ownership from that token, then use the normal entitlement reservation path. This preserves tenant isolation while allowing an unauthenticated prospect to submit a lead.
