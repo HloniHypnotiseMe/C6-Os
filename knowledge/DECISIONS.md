@@ -28,3 +28,11 @@ Durable decisions that should influence future builds.
 ## Department Views Do Not Replace the Universal Taxonomy
 
 C6 uses two views over one registry: the Universal Arsenal's 37 precise categories remain the machine source for agents, resolver and adapters; a smaller department taxonomy is the human-facing presentation layer for prospects, customers and audit reports. Departments may map many-to-many onto categories. Customer surfaces should not expose raw internal category identifiers unless explicitly required.
+
+
+## Commercial execution boundary
+- Individual Smart Solutions remain separate from C6 package pricing; packages are the operating relationship while standalone solutions are capacity-metered marketplace purchases/top-ups.
+- A standalone solution may be labelled EXECUTABLE only when its execution contract, entitlement boundary, provider/system action and evidence path are implemented.
+- RemotePay remains the authoritative payment boundary for C6 solution purchases and payment-linked execution; do not introduce parallel payment paths.
+- Production deployment evidence remains distinct from repository/CI evidence. Contabo provisioning, DNS/HTTPS, secrets, persistence and external provider checks must be proven before claiming LIVE.
+- C6-Os build memory must be updated at the end of every material wave so future agents do not rely on stale chat context.
