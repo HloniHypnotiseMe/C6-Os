@@ -41,3 +41,10 @@ Every material build should end with CAPTURE -> PROVE -> REGISTER -> ESCALATE.
 ## Reverse Engineering
 
 Treat organisational departments as a presentation/operating layer, not a replacement for the Universal Arsenal taxonomy. Precise resolver categories must remain intact while humans receive simpler department labels. Existing specialist repositories must be inspected and registered by capability, provenance, permissions, risk, and verification status before reuse.
+
+
+## Smart Solutions execution lesson
+
+A marketplace entry is not an executable product. During the Smart Solutions waves, several catalogue entries initially appeared executable because package/public routes existed, but those routes did not consume standalone SolutionPurchase capacity. The correct fix was to audit the actual execution boundary and mark unsupported standalone routes NOT_IMPLEMENTED until a real entitlement-aware path exists.
+
+Payment-link creation is also not proof of payment execution. Smart Income creates a real payment link without consuming solution capacity, then consumes one unit only after the authoritative payment service reports PAID. Customer messaging follows the same rule: reserve first, complete only after the mail provider returns a real message identifier.
