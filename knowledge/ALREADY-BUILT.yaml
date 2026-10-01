@@ -67,3 +67,25 @@ reverse_engineering_department:
   capability_category: reverse_engineering
   registered_providers: [ghidra, reverse_skill, idassist]
   verification: "Registry, provider, routing, provenance, department mapping, capability-router CI, and authenticated cross-repository reconciliation are green. Repository evidence enrichment completed for the authenticated estate."
+
+  - id: c6_smart_solutions_execution
+    outcome: "Entitlement-aware standalone Smart Solutions execution and capacity accounting"
+    system: "C6-Group-Final-Website + c6group-backend"
+    status: WORKS
+    verified_executable:
+      - smart-books
+      - smart-calendar
+      - smart-income
+      - smart-crm
+      - smart-whatsapp
+      - smart-seo-geo
+      - smart-secretariat
+      - smart-retention
+      - smart-socials
+      - smart-analytics
+    remaining_not_implemented:
+      - smart-inbox
+      - smart-funnel
+      - smart-reputation
+      - smart-ads
+    notes: "Capacity is reserved against the exact SolutionPurchase and completed only after authoritative execution acceptance; production LIVE status remains a separate VPS/provider verification gate."
