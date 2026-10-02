@@ -233,7 +233,7 @@ For the C6 Smart Solutions marketplace:
 - preserve evidence for reservations, successful execution and failures;
 - after every execution wave, update the C6 build-memory registry so future agents do not rebuild the same capability.
 
-Current verified standalone execution wave status is maintained in C6-Os knowledge, not only in chat. The latest application waves made Smart Income, Smart Retention, and Smart Funnel executable. Smart Inbox now has a verified execution core but remains PROVIDER_REQUIRED until its full omnichannel claim surface is connected and proven; Smart Reputation and Smart Ads remain NOT_IMPLEMENTED. Remaining gaps must be resolved by capability evidence, not by changing labels.
+Current verified standalone execution wave status is maintained in C6-Os knowledge, not only in chat. The latest application waves made Smart Income, Smart Retention, and Smart Funnel executable. Smart Inbox now has a verified tenant execution core plus inbound provider adapters for BillionMail email, WhatsApp Cloud, Facebook Messenger and Instagram DM, but remains PROVIDER_REQUIRED until live credentials, external webhook registration and real received-message evidence are proven. Smart Reputation and Smart Ads remain NOT_IMPLEMENTED. Remaining gaps must be resolved by capability evidence, not by changing labels.
 
 ## 15. Wave completion and memory-update gate
 
