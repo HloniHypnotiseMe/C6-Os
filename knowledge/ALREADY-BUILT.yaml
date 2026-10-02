@@ -1,3 +1,14 @@
+schema_version: "1.0"
+purpose: "Machine-readable index preventing duplicate implementation and preserving reusable C6 knowledge."
+status_semantics:
+  EXISTS: "Known to exist."
+  WORKS: "Execution demonstrated."
+  VERIFIED: "Relevant evidence recorded."
+  LIVE: "Production runtime and external routing directly verified."
+  DEPRECATED: "No longer preferred."
+  REPLACED: "Superseded."
+  FAILED: "Attempted and did not satisfy the requirement."
+  DO_NOT_REPEAT: "Known anti-pattern or rejected approach."
 entries:
   - id: c6_os_arsenal
     outcome: "Universal capability and repository discovery"
