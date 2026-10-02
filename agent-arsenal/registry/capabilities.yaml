@@ -285,15 +285,15 @@ capabilities:
 
   - id: adversarial_assumption_analysis
     purpose: "Challenge assumptions before implementation and surface observable unknowns and hidden gaps."
-    providers: [gsd_core, c6_os]
+    providers: [get_shit_done, c6_os]
 
   - id: integration_verification
     purpose: "Verify that independently completed components actually connect end-to-end rather than merely coexist."
-    providers: [gsd_core, c6_os]
+    providers: [get_shit_done, c6_os]
 
   - id: goal_backward_verification
     purpose: "Verify actual goal achievement from implementation evidence instead of trusting task summaries."
-    providers: [gsd_core, c6_os]
+    providers: [get_shit_done, c6_os]
 
   - id: memory_curation
     purpose: "Curate durable project lessons, decisions and execution history after verified work."
