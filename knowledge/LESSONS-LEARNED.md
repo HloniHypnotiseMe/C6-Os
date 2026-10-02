@@ -68,3 +68,9 @@ The first proposed architecture overstated two provider capabilities. MusicGen i
 ## 2026-10-02 — Keep provider rules outside the strategy
 
 Challenge programmes can differ and change. Keep provider constraints in versioned profiles and expose any unverified rule as a gap; do not treat a configured profile as proof of compliance.
+
+
+## Smart Inbox inbound lesson — 2026-10-02
+A normalized provider ingress is the reusable boundary: provider-specific authentication and payload parsing belong in C6-Mail-Services, while tenant ownership and entitlement enforcement remain in C6-Group-Final-Website. This prevents provider secrets from entering the customer-facing application and keeps all channels on one tenant-routing/evidence path.
+
+WhatsApp webhook implementation now proves code-level normalization and signature handling, but it does not prove a live WhatsApp delivery until a real Meta webhook is registered and a real message reaches the production ingress.
