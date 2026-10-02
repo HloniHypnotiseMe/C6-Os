@@ -93,3 +93,9 @@ Future C6 discovery must therefore inspect not only product source but also the 
 - Registered speech-to-text, diarization, forced alignment, transcription job API, realtime streaming, media ingestion, artifact generation and transcription observability capabilities from HloniHypnotiseMe/transcribe-anything.
 - Source inspection found a self-hosted FastAPI daemon, bounded queue, authenticated HTTP/WebSocket surfaces, health/readiness, metrics, webhooks, token redaction, multiple isolated transcription backends and extensive tests.
 - This is a capability source, not a deployment decision. C6 must own tenant identity, entitlement/quota, durable job authority and business evidence.
+
+
+## 2026-10-02 — Do not duplicate an existing WhatsApp provider
+The Smart WhatsApp wave initially used a direct Cloud API path even though C6-Os had already registered and source-inspected Whatomate. The corrected pattern is to reuse the existing provider at the execution boundary: C6 owns identity, entitlement, metering and evidence; Whatomate owns provider-facing WhatsApp execution. Repository source discovery must happen before adding a parallel provider integration.
+
+A provider integration is still not production proof. The merged adapter and green CI establish repository/build evidence only; deployment, credentials, external Meta configuration and a real accepted message remain separate LIVE gates.
