@@ -20,9 +20,9 @@ gaps:
   - id: GAP-002
     area: commodity_connect_backend
     scope: COMMODITY-CONNECT
-    status: open
-    finding: "Repository README still identifies PocketBase as intended application data layer, conflicting with the current C6-owned self-hosted platform decision."
-    closure: "Migrate application data/auth/storage/workflows to the C6 platform component; remove PocketBase runtime/config once parity is verified; retain RemotePay as payment boundary."
+    status: closed
+    finding: "PocketBase is no longer the intended production application data/control plane; the repository now documents C6 SaaS Core + shared PostgreSQL as the target and payment operations behind C6 Core."
+    closure: "Closed at source/documentation level. Production runtime migration remains a separate deployment/evidence gate and is not claimed LIVE."
 
   - id: GAP-003
     area: association_os_backend
