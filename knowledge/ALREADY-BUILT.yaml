@@ -152,3 +152,10 @@ reverse_engineering_department:
     status: EXISTS
     verification: "Model-runtime, tool-runtime, heterogeneous-agent, context-engine and .agents acceptance/chaos source inspected."
     notes: "Candidate for ADAPT/COMPOSE. Must remain underneath C6 authority/governance."
+
+  - id: transcribe_anything_nuggets
+    outcome: "Speech/transcription capability source registered"
+    system: "HloniHypnotiseMe/transcribe-anything"
+    status: EXISTS
+    verification: "Source, server API, streaming protocol, tests and backend tree inspected on 2026-10-02."
+    notes: "Candidate ADAPT/COMPOSE; not LIVE. C6 must add tenant identity, durable restart-safe queue, entitlement/quotas and authoritative evidence boundaries."
