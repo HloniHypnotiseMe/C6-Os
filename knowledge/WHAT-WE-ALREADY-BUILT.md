@@ -178,3 +178,12 @@ Important implementation boundary: standalone execution must consume the exact a
 - Smart Reputation is now EXECUTABLE at repository level; Smart Ads is PROVIDER_REQUIRED until real Meta credentials/account/page configuration and a real paused-campaign creation are evidenced.
 - Both remain separate from LIVE production status; Contabo deployment, provider configuration and external evidence are still required.
 - PR #56 merged; merge SHA `beb6cf3154f861bcf0023904f7c5d8efc2b34d2b`.
+
+
+### Smart Reputation + Smart Ads — execution wave — 2026-10-02
+- Smart Reputation execution is implemented and merged: entitlement-aware review-request execution through C6 Mail, with capacity completed only after a real provider message ID.
+- Smart Ads execution is implemented and merged: entitlement-aware Meta Marketing API campaign-creation boundary, with campaigns created PAUSED.
+- Contract regression coverage was added for both capability states.
+- Smart Reputation is EXECUTABLE at repository level; Smart Ads is PROVIDER_REQUIRED until real Meta credentials/account/page configuration and real paused-campaign evidence exist.
+- Neither is LIVE until external runtime evidence exists.
+- PR #56 merged; merge SHA `beb6cf3154f861bcf0023904f7c5d8efc2b34d2b`.
