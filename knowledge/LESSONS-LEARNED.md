@@ -82,3 +82,9 @@ A universal repository registry can prove that a repository is known, but it can
 The mandatory fix is source-level nugget mining: inspect docs, manifests, source, tests, E2E fixtures, migrations, operational scripts, agent instructions, acceptance/chaos tests, queues/workers, webhooks, permissions and failure paths. Capture the smallest useful component with provenance and evidence in knowledge/REPO-NUGGETS.md.
 
 The Whatomate inspection demonstrated why this matters: "WhatsApp" hides multi-tenancy, permission matrices, realtime chat, campaigns, branching chatbot flows, agent transfers, audit logs, queues/workers, webhooks and extensive E2E coverage. LobeHub similarly contains agent gateway, heterogeneous agents, context pipelines, runtime abstraction, acceptance/chaos infrastructure and observability beyond its headline workspace description.
+
+
+## 2026-10-02 — Second-wave repository sweep lesson
+The first nugget sweep fixed the registry blindness, but a single provider can still hide critical execution patterns in agents, review rules, tests and operational tooling. The second sweep confirmed that the highest-value nuggets are often not headline product features: GSD's adversarial verification, OpenViking's typed experience memory, n8n's migration/security gates and typed AI evals, Goose's replayable operation notes, Agency-Agents' zero-trust delegation model, Documenso's constant-time webhook verification and listmonk's bounce normalization are all reusable patterns.
+
+Future C6 discovery must therefore inspect not only product source but also the repository's internal engineering system: agent instructions, review rules, test harnesses, failure/recovery code and operational controls.
