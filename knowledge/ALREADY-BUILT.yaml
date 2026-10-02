@@ -159,3 +159,18 @@ reverse_engineering_department:
     status: EXISTS
     verification: "Source, server API, streaming protocol, tests and backend tree inspected on 2026-10-02."
     notes: "Candidate ADAPT/COMPOSE; not LIVE. C6 must add tenant identity, durable restart-safe queue, entitlement/quotas and authoritative evidence boundaries."
+
+
+  - id: smart_whatsapp_whatomate_execution
+    outcome: "Entitlement-aware Smart WhatsApp outbound execution through the registered Whatomate provider"
+    system: "C6-Group-Final-Website + HloniHypnotiseMe/whatomate"
+    status: WORKS
+    verification: "C6 website PR #55 merged as c3f0709122973dfaec46a90c00f152112adeace3; corrected C6 Build Verification run 36997089780 completed with backend and frontend success."
+    provider: "Whatomate"
+    boundary: "C6 remains authoritative for customer identity, entitlement, capacity reservation and evidence; Whatomate performs the provider-facing WhatsApp send and must return a provider message identifier before capacity is completed."
+    production_gaps:
+      - whatomate_deployment
+      - whatomate_api_key_and_account_configuration
+      - meta_whatsapp_credentials
+      - real_whatsapp_send_evidence
+    notes: "Outbound Smart WhatsApp integration only; it does not make Smart Inbox LIVE or replace normalized inbound provider adapters."
