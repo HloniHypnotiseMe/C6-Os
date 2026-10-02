@@ -130,3 +130,25 @@ reverse_engineering_department:
     notes:
       - "Execution product is separate from the Control Centre UI."
       - "Provider profiles require current verification before deployment."
+
+
+  - id: repository_nugget_sweep
+    outcome: "Mandatory source-level capability mining and durable nugget registration"
+    system: "C6-Os START-HERE + knowledge/REPO-NUGGETS.md"
+    status: WORKS
+    verified: "START-HERE updated d061c133cb46d9c0e63f07617d014c5d8c82be96; Whatomate and LobeHub source-level nuggets inspected and registered in detailed provider/capability registries."
+    notes: "Registry presence alone is not sufficient. Agents must inspect source, tests, operational tooling and failure paths of relevant providers before building."
+
+  - id: whatomate_nuggets
+    outcome: "WhatsApp platform capability nuggets"
+    system: "HloniHypnotiseMe/whatomate"
+    status: EXISTS
+    verification: "Repository tree and README inspected; source paths for chatbot, agent transfer, webhooks, audit, queue, worker, WhatsApp APIs and E2E suites identified."
+    notes: "Candidate for ADAPT/COMPOSE. Not deployed or LIVE."
+
+  - id: lobehub_nuggets
+    outcome: "Agent execution/runtime capability nuggets"
+    system: "HloniHypnotiseMe/lobehub"
+    status: EXISTS
+    verification: "Model-runtime, tool-runtime, heterogeneous-agent, context-engine and .agents acceptance/chaos source inspected."
+    notes: "Candidate for ADAPT/COMPOSE. Must remain underneath C6 authority/governance."
