@@ -45,3 +45,34 @@ agent_families:
     name: OpenViking Memory Agents
     sources: [OpenViking/openviking, OpenViking/bot/vikingbot/agent]
     roles: [memory, retrieval, context]
+
+
+  - id: gsd_verification_cluster
+    name: GSD Verification Cluster
+    sources: [open-gsd/gsd-core/agents]
+    roles: [assumption_analysis, integration_verification, goal_backward_verification, memory_curation]
+    risk: controlled
+
+  - id: whatomate_messaging_cluster
+    name: Whatomate Messaging Specialists
+    sources: [HloniHypnotiseMe/whatomate/internal, HloniHypnotiseMe/whatomate/pkg/whatsapp]
+    roles: [whatsapp_operations, chatbot_automation, messaging, agent_transfer, webhook_operations]
+    risk: high
+
+  - id: lobehub_agent_runtime_cluster
+    name: LobeHub Agent Runtime Specialists
+    sources: [HloniHypnotiseMe/lobehub/packages]
+    roles: [agent_runtime, context_engineering, tool_execution, agent_groups, observability]
+    risk: controlled
+
+  - id: goose_execution_cluster
+    name: Goose Execution Specialists
+    sources: [aaif-goose/goose/crates/goose-agent, aaif-goose/goose/crates/goose-context-management]
+    roles: [agent_state_machine, context_compaction, mcp_memory]
+    risk: controlled
+
+  - id: agency_trust_qa_cluster
+    name: Agency Trust and Evidence Specialists
+    sources: [msitarzewski/agency-agents/specialized, msitarzewski/agency-agents/testing]
+    roles: [agent_identity_trust, evidence_collection, testing, reporting]
+    risk: controlled
