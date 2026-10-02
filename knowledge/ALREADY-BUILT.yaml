@@ -1,14 +1,3 @@
-schema_version: "1.0"
-purpose: "Machine-readable index preventing duplicate implementation and preserving reusable C6 knowledge."
-status_semantics:
-  EXISTS: "Known to exist."
-  WORKS: "Execution demonstrated."
-  VERIFIED: "Relevant evidence recorded."
-  LIVE: "Production runtime and external routing directly verified."
-  DEPRECATED: "No longer preferred."
-  REPLACED: "Superseded."
-  FAILED: "Attempted and did not satisfy the requirement."
-  DO_NOT_REPEAT: "Known anti-pattern or rejected approach."
 entries:
   - id: c6_os_arsenal
     outcome: "Universal capability and repository discovery"
@@ -84,24 +73,27 @@ reverse_engineering_department:
       - smart-funnel
       - smart-socials
       - smart-analytics
-    remaining_not_implemented:
+    provider_required:
       - smart-inbox
+    remaining_not_implemented:
       - smart-reputation
       - smart-ads
-    notes: "Capacity is reserved against the exact SolutionPurchase and completed only after authoritative execution acceptance; production LIVE status remains a separate VPS/provider verification gate."
+    notes: "Capacity is reserved against the exact SolutionPurchase and completed only after authoritative execution acceptance; Smart Inbox has provider adapters implemented but remains PROVIDER_REQUIRED until live credentials, webhook registration and received-message evidence are proven; production LIVE status remains a separate VPS/provider verification gate."
 
   - id: smart_inbox_execution_core
-    outcome: "Tenant-owned Smart Inbox core with metered email/WhatsApp outbound execution"
-    system: "C6-Group-Final-Website + c6group-backend"
+    outcome: "Tenant-owned Smart Inbox core with metered outbound and normalized omnichannel inbound routing"
+    system: "C6-Group-Final-Website + c6group-backend + C6-Mail-Services"
     status: WORKS
     contract: PROVIDER_REQUIRED
-    verified: "C6 Build Verification run 36874572955 passed; PR #52 merged as bfbc1af194c360260bd6b650d508988c456b3e91."
+    verified: "C6 website PR #52 merged bfbc1af194c360260bd6b650d508988c456b3e91; C6 Mail Services inbound adapter PRs merged; WhatsApp inbound adapter CI run 36988334305 succeeded; website contract reconciliation PR #54 merged 344a56425f22b980186cc614ea34244733f22e5f with build verification run 36988340571 succeeded."
+    channels:
+      outbound: [email, whatsapp]
+      inbound: [email, whatsapp, facebook, instagram]
     remaining_provider_gaps:
-      - inbound_email_adapter
-      - facebook_messenger_adapter
-      - instagram_dm_adapter
-      - tenant_routing_for_inbound_channels
-    notes: "Do not label Smart Inbox EXECUTABLE until the remaining inbound/provider claim surface is connected and proven."
+      - live_provider_credentials
+      - provider_webhook_registration
+      - real_received_message_evidence
+    notes: "BillionMail IMAP normalizes inbound email; WhatsApp Cloud, Meta Messenger and Instagram webhook adapters normalize signed provider events into the same tenant-owned ingress. Do not label EXECUTABLE until external runtime evidence is captured."
 
   - id: c6_studio_foundation
     outcome: "AI music workstation foundation with arrangement, role-pass generation, timeline/mixer UI and mix/export boundary"
