@@ -54,3 +54,12 @@ C6 uses two views over one registry: the Universal Arsenal's 37 precise categori
 - Keep generation providers server-side. Browser clients must not hold provider API credentials.
 - Treat provider availability as a separate state from implementation existence.
 - Use FFmpeg as the initial verified mix/export boundary; add Ardour only through a tested adapter/session contract.
+
+
+## 2026-10-02 — Trading products are workloads, not Control Centre modules
+
+C6 trading EAs/robots are independently versioned products. The Control Centre manages catalogue, entitlement, deployment, health, evidence, suspension and kill-switch state. The execution workload stays outside the permanent control-plane UI.
+
+## 2026-10-02 — Provider rules use versioned profiles
+
+Challenge-provider rules are represented as versioned profiles rather than assumptions embedded in the trading strategy. A profile becomes deployable only after the exact programme and current provider terms are verified.
