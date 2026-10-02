@@ -77,8 +77,9 @@ The C6 Group website now has a 15-solution Smart Solutions catalogue with packag
 Current standalone execution state after the latest merged application wave:
 - EXECUTABLE: Smart Books, Smart Calendar, Smart Income, Smart CRM, Smart WhatsApp, Smart SEO & GEO, Smart SECRETARIAT, Smart Retention, Smart Socials, Smart Analytics.
 - EXECUTABLE: Smart Funnel.
-- PROVIDER_REQUIRED / remaining capability work: Smart Inbox.
-- NOT_IMPLEMENTED / remaining capability work: Smart Reputation, Smart Ads.
+- EXECUTABLE: Smart Reputation.
+- PROVIDER_REQUIRED: Smart Ads.
+- PROVIDER_REQUIRED / remaining provider evidence: Smart Inbox.
 - Revenue Hunter remains a custom/public acquisition capability rather than a normal standalone capacity-metered solution.
 
 Important implementation boundary: standalone execution must consume the exact active SolutionPurchase capacity and only complete consumption after the authoritative provider/system accepts the operation. Reservations have expiry handling and execution evidence. A green CI build does not establish LIVE production status; the Contabo deployment and external provider/runtime checks remain separate production gates.
@@ -168,3 +169,12 @@ Important implementation boundary: standalone execution must consume the exact a
 - Deployment script generates the production Whatomate config from VPS-only secrets and refuses unpinned Whatomate images or missing provider configuration.
 - Production-stack validation run `37001711593` passed after the runtime wiring fix.
 - Status: DEPLOYMENT-READY / NOT LIVE. Contabo VPS provisioning/access, real Whatomate API key, Meta/WhatsApp account configuration, DNS/HTTPS and real outbound message evidence remain external production gates.
+
+
+### Smart Reputation + Smart Ads — execution wave — 2026-10-02
+- Smart Reputation execution is now implemented and merged in C6-Group-Final-Website: entitlement-aware review-request execution through the existing C6 Mail boundary, with capacity completed only after a real provider message ID is returned.
+- Smart Ads execution is now implemented and merged: entitlement-aware Meta Marketing API campaign-creation boundary, explicit objective mapping, and campaigns created PAUSED rather than claiming live advertising or performance.
+- Contract regression coverage was added for both capability states.
+- Smart Reputation is now EXECUTABLE at repository level; Smart Ads is PROVIDER_REQUIRED until real Meta credentials/account/page configuration and a real paused-campaign creation are evidenced.
+- Both remain separate from LIVE production status; Contabo deployment, provider configuration and external evidence are still required.
+- PR #56 merged; merge SHA `beb6cf3154f861bcf0023904f7c5d8efc2b34d2b`.
