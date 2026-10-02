@@ -188,3 +188,17 @@ reverse_engineering_department:
     status: WORKS
     verification: "Structural admission contract and regression test added; runtime execution of the test is pending a network-capable CI/runner because the current execution environment cannot reach GitHub."
     notes: "Gates identity, risk, permissions, capability, evidence contract and provenance. Does not grant C6 authority or prove production runtime."
+
+
+  - id: whatomate_production_runtime
+    outcome: "Canonical self-hosted Whatomate runtime for Smart WhatsApp provider execution"
+    system: "C6-Group-Final-Website unified deployment + HloniHypnotiseMe/whatomate"
+    status: WORKS
+    verification: "Unified stack wiring, immutable image pin, provider env wiring, production config generation, Caddy endpoint and deployment-script validation are implemented; production-stack validation run 37001711593 passed."
+    production_state: DEPLOYMENT_READY_NOT_LIVE
+    remaining_gates:
+      - contabo_vps_provisioning_and_access
+      - whatomate_api_key
+      - meta_whatsapp_business_configuration
+      - whatsapp_c6group_co_za_dns_https
+      - real_outbound_whatsapp_message_evidence
