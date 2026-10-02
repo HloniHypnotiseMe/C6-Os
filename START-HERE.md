@@ -297,3 +297,17 @@ Every material build wave must finish with all four actions:
 If the implementation repository and C6-Os disagree, reconcile the C6-Os memory rather than allowing agents to work from stale chat context.
 
 A wave is not memory-complete until C6-Os has been updated.
+
+## GitAgent execution layer — mandatory admission boundary
+
+When a GitAgent-style repository is used as an agent execution source, treat it as an execution artifact, not an authority plane.
+
+Before admission, run:
+
+```bash
+node agent-arsenal/runtime/admit-gitagent.mjs /path/to/agent-repo
+```
+
+The bundle must declare identity, rules, duties, runtime/risk, C6 capability, permissions, evidence contract and provenance. GitAgent mechanisms such as memory, tools, plugins, MCP, scheduling, Git sessions and learning may be reused, but they never grant tenant, entitlement, payment, production-credential or unrestricted infrastructure authority. Those remain C6-governed.
+
+Admission status is structural only: READY is not WORKS, VERIFIED or LIVE. Runtime evidence must still be captured through the normal C6 evidence ladder.
