@@ -63,3 +63,8 @@ A partial omnichannel implementation must not be promoted to a full commercial e
 
 ## C6 STUDIO lesson
 The first proposed architecture overstated two provider capabilities. MusicGen is a text-to-music generator; isolated stems must not be implied merely by running separate prompts. XTTS-v2 is multilingual speech/voice cloning; it must not be presented as a singing synthesizer. Provider boundaries must reflect what the actual model proves.
+
+
+## 2026-10-02 — Keep provider rules outside the strategy
+
+Challenge programmes can differ and change. Keep provider constraints in versioned profiles and expose any unverified rule as a gap; do not treat a configured profile as proof of compliance.
