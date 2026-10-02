@@ -129,3 +129,14 @@ Important implementation boundary: standalone execution must consume the exact a
 - Whatomate is now registered as a detailed WhatsApp platform provider. Its inspected source contains reusable nuggets for multi-tenancy, granular permissions, realtime chat, templates, campaigns, chatbot/branching flows, agent transfer, audit logs, webhooks, queues/workers and E2E verification.
 - LobeHub is now registered as a detailed agent-runtime provider. Its inspected source contains heterogeneous-agent runtime/gateway, context pipeline, model/tool runtime, MCP, agent groups, acceptance/chaos tooling, self-iteration and observability mechanisms.
 - These are candidate reusable components, not claims that C6 has deployed them. C6 authority, tenant, entitlement, payment and evidence boundaries remain authoritative.
+
+
+## Repository Nugget Discovery — Second Wave — 2026-10-02
+- GSD Core active source discovered: the registered get-shit-done fork redirects to Open GSD/GSD Core. Its integration checker and goal-backward verifier are directly relevant to C6's evidence-first execution model.
+- OpenViking source contains durable typed agent experience/trajectory memory, context assembly, bounded background subagents, remote skills and sandbox-aware workspace handling.
+- n8n source contains repository-grade migration/workflow/security review rules, typed AI evaluation infrastructure and telemetry registry patterns.
+- Goose source contains replayable operation-state semantics, context compaction contracts and scoped MCP memory.
+- Agency-Agents contains zero-trust agent identity/delegation, evidence-collector methodology and delivery/data-consolidation specialist patterns.
+- Documenso contains constant-time webhook verification and evidence-rich document signing workflow patterns.
+- listmonk contains provider bounce/complaint normalization, role/permission and delivery event patterns.
+- These are source-level reusable nuggets, not proof that C6 has deployed them.
