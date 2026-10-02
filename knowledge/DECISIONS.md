@@ -63,3 +63,10 @@ C6 trading EAs/robots are independently versioned products. The Control Centre m
 ## 2026-10-02 — Provider rules use versioned profiles
 
 Challenge-provider rules are represented as versioned profiles rather than assumptions embedded in the trading strategy. A profile becomes deployable only after the exact programme and current provider terms are verified.
+
+
+## 2026-10-02 — Smart Inbox normalized provider ingress
+- Smart Inbox provider adapters terminate at C6-Mail-Services and forward a normalized event to the C6 website ingress; customer tenants never receive provider secrets.
+- WhatsApp Cloud, Facebook Messenger and Instagram webhook events use the Meta application signature boundary before forwarding.
+- Tenant routing is resolved from the provider-owned destination identifier (mailbox, WhatsApp phone-number ID, Facebook Page ID or Instagram account ID), then the active Smart Inbox entitlement is checked before persistence.
+- Provider implementation is not production proof: live credentials, external webhook registration and received-message evidence remain separate gates.
