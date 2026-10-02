@@ -206,3 +206,54 @@ Source-level inspection exposed:
 - provider-specific bounce classification and campaign metadata capture.
 
 C6 action: **ADAPT / COMPOSE** for outbound email operations, delivery/bounce handling and webhook evidence patterns; BillionMail remains C6's mail server boundary.
+
+
+## 2026-10-02 — transcribe-anything
+
+Repository: `HloniHypnotiseMe/transcribe-anything`
+
+Status: **SOURCE-INSPECTED / HIGH-VALUE CAPABILITY SOURCE**
+
+This is not merely a transcription CLI. The fork exposes a reusable local/self-hosted speech-processing capability layer:
+- local-file and URL/media ingestion via yt-dlp + audio normalization;
+- multiple isolated transcription backends: Whisper, insanely-fast-whisper, WhisperX, SenseVoice, Intel XPU and Apple MLX;
+- speaker diarization and `speaker.json` output where supported;
+- forced alignment and word-level timestamps;
+- subtitle/text/JSON/VTT/SRT artifact generation;
+- Python API;
+- persistent FastAPI daemon with authenticated HTTP API;
+- bounded background job queue and single-worker concurrency control;
+- job status, artifact retrieval, artifact ZIP and deletion;
+- health/readiness endpoints;
+- Prometheus metrics;
+- authenticated realtime WebSocket streaming with monotonic revisions, cancellation, busy-session protection and bounded duration;
+- optional terminal-job webhooks;
+- secret/token redaction in client-visible errors;
+- daemon-locked device/token settings and bounded client overrides;
+- lazy/eager model prefetch and writable cache handling;
+- Docker/Nix/self-host deployment paths;
+- extensive unit/API/stream/backend regression tests and CI workflows.
+
+Important source paths inspected:
+- `src/transcribe_anything/api.py`
+- `src/transcribe_anything/server_app.py`
+- `src/transcribe_anything/server_config.py`
+- `src/transcribe_anything/cli_serve.py`
+- `src/transcribe_anything/stream_backend.py`
+- `src/transcribe_anything/whisperx.py`
+- `src/transcribe_anything/insane_align.py`
+- `src/transcribe_anything/generate_speaker_json.py`
+- `tests/test_server_app.py`
+- `tests/test_stream_protocol.py`
+- `tests/test_api.py`
+
+C6 fit:
+- **ADAPT / COMPOSE** for a shared C6 speech/transcription capability used by Smart Inbox, Smart WhatsApp, meeting/call intelligence, document/content processing, agent memory ingestion and future voice products.
+- The daemon/API, job lifecycle, streaming protocol, artifact model, redaction, readiness/metrics and isolated-backend pattern are especially reusable architectural nuggets.
+- Do not expose this directly as an unauthenticated public service. Tenant identity, authorization, quotas/entitlements, durable business records and product billing must remain C6-controlled.
+
+Known limitation from the source README: the daemon's v1 non-goals include multi-tenant identity, persistent job queue across restarts and multi-GPU scheduling. Those are therefore C6/platform responsibilities if this becomes a shared production capability.
+
+## Capability implication
+
+**YES — we need the capabilities.** The correct action is not to deploy the repository wholesale. Register its reusable speech capabilities and evaluate/adapt the smallest sufficient components into the C6 platform.
