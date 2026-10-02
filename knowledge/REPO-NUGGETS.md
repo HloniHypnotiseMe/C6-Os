@@ -257,3 +257,56 @@ Known limitation from the source README: the daemon's v1 non-goals include multi
 ## Capability implication
 
 **YES — we need the capabilities.** The correct action is not to deploy the repository wholesale. Register its reusable speech capabilities and evaluate/adapt the smallest sufficient components into the C6 platform.
+
+## 2026-10-02 — GitAgent
+
+Repository: `HloniHypnotiseMe/gitagent`
+
+Status: **SOURCE-INSPECTED / HIGH-VALUE AGENT EXECUTION SOURCE**
+
+This fork is a C6-owned MIT fork of `open-gitagent/gitagent`. It is more than a CLI: the source implements a git-native agent model where identity, rules, memory, tools and skills live as version-controlled repository artifacts.
+
+Source-level inspection covered:
+- `src/agents.ts` — local sub-agent discovery and prompt exposure;
+- `src/context.ts` — memory, session summary, recent chat and mood context assembly;
+- `src/knowledge.ts` — indexed knowledge with always-load and on-demand documents;
+- `src/learning/reinforcement.ts` — skill confidence/outcome tracking and negative-example retention;
+- `src/hooks.ts` / `src/sdk-hooks.ts` — lifecycle/tool gating and modification hooks;
+- `src/plugins.ts` / `src/plugin-sdk.ts` — plugin-provided tools, hooks, prompts and memory layers;
+- `src/mcp/manager.ts` — MCP server discovery, namespacing, timeout, fail-soft startup and cleanup;
+- `src/sandbox.ts` — isolated execution boundary;
+- `src/schedules.ts` / `src/schedule-runner.ts` — declarative scheduled agent execution;
+- `src/session.ts` — local repository sessions and resumable Git-backed work;
+- `src/audit.ts` / `src/compliance.ts` — tool-invocation audit and compliance configuration;
+- `src/telemetry.ts` — OpenTelemetry agent/tool/model execution tracing;
+- `src/sdk.ts` — composition of manifests, tools, plugins, MCP, hooks, sandbox, sessions, cancellation and telemetry;
+- `src/tool-loader.ts` — JSON-schema-to-TypeBox conversion and declarative executable tools;
+- `test/*` and `src/**/__tests__/*` — tests for MCP, SDK, telemetry, memory, sandbox-memory, skill learning and task tracking.
+
+Concrete reusable nuggets:
+- git-native agent definition: `agent.yaml` + `SOUL.md` + `RULES.md` + `memory/`;
+- declarative tool manifests with JSON-schema inputs and executable adapters;
+- composable skills with scripts;
+- lifecycle hooks capable of allow/block/modify decisions;
+- plugin manifests capable of adding tools, hooks, prompts and memory layers;
+- MCP client with namespaced tool registration, pagination, timeouts, fail-soft connection handling and cleanup;
+- local repo mode with session branches and resumable agent work;
+- explicit compliance fields including human-in-the-loop/data classification/recordkeeping concepts;
+- audit JSONL for tool invocation traces;
+- OpenTelemetry spans/metrics for agent sessions, model calls and tool execution;
+- scheduled agent runs;
+- skill learning with success/failure/partial outcomes, confidence adjustment and capped negative examples;
+- bounded context assembly from memory, session summary, recent chat and knowledge;
+- sub-agent discovery and delegation.
+
+C6 fit:
+- **ADAPT / COMPOSE** for the Agent Company execution layer, repository-native worker definitions, reusable skill/tool packaging, MCP exposure, lifecycle gating, auditable agent sessions, scheduling and learning loops.
+- Particularly strong fit with the existing C6 principle that `START-HERE` and agent operating rules should be durable, versioned and visible to every execution agent.
+- GitAgent should not become C6's authority plane. C6-Os remains responsible for tenant identity, authorization, entitlement, payment/economic state, production evidence and consequential-action governance.
+- Git-backed memory must not automatically become the authoritative C6 memory/evidence store; treat it as an execution artifact/cache unless promoted through C6 evidence rules.
+- Sandbox, GitHub PAT/token handling, local-repo writes and automated commits are consequential permissions and require C6 authorization boundaries before production use.
+
+Important provenance:
+- Fork license: MIT.
+- Fork parent: `open-gitagent/gitagent`.
+- Fork snapshot inspected: default branch `main`, source pushed 2026-08-20; immutable production pin not yet recorded.
