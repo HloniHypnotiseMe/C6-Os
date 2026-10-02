@@ -311,3 +311,22 @@ node agent-arsenal/runtime/admit-gitagent.mjs /path/to/agent-repo
 The bundle must declare identity, rules, duties, runtime/risk, C6 capability, permissions, evidence contract and provenance. GitAgent mechanisms such as memory, tools, plugins, MCP, scheduling, Git sessions and learning may be reused, but they never grant tenant, entitlement, payment, production-credential or unrestricted infrastructure authority. Those remain C6-governed.
 
 Admission status is structural only: READY is not WORKS, VERIFIED or LIVE. Runtime evidence must still be captured through the normal C6 evidence ladder.
+
+
+## 16. Final 19-gap control gate
+
+Before declaring C6 production-ready, reconcile `agent-arsenal/registry/final-gap-registry.yaml`.
+
+Structural controls now include:
+- `agent-arsenal/runtime/validate-claim-evidence.mjs`
+- `agent-arsenal/runtime/validate-provider-pins.mjs`
+
+These controls prevent silent claim/evidence drift and identify registered production VPS providers without immutable pins.
+
+The final gap register distinguishes:
+- CLOSED = repository/control-plane work complete;
+- BLOCKED_EXTERNAL = requires real provider/account/runtime evidence;
+- PARTIAL = implementation exists but production contract remains incomplete;
+- NOT_IMPLEMENTED = capability has not been built and must not be sold as executable.
+
+**Never promote a CLOSED structural control to LIVE without direct production evidence.**

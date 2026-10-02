@@ -1,0 +1,95 @@
+schema_version: "1.0"
+date: "2026-10-02"
+purpose: "Machine-readable final-mile closure register. Repository closure is never substituted for external/runtime evidence."
+
+status_semantics:
+  closed: "Repository/control-plane implementation or reconciliation is complete."
+  blocked_external: "No code-only change can truthfully produce the required evidence; external account/provider/runtime action is required."
+  not_implemented: "Capability is intentionally not built yet."
+  partial: "Some implementation exists but the production contract is incomplete."
+
+gates:
+  - id: GAP-001
+    status: closed
+    control: claim_evidence_validator
+    artifact: agent-arsenal/runtime/validate-claim-evidence.mjs
+    proof_required: authoritative evidence_ref for every material claim
+  - id: GAP-002
+    status: closed
+    control: commodity_pocketbase_removal
+    remaining_gate: blocked_external
+  - id: GAP-003
+    status: blocked_external
+    control: association_os_migration_contract
+    remaining_gate: C6-backed implementation, deployment and evidence
+  - id: GAP-004
+    status: blocked_external
+    control: registrar_contract
+    remaining_gate: accredited registrar/API account and real registration/renewal evidence
+  - id: GAP-005
+    status: partial
+    control: tax_secretarial_product_contract
+    remaining_gate: executable service provider/operational evidence
+  - id: GAP-006
+    status: closed
+    control: remotepay_simplyblu_current_provider_documentation
+    remaining_gate: real provider/account verification and production webhook contract
+  - id: GAP-007
+    status: partial
+    control: central_mail_boundary
+    remaining_gate: deployed mail stack, DNS and send/receive evidence
+  - id: GAP-008
+    status: partial
+    control: platform_ownership_reconciliation
+    remaining_gate: estate-wide runtime duplicate-ownership audit
+  - id: GAP-009
+    status: partial
+    control: arsenal_admission_and_start_gates
+    remaining_gate: universal CI/execution-plane enforcement
+  - id: GAP-010
+    status: blocked_external
+    control: c6_core_evidence_contract
+    remaining_gate: deployed authenticated DB round-trip and consequential-action evidence
+  - id: GAP-011
+    status: blocked_external
+    control: customer_purchase_fulfilment_contract
+    remaining_gate: real customer transaction through payment, entitlement, execution, result and audit
+  - id: GAP-012
+    status: blocked_external
+    control: recovery_contract
+    remaining_gate: successful backup restore drill for critical state
+  - id: GAP-013
+    status: blocked_external
+    control: observability_recovery_contract
+    remaining_gate: live monitoring, alert and recovery drill
+  - id: GAP-014
+    status: partial
+    control: provider_pin_validator
+    artifact: agent-arsenal/runtime/validate-provider-pins.mjs
+    remaining_gate: immutable pin for every registered production VPS provider
+  - id: GAP-015
+    status: closed
+    control: stale_pr_reconciliation
+    result: "Known superseded C6 Website and RemotePay PRs closed; current main is authoritative."
+  - id: GAP-016
+    status: not_implemented
+    control: explicit_catalogue_state
+    remaining_gate: build Smart Reputation
+  - id: GAP-017
+    status: not_implemented
+    control: explicit_catalogue_state
+    remaining_gate: build Smart Ads
+  - id: GAP-018
+    status: partial
+    control: smart_inbox_provider_adapters
+    remaining_gate: credentials, webhook registration and real inbound evidence
+  - id: GAP-019
+    status: partial
+    control: gitagent_admission
+    remaining_gate: execute admission regression in network-capable CI/runtime
+
+production_rule:
+  "No CLOSED control above is a LIVE claim. LIVE requires direct production evidence from the authoritative runtime/provider."
+
+next_win:
+  "Provision Contabo, deploy the unified stack, populate authorized production secrets, then execute the runtime evidence matrix."
