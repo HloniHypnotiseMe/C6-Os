@@ -115,3 +115,15 @@ reverse_engineering_department:
       - "XTTS-v2 is TTS/voice generation, not a singing engine."
       - "Ardour is an optional adapter boundary, not claimed as headless automation."
       - "RemotePay remains the authoritative payment boundary."
+
+  - id: c6_prop_challenge_sentinel
+    outcome: "Challenge-aware MT5 EA with deterministic risk controls and versioned provider profiles"
+    system: "C6Group.AiOS/products/trading/prop-challenge/c6-challenge-sentinel + c6-saas-core"
+    status: EXISTS
+    verification:
+      backtest: NOT_VERIFIED
+      forward_demo: NOT_VERIFIED
+      live: NOT_APPROVED
+    notes:
+      - "Execution product is separate from the Control Centre UI."
+      - "Provider profiles require current verification before deployment."
