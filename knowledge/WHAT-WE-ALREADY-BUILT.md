@@ -113,3 +113,11 @@ Important implementation boundary: standalone execution must consume the exact a
 - Product-plane workload; not a permanent Mission Control module.
 - Uses deterministic challenge risk controls plus configurable provider profiles.
 - Current status: **EXISTS / BETA**. Backtest, forward-demo and live evidence are not yet verified.
+
+
+### Smart Inbox inbound provider wave — verified build
+- Smart Inbox inbound routing now has provider adapters for BillionMail IMAP email, WhatsApp Cloud, Facebook Messenger and Instagram DM.
+- All provider adapters normalize into the same authenticated C6 Smart Inbox tenant ingress; inbound tenant ownership is resolved from the configured destination identifier.
+- WhatsApp Cloud webhook verification uses the Meta application signature boundary and normalizes inbound text messages with the provider message ID.
+- C6-Mail-Services WhatsApp adapter PR #9 merged with CI run 36988334305 successful; C6 website contract reconciliation PR #54 merged with build verification run 36988340571 successful.
+- Smart Inbox remains PROVIDER_REQUIRED because live Meta/BillionMail credentials, external webhook registration and real received-message evidence are not yet proven on the production VPS.
