@@ -113,9 +113,9 @@ Before this sweep:
 
 This is a concrete START-HERE failure mode: the universal inventory knew the repositories existed, but the detailed provider/capability layer did not force or preserve their internal nuggets.
 
-## Required follow-up
+## Follow-up status
 
-1. Register Whatomate and LobeHub as detailed providers with candidate/controlled status, risk and permissions.
-2. Add capability mappings for the source-level nuggets that are useful to C6.
-3. During future work, use this register as a starting point but re-inspect source when the capability or version changes.
-4. Do not promote candidate nuggets to WORKS/VERIFIED/LIVE without C6-side implementation and evidence.
+1. **DONE** — Whatomate and LobeHub registered as detailed providers with risk/permission metadata.
+2. **DONE** — source-level capabilities mapped in capabilities.yaml.
+3. **ONGOING** — re-inspect source when capability or version changes; this register is a memory aid, not a substitute for source inspection.
+4. **ACTIVE RULE** — candidate nuggets remain EXISTS/CANDIDATE until C6-side implementation and evidence promote them to WORKS/VERIFIED/LIVE.
