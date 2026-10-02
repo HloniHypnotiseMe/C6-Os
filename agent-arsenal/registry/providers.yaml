@@ -545,3 +545,17 @@ providers:
     runtime: vps
     pin: null
     provenance_note: "Source-level nugget inspection recorded in knowledge/REPO-NUGGETS.md. Adapt capabilities behind C6 tenant/auth/entitlement boundaries; do not deploy whole repository as an independent control plane."
+
+  - id: gitagent
+    name: GitAgent
+    category: agent_runtime
+    source: https://github.com/HloniHypnotiseMe/gitagent
+    source_type: controlled_fork
+    registry_status: registered
+    local_presence: confirmed
+    capabilities: [git_native_agent_definition, agent_repo_memory, declarative_tooling, lifecycle_hooks, plugin_extensions, mcp_client, subagent_discovery, local_repo_agent_sessions, compliance_audit, agent_scheduling, agent_observability, skill_learning]
+    risk: controlled
+    permissions: [filesystem_read, filesystem_write, network]
+    runtime: vps
+    pin: null
+    provenance_note: "C6-owned MIT fork of open-gitagent/gitagent. Source sweep on 2026-10-02 found reusable git-native agent definition, memory, tools, skills, hooks, plugins, MCP, sub-agent discovery, repo-session, compliance/audit, scheduling, telemetry and learning mechanisms. Adapt the smallest sufficient components; C6-Os remains authority/governance plane."
