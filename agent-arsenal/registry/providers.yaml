@@ -13,11 +13,12 @@ providers:
   - id: get_shit_done
     name: Get Shit Done (GSD)
     category: project_execution
-    source: https://github.com/HloniHypnotiseMe/get-shit-done
-    source_type: controlled_fork
+    source: https://github.com/open-gsd/gsd-core
+    source_type: upstream
+    redirect_from: https://github.com/HloniHypnotiseMe/get-shit-done
     registry_status: registered
     local_presence: confirmed
-    capabilities: [project_execution, context_engineering, spec_driven_development, development_workflow, verification_workflow]
+    capabilities: [project_execution, context_engineering, spec_driven_development, development_workflow, verification_workflow, adversarial_assumption_analysis, integration_verification, goal_backward_verification, memory_curation]
     risk: controlled
     permissions: [filesystem_read, filesystem_write]
     runtime: vps
