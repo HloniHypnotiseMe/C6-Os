@@ -390,3 +390,47 @@ capabilities:
   - id: transcription_secret_redaction
     purpose: "Prevent configured speech-provider tokens from leaking through client-visible job errors."
     providers: [transcribe_anything]
+
+  - id: git_native_agent_definition
+    purpose: "Define an agent as a version-controlled repository containing identity, rules, runtime configuration, tools, skills and memory."
+    providers: [gitagent]
+
+  - id: agent_repo_memory
+    purpose: "Persist agent memory, conversation summaries and context in version-controlled repository files."
+    providers: [gitagent]
+
+  - id: declarative_tooling
+    purpose: "Declare agent tools with schemas and executable implementations outside the core runtime."
+    providers: [gitagent, c6_os]
+
+  - id: lifecycle_hooks
+    purpose: "Gate or modify agent lifecycle and tool execution through pre/post/error hooks."
+    providers: [gitagent]
+
+  - id: plugin_extensions
+    purpose: "Extend agents with reusable tools, hooks, prompts and memory layers through versioned plugin manifests."
+    providers: [gitagent]
+
+  - id: mcp_client
+    purpose: "Discover and expose tools from configured MCP servers with namespacing, timeout and cleanup controls."
+    providers: [gitagent, lobehub, c6_os]
+
+  - id: subagent_discovery
+    purpose: "Discover local sub-agent definitions and expose their roles/descriptions for controlled delegation."
+    providers: [gitagent]
+
+  - id: local_repo_agent_sessions
+    purpose: "Run an agent against a Git repository with session branches and resumable repository-local execution."
+    providers: [gitagent]
+
+  - id: compliance_audit
+    purpose: "Represent agent compliance constraints and produce auditable tool-invocation records."
+    providers: [gitagent]
+
+  - id: agent_scheduling
+    purpose: "Schedule agent execution using declarative schedule configuration and a cron-backed runner."
+    providers: [gitagent]
+
+  - id: skill_learning
+    purpose: "Track skill usage outcomes, confidence and negative examples to support controlled iterative improvement."
+    providers: [gitagent]
