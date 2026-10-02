@@ -70,3 +70,10 @@ Challenge-provider rules are represented as versioned profiles rather than assum
 - WhatsApp Cloud, Facebook Messenger and Instagram webhook events use the Meta application signature boundary before forwarding.
 - Tenant routing is resolved from the provider-owned destination identifier (mailbox, WhatsApp phone-number ID, Facebook Page ID or Instagram account ID), then the active Smart Inbox entitlement is checked before persistence.
 - Provider implementation is not production proof: live credentials, external webhook registration and received-message evidence remain separate gates.
+
+
+## 2026-10-02 — Smart WhatsApp uses Whatomate as the provider execution layer
+- Use the existing C6-registered HloniHypnotiseMe/whatomate implementation for Smart WhatsApp outbound execution instead of maintaining a duplicate direct WhatsApp provider path in the C6 application.
+- C6 remains authoritative for tenant identity, entitlement, capacity, payment boundary and customer evidence. Whatomate is an execution/provider dependency, not the commercial authority.
+- Only provider-accepted sends with a returned provider message identifier complete Smart WhatsApp capacity. Missing provider configuration or missing provider evidence fails closed.
+- Whatomate's additional capabilities remain source-level reusable nuggets until each is separately connected, entitled and evidenced in C6.
