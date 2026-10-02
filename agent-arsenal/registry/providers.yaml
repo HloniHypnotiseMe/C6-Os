@@ -501,3 +501,32 @@ providers:
     pin: null
     provenance: "C6-owned fork of an IDA Pro plugin providing LLM-assisted binary analysis, function explanation, graph/RAG workflows and MCP/tool integration. Requires IDA Pro/Hex-Rays licensing where applicable; use only with authorized binaries."
 
+
+
+  - id: whatomate
+    name: Whatomate
+    category: whatsapp_platform
+    source: https://github.com/HloniHypnotiseMe/whatomate
+    source_type: controlled_fork
+    registry_status: registered
+    local_presence: confirmed
+    capabilities: [whatsapp_cloud_api, multi_tenant_messaging, role_permission_control, realtime_chat, templates, bulk_campaigns, chatbot_automation, conversation_flows, agent_transfers, audit_logs, webhook_management, queue_workers, analytics]
+    risk: high
+    permissions: [network, database, credentials_vault]
+    runtime: vps
+    pin: null
+    provenance_note: "Source-level nugget inspection recorded in knowledge/REPO-NUGGETS.md. Reuse components, not the whole application. Live provider verification remains separate."
+
+  - id: lobehub
+    name: LobeHub
+    category: agent_runtime
+    source: https://github.com/HloniHypnotiseMe/lobehub
+    source_type: controlled_fork
+    registry_status: registered
+    local_presence: confirmed
+    capabilities: [heterogeneous_agent_runtime, agent_gateway, context_pipeline, model_runtime, tool_runtime, mcp_integration, agent_groups, scheduling, memory, knowledge_base, browser_tools, sandbox_execution, verification, self_iteration, observability]
+    risk: controlled
+    permissions: [filesystem_read, filesystem_write, network, sandbox]
+    runtime: vps
+    pin: null
+    provenance_note: "High-value execution-layer research source. C6-Os remains authority/governance plane; adapt mechanisms selectively."
