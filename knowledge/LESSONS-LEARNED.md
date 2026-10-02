@@ -59,3 +59,7 @@ Public product execution cannot trust a browser-supplied tenant/user identifier.
 
 A partial omnichannel implementation must not be promoted to a full commercial execution claim. Smart Inbox now has a real entitlement-aware tenant core and real outbound email/WhatsApp provider actions, but inbound email, Facebook Messenger and Instagram DM adapters plus tenant routing remain provider gaps. The correct state is `PROVIDER_REQUIRED` until those surfaces are connected and verified.
 
+
+
+## C6 STUDIO lesson
+The first proposed architecture overstated two provider capabilities. MusicGen is a text-to-music generator; isolated stems must not be implied merely by running separate prompts. XTTS-v2 is multilingual speech/voice cloning; it must not be presented as a singing synthesizer. Provider boundaries must reflect what the actual model proves.
