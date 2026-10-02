@@ -434,3 +434,6 @@ capabilities:
   - id: skill_learning
     purpose: "Track skill usage outcomes, confidence and negative examples to support controlled iterative improvement."
     providers: [gitagent]
+  - id: gitagent_admission
+    purpose: "Validate GitAgent-style agent bundles against C6 identity, risk, permission, evidence, provenance and authority-boundary requirements before workforce admission."
+    providers: [gitagent, c6_os]
