@@ -160,3 +160,11 @@ Important implementation boundary: standalone execution must consume the exact a
 - Captured git-native agent definitions, repository memory/context, declarative tools, skills, lifecycle hooks, plugins, MCP client, sub-agent discovery, local Git-backed sessions, compliance/audit, scheduling, OpenTelemetry and skill-learning mechanisms.
 - Status is EXISTS/CANDIDATE COMPONENT SOURCE, not LIVE deployment.
 - C6-Os remains the authority/governance layer; GitAgent-derived memory, Git writes, credentials, scheduling and consequential tool execution require C6 authorization/evidence boundaries.
+
+
+### Whatomate production integration — deployment-ready, not LIVE
+- The canonical C6 unified self-hosted deployment now provisions Whatomate as the Smart WhatsApp provider runtime with dedicated PostgreSQL and Redis persistence, Caddy HTTPS routing at whatsapp.c6group.co.za, and C6 backend provider configuration.
+- Whatomate production image is pinned to immutable multi-platform digest `sha256:8091fd13661bc51d5e14e7fbf25a4792e781b85e10b715172bf22aa87ed1e669`.
+- Deployment script generates the production Whatomate config from VPS-only secrets and refuses unpinned Whatomate images or missing provider configuration.
+- Production-stack validation run `37001711593` passed after the runtime wiring fix.
+- Status: DEPLOYMENT-READY / NOT LIVE. Contabo VPS provisioning/access, real Whatomate API key, Meta/WhatsApp account configuration, DNS/HTTPS and real outbound message evidence remain external production gates.
