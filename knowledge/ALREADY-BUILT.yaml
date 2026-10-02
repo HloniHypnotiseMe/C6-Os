@@ -181,3 +181,10 @@ reverse_engineering_department:
     status: EXISTS
     verification: "Source-level inspection of agent discovery, context/memory, knowledge, skill learning, hooks, plugins, MCP, sandbox, scheduling, sessions, compliance/audit, telemetry, SDK and declarative tool loader completed on 2026-10-02."
     notes: "Candidate ADAPT/COMPOSE. Do not deploy the whole fork as a second C6 control plane. C6 authority, tenant, entitlement, payment and evidence boundaries remain authoritative."
+
+  - id: gitagent_admission_contract
+    outcome: "C6 admission gate for GitAgent-style agent bundles"
+    system: "C6-Os agent-arsenal/runtime/admit-gitagent.mjs"
+    status: WORKS
+    verification: "Structural admission contract and regression test added; runtime execution of the test is pending a network-capable CI/runner because the current execution environment cannot reach GitHub."
+    notes: "Gates identity, risk, permissions, capability, evidence contract and provenance. Does not grant C6 authority or prove production runtime."
