@@ -102,3 +102,16 @@ reverse_engineering_department:
       - instagram_dm_adapter
       - tenant_routing_for_inbound_channels
     notes: "Do not label Smart Inbox EXECUTABLE until the remaining inbound/provider claim surface is connected and proven."
+
+  - id: c6_studio_foundation
+    outcome: "AI music workstation foundation with arrangement, role-pass generation, timeline/mixer UI and mix/export boundary"
+    system: "C6-Creator-Suite/c6-studio"
+    status: EXISTS
+    branch: "c6-studio-build"
+    pull_request: 2
+    verification: "Source implementation registered; runtime/CI execution evidence still pending."
+    boundaries:
+      - "MusicGen role passes are not native isolated multitrack stems."
+      - "XTTS-v2 is TTS/voice generation, not a singing engine."
+      - "Ardour is an optional adapter boundary, not claimed as headless automation."
+      - "RemotePay remains the authoritative payment boundary."
