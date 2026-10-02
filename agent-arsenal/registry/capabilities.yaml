@@ -354,3 +354,39 @@ capabilities:
   - id: delivery_audit
     purpose: "Track outbound delivery attempts with recipient isolation, status, timestamps, retry and failure visibility."
     providers: [listmonk, agency_agents]
+
+  - id: speech_to_text
+    purpose: "Convert audio/video speech into searchable text artifacts for downstream systems and agents."
+    providers: [transcribe_anything]
+
+  - id: speaker_diarization
+    purpose: "Partition transcribed speech by speaker where the selected backend supports diarization."
+    providers: [transcribe_anything]
+
+  - id: forced_alignment
+    purpose: "Produce fine-grained word-level timing/alignment metadata for transcripts."
+    providers: [transcribe_anything]
+
+  - id: transcription_job_api
+    purpose: "Submit asynchronous transcription jobs, inspect status, retrieve artifacts and delete jobs through an authenticated API."
+    providers: [transcribe_anything]
+
+  - id: realtime_audio_transcription
+    purpose: "Stream live PCM audio to a bounded authenticated WebSocket transcription session."
+    providers: [transcribe_anything]
+
+  - id: media_ingestion
+    purpose: "Ingest local media or supported URLs and normalize audio before transcription."
+    providers: [transcribe_anything]
+
+  - id: transcription_artifacts
+    purpose: "Produce transcript, SRT, VTT, JSON, speaker and bundled artifact outputs."
+    providers: [transcribe_anything]
+
+  - id: transcription_observability
+    purpose: "Expose health, readiness and Prometheus metrics for a transcription daemon."
+    providers: [transcribe_anything]
+
+  - id: transcription_secret_redaction
+    purpose: "Prevent configured speech-provider tokens from leaking through client-visible job errors."
+    providers: [transcribe_anything]
