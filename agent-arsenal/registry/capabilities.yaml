@@ -281,3 +281,76 @@ capabilities:
   - id: agent_observability
     purpose: "Trace model/agent execution and expose runtime telemetry."
     providers: [lobehub, c6_os]
+
+
+  - id: adversarial_assumption_analysis
+    purpose: "Challenge assumptions before implementation and surface observable unknowns and hidden gaps."
+    providers: [gsd_core, c6_os]
+
+  - id: integration_verification
+    purpose: "Verify that independently completed components actually connect end-to-end rather than merely coexist."
+    providers: [gsd_core, c6_os]
+
+  - id: goal_backward_verification
+    purpose: "Verify actual goal achievement from implementation evidence instead of trusting task summaries."
+    providers: [gsd_core, c6_os]
+
+  - id: memory_curation
+    purpose: "Curate durable project lessons, decisions and execution history after verified work."
+    providers: [gsd_core, openviking, c6_os]
+
+  - id: agent_experience_memory
+    purpose: "Retrieve and apply evaluated prior agent experiences and trajectories to similar executable tasks."
+    providers: [openviking]
+
+  - id: bounded_subagent_execution
+    purpose: "Run focused background subagents with isolated context, concurrency limits and controlled tool sets."
+    providers: [openviking]
+
+  - id: context_compaction
+    purpose: "Compress long agent conversations into structured summaries while preserving usage accounting."
+    providers: [goose]
+
+  - id: replayable_operation_state
+    purpose: "Persist operation notes so rebuilt agent pipelines can reproduce prior conclusions without recomputing historical actions."
+    providers: [goose]
+
+  - id: scoped_agent_memory
+    purpose: "Store and retrieve categorized local/global agent memory with validated storage boundaries."
+    providers: [goose]
+
+  - id: ai_evaluation
+    purpose: "Calibrate executable agent/workflow cases against real builds and retain durable evaluation suites."
+    providers: [n8n]
+
+  - id: typed_telemetry_registry
+    purpose: "Register product events with typed schemas and prevent duplicate or incompatible telemetry evolution."
+    providers: [n8n]
+
+  - id: workflow_security_review
+    purpose: "Apply least-privilege, gate integrity, path-filter and credential-safety checks to automation workflows."
+    providers: [n8n]
+
+  - id: agent_identity_trust
+    purpose: "Design zero-trust agent identity, scoped delegation, credential lifecycle and tamper-evident consequential-action evidence."
+    providers: [agency_agents]
+
+  - id: evidence_collection
+    purpose: "Collect reproducible visual and behavioral evidence while explicitly separating tested scope from untested scope."
+    providers: [agency_agents, c6_os]
+
+  - id: document_signing_workflow
+    purpose: "Execute role-aware document preparation, distribution, signing, approval, sealing and audit workflows."
+    providers: [documenso]
+
+  - id: webhook_secret_verification
+    purpose: "Authenticate inbound webhooks with constant-time secret comparison and fail-closed processing."
+    providers: [documenso, listmonk, c6_os]
+
+  - id: email_bounce_processing
+    purpose: "Normalize provider bounce and complaint notifications into campaign-aware delivery events."
+    providers: [listmonk, billionmail]
+
+  - id: delivery_audit
+    purpose: "Track outbound delivery attempts with recipient isolation, status, timestamps, retry and failure visibility."
+    providers: [listmonk, agency_agents]
