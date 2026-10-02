@@ -46,6 +46,57 @@ Read:
 - relevant workflows;
 - relevant product/repository manifests.
 
+## 3A. Repository Nugget Sweep — mandatory, not optional
+
+The Arsenal registry is an index. It is **not** a substitute for inspecting the repositories themselves. A repository can contain valuable capabilities that are invisible at provider/category level.
+
+For every material build, perform a **source-level nugget sweep** on the target repository and the most relevant registered providers before deciding what to build.
+
+Inspect, where present:
+- README and product documentation;
+- package/module manifests and dependency graphs;
+- `docs/`, examples, demos and configuration;
+- source entry points, adapters, handlers, services and workers;
+- tests, E2E tests, fixtures and test helpers;
+- migrations, schemas and data models;
+- API/webhook contracts;
+- queues, retry, timeout, idempotency and background workers;
+- auth, roles, permissions and audit logging;
+- CI/CD workflows and operational scripts;
+- `.agents/`, agent instructions, acceptance/chaos tests and internal developer tooling;
+- feature flags, experimental paths and legacy compatibility layers.
+
+Search by the **job/capability**, not only by repository name. Search terms should include synonyms, implementation names, API routes, event names, data models, provider names and likely failure-path terms.
+
+For each useful nugget capture:
+- `REPO`
+- `PATH / COMPONENT`
+- `CAPABILITY`
+- `WHAT IT ACTUALLY DOES`
+- `INTEGRATION POINT`
+- `DEPENDENCIES`
+- `PERMISSIONS / RISK`
+- `VERIFICATION EVIDENCE`
+- `C6 FIT`
+- `ACTION: REUSE / ADAPT / COMPOSE / REGISTER / REJECT / RESEARCH`
+
+**Do not stop at the README. Do not stop at a package manifest. Do not assume a registered provider exposes only the capability named in the registry.**
+
+A provider may contain several independent reusable nuggets. Conversely, a README claim may have no implementation evidence. Source evidence wins.
+
+### Nugget triangulation rule
+
+When a useful capability is discovered in one repository:
+1. search C6-Os registries for it;
+2. search the C6 estate for an existing implementation;
+3. inspect the candidate source component;
+4. compare with at least one relevant alternative when the capability is material;
+5. choose the smallest sufficient component;
+6. register the durable discovery so the next agent does not rediscover it.
+
+**Example:** a WhatsApp provider is not merely "WhatsApp". Its nuggets may include multi-tenancy, role/permission isolation, templates, campaigns, chatbot flows, AI contexts, WebSocket chat, agent transfer, audit logs, queues/workers, webhook management, E2E fixtures and analytics. Only the needed nuggets should be extracted.
+
+**Failure mode this gate prevents:** `registry says provider exists -> agent uses only the headline capability -> hidden reusable implementation remains undiscovered -> C6 rebuilds it elsewhere`.
 ## 4. Resolve capability
 
 Use the Arsenal resolver/router.
