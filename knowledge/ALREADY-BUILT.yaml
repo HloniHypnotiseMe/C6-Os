@@ -174,3 +174,10 @@ reverse_engineering_department:
       - meta_whatsapp_credentials
       - real_whatsapp_send_evidence
     notes: "Outbound Smart WhatsApp integration only; it does not make Smart Inbox LIVE or replace normalized inbound provider adapters."
+
+  - id: gitagent_nuggets
+    outcome: "Git-native agent execution capability nuggets"
+    system: "HloniHypnotiseMe/gitagent"
+    status: EXISTS
+    verification: "Source-level inspection of agent discovery, context/memory, knowledge, skill learning, hooks, plugins, MCP, sandbox, scheduling, sessions, compliance/audit, telemetry, SDK and declarative tool loader completed on 2026-10-02."
+    notes: "Candidate ADAPT/COMPOSE. Do not deploy the whole fork as a second C6 control plane. C6 authority, tenant, entitlement, payment and evidence boundaries remain authoritative."
