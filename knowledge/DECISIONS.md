@@ -47,3 +47,10 @@ C6 uses two views over one registry: the Universal Arsenal's 37 precise categori
 - Smart Inbox may expose and meter real tenant-owned outbound email/WhatsApp execution without implying full omnichannel coverage.
 - The standalone Smart Inbox contract remains `PROVIDER_REQUIRED` until inbound email, Facebook Messenger and Instagram DM adapters and tenant routing are connected and verified.
 - Provider gaps must be closed at the execution boundary; changing catalogue status alone is prohibited.
+
+
+## C6 STUDIO
+- Preserve the existing C6 Creator Suite main surface; develop C6 STUDIO in an isolated product subtree/branch until runtime verification is complete.
+- Keep generation providers server-side. Browser clients must not hold provider API credentials.
+- Treat provider availability as a separate state from implementation existence.
+- Use FFmpeg as the initial verified mix/export boundary; add Ardour only through a tested adapter/session contract.
