@@ -121,3 +121,11 @@ Important implementation boundary: standalone execution must consume the exact a
 - WhatsApp Cloud webhook verification uses the Meta application signature boundary and normalizes inbound text messages with the provider message ID.
 - C6-Mail-Services WhatsApp adapter PR #9 merged with CI run 36988334305 successful; C6 website contract reconciliation PR #54 merged with build verification run 36988340571 successful.
 - Smart Inbox remains PROVIDER_REQUIRED because live Meta/BillionMail credentials, external webhook registration and real received-message evidence are not yet proven on the production VPS.
+
+
+## Repository Nugget Discovery — 2026-10-02
+- Added mandatory source-level nugget sweep to START-HERE.md.
+- Added knowledge/REPO-NUGGETS.md as durable source-level discovery memory.
+- Whatomate is now registered as a detailed WhatsApp platform provider. Its inspected source contains reusable nuggets for multi-tenancy, granular permissions, realtime chat, templates, campaigns, chatbot/branching flows, agent transfer, audit logs, webhooks, queues/workers and E2E verification.
+- LobeHub is now registered as a detailed agent-runtime provider. Its inspected source contains heterogeneous-agent runtime/gateway, context pipeline, model/tool runtime, MCP, agent groups, acceptance/chaos tooling, self-iteration and observability mechanisms.
+- These are candidate reusable components, not claims that C6 has deployed them. C6 authority, tenant, entitlement, payment and evidence boundaries remain authoritative.
