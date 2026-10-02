@@ -145,3 +145,12 @@ Important implementation boundary: standalone execution must consume the exact a
 - Registered speech-to-text, diarization, forced alignment, transcription job API, realtime streaming, media ingestion, artifact generation and transcription observability capabilities from HloniHypnotiseMe/transcribe-anything.
 - Source inspection found a self-hosted FastAPI daemon, bounded queue, authenticated HTTP/WebSocket surfaces, health/readiness, metrics, webhooks, token redaction, multiple isolated transcription backends and extensive tests.
 - This is a capability source, not a deployment decision. C6 must own tenant identity, entitlement/quota, durable job authority and business evidence.
+
+
+### Smart WhatsApp — Whatomate execution provider wave
+- Smart WhatsApp outbound execution is now routed through the existing C6-registered HloniHypnotiseMe/whatomate provider rather than duplicating direct Cloud API sending in the C6 application.
+- C6 remains authoritative for tenant identity, active entitlement, capacity reservation/completion and customer evidence. Whatomate is the provider-facing execution layer.
+- The integration fails closed when provider configuration is missing or no provider message ID is returned; capacity completes only after provider acceptance evidence.
+- C6 website PR #55 merged as c3f0709122973dfaec46a90c00f152112adeace3; corrected C6 Build Verification run 36997089780 passed both backend and frontend builds.
+- Production status remains separate: Whatomate must be deployed/configured on the target infrastructure, Meta/WhatsApp credentials must be present, and a real outbound WhatsApp send must be evidenced before calling the capability LIVE.
+- Whatomate's broader source capabilities remain reusable provider nuggets; they are not automatically C6 customer-facing claims until separately connected to a C6 execution contract and evidence path.
