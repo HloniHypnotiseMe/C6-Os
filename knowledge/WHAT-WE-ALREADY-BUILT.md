@@ -154,3 +154,9 @@ Important implementation boundary: standalone execution must consume the exact a
 - C6 website PR #55 merged as c3f0709122973dfaec46a90c00f152112adeace3; corrected C6 Build Verification run 36997089780 passed both backend and frontend builds.
 - Production status remains separate: Whatomate must be deployed/configured on the target infrastructure, Meta/WhatsApp credentials must be present, and a real outbound WhatsApp send must be evidenced before calling the capability LIVE.
 - Whatomate's broader source capabilities remain reusable provider nuggets; they are not automatically C6 customer-facing claims until separately connected to a C6 execution contract and evidence path.
+
+## 2026-10-02 — GitAgent capability discovery
+- Registered GitAgent as a source-level reusable agent-execution provider.
+- Captured git-native agent definitions, repository memory/context, declarative tools, skills, lifecycle hooks, plugins, MCP client, sub-agent discovery, local Git-backed sessions, compliance/audit, scheduling, OpenTelemetry and skill-learning mechanisms.
+- Status is EXISTS/CANDIDATE COMPONENT SOURCE, not LIVE deployment.
+- C6-Os remains the authority/governance layer; GitAgent-derived memory, Git writes, credentials, scheduling and consequential tool execution require C6 authorization/evidence boundaries.
