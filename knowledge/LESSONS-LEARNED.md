@@ -88,3 +88,8 @@ The Whatomate inspection demonstrated why this matters: "WhatsApp" hides multi-t
 The first nugget sweep fixed the registry blindness, but a single provider can still hide critical execution patterns in agents, review rules, tests and operational tooling. The second sweep confirmed that the highest-value nuggets are often not headline product features: GSD's adversarial verification, OpenViking's typed experience memory, n8n's migration/security gates and typed AI evals, Goose's replayable operation notes, Agency-Agents' zero-trust delegation model, Documenso's constant-time webhook verification and listmonk's bounce normalization are all reusable patterns.
 
 Future C6 discovery must therefore inspect not only product source but also the repository's internal engineering system: agent instructions, review rules, test harnesses, failure/recovery code and operational controls.
+
+## 2026-10-02 — transcribe-anything capability discovery
+- Registered speech-to-text, diarization, forced alignment, transcription job API, realtime streaming, media ingestion, artifact generation and transcription observability capabilities from HloniHypnotiseMe/transcribe-anything.
+- Source inspection found a self-hosted FastAPI daemon, bounded queue, authenticated HTTP/WebSocket surfaces, health/readiness, metrics, webhooks, token redaction, multiple isolated transcription backends and extensive tests.
+- This is a capability source, not a deployment decision. C6 must own tenant identity, entitlement/quota, durable job authority and business evidence.
