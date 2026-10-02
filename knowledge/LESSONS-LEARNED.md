@@ -99,3 +99,19 @@ Future C6 discovery must therefore inspect not only product source but also the 
 The Smart WhatsApp wave initially used a direct Cloud API path even though C6-Os had already registered and source-inspected Whatomate. The corrected pattern is to reuse the existing provider at the execution boundary: C6 owns identity, entitlement, metering and evidence; Whatomate owns provider-facing WhatsApp execution. Repository source discovery must happen before adding a parallel provider integration.
 
 A provider integration is still not production proof. The merged adapter and green CI establish repository/build evidence only; deployment, credentials, external Meta configuration and a real accepted message remain separate LIVE gates.
+
+## 2026-10-02 — GitAgent capability discovery lesson
+GitAgent demonstrates that an agent can be packaged as a version-controlled operating environment rather than only as runtime code: identity, rules, memory, tools, skills, hooks and plugins can travel with the repository. This is directly relevant to C6's START-HERE and Agent Company model.
+
+The reusable lesson is not to install GitAgent wholesale. Mine its execution contracts:
+- versioned agent identity/rules/memory;
+- declarative tools and composable skills;
+- lifecycle allow/block/modify hooks;
+- plugin extension points;
+- MCP discovery and namespacing;
+- repository-local resumable sessions;
+- compliance/audit and telemetry;
+- scheduled execution;
+- outcome-based skill learning.
+
+C6 must retain authority over tenant identity, permissions, entitlements, payments, production evidence and consequential actions. Git-backed memory or Git commits are execution artifacts unless C6 explicitly promotes them to authoritative evidence.
