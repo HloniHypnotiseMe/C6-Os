@@ -77,3 +77,9 @@ Challenge-provider rules are represented as versioned profiles rather than assum
 - C6 remains authoritative for tenant identity, entitlement, capacity, payment boundary and customer evidence. Whatomate is an execution/provider dependency, not the commercial authority.
 - Only provider-accepted sends with a returned provider message identifier complete Smart WhatsApp capacity. Missing provider configuration or missing provider evidence fails closed.
 - Whatomate's additional capabilities remain source-level reusable nuggets until each is separately connected, entitled and evidenced in C6.
+
+
+## 2026-10-02 — Whatomate is part of the canonical C6 production runtime
+- Whatomate is deployed as a self-hosted provider runtime inside the canonical C6 unified stack, with dedicated PostgreSQL/Redis persistence and Caddy HTTPS ingress.
+- Smart WhatsApp C6 authority remains separate from provider runtime: C6 owns customer identity, entitlement, metering and evidence; Whatomate owns WhatsApp execution and Meta-facing webhook handling.
+- Production images must be pinned by immutable digest; mutable `latest` tags are not acceptable for the production release.
