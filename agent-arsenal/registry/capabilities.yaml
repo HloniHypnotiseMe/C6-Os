@@ -208,3 +208,76 @@ capabilities:
     purpose: "Support authorized forensic examination of binaries, artifacts, and execution evidence where reverse engineering is required."
     providers: [ghidra, reverse_skill, idassist]
     risk: high
+
+
+  - id: whatsapp_cloud_api
+    purpose: "Provide WhatsApp Cloud messaging, templates, flows, webhooks and provider-facing communication primitives."
+    providers: [whatomate, c6_mail_services]
+
+  - id: multi_tenant_messaging
+    purpose: "Isolate organizations, contacts, configuration and messaging operations across tenants."
+    providers: [whatomate]
+
+  - id: role_permission_control
+    purpose: "Enforce resource/action permissions and custom roles for messaging operations."
+    providers: [whatomate]
+
+  - id: realtime_chat
+    purpose: "Provide real-time messaging updates and chat transport."
+    providers: [whatomate]
+
+  - id: bulk_campaigns
+    purpose: "Run multi-recipient messaging campaigns with retry-aware delivery processing."
+    providers: [whatomate]
+
+  - id: chatbot_automation
+    purpose: "Run keyword, branching-flow and AI-assisted conversational automation."
+    providers: [whatomate]
+
+  - id: agent_transfer
+    purpose: "Transfer conversations from automated handling to human/agent teams."
+    providers: [whatomate]
+
+  - id: webhook_management
+    purpose: "Manage inbound/outbound webhook endpoints, dispatch and event handling."
+    providers: [whatomate, c6_os]
+
+  - id: heterogeneous_agent_runtime
+    purpose: "Run and coordinate different agent runtimes through a common execution boundary."
+    providers: [lobehub]
+
+  - id: agent_gateway
+    purpose: "Provide a gateway layer for agent spawning, communication, transcripts and runtime interaction."
+    providers: [lobehub]
+
+  - id: context_pipeline
+    purpose: "Process and assemble bounded context for agent execution."
+    providers: [lobehub, c6_os]
+
+  - id: model_runtime
+    purpose: "Abstract multiple model providers, model parameters, tool calls, errors and usage handling behind one runtime."
+    providers: [lobehub, c6_os]
+
+  - id: tool_runtime
+    purpose: "Provide reusable tool execution primitives for agents."
+    providers: [lobehub, c6_os]
+
+  - id: agent_groups
+    purpose: "Coordinate groups of agents and group-level management."
+    providers: [lobehub]
+
+  - id: agent_verification
+    purpose: "Verify agent behaviour and completion through explicit acceptance/verification mechanisms."
+    providers: [lobehub, c6_os]
+
+  - id: agent_chaos_testing
+    purpose: "Exercise agent runtime failure, duplicate completion and recovery scenarios."
+    providers: [lobehub]
+
+  - id: agent_self_iteration
+    purpose: "Support controlled agent/skill iteration with explicit tooling and verification boundaries."
+    providers: [lobehub]
+
+  - id: agent_observability
+    purpose: "Trace model/agent execution and expose runtime telemetry."
+    providers: [lobehub, c6_os]
