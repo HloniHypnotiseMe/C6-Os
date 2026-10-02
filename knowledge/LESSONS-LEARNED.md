@@ -74,3 +74,11 @@ Challenge programmes can differ and change. Keep provider constraints in version
 A normalized provider ingress is the reusable boundary: provider-specific authentication and payload parsing belong in C6-Mail-Services, while tenant ownership and entitlement enforcement remain in C6-Group-Final-Website. This prevents provider secrets from entering the customer-facing application and keeps all channels on one tenant-routing/evidence path.
 
 WhatsApp webhook implementation now proves code-level normalization and signature handling, but it does not prove a live WhatsApp delivery until a real Meta webhook is registered and a real message reaches the production ingress.
+
+
+## 2026-10-02 — Registry headline is not capability discovery
+A universal repository registry can prove that a repository is known, but it cannot prove that agents have discovered the reusable implementation nuggets inside it. The failure mode is especially dangerous for large forks: one headline provider label can hide dozens of mature sub-capabilities.
+
+The mandatory fix is source-level nugget mining: inspect docs, manifests, source, tests, E2E fixtures, migrations, operational scripts, agent instructions, acceptance/chaos tests, queues/workers, webhooks, permissions and failure paths. Capture the smallest useful component with provenance and evidence in knowledge/REPO-NUGGETS.md.
+
+The Whatomate inspection demonstrated why this matters: "WhatsApp" hides multi-tenancy, permission matrices, realtime chat, campaigns, branching chatbot flows, agent transfers, audit logs, queues/workers, webhooks and extensive E2E coverage. LobeHub similarly contains agent gateway, heterogeneous agents, context pipelines, runtime abstraction, acceptance/chaos infrastructure and observability beyond its headline workspace description.
