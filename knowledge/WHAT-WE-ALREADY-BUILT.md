@@ -105,3 +105,11 @@ Important implementation boundary: standalone execution must consume the exact a
 - Status: EXISTS / BUILT. Runtime verification is not yet promoted to WORKS because GitHub Actions returned no workflow runs and this execution environment cannot reach GitHub for local clone/test execution.
 - Important capability boundary: MusicGen is treated as separate role passes, not native isolated multitrack stems. XTTS-v2 is treated as TTS/voice generation, not singing. Ardour remains an adapter boundary rather than a simulated headless runtime.
 - Next verification: run the GitHub workflow or execute the compose stack on the target VPS, then capture health, provider, generation, mix/export and failure-path evidence.
+
+
+## C6 Prop Challenge Trading Products
+
+- **C6 Challenge Sentinel** — MT5 EA product under `C6Group.AiOS/products/trading/prop-challenge/c6-challenge-sentinel`.
+- Product-plane workload; not a permanent Mission Control module.
+- Uses deterministic challenge risk controls plus configurable provider profiles.
+- Current status: **EXISTS / BETA**. Backtest, forward-demo and live evidence are not yet verified.
