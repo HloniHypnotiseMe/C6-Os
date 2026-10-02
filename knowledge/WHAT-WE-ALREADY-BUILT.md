@@ -96,3 +96,12 @@ Important implementation boundary: standalone execution must consume the exact a
 - Smart Inbox core is now merged in C6-Group-Final-Website with tenant-owned inboxes, conversation ownership, entitlement-aware capacity reservation, real C6 Mail email sending, real WhatsApp Cloud API sending, and execution evidence.
 - The standalone Smart Inbox contract remains `PROVIDER_REQUIRED`, not `EXECUTABLE`: the commercial claim also includes inbound email plus Facebook Messenger and Instagram DMs, and those provider adapters/tenant routing are not yet connected and proven.
 - PR #52 merged with C6 Build Verification green; merge SHA `bfbc1af194c360260bd6b650d508988c456b3e91`.
+
+
+## C6 STUDIO — AI music workstation foundation
+- C6 STUDIO build surface added under c6-studio/ in C6-Creator-Suite on branch c6-studio-build.
+- Includes browser DAW timeline/mixer UI, FastAPI orchestration API, Ollama/Qwen arrangement boundary, MusicGen role-pass provider boundary, FFmpeg mix/export, Docker deployment, and n8n compose workflow.
+- Existing C6 Creator Suite remains untouched on main; implementation is isolated behind draft PR #2.
+- Status: EXISTS / BUILT. Runtime verification is not yet promoted to WORKS because GitHub Actions returned no workflow runs and this execution environment cannot reach GitHub for local clone/test execution.
+- Important capability boundary: MusicGen is treated as separate role passes, not native isolated multitrack stems. XTTS-v2 is treated as TTS/voice generation, not singing. Ardour remains an adapter boundary rather than a simulated headless runtime.
+- Next verification: run the GitHub workflow or execute the compose stack on the target VPS, then capture health, provider, generation, mix/export and failure-path evidence.
