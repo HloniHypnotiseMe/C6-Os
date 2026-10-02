@@ -531,3 +531,17 @@ providers:
     runtime: vps
     pin: null
     provenance_note: "High-value execution-layer research source. C6-Os remains authority/governance plane; adapt mechanisms selectively."
+
+  - id: transcribe_anything
+    name: transcribe-anything
+    category: speech_transcription
+    source: https://github.com/HloniHypnotiseMe/transcribe-anything
+    source_type: controlled_fork
+    registry_status: registered
+    local_presence: confirmed
+    capabilities: [media_ingestion, speech_to_text, isolated_transcription_backends, speaker_diarization, forced_alignment, subtitle_artifacts, transcription_api, background_job_queue, realtime_audio_streaming, webhook_callbacks, metrics, readiness_health, secret_redaction]
+    risk: controlled
+    permissions: [filesystem_read, filesystem_write, network, model_execution]
+    runtime: vps
+    pin: null
+    provenance_note: "Source-level nugget inspection recorded in knowledge/REPO-NUGGETS.md. Adapt capabilities behind C6 tenant/auth/entitlement boundaries; do not deploy whole repository as an independent control plane."
