@@ -66,3 +66,8 @@ workers:
 admission:
   required: [capability_resolution, provenance, permissions, evidence_contract, verification_plan]
   forbidden: [duplicate_existing_capability, blind_upstream_copy, unapproved_production_mutation]
+  - id: c6_gitagent_admission
+    role: engineering
+    layer: workflow
+    capability: gitagent_admission
+    status: active
