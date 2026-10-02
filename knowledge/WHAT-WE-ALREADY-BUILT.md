@@ -140,3 +140,8 @@ Important implementation boundary: standalone execution must consume the exact a
 - Documenso contains constant-time webhook verification and evidence-rich document signing workflow patterns.
 - listmonk contains provider bounce/complaint normalization, role/permission and delivery event patterns.
 - These are source-level reusable nuggets, not proof that C6 has deployed them.
+
+## 2026-10-02 — transcribe-anything capability discovery
+- Registered speech-to-text, diarization, forced alignment, transcription job API, realtime streaming, media ingestion, artifact generation and transcription observability capabilities from HloniHypnotiseMe/transcribe-anything.
+- Source inspection found a self-hosted FastAPI daemon, bounded queue, authenticated HTTP/WebSocket surfaces, health/readiness, metrics, webhooks, token redaction, multiple isolated transcription backends and extensive tests.
+- This is a capability source, not a deployment decision. C6 must own tenant identity, entitlement/quota, durable job authority and business evidence.
