@@ -115,3 +115,7 @@ The reusable lesson is not to install GitAgent wholesale. Mine its execution con
 - outcome-based skill learning.
 
 C6 must retain authority over tenant identity, permissions, entitlements, payments, production evidence and consequential actions. Git-backed memory or Git commits are execution artifacts unless C6 explicitly promotes them to authoritative evidence.
+
+
+## 2026-10-02 — Provider integration must include its production runtime
+The Whatomate adapter was correctly merged, but the real production capability also requires the provider runtime itself to be part of the canonical deployment. The unified deployment now provisions Whatomate, its database/Redis persistence, HTTPS routing and secret-backed configuration. This closes the code-to-runtime gap while preserving the separate LIVE gates for VPS access, Meta configuration and real message evidence.
