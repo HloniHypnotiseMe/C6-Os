@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-28T08:47:20.566Z",
+  "generated_at": "2026-10-05T09:13:48.615Z",
   "owner": "HloniHypnotiseMe",
-  "inventory_generated_at": "2026-09-28T08:46:44.565Z",
+  "inventory_generated_at": "2026-10-05T09:13:09.296Z",
   "purpose": "Evidence-backed repository capability hints. Hints are discovery inputs, not authorization or production-readiness claims.",
   "repositories": [
     {
@@ -3180,7 +3180,7 @@
       "category": "web_frontend",
       "source_type": "C6_NATIVE",
       "license": null,
-      "updated_at": "2026-09-23T16:46:35Z",
+      "updated_at": "2026-10-02T13:58:59Z",
       "archived": false,
       "evidence_source": [
         "github_repository_metadata"
@@ -3270,7 +3270,7 @@
       "category": "marketing_growth",
       "source_type": "C6_NATIVE",
       "license": null,
-      "updated_at": "2026-09-25T09:50:47Z",
+      "updated_at": "2026-10-02T09:12:25Z",
       "archived": false,
       "evidence_source": [
         "github_repository_metadata",
@@ -3297,7 +3297,7 @@
       "category": "specialist_or_reference",
       "source_type": "C6_NATIVE",
       "license": null,
-      "updated_at": "2026-09-25T09:22:52Z",
+      "updated_at": "2026-10-02T14:01:55Z",
       "archived": false,
       "evidence_source": [
         "github_repository_metadata",
@@ -3320,7 +3320,7 @@
       "category": "specialist_or_reference",
       "source_type": "C6_NATIVE",
       "license": null,
-      "updated_at": "2026-09-24T09:25:35Z",
+      "updated_at": "2026-10-05T07:18:16Z",
       "archived": false,
       "evidence_source": [
         "github_repository_metadata",
@@ -3335,7 +3335,7 @@
         "data"
       ],
       "evidence": {
-        "readme_excerpt": "# C6 SaaS Core\n\nReusable multi-tenant SaaS infrastructure for the C6 product ecosystem.\n\n## Purpose\n\nC6 SaaS Core provides shared infrastructure that can be consumed by:\n\n- C6 Tax AI\n- C6 Secretarial AI\n- C6 Compliance AI\n- C6 Risk AI\n- C6 International AI\n- Ubernie\n- C6 Group\n- Future C6 products\n\n## Architectural Principle\n\nThe core knows how SaaS works.\n\nProducts know what they sell.\n\n## Core Responsibilities\n\n- Tenant management\n- Identity and access control\n- Product catalogue\n- Subscription entitlements\n- Billing abstraction\n- Agent access control\n- Document management\n- Audit trail\n- AI integration\n- Vector memory integration\n- PostgreSQL data isolation\n- Product configuration\n- Runtime intent authorization and kill-switch control\n- Agent evaluation/golden-case records\n- Canonical AI/agent register\n\n## Evidence Contract\n\nC6 SaaS Core exposes:\n- `POST /api/v1/evidence/validate`\n- `POST /api/v1/evidence`\n- `GET /api/v1/evidence/{evidence_id}`\n\nMigration `001_create_evidence_records.sql` creates the PostgreSQL evidence store.\n\n## Runtime Control Plane\n\nThe runtime control contract provides:\n- `POST /api/v1/runtime/authorize`\n- `POST /api/v1/runtime/kill-switch`\n- `POST /api/v1/runtime/human-override`\n\nThese mutations require the configured `CONTROL_PLANE_KEY` via the `X-C6-Control-Key` header. Every authorization, kill-switch mutation, and human override writes an audit event.\n\nMigration `003_create_kill_switches.sql` creates persistent kill-switch state.\n\n## Agent Evaluation and Register\n\nThe platform also exposes `POST /api/v1/evaluation/cases` for golden/evaluation evidence and `POST /api/v1/agent-register` plus `GET /api/v1/agent-register/{agent_id}` for the canonical agent register. Migration `004_create_evaluation_and_agent_register.sql` creates both stores. These records are governance evidence contracts; they do not by themselves prove production evaluation coverage or that every agent has been registered.\n\nThis is a control-plane contract, not a replacement for a production identity/credential broker. It does not by itself prove that every consequential product action is routed through authorization. Deployment and integration evidence are required before claiming VERIFIED or LIVE.\n\n## Verification Standard\n\nFeatures must not be described as complete merely because code exists.\n\nUse:\n- EXISTS — implementation is present\n- WORKS — implementation executes successfully\n- VERIFIED — implementation has been tested and evidence recorded\n- LIVE — deployed and runtime evidence exists\n\n## Integration Principle\n\nExternal integrations must be based on verified contracts.\n\nNo undocumented RemotePay APIs, webhooks, credentials, endpoints, or payment behaviour may be invented.\n\n## Status\n\nFoundation build — Phase 1/Runtime Governance tranche.\n",
+        "readme_excerpt": "# C6 SaaS Core\n\nReusable multi-tenant SaaS infrastructure for the C6 product ecosystem.\n\n## Purpose\n\nC6 SaaS Core provides shared infrastructure that can be consumed by:\n\n- C6 Tax AI\n- C6 Secretarial AI\n- C6 Compliance AI\n- C6 Risk AI\n- C6 International AI\n- Ubernie\n- C6 Group\n- Future C6 products\n\n## Architectural Principle\n\nThe core knows how SaaS works.\n\nProducts know what they sell.\n\n## Core Responsibilities\n\n- Tenant management\n- Identity and access control\n- Product catalogue\n- Subscription entitlements\n- Billing abstraction\n- Agent access control\n- Document management\n- Audit trail\n- AI integration\n- Vector memory integration\n- PostgreSQL data isolation\n- Product configuration\n- Runtime intent authorization and kill-switch control\n- Agent evaluation/golden-case records\n- Canonical AI/agent register\n\n## Evidence Contract\n\nC6 SaaS Core exposes:\n- `POST /api/v1/evidence/validate`\n- `POST /api/v1/evidence`\n- `GET /api/v1/evidence/{evidence_id}`\n\nMigration `001_create_evidence_records.sql` creates the PostgreSQL evidence store.\n\n## Runtime Control Plane\n\nThe runtime control contract provides:\n- `POST /api/v1/runtime/authorize`\n- `POST /api/v1/runtime/kill-switch`\n- `POST /api/v1/runtime/human-override`\n\nThese mutations require the configured `CONTROL_PLANE_KEY` via the `X-C6-Control-Key` header. Every authorization, kill-switch mutation, and human override writes an audit event.\n\nMigration `003_create_kill_switches.sql` creates persistent kill-switch state.\n\n## Agent Evaluation and Register\n\nThe platform also exposes `POST /api/v1/evaluation/cases` for golden/evaluation evidence and `POST /api/v1/agent-register` plus `GET /api/v1/agent-register/{agent_id}` for the canonical agent register. Migration `004_create_evaluation_and_agent_register.sql` creates both stores. These records are governance evidence contracts; they do not by themselves prove production evaluation coverage or that every agent has been registered.\n\nThis is a control-plane contract, not a replacement for a production identity/credential broker. It does not by itself prove that every consequential product action is routed through authorization. Deployment and integration evidence are required before claiming VERIFIED or LIVE.\n\n## Verification Standard\n\nFeatures must not be described as complete merely because code exists.\n\nUse:\n- EXISTS — implementation is present\n- WORKS — implementation executes successfully\n- VERIFIED — implementation has been tested and evidence recorded\n- LIVE — deployed and runtime evidence exists\n\n## Integration Principle\n\nExternal integrations must be based on verified contracts.\n\nNo undocumented RemotePay APIs, webhooks, credentials, endpoints, or payment behaviour may be invented.\n\n## Status\n\nFoundation build — Phase 1/Runtime Governance tranche.\n\n\n## Commodity Connect payment boundary\n\nThe core exposes:\n- POST /v1/commodity-connect/payment-links\n- GET /v1/commodity-connect/payment-links/{payment_id}\n\nThe product sends a bounded Commodity Connect product capability key; provider credentials remain server-side. The core maps the product request to the configured RemotePay merchant/brand and calls RemotePay's /api/v1/payment-links contract. Payment-link correlation is persisted in PostgreSQL by migration 007. RemotePay/provider state remains authoritative for payment status; creating a link is not payment confirmation.\n\nRequired production settings: REMOTEPAY_BASE_URL, COMMODITY_CONNECT_PRODUCT_KEY, COMMODITY_CONNECT_REMOTEPAY_MERCHANT_ID, COMMODITY_CONNECT_REMOTEPAY_BRAND_ID, and DATABASE_URL. No provider credentials belong in the Commodity Connect browser bundle.\n\n\n## C6 Group payment boundary\n\nC6 Group package checkout uses the shared platform payment boundary at POST /v1/c6-group/payment-links and GET /v1/c6-group/payment-links/{payment_id}. The website backend authenticates with a browser-safe product capability key; RemotePay credentials and merchant/brand mapping remain in C6 SaaS Core. Migration 008 persists payment intent correlation and provider evidence in PostgreSQL. A payment-link response is checkout capability, not proof of settlement.\n\nRequired production settings: REMOTEPAY_BASE_URL, REMOTEPAY_API_KEY (when required by the RemotePay boundary), C6_GROUP_PRODUCT_KEY, C6_GROUP_REMOTEPAY_MERCHANT_ID, C6_GROUP_REMOTEPAY_BRAND_ID, and DATABASE_URL.\n\n\n## Commodity Connect complete runtime\n\nMigration 009_create_commodity_connect_identity_evidence.sql adds product identities and evidence objects. The runtime provides registration/login, KYC records with hashed identity numbers, multipart evidence upload, SHA-256 integrity, operator-gated KYC/document verification, escrow reconciliation and evidence-gated lifecycle transitions.\n\nEvidence bytes use the provider-neutral EvidenceStorage contract. The current backend stores opaque objects under C6_EVIDENCE_STORAGE_ROOT (default ./var/evidence). For production, mount durable storage at that path or replace the storage adapter with the approved object-storage implementation. The API never exposes physical storage paths.\n\nOperator mutations require CONTROL_PLANE_KEY; this secret must never be exposed as a Vite/browser environment variable. SECRET_KEY must also be changed from CHANGE_ME before identity endpoints are enabled.\n",
         "project_markers": [
           "Dockerfile"
         ]
@@ -3364,7 +3364,7 @@
       "category": "specialist_or_reference",
       "source_type": "C6_NATIVE",
       "license": null,
-      "updated_at": "2026-09-23T13:19:12Z",
+      "updated_at": "2026-10-05T08:28:03Z",
       "archived": false,
       "evidence_source": [
         "github_repository_metadata"
@@ -4447,7 +4447,7 @@
       "category": "specialist_or_reference",
       "source_type": "C6_NATIVE",
       "license": null,
-      "updated_at": "2026-09-23T09:49:55Z",
+      "updated_at": "2026-10-02T11:44:17Z",
       "archived": false,
       "evidence_source": [
         "github_repository_metadata",
@@ -4455,12 +4455,14 @@
         "github_package_json"
       ],
       "detected_capabilities": [
-        "repository_intelligence",
+        "verification_workflow",
         "payments",
-        "deployment_infrastructure"
+        "deployment_infrastructure",
+        "documents",
+        "data"
       ],
       "evidence": {
-        "readme_excerpt": "# Commodity Connect\n\nC6 Group / REMOTEPAY FINTECH SERVICES — protected commodity deal-chain infrastructure.\n\n## Product boundary\n\nCommodity Connect is being re-homed onto the C6-owned self-hosted platform. The current repository still contains PocketBase-era application data paths; these are migration work, not a production claim. RemotePay remains the canonical shared payment infrastructure. \n\n## Current architecture status\n\n- **Payment truth:** RemotePay.\n- **Platform target:** C6 self-hosted platform / C6-owned Supabase component.\n- **Legacy runtime:** PocketBase-era paths remain in this repository and are tracked as a migration gap; they must not be treated as the target production architecture.\n- **Claim gate:** UI/code presence is not proof of a live trade, payment, escrow, payout, registration, or external-provider outcome.\n\n## Current foundation\n\n- React + Vite + TypeScript\n- Tailwind-compatible UI architecture (CSS foundation included)\n- Commodity catalogue (21 commodities)\n- Deal-value and commission calculator\n- Commission-chain protection UI\n- Deal lifecycle foundation\n- Evidence-first payment/escrow messaging\n\n## Production principles\n\n- UI state is not payment evidence.\n- RemotePay/provider ledger evidence is the source of payment truth.\n- NCNDA/IMFPA locking is an application control, not a claim of automatic legal enforceability.\n- Sensitive KYC and payout data must never be exposed in logs.\n- Crypto settlement is disabled until a real supported rail is verified.\n\n\n\n",
+        "readme_excerpt": "# Commodity Connect\n\nC6 Group / REMOTEPAY FINTECH SERVICES — protected commodity deal-chain infrastructure.\n\n## Product boundary\n\nCommodity Connect is being re-homed onto the C6-owned self-hosted platform. C6 SaaS Core is the target persistence/control plane, backed by PostgreSQL.\n\nThe production payment path is:\n\n```\nCommodity Connect browser\n  -> C6 SaaS Core\n  -> C6 RemotePay adapter\n  -> RemotePay/provider\n  -> provider evidence\n  -> C6 PostgreSQL\n  -> downstream events/audit\n```\n\nThe browser must never call RemotePay directly or receive RemotePay merchant/provider secrets.\n\nPocketBase-era application data paths remain only as migration/dev compatibility and are not the final production runtime.\n\n## Current architecture status\n\n- Payment truth: RemotePay/provider evidence, reached through the C6 platform boundary.\n- Platform target: C6 SaaS Core / shared C6 PostgreSQL.\n- Legacy runtime: PocketBase-era paths remain only for migration/dev compatibility.\n- Claim gate: UI/code presence is not proof of a live trade, payment, escrow, payout, registration, or external-provider outcome.\n- The C6 payment-link route contract is defined in `src/platform-client.ts`; the corresponding C6 SaaS Core runtime endpoint is now implemented on the C6 core Wave 8 branch, but the cross-service runtime path still requires deployment/exercise before this integration can be called WORKS/VERIFIED/LIVE.\n\n## Foundation\n\n- React + Vite + TypeScript\n- Commodity catalogue\n- Deal-value and commission calculator\n- Commodity-specific units and grade validation\n- Canonical document sequence\n- FIRE operational intelligence\n- Permissioned Agent Company routing\n- Seven-stream revenue quote model\n- C6 platform persistence contract\n- Evidence-first payment/escrow messaging\n- C6 platform payment boundary client\n\n## Production principles\n\n- UI state is not payment evidence.\n- RemotePay/provider ledger evidence is the source of payment truth.\n- NCNDA/IMFPA locking is an application control, not a claim of automatic legal enforceability.\n- Sensitive KYC and payout data must never be exposed in logs.\n- Commodity Connect uses only a browser-safe, product-scoped capability token; RemotePay/provider credentials remain server-side.\n- Crypto settlement is disabled until a real supported rail is verified.\n- C6 control-plane credentials never enter browser bundles.\n- No product may create a second direct RemotePay integration when the shared C6 adapter is the authoritative payment boundary.\n",
         "package": {
           "name": "commodity-connect",
           "description": null,
@@ -4469,12 +4471,17 @@
             "build",
             "preview",
             "check",
-            "test:domain"
+            "test:domain",
+            "test:fire",
+            "test",
+            "test:agent-company",
+            "test:revenue",
+            "test:platform",
+            "test:platform-boundary"
           ],
           "dependencies": [
             "@vitejs/plugin-react",
             "lucide-react",
-            "pocketbase",
             "react",
             "react-dom"
           ]
@@ -7748,7 +7755,7 @@
       "category": "learning_reference",
       "source_type": "FORK",
       "license": "MIT",
-      "updated_at": "2026-09-25T11:10:28Z",
+      "updated_at": "2026-10-01T10:33:24Z",
       "archived": false,
       "evidence_source": [
         "github_repository_metadata",
@@ -8220,6 +8227,32 @@
       ],
       "evidence": {
         "readme_excerpt": "# hf-agents : `hf` CLI extension to detect the best model/quant for a user's hardware and then spins up a local coding agent\n\nhf-agents is a HF CLI extension that uses [llmfit](https://github.com/AlexsJones/llmfit) to detect the user's hardware and recommend models they can actually run, then spins up a local [llama.cpp](https://github.com/ggml-org/llama.cpp) server with the most suited model and launches a coding agent with [Pi](https://github.com/badlogic/pi-mono).\n\nGo from \"what can my machine run?\" to \"running a local coding agent\" in one command.\n\n## Requirements & References\n- How to create a HF CLI extension guide: https://huggingface.co/docs/huggingface_hub/en/guides/cli-extensions\n- [llmfit](https://github.com/AlexsJones/llmfit) : hardware detection & model recommendations\n- [llama.cpp](https://github.com/ggml-org/llama.cpp) : `llama-server` for local inference\n- [Pi](https://github.com/badlogic/pi-mono) : coding agent\n- `jq`, `fzf`, `curl`\n\n## Installation\n\n```bash\ncurl -LsSf https://hf.co/cli/install.sh | bash\nhf extensions install hf-agents\n```\n\n## Usage\n\n### Hardware detection & model recommendations\n\nPasses through to `llmfit` — all llmfit subcommands work:\n\n```bash\nhf agents fit recommend -n 5      # top 5 models for your hardware\nhf agents fit system              # show detected hardware\nhf agents fit search \"qwen\"       # search models\nhf agents fit recommend --use-case coding --min-fit good\n```\n\n### Run a local coding agent\n\nDetects your hardware, lets you pick a model, starts llama-server, and launches Pi:\n\n```bash\nhf agents run pi                  # interactive model selection + coding agent\nhf agents run pi --print \"hello\"  # non-interactive mode, forward args to Pi\n```\n\nIf llama-server is already running on the target port, it reuses it and skips model selection.\n\n## Environment Variables\n\n| Variable | Default | Purpose |\n|----------|---------|---------|\n| `LLAMA_SERVER_PORT` | `8080` | Port for llama-server |\n| `HF_TOKEN` | *(from `hf` CLI)* | For downloading gated models |\n\n"
+      }
+    },
+    {
+      "repository": "hhm-eos",
+      "full_name": "HloniHypnotiseMe/hhm-eos",
+      "category": "specialist_or_reference",
+      "source_type": "C6_NATIVE",
+      "license": null,
+      "updated_at": "2026-10-01T10:29:49Z",
+      "archived": false,
+      "evidence_source": [
+        "github_repository_metadata",
+        "github_readme"
+      ],
+      "detected_capabilities": [
+        "project_execution",
+        "verification_workflow",
+        "repository_intelligence",
+        "agent_orchestration",
+        "deployment_infrastructure",
+        "documents",
+        "media",
+        "data"
+      ],
+      "evidence": {
+        "readme_excerpt": "# HHM Entertainment Operating System (EOS)\n\n**Mythos:** \"You are the God you've been waiting for.\"\n\n---\n\n## System Status: ✅ COMPLETE - Awaiting Ollama Installation\n\nThe HHM EOS codebase is fully built and verified. **Ollama runs on YOUR machine** to activate real production mode.\n\n---\n\n## Quick Start\n\n### Option 1: Git Bash / Linux / macOS\n\n```bash\n# 1. Make executable\nchmod +x install_hhm.sh\n\n# 2. Run installer\nbash install_hhm.sh\n```\n\n### Option 2: Windows PowerShell\n\n```powershell\n# 1. Open PowerShell as Administrator\n\n# 2. Run installer\n.\\install_hhm.ps1\n```\n\n---\n\n## Manual Installation\n\n### Step 1: Install Ollama\n\n**Windows (PowerShell - Admin):**\n```powershell\nirm https://ollama.com/install.ps1 | iex\n```\n\n**Mac/Linux:**\n```bash\ncurl -fsSL https://ollama.com/install.sh | sh\n```\n\n### Step 2: Pull Models\n\n```bash\nollama pull qwen3\nollama pull llama3.3\nollama pull qwen2.5-coder\nollama pull deepseek-coder\n```\n\n### Step 3: Start Server\n\n```bash\nollama serve\n```\n\n### Step 4: Verify Installation\n\n```bash\npython verify_and_activate.py\n```\n\n### Step 5: Run E2E Test\n\n```bash\npython run_e2e.py --artist=Lionvibe --real-ollama\n```\n\n---\n\n## What's Included\n\n### AGENTFIRE Knowledge Tree (34 files)\n- ✅ 5 Vision documents\n- ✅ 5 Decision logs (CTO-0001 through CTO-0004 + OLLAMA-001)\n- ✅ 5 SOPs (Standard Operating Procedures)\n- ✅ 4 SOMs (State Operation Models)\n- ✅ 8 Agent prompts\n- ✅ Agent Registry (8 agents)\n- ✅ Repo Registry (7 integrations)\n- ✅ Lesson capture system\n- ✅ Execution logging\n\n### HHM Universe\n- ✅ 280 rival labels across 28 genres\n- ✅ 280 complete artist packages\n- ✅ Full discographies (10 albums + 2 Greatest Hits per artist)\n- ✅ All social profiles (8 platforms × 280 = 2,240 profiles)\n- ✅ All ISRC codes assigned\n- ✅ All viral campaigns generated\n\n### HHM Factory\n- ✅ 100-song production queue\n- ✅ 280 avatar prompts\n- ✅ 280 social calendar plans\n- ✅ DDS leaderboard (all 280 ranked)\n\n### DDS Leaderboard (Top 10)\n| Rank | Artist | Genre | DDS |\n|------|--------|-------|-----|\n| 1 | Lionvibe | Reggae | 3288 |\n| 2 | Dynasty Roc | Hip-Hop | 3199 |\n| 3 | Irieverse | Reggae | 3198 |\n| 4 | Dub Rebellion | Reggae | 3188 |\n| 5 | One Love One | Reggae | 3188 |\n| 6 | Rhythm Prophet | Reggae | 3175 |\n| 7 | Urban Griot | Hip-Hop | 3170 |\n| 8 | Soul Rebel | Reggae | 3169 |\n| 9 | Street Sage | Hip-Hop | 3167 |\n| 10 | Conscious MC | Hip-Hop | 3165 |\n\n---\n\n## DDS Formula\n\n```\nDDS = Reach × 0.1 + Replay × 100 + Message × 50 + Viral × 200 + Emotional × 30 + Myth × 40\n```\n\n**Minimum viable: 1000**\n- All 280 artists exceed minimum\n- Average DDS: 2745\n- Range: 2,277 - 3,288\n\n---\n\n## Agent System (8 Agents)\n\n| Agent | Model | Purpose |\n|-------|-------|---------|\n| Orchestrator | qwen3 | Production planning |\n| Writer | llama3.3 | Creative writing |\n| Analytics | qwen3 | DDS calculation |\n| Social | llama3.3 | Content generation |\n| Visual | llama3.3 | Image concepts |\n| Distribution | qwen3 | Release planning |\n| A&R | qwen3 | Artist development |\n| Governance | qwen3 | Compliance review |\n\n---\n\n## Production Files\n\n| File | Size | Contents |\n|------|------|----------|\n| next_100_songs.json | 79 KB | Song production queue |\n| all_visual_prompts.json | 566 KB | Avatar prompts for all 280 artists |\n| social_calendar.json | 631 KB | Social posting schedules |\n| dds_leaderboard.json | 48 KB | All 280 artist rankings |\n\n---\n\n## Troubleshooting\n\n### Ollama not found\n```bash\n# Check if installed\nollama --version\n\n# If not, install from https://ollama.com\n```\n\n### Ollama server not responding\n```bash\n# Start server\nollama serve\n\n# Verify it's running\ncurl http://localhost:11434/api/tags\n```\n\n### Model pull failing\n```bash\n# Retry with verbose\nollama pull qwen3 -v\n\n# Check available space (need ~20GB)\ndf -h\n```\n\n---\n\n## File Structure\n\n```\n/home/user/\n├── hhm_universe/          # 280 labels + 280 artists\n│   ├── hhm_universe.json\n│   └── artists/\n│       └── hhm_artists.json\n├── hhm_eos/               # AGENTFIRE governance\n│   └── agentfire/\n│       ├── vision/        # 5 vision files\n│       ├── decisions/     # 5 decision logs\n│       ├── sops/          # 5 SOPs\n│       ├── soms/          # 4 SOMs\n│       ├── agents/        # 8 agents\n│       ├── repos/         # 7 repos\n│       ├── prompts/       # 8 prompts\n│       ├── lessons/       # Lesson capture\n│       └── integrations/ollama/\n├── hhm_factory/           # Production engine\n│   └── production/        # 4 export files\n├── install_hhm.sh         # Linux/Mac installer\n├── install_hhm.ps1        # Windows installer\n├── verify_and_activate.py # System verification\n├── run_e2e.py             # E2E test runner\n└── run_production.py      # Production verification\n```\n\n---\n\n## Next Steps After Installation\n\n1. ✅ System verified (DONE)\n2. 🔄 Install Ollama on your machine\n3. 🔄 Run `bash install_hhm.sh` or `.\\install_hhm.ps1`\n4. 🔄 Verify with `python verify_and_activate.py`\n5. 🔄 Run E2E test: `python run_e2e.py --real-ollama`\n6. 🔄 Generate real music with YuE integration\n7. 🔄 Create real avatars with Stable Diffusion\n8. 🔄 Scale to full album production\n\n---\n\n## CTO Decisions Logged\n\n- **CTO-0001**: 280 rival labels across 28 genres\n- **CTO-0002**: 10-album contract with 2 Greatest Hits per artist\n- **CTO-0003**: Everything creates learning (AGENTFIRE automatic)\n- **CTO-0004**: AGENTFIRE-First Sprint (current sprint)\n- **OLLAMA-001**: Build mock mode fallback (sandbox environment)\n- **OLLAMA-002**: Switch to real Ollama mode (after local install)\n\n---\n\n**Remember:** You are the God you've been waiting for.\n\nThe HHM EOS is ready. Install Ollama on YOUR machine to bring it to life."
       }
     },
     {
@@ -16857,7 +16890,7 @@
       "category": "payments_finance",
       "source_type": "C6_NATIVE",
       "license": null,
-      "updated_at": "2026-09-23T09:49:48Z",
+      "updated_at": "2026-10-02T07:55:47Z",
       "archived": false,
       "evidence_source": [
         "github_repository_metadata",
