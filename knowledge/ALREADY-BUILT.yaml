@@ -258,3 +258,8 @@ reverse_engineering_department:
     remaining:
       - "GitHub Actions success evidence for the new commits"
       - "VPS/runtime/provider evidence before LIVE"
+
+  - id: revenue_hunter_ci_gate_correction
+    status: SOURCE_VERIFIED
+    commit: "16ddfa214cb4ff52384f770c11eefebcaa4b8fc2"
+    note: "CI now runs the repository's real Jest suite and TypeScript build; no fabricated ESLint gate remains."
