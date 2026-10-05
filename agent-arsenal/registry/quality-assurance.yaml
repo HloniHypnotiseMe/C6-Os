@@ -1,0 +1,34 @@
+schema_version: "0.1"
+function:
+  id: quality_verification_assurance
+  name: "Quality, Verification & Assurance"
+  mission: "Independently determine whether built capabilities work, are secure, integrate correctly, and have sufficient evidence for their claimed lifecycle state."
+  owner: quality_assurance
+  independence_from: engineering
+  execution_layers: [human, skill, agent, workflow, team, provider]
+  triggers:
+    - material_change
+    - release_candidate
+    - security_review
+    - regression_signal
+    - production_incident
+    - scheduled_assurance
+  outputs:
+    - test_result
+    - security_result
+    - integration_result
+    - evidence_record
+    - defect_or_blocker
+    - release_recommendation
+  evidence_required: true
+  production_claim_rule: "Never promote structural or local test evidence to LIVE without direct production runtime evidence."
+  permissions:
+    default: deny
+    consequential: [production_mutation, destructive_testing, real_money_testing, high_risk_security_actions]
+    approval_required_for_consequential: true
+  resolution_order:
+    - existing_c6_capability
+    - existing_arsenal_provider
+    - compose_smallest_sufficient_test_layer
+    - build_new_only_if_gap_is_proven
+suites: [functional, api, integration, security, regression, data, economic, agent, performance, resilience, production_readiness]
