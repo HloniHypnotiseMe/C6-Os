@@ -1,0 +1,27 @@
+name: C6 QA Certification Run
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  certification:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: QA registry
+        run: node agent-arsenal/tests/test-quality-assurance-registry.mjs
+      - name: START HERE
+        run: node agent-arsenal/tests/test-start-here-gate.mjs
+      - name: Company Operating Model
+        run: node agent-arsenal/tests/test-company-operating-model.mjs
+      - name: Claim Evidence
+        run: node agent-arsenal/tests/test-claim-evidence-gate.mjs
+      - name: GitAgent Admission
+        run: node agent-arsenal/tests/test-gitagent-admission.mjs
+      - name: Provider Pins
+        run: node agent-arsenal/tests/test-provider-pins.mjs
