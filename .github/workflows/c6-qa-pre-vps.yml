@@ -1,0 +1,29 @@
+name: C6 QA Pre-VPS Certification
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  structural-certification:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Run C6 QA registry gate
+        run: node agent-arsenal/tests/test-quality-assurance-registry.mjs
+      - name: Run START HERE gate
+        run: node agent-arsenal/tests/test-start-here-gate.mjs
+      - name: Run company operating model tests
+        run: node agent-arsenal/tests/test-company-operating-model.mjs
+      - name: Run claim/evidence gate
+        run: node agent-arsenal/tests/test-claim-evidence-gate.mjs
+      - name: Run GitAgent admission gate
+        run: node agent-arsenal/tests/test-gitagent-admission.mjs
+      - name: Run provider pin gate
+        run: node agent-arsenal/tests/test-provider-pins.mjs
