@@ -688,6 +688,8 @@ security_notes:
   - "Financial/trading repositories are research or controlled integrations until separately approved."
   - "Healthcare/personal-data repositories are not automatically part of C6 product scope."
   - "C6 internal repositories must remain distinguishable from third-party upstream projects."
-    - glta-os
-    - wear-your-art
-    - hhm-eos
+
+internal_repositories:
+  - glta-os
+  - wear-your-art
+  - hhm-eos
