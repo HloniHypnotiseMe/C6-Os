@@ -233,3 +233,5 @@ Evidence state: SOURCE-VERIFIED / CI-UNCONFIRMED / NOT LIVE. GitHub reported no 
 - Verification gap closed: the C6 Build Verification workflow now runs backend lint, Jest tests, and TypeScript build rather than build-only. Workflow change commit: `33c227e652e667cfbbcbdcc1331333f20e13ac35`.
 - C6 Mail delivery contract now has explicit unit coverage for central API routing, required provider message ID, and fail-closed missing configuration. Test commit: `a3082778b6379024532d86aa2af6f01cd3159300`.
 - CI must still be treated as unconfirmed until GitHub reports a successful run for these commits. Production remains NOT LIVE until VPS/runtime/provider evidence exists.
+
+- CI gate correction: removed the non-existent/unconfigured backend ESLint gate from `c6-build.yml`; the workflow now executes the actual Jest suite and TypeScript build. Commit: `16ddfa214cb4ff52384f770c11eefebcaa4b8fc2`.
