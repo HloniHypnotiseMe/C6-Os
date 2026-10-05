@@ -226,3 +226,10 @@ Evidence state at capture: BUILT / SOURCE-VERIFIED / CI-UNCONFIRMED. The GitHub 
 Application hardening commit: `d6fd893714be38dbce2a00e70e3591146ad1ee78`.
 
 Evidence state: SOURCE-VERIFIED / CI-UNCONFIRMED / NOT LIVE. GitHub reported no workflow run or status checks for this commit at capture time.
+
+
+## 2026-10-05 — Revenue Hunter verification hardening
+- Revenue Hunter send-path hardening remains source-verified: owner approval is mandatory, C6 Mail is the sole delivery boundary, provider message IDs are required, and durable idempotency reservations are persisted in `WebhookEvent`.
+- Verification gap closed: the C6 Build Verification workflow now runs backend lint, Jest tests, and TypeScript build rather than build-only. Workflow change commit: `33c227e652e667cfbbcbdcc1331333f20e13ac35`.
+- C6 Mail delivery contract now has explicit unit coverage for central API routing, required provider message ID, and fail-closed missing configuration. Test commit: `a3082778b6379024532d86aa2af6f01cd3159300`.
+- CI must still be treated as unconfirmed until GitHub reports a successful run for these commits. Production remains NOT LIVE until VPS/runtime/provider evidence exists.
