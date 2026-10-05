@@ -213,3 +213,16 @@ Latest application commits:
 - tests: `46e3cc61aeae75a75e904adf412b74237bba5695`
 
 Evidence state at capture: BUILT / SOURCE-VERIFIED / CI-UNCONFIRMED. The GitHub connector reported no workflow runs for the latest test commit, so this wave is not falsely marked green or LIVE.
+
+
+## 2026-10-05 — Revenue Hunter send hardening
+
+- Revenue Hunter outreach delivery is now explicitly bound to the existing C6 Mail service; the C6 Mail contract requires `C6_MAIL_SERVICE_URL` and `C6_MAIL_SERVICE_KEY`, calls `/api/v1/mail/send`, and requires a returned message ID as delivery evidence.
+- `/outreach-send` now requires explicit `ownerApproved: true` and a per-message `idempotencyKey`.
+- Each approved send first creates a durable deterministic reservation in the existing PostgreSQL-backed `WebhookEvent` store. A repeated idempotency key is therefore refused before another provider send is attempted, preventing retry-driven duplicate outreach.
+- The reservation is updated with the authoritative C6 Mail message ID on success. If the provider call fails, the reservation records the failed attempt and error rather than silently permitting an unsafe duplicate retry.
+- No SMTP credentials or second mail system were added to Revenue Hunter.
+
+Application hardening commit: `d6fd893714be38dbce2a00e70e3591146ad1ee78`.
+
+Evidence state: SOURCE-VERIFIED / CI-UNCONFIRMED / NOT LIVE. GitHub reported no workflow run or status checks for this commit at capture time.
