@@ -1,0 +1,53 @@
+schema_version: "0.1"
+registry: c6-quality-assurance
+principle: "Test the built system; do not infer runtime truth from source presence."
+workflow:
+  - build
+  - test
+  - security
+  - verify
+  - evidence
+  - register
+  - release
+suites:
+  functional:
+    capabilities: [evidence_based_qa, goal_backward_verification]
+    scope: [acceptance_criteria, business_rules, negative_paths, state_transitions]
+  api:
+    capabilities: [api_testing, api_contract_engineering]
+    scope: [contracts, auth, idempotency, compatibility, error_handling]
+  integration:
+    capabilities: [integration_verification, e2e_test_automation]
+    scope: [cross_service_calls, persistence, events, downstream_effects]
+  security:
+    capabilities: [application_security, security_architecture, authorized_security_testing]
+    scope: [authentication, authorization, tenant_isolation, secrets, dependency_risk, injection, exposed_surfaces]
+    authorization_required: true
+  regression:
+    capabilities: [e2e_test_automation, ai_evaluation]
+    scope: [changed_paths, known_cases, critical_flows]
+  data:
+    capabilities: [database_reliability]
+    scope: [migrations, integrity, backups, restore, state_consistency]
+  economic:
+    capabilities: [payments, claim_evidence]
+    scope: [payment_boundary, idempotency, status_monotonicity, provider_evidence, pricing_snapshot]
+  agent:
+    capabilities: [agent_verification, agent_chaos_testing, agent_identity_trust]
+    scope: [permissions, forbidden_actions, approvals, handoffs, completion_evidence]
+  performance:
+    capabilities: [performance_verification]
+    scope: [baseline, latency, throughput, resource_regression]
+  resilience:
+    capabilities: [agent_chaos_testing, production_reality_check]
+    scope: [failure_injection, recovery, timeout, retry, duplicate_events]
+  production_readiness:
+    capabilities: [production_reality_check, evidence_collection]
+    scope: [runtime_dependencies, secrets, observability, rollback, external_gates]
+outcomes:
+  PASS: "Executed and acceptance condition met."
+  FAIL: "Executed and acceptance condition not met."
+  BLOCKED_EXTERNAL: "Required external dependency or production environment unavailable."
+  UNTESTED: "Scope not exercised."
+  VERIFIED: "Reproducible evidence supports the stated scope."
+  LIVE: "Production runtime evidence supports the stated scope."
