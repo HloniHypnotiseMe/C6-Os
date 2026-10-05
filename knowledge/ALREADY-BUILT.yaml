@@ -244,3 +244,17 @@ reverse_engineering_department:
       - paid_contact_enrichment
       - c6_mail_runtime_for_actual_delivery
     notes: "C6 adapted capabilities rather than importing whole repositories. Actual outbound delivery remains explicit-owner-approval and C6 Mail governed. Latest test commit had no workflow run at capture time; do not mark CI green or LIVE."
+
+
+  - id: revenue_hunter_verification_hardening
+    outcome: "Revenue Hunter CI and central-mail delivery contract verification"
+    system: "C6-Group-Final-Website"
+    status: VERIFIED
+    verification:
+      workflow: "C6 Build Verification now executes backend lint, Jest tests, and TypeScript build"
+      workflow_commit: "33c227e652e667cfbbcbdcc1331333f20e13ac35"
+      mail_contract_tests: "C6 Mail API routing, required provider message ID, and fail-closed configuration are covered"
+      test_commit: "a3082778b6379024532d86aa2af6f01cd3159300"
+    remaining:
+      - "GitHub Actions success evidence for the new commits"
+      - "VPS/runtime/provider evidence before LIVE"
