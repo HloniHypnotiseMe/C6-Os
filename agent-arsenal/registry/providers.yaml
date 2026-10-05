@@ -251,6 +251,7 @@ providers:
     permissions: [filesystem_read, filesystem_write, network]
     runtime: vps
     pin: "a88dae559ee85686eeb3cbd6834492ac9b4fc1fe"
+    production_active: true
 
   - id: n8n
     name: n8n
