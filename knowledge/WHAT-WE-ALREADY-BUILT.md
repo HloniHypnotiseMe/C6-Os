@@ -187,3 +187,29 @@ Important implementation boundary: standalone execution must consume the exact a
 - Smart Reputation is EXECUTABLE at repository level; Smart Ads is PROVIDER_REQUIRED until real Meta credentials/account/page configuration and real paused-campaign evidence exist.
 - Neither is LIVE until external runtime evidence exists.
 - PR #56 merged; merge SHA `beb6cf3154f861bcf0023904f7c5d8efc2b34d2b`.
+
+
+## 2026-10-05 — Revenue Hunter OpenOut capability wave
+
+Five OpenOut repositories were source-swept specifically for Revenue Hunter gaps rather than imported wholesale:
+- `OpenOutLearn` — active-learning explore/exploit qualification.
+- `OpenOutNews` — trigger/news candidate ranking and duplicate/syndication collapse.
+- `OpenOutFind` — provider-backed discovery, ICP qualification with reasons, candidate deduplication and confidence-gated enrichment.
+- `OpenOutSend` — suppression-first sending, reply priority, sending window, daily cap, pacing and follow-up controls.
+- `OpenOutreach` — orchestration of find → qualify → enrichment → write → send with explicit operator boundaries.
+
+C6 implementation added to `C6-Group-Final-Website`:
+- `c6group-backend/src/services/revenueHunterEngine.ts`
+- `c6group-backend/src/services/__tests__/revenueHunterEngine.test.ts`
+- `c6group-backend/src/routes/revenueHunter.ts`
+
+Revenue Hunter now has executable repository-level capability for candidate deduplication, evidence-backed ICP qualification, explore/exploit queue selection, confidence-gated enrichment planning, trigger-signal collapse and owner-approved outreach planning. External discovery/enrichment and actual mail delivery remain provider/runtime boundaries.
+
+Durable source record: `knowledge/REVENUE-HUNTER-OPENOUT-NUGGETS-2026-10-05.md`.
+
+Latest application commits:
+- capability engine: `04abd33fbfa7df04fa0480ca2bf3cef4f16a1fd1`
+- route wiring: `581b94ae203953aa01b98cfd11a2e5fe6e38140f`
+- tests: `46e3cc61aeae75a75e904adf412b74237bba5695`
+
+Evidence state at capture: BUILT / SOURCE-VERIFIED / CI-UNCONFIRMED. The GitHub connector reported no workflow runs for the latest test commit, so this wave is not falsely marked green or LIVE.
