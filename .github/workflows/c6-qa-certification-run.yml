@@ -8,6 +8,8 @@ on:
 jobs:
   certification:
     runs-on: ubuntu-latest
+    env:
+      NODE_PATH: ${{ github.workspace }}/agent-arsenal/mcp-server/node_modules
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
