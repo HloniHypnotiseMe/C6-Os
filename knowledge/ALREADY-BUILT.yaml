@@ -84,12 +84,12 @@ reverse_engineering_department:
       - smart-funnel
       - smart-socials
       - smart-analytics
+      - smart-reputation
     provider_required:
       - smart-inbox
-    remaining_not_implemented:
-      - smart-reputation
       - smart-ads
-    notes: "Capacity is reserved against the exact SolutionPurchase and completed only after authoritative execution acceptance; Smart Inbox has provider adapters implemented but remains PROVIDER_REQUIRED until live credentials, webhook registration and received-message evidence are proven; production LIVE status remains a separate VPS/provider verification gate."
+    remaining_not_implemented: []
+    notes: "Capacity is reserved against the exact SolutionPurchase and completed only after authoritative execution acceptance; Smart Inbox and Smart Ads remain provider/runtime gated; production LIVE status remains a separate VPS/provider verification gate."
 
   - id: smart_inbox_execution_core
     outcome: "Tenant-owned Smart Inbox core with metered outbound and normalized omnichannel inbound routing"
@@ -104,7 +104,7 @@ reverse_engineering_department:
       - live_provider_credentials
       - provider_webhook_registration
       - real_received_message_evidence
-    notes: "BillionMail IMAP normalizes inbound email; WhatsApp Cloud, Meta Messenger and Instagram webhook adapters normalize signed provider events into the same tenant-owned ingress. Do not label EXECUTABLE until external runtime evidence is captured."
+    notes: "BillionMail IMAP normalizes inbound email; WhatsApp Cloud, Meta Messenger and Instagram webhook adapters normalize signed provider events into the same tenant-owned ingress. Do not label LIVE until external runtime evidence is captured."
 
   - id: c6_studio_foundation
     outcome: "AI music workstation foundation with arrangement, role-pass generation, timeline/mixer UI and mix/export boundary"
@@ -130,7 +130,6 @@ reverse_engineering_department:
     notes:
       - "Execution product is separate from the Control Centre UI."
       - "Provider profiles require current verification before deployment."
-
 
   - id: repository_nugget_sweep
     outcome: "Mandatory source-level capability mining and durable nugget registration"
@@ -160,7 +159,6 @@ reverse_engineering_department:
     verification: "Source, server API, streaming protocol, tests and backend tree inspected on 2026-10-02."
     notes: "Candidate ADAPT/COMPOSE; not LIVE. C6 must add tenant identity, durable restart-safe queue, entitlement/quotas and authoritative evidence boundaries."
 
-
   - id: smart_whatsapp_whatomate_execution
     outcome: "Entitlement-aware Smart WhatsApp outbound execution through the registered Whatomate provider"
     system: "C6-Group-Final-Website + HloniHypnotiseMe/whatomate"
@@ -189,7 +187,6 @@ reverse_engineering_department:
     verification: "Structural admission contract and regression test added; runtime execution of the test is pending a network-capable CI/runner because the current execution environment cannot reach GitHub."
     notes: "Gates identity, risk, permissions, capability, evidence contract and provenance. Does not grant C6 authority or prove production runtime."
 
-
   - id: whatomate_production_runtime
     outcome: "Canonical self-hosted Whatomate runtime for Smart WhatsApp provider execution"
     system: "C6-Group-Final-Website unified deployment + HloniHypnotiseMe/whatomate"
@@ -202,3 +199,48 @@ reverse_engineering_department:
       - meta_whatsapp_business_configuration
       - whatsapp_c6group_co_za_dns_https
       - real_outbound_whatsapp_message_evidence
+
+  - id: smart_reputation_execution
+    outcome: "Entitlement-aware Smart Reputation review-request execution through C6 Mail"
+    system: "C6-Group-Final-Website + c6group-backend"
+    status: WORKS
+    contract: EXECUTABLE
+    verification: "C6 website PR #56 merged beb6cf3154f861bcf0023904f7c5d8efc2b34d2b; contract regression coverage present."
+    required_env: [C6_MAIL_SERVICE_URL, C6_MAIL_SERVICE_KEY]
+    evidence_boundary: "Capacity completes only after C6 Mail returns a message ID. Production delivery evidence is still required before LIVE."
+
+  - id: smart_ads_execution
+    outcome: "Entitlement-aware Meta campaign creation with PAUSED launch boundary"
+    system: "C6-Group-Final-Website + c6group-backend"
+    status: WORKS
+    contract: PROVIDER_REQUIRED
+    verification: "C6 website PR #56 merged beb6cf3154f861bcf0023904f7c5d8efc2b34d2b; contract regression coverage present."
+    required_env: [META_ADS_ACCESS_TOKEN, META_AD_ACCOUNT_ID, META_AD_PAGE_ID]
+    evidence_boundary: "Campaigns are created PAUSED; real Meta credentials/account/page and real campaign creation evidence remain required."
+
+  - id: revenue_hunter_openout_capability_wave
+    outcome: "Revenue Hunter acquisition, qualification, enrichment-gating, trigger-signal and guarded outreach-planning capabilities"
+    system: "C6-Group-Final-Website + C6-Os knowledge"
+    status: WORKS
+    sources:
+      - HloniHypnotiseMe/OpenOutLearn
+      - HloniHypnotiseMe/OpenOutNews
+      - HloniHypnotiseMe/OpenOutFind
+      - HloniHypnotiseMe/OpenOutSend
+      - HloniHypnotiseMe/OpenOutreach
+    implementation:
+      - "candidate deduplication"
+      - "evidence-backed ICP qualification with human-readable reasons"
+      - "explore/exploit qualification queue"
+      - "confidence-gated enrichment planning"
+      - "trigger/news duplicate collapse"
+      - "owner-approved outreach planning"
+    application_commits:
+      capability_engine: 04abd33fbfa7df04fa0480ca2bf3cef4f16a1fd1
+      route_wiring: 581b94ae203953aa01b98cfd11a2e5fe6e38140f
+      tests: 46e3cc61aeae75a75e904adf412b74237bba5695
+    provider_required:
+      - licensed_lead_discovery
+      - paid_contact_enrichment
+      - c6_mail_runtime_for_actual_delivery
+    notes: "C6 adapted capabilities rather than importing whole repositories. Actual outbound delivery remains explicit-owner-approval and C6 Mail governed. Latest test commit had no workflow run at capture time; do not mark CI green or LIVE."
