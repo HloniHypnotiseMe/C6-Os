@@ -27,6 +27,11 @@ roles:
     resolution_priority: 100
     capabilities: [evidence_based_qa, production_reality_check]
     human_approval: []
+  - id: quality_assurance
+    domain: quality_verification_assurance
+    resolution_priority: 110
+    capabilities: [evidence_based_qa, api_testing, integration_verification, application_security, authorized_security_testing, e2e_test_automation, performance_verification, production_reality_check]
+    human_approval: [production_mutation, destructive_testing, real_money_testing, high_risk_security_actions]
   - id: engineering
     domain: software
     resolution_priority: 90
@@ -35,7 +40,7 @@ roles:
   - id: security
     domain: security
     resolution_priority: 100
-    capabilities: [application_security, security_architecture, security_operations]
+    capabilities: [application_security, security_architecture, security_operations, authorized_security_testing]
     human_approval: [high_risk_security_actions]
   - id: customer_support
     domain: customer_success
@@ -58,16 +63,23 @@ workers:
     layer: agent
     capability: evidence_based_qa
     status: active
+  - id: c6_quality_assurance
+    role: quality_assurance
+    layer: workflow
+    capability: evidence_based_qa
+    supporting_capabilities: [api_testing, integration_verification, application_security, authorized_security_testing, e2e_test_automation, performance_verification, production_reality_check]
+    status: active
+    independence: "verification_is_separate_from_implementation"
   - id: c6_company_architect
     role: executive
     layer: workflow
     capability: company_operating_model
     status: active
-admission:
-  required: [capability_resolution, provenance, permissions, evidence_contract, verification_plan]
-  forbidden: [duplicate_existing_capability, blind_upstream_copy, unapproved_production_mutation]
   - id: c6_gitagent_admission
     role: engineering
     layer: workflow
     capability: gitagent_admission
     status: active
+admission:
+  required: [capability_resolution, provenance, permissions, evidence_contract, verification_plan]
+  forbidden: [duplicate_existing_capability, blind_upstream_copy, unapproved_production_mutation]
