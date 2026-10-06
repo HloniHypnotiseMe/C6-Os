@@ -140,8 +140,9 @@ OpenAI, Anthropic, Hunter.io, Apollo.io, Google Maps API, optional Playwright br
 
 **C6 replacement rule:** these must not become C6 authority boundaries merely because the ZIP names them. C6-owned boundaries remain the authority for mail, tenant identity, evidence, payment and production execution. External lead discovery/enrichment remains PROVIDER_REQUIRED until a provider is actually admitted and verified.
 
-### Defects confirmed from the supplied source
+### Defects / gaps confirmed from the supplied source
 
+**Confirmed defects/gaps**
 1. Follow-up scheduler passes `in_reply_to_id` to an `Email` model whose field is `in_reply_to`.
 2. Dashboard Replies page references `reply.from_name`, absent from the Reply model.
 3. Google Maps Playwright scraping is DOM-fragile.
@@ -149,6 +150,11 @@ OpenAI, Anthropic, Hunter.io, Apollo.io, Google Maps API, optional Playwright br
 5. The test suite is mostly unit/model parsing coverage; it does not prove real SMTP, IMAP, provider discovery, browser scraping, or end-to-end pipeline execution.
 6. The standalone SQLite/runtime model conflicts with the C6 PostgreSQL/central-boundary architecture.
 7. The ZIP's compliance checklist is not production evidence; controls are asserted but not externally/runtime verified.
+
+**Reviewed items that are not defects**
+- The CSV variable naming noted in the supplied issue list is internally consistent.
+- `force` is accepted by `MailSender.send_email`, so that item is not a defect.
+- The IMAP `SINCE %d-%b-%Y` date format is valid.
 
 ### Reuse conclusion
 
