@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "C6 Smart Trading Decision",
+  "type": "object",
+  "required": ["decision_id", "symbol", "action", "confidence", "risk", "evidence", "authority"],
+  "properties": {
+    "decision_id": {"type": "string"},
+    "symbol": {"type": "string"},
+    "action": {"enum": ["BUY", "SELL", "HOLD", "BLOCK", "REVIEW"]},
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+    "risk": {
+      "type": "object",
+      "required": ["risk_pct", "stop_loss_required"],
+      "properties": {
+        "risk_pct": {"type": "number", "minimum": 0},
+        "stop_loss_required": {"type": "boolean"}
+      }
+    },
+    "evidence": {"type": "array", "items": {"type": "string"}},
+    "authority": {
+      "type": "object",
+      "required": ["execution_enabled", "account_id"],
+      "properties": {
+        "execution_enabled": {"type": "boolean"},
+        "account_id": {"type": "string"}
+      }
+    },
+    "ai_gate": {"enum": ["ALLOW", "BLOCK", "REVIEW"]},
+    "created_at": {"type": "string"}
+  }
+}

@@ -1,0 +1,74 @@
+product_id: c6-smart-trading-os
+name: C6 Smart Trading OS
+type: standalone-product
+governed_by:
+  - C6-Os
+  - C6Group.AiOS
+deployment_target: Contabo-VPS
+edge_target: Cloudflare
+source_of_truth: GitHub
+
+lifecycle:
+  states: [RESEARCH, BACKTEST, PAPER, SHADOW, LIVE_PENDING_APPROVAL, LIVE, HALTED]
+  live_requires:
+    - broker_permission
+    - configured_risk_policy
+    - execution_health
+    - validation_evidence
+    - human_approval
+
+venues:
+  deriv:
+    instruments: [Volatility 75, Volatility 100]
+    status: adapter-required
+  mt5:
+    instruments: [XAUUSD, NAS100]
+    status: adapter-required
+  binance_ccxt:
+    instruments: [configured-crypto]
+    status: adapter-required
+
+ai:
+  local_model: qwen3:4b
+  role: advisory-veto
+  outputs: [ALLOW, BLOCK, REVIEW]
+  hard_risk_override: forbidden
+
+departments:
+  - ceo_trading_orchestrator
+  - market_intelligence
+  - market_data_engineering
+  - signal_research
+  - strategy_lab
+  - backtesting_validation
+  - risk_position_sizing
+  - execution_broker_connectivity
+  - challenge_prop_compliance
+  - portfolio_capital_management
+  - trading_operations_sre
+  - ai_decision_veto
+  - trading_journal_memory
+  - analytics_performance
+  - security_compliance
+  - customer_success_support
+  - revenue_product_operations
+  - qa_reliability
+  - research_innovation
+  - growth_outreach
+  - sales_commercial
+  - marketing_brand
+  - finance_profitability
+  - business_development
+
+commercial_products:
+  - signal-api
+  - challenge-robot
+  - mt5-ea
+  - deriv-engine
+  - strategy-lab
+  - analytics
+  - enterprise-intelligence
+
+evidence:
+  ladder: [EXISTS, WORKS, VERIFIED, LIVE]
+  rule: "Never claim a higher state without evidence for that state."
