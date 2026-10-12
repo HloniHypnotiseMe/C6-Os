@@ -4,10 +4,12 @@ on:
   push:
     paths:
       - "products/smart-trading-os/**"
+      - "products/smart_trading_os/**"
       - ".github/workflows/smart-trading-os.yml"
   pull_request:
     paths:
       - "products/smart-trading-os/**"
+      - "products/smart_trading_os/**"
       - ".github/workflows/smart-trading-os.yml"
 
 jobs:
