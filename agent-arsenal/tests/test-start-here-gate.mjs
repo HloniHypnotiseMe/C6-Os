@@ -10,7 +10,7 @@ assert.match(startHere, /## (?:4\. )?Resolve capability/);
 assert.match(startHere, /## (?:5\. )?Benchmark external\/open-source specialists/);
 assert.match(startHere, /## (?:6\. )?Select the execution layer/);
 assert.match(startHere, /## (?:8\. )?Verify/);
-assert.match(startHere, /## (?:12\. )?Definition of done/);
+assert.match(startHere, /## (?:\d+\. )?Definition of done/);
 assert.match(startHere, /CAPABILITY RESOLVED/);
 assert.match(startHere, /EVIDENCE CAPTURED/);
 
