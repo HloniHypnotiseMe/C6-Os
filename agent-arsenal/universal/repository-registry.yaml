@@ -2,7 +2,7 @@ schema_version: "1.0"
 registry_id: c6-universal-agent-arsenal
 purpose: "Universal quick-reference for C6-Os, C6Group.AiOS, and connected C6 agents."
 source: "HloniHypnotiseMe GitHub profile fork inventory + C6 internal repositories"
-last_reconciled: "2026-10-05"
+last_reconciled: "2026-10-12"
 
 rules:
   - "Consult this registry before building, installing, or selecting a provider."
@@ -198,6 +198,7 @@ capabilities:
     - stagehand
     - yt-dlp
     - Agent-OS
+    - wayback-machine-scraper
   voice_audio:
     - chatterbox
     - ChatTTS-ui
@@ -404,6 +405,7 @@ capabilities:
     - terraform-skill
     - youtube-skills
     - golive-skill
+    - OpenOutLearn
   reverse_engineering:
     - ghidra
     - IDAssist
@@ -525,6 +527,7 @@ capabilities:
     - audiobookshelf
     - VidBee
     - WiFiAudioStreaming-Desktop
+    - VoiceStudio
   photo_media_management:
     - immich
     - karakeep
@@ -578,6 +581,9 @@ capabilities:
     - BillionMail
     - C6-Mail-Services
     - email-marketing-bible
+    - OpenOutFind
+    - OpenOutreach
+    - OpenOutSend
   productivity_office:
     - ModernWMS
     - plane
@@ -595,6 +601,7 @@ capabilities:
     - WireTapper
     - xalgorix
     - yesitsme
+    - OpenOutNews
   specialist_or_reference:
     - ag-kit
     - ai-file-sorter
@@ -688,3 +695,8 @@ security_notes:
   - "Financial/trading repositories are research or controlled integrations until separately approved."
   - "Healthcare/personal-data repositories are not automatically part of C6 product scope."
   - "C6 internal repositories must remain distinguishable from third-party upstream projects."
+    - glta-os
+    - heretic
+    - hhm-eos
+    - wear-your-art
+    - weather_forecast_app
