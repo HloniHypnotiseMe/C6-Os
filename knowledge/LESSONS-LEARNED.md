@@ -119,3 +119,9 @@ C6 must retain authority over tenant identity, permissions, entitlements, paymen
 
 ## 2026-10-02 — Provider integration must include its production runtime
 The Whatomate adapter was correctly merged, but the real production capability also requires the provider runtime itself to be part of the canonical deployment. The unified deployment now provisions Whatomate, its database/Redis persistence, HTTPS routing and secret-backed configuration. This closes the code-to-runtime gap while preserving the separate LIVE gates for VPS access, Meta configuration and real message evidence.
+
+
+## 2026-10-13 — Workflow contract tests are not runtime proof
+The C6 content pipeline now has green CI coverage for exported-workflow contracts and the frontend/backend builds. That proves the tested repository contracts only. It does not prove the private n8n workflow is imported, credentials are valid, the orchestrator is reachable, the named agents are registered, or an end-to-end draft was generated. Keep the workflow inactive until those checks are evidenced.
+
+Do not add automated GitHub writes to a draft-generation workflow without a separate approval boundary, deterministic duplicate protection, strict repository/path allowlists, least-privilege credentials, schema validation and human merge review. Newsletter delivery is a separate capability with consent, unsubscribe, suppression, delivery and audit requirements.
