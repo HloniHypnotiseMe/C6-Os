@@ -263,3 +263,31 @@ reverse_engineering_department:
     status: SOURCE_VERIFIED
     commit: "16ddfa214cb4ff52384f770c11eefebcaa4b8fc2"
     note: "CI now runs the repository's real Jest suite and TypeScript build; no fabricated ESLint gate remains."
+
+
+  - id: c6_content_draft_pipeline_contracts
+    outcome: "Validated C6 content draft-to-review workflow contracts"
+    system: "HloniHypnotiseMe/C6-Group-Final-Website"
+    status: VERIFIED
+    verification:
+      merged_pr: "https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/pull/69"
+      main_commit: "f95b951492bbb3cd85aae52ddbe4b91e55723478"
+      workflow_run: "https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/actions/runs/38364278079"
+      workflow_run_id: 38364278079
+      conclusion: "success"
+      jobs: ["n8n-workflows", "content-pipeline", "blog-calendar", "frontend", "blog-content", "backend"]
+    contract:
+      - "validate topic IDs and require a queued calendar topic"
+      - "reject service routes outside the approved route catalog"
+      - "validate writer JSON, article fields, section bodies and normalized slug"
+      - "return a draft proposal for human review"
+    production_state: "INACTIVE_RUNTIME_UNVERIFIED"
+    remaining:
+      - "private n8n instance import and webhook Header Auth"
+      - "read-only GitHub credential for approved calendar access"
+      - "n8n-to-orchestrator network reachability"
+      - "verify content_writer and seo_analyst registrations and response contract"
+      - "safe live draft request and failure-path evidence"
+      - "separately gated duplicate-safe PR creation before any automated repository write"
+      - "human review/merge; separate newsletter consent and delivery controls"
+    notes: "CI verifies repository contracts, not live n8n/orchestrator execution. Do not mark LIVE or activate until runtime evidence exists."

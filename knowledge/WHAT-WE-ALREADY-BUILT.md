@@ -235,3 +235,15 @@ Evidence state: SOURCE-VERIFIED / CI-UNCONFIRMED / NOT LIVE. GitHub reported no 
 - CI must still be treated as unconfirmed until GitHub reports a successful run for these commits. Production remains NOT LIVE until VPS/runtime/provider evidence exists.
 
 - CI gate correction: removed the non-existent/unconfigured backend ESLint gate from `c6-build.yml`; the workflow now executes the actual Jest suite and TypeScript build. Commit: `16ddfa214cb4ff52384f770c11eefebcaa4b8fc2`.
+
+
+## 2026-10-13 — C6 content draft pipeline verification
+
+- Repository: `HloniHypnotiseMe/C6-Group-Final-Website`; workflow export: `n8n-workflows/content/content-generation.json`.
+- The workflow is intentionally inactive. Its repository-defined path validates a `c6-NNN` topic ID, loads the approved blog calendar, selects only queued topics and approved service routes, calls `content_writer` and `seo_analyst` through `POST http://orchestrator:7000/run`, validates the article structure, and returns a draft proposal for human review.
+- Fixed escaped-regex defects and strengthened contract tests in merged PR #69: https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/pull/69.
+- Main verification commit: `f95b951492bbb3cd85aae52ddbe4b91e55723478`.
+- GitHub Actions run `38364278079` completed successfully: all six jobs passed, including `n8n-workflows`, `content-pipeline`, `blog-calendar`, `frontend`, `blog-content`, and `backend`: https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/actions/runs/38364278079.
+- Evidence level: repository contracts and CI VERIFIED. This does **not** prove a live n8n instance, orchestrator reachability, credentials, draft generation against runtime agents, PR creation, publication, or newsletter delivery.
+- Activation blockers: private n8n import/configuration, webhook Header Auth, repository-scoped read-only GitHub credential, network reachability to the orchestrator, confirmation that both agents are registered and return the expected `response` field, and safe runtime test evidence.
+- Next: validate runtime prerequisites; only then implement a separately gated, duplicate-safe, least-privilege GitHub PR stage. Keep human review/merge and newsletter consent/suppression/delivery controls separate.
