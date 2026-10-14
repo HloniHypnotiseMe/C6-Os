@@ -22,7 +22,7 @@ A state transition requires evidence and an audit record. LIVE is never inferred
 
 ## Hard boundary
 
-AI may propose or veto. Hard risk controls always win. No broker/exchange order is permitted unless account permission, instrument permission, risk limits, execution health and entitlement/authority checks all pass.
+AI may propose or veto. Hard risk controls always win. The deterministic decision path also fails closed to REVIEW when signal confidence is missing, invalid, non-finite or below the configured threshold (default 0.5). TradingAgents ratings are normalized explicitly; confidence is never invented. No broker/exchange order is permitted unless account permission, instrument permission, risk limits, execution health and entitlement/authority checks all pass.
 
 ## Initial venue targets
 
@@ -32,7 +32,7 @@ AI may propose or veto. Hard risk controls always win. No broker/exchange order 
 
 Provider credentials are runtime secrets and never belong in Git.
 
-The local Ollama transport is implemented in `engine/ollama_client.py`; it defaults to loopback-only HTTP and fails closed to `REVIEW`. Unit tests prove request formatting and failure handling, not that Ollama is installed or reachable on a deployed machine.
+The local Ollama transport is implemented in `engine/ollama_client.py`; it defaults to loopback-only HTTP and fails closed to `REVIEW`. Unit tests prove request formatting and failure handling, not that Ollama is installed or reachable on a deployed machine. `INTEGRATION-MAP.md` records source-audited upstream pins, licensing, and the TradingAgents/backtesting adapter boundary.
 
 ## Commercial products
 
