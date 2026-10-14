@@ -247,3 +247,11 @@ Evidence state: SOURCE-VERIFIED / CI-UNCONFIRMED / NOT LIVE. GitHub reported no 
 - Evidence level: repository contracts and CI VERIFIED. This does **not** prove a live n8n instance, orchestrator reachability, credentials, draft generation against runtime agents, PR creation, publication, or newsletter delivery.
 - Activation blockers: private n8n import/configuration, webhook Header Auth, repository-scoped read-only GitHub credential, network reachability to the orchestrator, confirmation that both agents are registered and return the expected `response` field, and safe runtime test evidence.
 - Next: validate runtime prerequisites; only then implement a separately gated, duplicate-safe, least-privilege GitHub PR stage. Keep human review/merge and newsletter consent/suppression/delivery controls separate.
+
+
+## C6 Smart Trading OS — evidence-gated foundation (2026-10-14)
+- Product contract and manifest define the standalone product, lifecycle states, venue targets, 24 operating departments, separate commercial products, Contabo VPS + Cloudflare target, and C6Group.AiOS integration boundary.
+- Code present: canonical market/account/order contracts, deterministic risk gate, decision path, paper execution adapter, strict Ollama/Qwen ALLOW/BLOCK/REVIEW parser, TradingAgents output normalization bridge, and validation evidence schema with fee/slippage fields.
+- Visual navigation: `products/smart-trading-os/START-HERE.html` links the source files and records implementation gaps. Root `START-HERE.md` remains the authoritative build/governance file.
+- Not yet proven: real Deriv/MT5/Binance adapters, actual Ollama and TradingAgents runtime calls, real historical data/backtesting/walk-forward/out-of-sample results, broker demo execution, restart/recovery/monitoring drills, Contabo deployment, and LIVE trading.
+- CI note: PR #19 checks passed, but post-merge Smart Trading OS and C6 QA Certification runs failed on main commit `11a1c4e23f6eeff6f5f98b183564edc7a9c81439`; investigate before declaring main verified.
