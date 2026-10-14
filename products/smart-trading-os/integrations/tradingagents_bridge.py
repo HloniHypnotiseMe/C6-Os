@@ -11,9 +11,20 @@ def to_c6_signal(
     result: dict[str, Any], *, signal_id: str, symbol: str,
     evidence: tuple[str, ...],
 ) -> Signal:
-    action = str(result.get("action", result.get("signal", "HOLD"))).upper()
-    if action not in {"BUY", "SELL", "HOLD"}:
-        action = "HOLD"
+    # TradingAgents returns a five-tier rating (Buy/Overweight/Hold/
+    # Underweight/Sell), not C6's three action labels. Map the documented
+    # ratings explicitly; ambiguous outputs remain HOLD and never open risk.
+    raw_action = result.get("action", result.get("signal", result.get("rating", "HOLD")))
+    normalized = str(raw_action).strip().upper().replace("-", "_").replace(" ", "_")
+    action_map = {
+        "BUY": "BUY",
+        "OVERWEIGHT": "BUY",
+        "HOLD": "HOLD",
+        "REVIEW": "HOLD",
+        "UNDERWEIGHT": "SELL",
+        "SELL": "SELL",
+    }
+    action = action_map.get(normalized, "HOLD")
     try:
         confidence = float(result.get("confidence", 0.0))
     except (TypeError, ValueError):

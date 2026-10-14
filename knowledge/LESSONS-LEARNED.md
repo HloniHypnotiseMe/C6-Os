@@ -125,3 +125,19 @@ The Whatomate adapter was correctly merged, but the real production capability a
 The C6 content pipeline now has green CI coverage for exported-workflow contracts and the frontend/backend builds. That proves the tested repository contracts only. It does not prove the private n8n workflow is imported, credentials are valid, the orchestrator is reachable, the named agents are registered, or an end-to-end draft was generated. Keep the workflow inactive until those checks are evidenced.
 
 Do not add automated GitHub writes to a draft-generation workflow without a separate approval boundary, deterministic duplicate protection, strict repository/path allowlists, least-privilege credentials, schema validation and human merge review. Newsletter delivery is a separate capability with consent, unsubscribe, suppression, delivery and audit requirements.
+
+
+## 2026-10-14 — Smart Trading OS code presence is not runtime readiness
+The Smart Trading OS foundation now includes canonical contracts, a hard risk gate, paper execution, fail-closed AI decision parsing, a TradingAgents normalization boundary and a machine-readable validation-evidence schema. The TradingAgents bridge does not invoke the upstream runtime, the Ollama payload helper does not prove a local model call, and a schema does not prove a backtest was run. Keep each capability at the evidence level actually demonstrated.
+
+A visual HTML start page is a navigation and status surface, not a second source of truth. Keep governance in `START-HERE.md`, product scope in `products/smart-trading-os/README.md` and `PRODUCT-MANIFEST.yaml`, and reusable status in the knowledge registry. A post-merge regression occurred: PR #19 checks passed, but the Smart Trading OS and QA certification workflows failed on main commit `11a1c4e23f6eeff6f5f98b183564edc7a9c81439`. A successful PR run is not enough; inspect and resolve the main-branch failure before marking the wave fully verified.
+
+
+## 2026-10-14 — categorical trading ratings are not calibrated confidence
+Source inspection of the C6-owned TradingAgents repository showed its research API returns a five-tier rating (Buy, Overweight, Hold, Underweight, Sell) or REVIEW, not a numeric calibrated confidence. Do not silently map Overweight/Underweight to HOLD just because the labels differ, and do not fabricate confidence. Normalize only documented ratings and keep unknown ratings non-actionable. The C6 decision engine now requires a valid confidence at or above a configurable threshold before a directional signal can reach the hard risk gate.
+
+The Investing Algorithm Framework has useful vector/event backtesting, fee configuration, study windows and report bundles, but repository presence is not integration. Pin its exact commit, install in an isolated environment, adapt results to the C6 evidence schema, and capture real fee/slippage-aware walk-forward and out-of-sample artifacts before calling it verified.
+
+GitHub Actions runs observed in this wave failed before starting any steps (runner ID 0, empty step list). This is insufficient evidence to diagnose a test assertion failure. Treat full CI as UNVERIFIED until jobs actually start and emit step-level results.
+
+The C6 evidence builder now downgrades a claimed PASS to INCOMPLETE if fees, slippage, or reproducible artifact references are missing. It validates record shape only; it does not certify the underlying backtest or prove that the data source was real. Runtime evidence remains a separate gate.

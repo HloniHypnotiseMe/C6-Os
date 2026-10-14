@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101312">
+<meta name="description" content="C6 Smart Trading OS — visual start page, architecture, evidence and release gates.">
+<title>C6 Smart Trading OS | Start Here</title>
+<style>
+:root{color-scheme:dark;--bg:#0d100f;--panel:#151a17;--panel2:#1b211d;--line:#303a33;--text:#edf3ee;--muted:#a5b2a8;--lime:#ccff00;--amber:#ffc857;--red:#ff7979;--green:#76e6a1;--blue:#89baff;--radius:18px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#29341b 0,transparent 42%),var(--bg);color:var(--text);font:15px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:var(--lime);text-decoration:none}a:hover{text-decoration:underline}.wrap{max-width:1200px;margin:auto;padding:28px 22px 70px}.top{display:flex;justify-content:space-between;gap:18px;align-items:center;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:20px}.brand{display:flex;gap:12px;align-items:center;font-weight:800;letter-spacing:.12em}.mark{display:grid;place-items:center;background:var(--lime);color:#101312;width:42px;height:42px;border-radius:12px;font-weight:950;font-size:18px}.eyebrow{color:var(--lime);text-transform:uppercase;letter-spacing:.16em;font-size:11px;font-weight:800}.toplinks{display:flex;gap:15px;flex-wrap:wrap;font-size:13px}.hero{padding:44px 0 28px;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(260px,.6fr);gap:24px;align-items:center}.hero h1{font-size:clamp(34px,5vw,58px);line-height:1.02;letter-spacing:-.045em;margin:10px 0 18px}.hero h1 span{color:var(--lime)}.hero p{color:var(--muted);max-width:740px;font-size:17px}.callout{background:linear-gradient(145deg,#1e2915,#151a17 75%);border:1px solid #46552b;border-radius:var(--radius);padding:22px}.callout strong{display:block;font-size:19px;margin:8px 0}.callout p{font-size:13px;margin:0}.pill{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:999px;padding:5px 10px;font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}.pill.lime{border-color:#5a7224;color:var(--lime)}.pill.warn{border-color:#795d2a;color:var(--amber)}.pill.red{border-color:#754141;color:var(--red)}.pill.green{border-color:#315b40;color:var(--green)}.section{margin-top:34px}.sectionhead{display:flex;justify-content:space-between;align-items:end;gap:14px;flex-wrap:wrap;margin-bottom:14px}.section h2{font-size:24px;letter-spacing:-.03em;margin:0}.sectionhead p{color:var(--muted);margin:0;font-size:13px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:19px;min-width:0}.card h3{font-size:16px;margin:0 0 8px}.card p,.card li{color:var(--muted);font-size:13px}.card p{margin:0 0 12px}.card ul{padding-left:18px;margin:8px 0}.metric{font-size:28px;font-weight:850;letter-spacing:-.04em;margin:8px 0}.sub{font-size:12px;color:var(--muted)}.statusline{display:flex;justify-content:space-between;gap:12px;align-items:center;border-bottom:1px solid var(--line);padding:11px 0}.statusline:last-child{border-bottom:0}.statusline span:first-child{font-size:13px}.status{font-size:10px;letter-spacing:.05em;font-weight:900;border-radius:6px;padding:4px 7px;white-space:nowrap}.s-built{background:#273b23;color:#c6f4a1}.s-partial{background:#45361b;color:#ffd787}.s-blocked{background:#482626;color:#ffaaaa}.s-not{background:#292e33;color:#c4cbd2}.flow{display:flex;gap:8px;align-items:stretch;flex-wrap:wrap;margin-top:12px}.flow div{flex:1;min-width:100px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--panel2);font-size:12px}.flow b{display:block;color:var(--lime);font-size:11px;margin-bottom:4px}.gate{border-left:3px solid var(--lime);padding:3px 0 3px 14px;margin:12px 0}.gate strong{display:block;font-size:14px}.gate span{color:var(--muted);font-size:12px}.list{display:grid;gap:9px}.list a{display:block;padding:12px 14px;background:var(--panel2);border:1px solid var(--line);border-radius:12px;color:var(--text)}.list a:hover{border-color:var(--lime);text-decoration:none}.list small{display:block;color:var(--muted);font-size:12px;margin-top:3px}.searchrow{display:flex;gap:10px;flex-wrap:wrap}.searchrow input{flex:1;min-width:220px;background:#0b0e0c;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:11px 13px;font:inherit}.searchrow button{background:var(--lime);color:#111;border:0;border-radius:10px;padding:10px 15px;font-weight:850;cursor:pointer}.foot{border-top:1px solid var(--line);margin-top:36px;padding-top:18px;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.note{background:#241f13;border:1px solid #65512a;border-radius:14px;padding:14px 16px;color:#ffe1a1;font-size:13px;margin-top:14px}code{font-size:12px;color:#d4e3d8;background:#222a24;padding:2px 5px;border-radius:5px}
+@media(max-width:850px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:580px){.wrap{padding:18px 14px 50px}.grid,.grid.two{grid-template-columns:1fr}.hero{padding-top:30px}.flow div{min-width:42%}}@media print{body{background:#fff;color:#111}.card,.callout,.list a,.flow div{background:#fff;color:#111;border-color:#bbb}.card p,.card li,.sub,.sectionhead p,.hero p,.foot{color:#333}.toplinks{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <div class="brand"><div class="mark">C6</div><div><div>C6 GROUP</div><div class="eyebrow">Smart Trading OS / Start Here</div></div></div>
+  <nav class="toplinks" aria-label="Page navigation"><a href="#status">Build status</a><a href="#architecture">Architecture</a><a href="#gaps">Remaining gaps</a><a href="#sources">Source files</a><a href="https://github.com/HloniHypnotiseMe/C6-Os">GitHub</a></nav>
+</header>
+<section class="hero">
+  <div>
+    <div class="eyebrow">One product · One governed system · No silos</div>
+    <h1>Build with evidence.<br><span>Trade only when cleared.</span></h1>
+    <p>This is the visual entry point for C6 Smart Trading OS. Read it alongside the canonical <a href="../../START-HERE.md">C6-Os START-HERE.md</a>: that file remains the mandatory build/governance authority. This page is a human-friendly map of the product work, verified boundaries and the gates still open.</p>
+    <div class="flow"><div><b>01 / RESOLVE</b>Inspect C6 capability first</div><div><b>02 / BUILD</b>Reuse the smallest safe component</div><div><b>03 / PROVE</b>Tests + runtime evidence</div><div><b>04 / REGISTER</b>Update C6 knowledge</div></div>
+  </div>
+  <aside class="callout"><span class="pill warn">Current release posture</span><strong>NOT LIVE — external/runtime gates remain</strong><p>Core contracts and deterministic risk controls exist, including a default 0.5 minimum signal-confidence gate. A real broker connection, historical-data validation, backtesting evidence, deployment, restart/recovery drills and human-authorized live execution have not been proven by repository code alone.</p></aside>
+</section>
+<section id="status" class="section">
+  <div class="sectionhead"><h2>Build status at a glance</h2><p>Evidence-led; no status is upgraded by appearance alone.</p></div>
+  <div class="grid">
+    <article class="card"><div class="eyebrow">Foundation</div><div class="metric">Built</div><span class="pill green">Exists in repo</span><p style="margin-top:12px">Canonical market/account/order contracts, decision path, hard risk gate and a deterministic paper execution adapter are present.</p><a href="engine/contracts.py">Open contracts</a> · <a href="engine/risk.py">Risk gate</a></article>
+    <article class="card"><div class="eyebrow">AI gate</div><div class="metric">Fail-closed</div><span class="pill green">Contract + tests</span><p style="margin-top:12px">Ollama/Qwen payload contract and strict ALLOW/BLOCK/REVIEW parsing exist. Invalid output becomes REVIEW. A loopback-only HTTP client and failure-path unit tests now exist; actual Ollama runtime connection is not yet evidenced.</p><a href="engine/ai_gate.py">Open AI gate</a> · <a href="engine/ollama_client.py">Local Ollama client</a></article>
+    <article class="card"><div class="eyebrow">Research bridge</div><div class="metric">Wrapper added</div><span class="pill warn">Runtime not proven</span><p style="margin-top:12px">A lazy runner calls the inspected TradingAgentsGraph.propagate contract and normalizes five-tier ratings. The upstream package, provider configuration and real research run remain unverified.</p><a href="integrations/tradingagents_bridge.py">Open bridge</a> · <a href="integrations/tradingagents_runner.py">Runtime wrapper</a></article>
+  </div>
+  <div class="grid two" style="margin-top:14px">
+    <article class="card"><h3>Venue readiness</h3>
+      <div class="statusline"><span>Deriv · Volatility 75 / 100</span><b class="status s-partial">ADAPTER REQUIRED</b></div>
+      <div class="statusline"><span>MT5 · XAUUSD / NAS100</span><b class="status s-partial">ADAPTER REQUIRED</b></div>
+      <div class="statusline"><span>Binance / CCXT · configured crypto</span><b class="status s-partial">ADAPTER REQUIRED</b></div>
+      <div class="statusline"><span>Paper execution</span><b class="status s-built">CODE PRESENT</b></div>
+      <p style="margin-top:12px">No venue should be described as connected until authenticated quotes/orders, account isolation, retries, idempotency and health checks have evidence.</p>
+    </article>
+    <article class="card"><h3>Evidence and validation</h3>
+      <div class="statusline"><span>Machine-readable evidence schema</span><b class="status s-built">PRESENT</b></div>
+      <div class="statusline"><span>Fees + slippage fields</span><b class="status s-built">CONTRACTED</b></div>
+      <div class="statusline"><span>Real backtest / walk-forward</span><b class="status s-partial">NOT PROVEN</b></div>
+      <div class="statusline"><span>Out-of-sample / paper run evidence</span><b class="status s-partial">NOT PROVEN</b></div>
+      <p style="margin-top:12px">Schema presence is not a completed experiment. Each run needs real data provenance, reproducible artifacts, limitations and PASS/FAIL/INCOMPLETE status.</p>
+      <a href="contracts/validation-evidence.schema.json">Open evidence schema</a> · <a href="integrations/backtest_evidence.py">Evidence builder</a>
+    </article>
+  </div>
+</section>
+<section id="architecture" class="section">
+  <div class="sectionhead"><h2>System architecture</h2><p>Product is separate; authority and contracts are shared.</p></div>
+  <div class="card">
+    <div class="flow"><div><b>GOVERNANCE</b>C6-Os<br><span class="sub">Arsenal, policies, capability registry, evidence rules</span></div><div><b>RUNTIME</b>C6Group.AiOS<br><span class="sub">Mission Control, existing dashboard, workforce and Win Ledger</span></div><div><b>PRODUCT</b>Smart Trading OS<br><span class="sub">Signals, validation, risk, venue adapters, trading operations</span></div></div>
+    <div class="flow"><div><b>MARKET INPUT</b>Quotes + candles<br><span class="sub">Deriv / MT5 / Binance adapters (to be implemented and verified)</span></div><div><b>RESEARCH</b>TradingAgents<br><span class="sub">Fundamentals, news, sentiment, technicals and bull/bear research proposal</span></div><div><b>AI REVIEW</b>Ollama · Qwen3:4b<br><span class="sub">Advisory/veto only; malformed answer = REVIEW</span></div><div><b>RISK AUTHORITY</b>Deterministic controls<br><span class="sub">Hard risk gate always overrides AI</span></div><div><b>EXECUTION</b>Paper → demo → approval-gated live<br><span class="sub">No live path without verified account, instrument, risk and health gates</span></div></div>
+    <div class="note">Never fork the C6 control plane. Extend the existing <code>C6Group.AiOS/dashboard</code> and runtime contracts; do not create a duplicate Mission Control. Deployment target remains Contabo VPS with Cloudflare edge and GitHub as source of truth.</div>
+  </div>
+</section>
+<section class="section">
+  <div class="sectionhead"><h2>Product and company operating model</h2><p>Trading software plus a bounded operating company.</p></div>
+  <div class="grid">
+    <article class="card"><h3>Trading engine</h3><ul><li>Market data and signal research</li><li>Strategy lab + backtesting</li><li>Risk, sizing and execution health</li><li>Journal, analytics and audit evidence</li></ul></article>
+    <article class="card"><h3>Challenge & robot products</h3><ul><li>Challenge Sentinel / prop-firm rules</li><li>Challenge-specific rules and terms summary</li><li>Per-firm/per-challenge robot toggles</li><li>Separate catalogue from Control Centre</li></ul></article>
+    <article class="card"><h3>Commercial operations</h3><ul><li>Customer entitlements and support</li><li>Growth, outreach, sales and marketing</li><li>Finance, profitability and product operations</li><li>Human approval for consequential actions</li></ul></article>
+  </div>
+</section>
+<section id="gaps" class="section">
+  <div class="sectionhead"><h2>Remaining gap register</h2><p>These are real blockers, not cosmetic TODOs.</p></div>
+  <div class="card">
+    <div class="statusline"><span><strong>1. Provider adapters</strong><br><span class="sub">Deriv, MT5 and Binance/CCXT with normalized data contracts, account checks, retries, idempotency and health.</span></span><b class="status s-partial">OPEN</b></div>
+    <div class="statusline"><span><strong>2. Real AI runtime</strong><br><span class="sub">Call local Ollama, validate timeout/error/schema paths, log model/version and retain advisory-only authority.</span></span><b class="status s-partial">OPEN</b></div>
+    <div class="statusline"><span><strong>3. TradingAgents runtime integration</strong><br><span class="sub">Install the pinned upstream source with explicit model/data config; run a real research cycle and retain provenance. The wrapper and rating map exist, but runtime evidence is open.</span></span><b class="status s-partial">OPEN</b></div>
+    <div class="statusline"><span><strong>4. Backtesting + robustness</strong><br><span class="sub">Wire the selected framework, include fees/slippage, walk-forward splits and unseen/out-of-sample tests.</span></span><b class="status s-partial">OPEN</b></div>
+    <div class="statusline"><span><strong>5. Operational hardening</strong><br><span class="sub">Persistent audit, restart/recovery, duplicate/out-of-order handling, monitoring, alerts, backup and restore drill.</span></span><b class="status s-partial">OPEN</b></div>
+    <div class="statusline"><span><strong>6. Dashboard integration</strong><br><span class="sub">Extend existing C6Group.AiOS dashboard/API; authenticate, authorize by role, expose health and evidence.</span></span><b class="status s-partial">OPEN</b></div>
+    <div class="statusline"><span><strong>7. VPS and edge deployment</strong><br><span class="sub">Contabo deploy, Cloudflare DNS/TLS, secret injection, health checks and rollback proof.</span></span><b class="status s-partial">EXTERNAL</b></div>
+    <div class="statusline"><span><strong>8. Demo and live authority gates</strong><br><span class="sub">Broker demo evidence first. Live requires explicit human approval, verified account/instrument permissions and complete validation evidence.</span></span><b class="status s-blocked">HUMAN / EXTERNAL</b></div>
+    <div class="statusline"><span><strong>9. Main-branch CI regression</strong><br><span class="sub">GitHub Actions jobs are terminating before any steps start (runner_id=0, empty step list) on the current PR and post-merge runs. No assertion-level result is available; the full repository suite is UNVERIFIED until jobs start and emit step-level results.</span></span><b class="status s-blocked">INVESTIGATE</b></div>
+  </div>
+  <div class="note">This page does not mark those gaps closed. The next engineering wave should close code-owned gaps with tests, then request only the external access/evidence that cannot be produced from GitHub.</div>
+</section>
+<section id="sources" class="section">
+  <div class="sectionhead"><h2>Source files and next actions</h2><p>Use these paths as the working map.</p></div>
+  <div class="searchrow"><input id="filter" type="search" placeholder="Filter files and actions…" aria-label="Filter source links"><button id="clear" type="button">Clear</button></div>
+  <div class="list" id="links" style="margin-top:12px">
+    <a data-search="canonical start here governance build workflow" href="../../START-HERE.md"><strong>Canonical C6-Os START-HERE.md</strong><small>Mandatory source of truth for inspection, nugget sweep, permissions, evidence and memory updates.</small></a>
+    <a data-search="product readme scope lifecycle venues" href="README.md"><strong>Smart Trading OS README</strong><small>Product scope, lifecycle states, venue targets and safety boundaries.</small></a>
+    <a data-search="manifest departments products hosting" href="PRODUCT-MANIFEST.yaml"><strong>Product manifest</strong><small>Venue targets, 24 departments, commercial product catalogue and deployment target.</small></a>
+    <a data-search="risk gate" href="engine/risk.py"><strong>Deterministic risk gate</strong><small>Hard execution authority and risk limits; AI cannot override.</small></a>
+    <a data-search="decision flow engine" href="engine/decision.py"><strong>Decision path</strong><small>Signal-to-risk decision flow.</small></a>
+    <a data-search="paper execution adapter" href="engine/paper.py"><strong>Paper execution adapter</strong><small>Deterministic paper-mode boundary; not a broker adapter.</small></a>
+    <a data-search="ai gate qwen ollama" href="engine/ai_gate.py"><strong>AI gate contract</strong><small>Strict JSON parsing and ALLOW/BLOCK/REVIEW result handling.</small></a>
+    <a data-search="tradingagents bridge research signal" href="integrations/tradingagents_bridge.py"><strong>TradingAgents bridge</strong><small>Maps upstream five-tier ratings into the C6 signal contract; unknown ratings stay non-actionable.</small></a>
+    <a data-search="tradingagents runner runtime research graph" href="integrations/tradingagents_runner.py"><strong>TradingAgents runtime wrapper</strong><small>Lazy call to the inspected upstream graph contract; requires pinned package and explicit runtime config.</small></a>
+    <a data-search="evidence schema backtest fees slippage" href="contracts/validation-evidence.schema.json"><strong>Validation evidence schema</strong><small>Backtest, walk-forward, out-of-sample, paper, shadow and demo evidence.</small></a>
+    <a data-search="evidence builder backtest provenance fees slippage" href="integrations/backtest_evidence.py"><strong>Validation evidence builder</strong><small>Enforces timestamp/provenance shape and downgrades unsupported PASS claims.</small></a>
+    <a data-search="investing algorithm framework backtest vector event paper report slippage" href="integrations/iaf_backtest_adapter.py"><strong>Backtesting adapter</strong><small>Runs the inspected framework API in paper/research mode; slippage stays unverified unless explicitly evidenced.</small></a>
+    <a data-search="integration map TradingAgents backtest upstream license source audit" href="INTEGRATION-MAP.md"><strong>Upstream integration map</strong><small>Source-audited TradingAgents API, pinned repository revisions, license and backtesting integration boundary.</small></a>
+    <a data-search="validation wave outstanding gates" href="AI-VALIDATION-WAVE.md"><strong>AI validation wave record</strong><small>What was built and what remains unverified.</small></a>
+    <a data-search="github actions ci failure workflow tests" href="https://github.com/HloniHypnotiseMe/C6-Os/actions"><strong>GitHub Actions</strong><small>Check current CI status; main currently has failed runs requiring investigation.</small></a>
+    <a data-search="c6group aios mission control dashboard" href="https://github.com/HloniHypnotiseMe/C6Group.AiOS"><strong>C6Group.AiOS runtime repository</strong><small>Reuse the existing dashboard, Mission Control, workforce and evidence systems.</small></a>
+    <a data-search="challenge sentinel prop firm robot" href="https://github.com/HloniHypnotiseMe/C6Group.AiOS/tree/main/products/trading/prop-challenge/c6-challenge-sentinel"><strong>Challenge Sentinel</strong><small>Existing prop-challenge product area to inspect before adding a duplicate.</small></a>
+  </div>
+</section>
+<footer class="foot"><span>C6 Smart Trading OS · Visual start page · Generated 2026-10-14</span><span>GitHub is canonical · Runtime evidence outranks UI labels · LIVE is never inferred</span></footer>
+</div>
+<script>
+const filter=document.getElementById('filter'),items=[...document.querySelectorAll('#links a')];
+filter.addEventListener('input',()=>{const q=filter.value.trim().toLowerCase();items.forEach(a=>a.hidden=!(a.innerText+' '+a.dataset.search).toLowerCase().includes(q));});
+document.getElementById('clear').addEventListener('click',()=>{filter.value='';items.forEach(a=>a.hidden=false);filter.focus();});
+</script>
+</body>
+</html>

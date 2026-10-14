@@ -1,5 +1,7 @@
 # C6 Smart Trading OS
 
+**Visual start page:** [Open START-HERE.html](START-HERE.html) for the architecture map, implementation status, evidence boundaries, remaining gaps and source links. The page is a status/navigation view, not proof of live trading.
+
 Standalone C6 trading product governed by C6-Os and connected to C6Group.AiOS through explicit contracts.
 
 ## Operating rule
@@ -20,7 +22,7 @@ A state transition requires evidence and an audit record. LIVE is never inferred
 
 ## Hard boundary
 
-AI may propose or veto. Hard risk controls always win. No broker/exchange order is permitted unless account permission, instrument permission, risk limits, execution health and entitlement/authority checks all pass.
+AI may propose or veto. Hard risk controls always win. The deterministic decision path also fails closed to REVIEW when signal confidence is missing, invalid, non-finite or below the configured threshold (default 0.5). TradingAgents ratings are normalized explicitly; confidence is never invented. No broker/exchange order is permitted unless account permission, instrument permission, risk limits, execution health and entitlement/authority checks all pass.
 
 ## Initial venue targets
 
@@ -29,6 +31,8 @@ AI may propose or veto. Hard risk controls always win. No broker/exchange order 
 - Binance/CCXT: crypto venues where explicitly configured
 
 Provider credentials are runtime secrets and never belong in Git.
+
+The paper-only `integrations/iaf_backtest_adapter.py` calls the inspected Investing Algorithm Framework API, writes a report and returns C6 evidence; slippage defaults to unverified so the result remains INCOMPLETE. It is an integration adapter, not proof the optional alpha package is installed or the strategy is valid. The validation evidence builder in `integrations/backtest_evidence.py` produces schema-shaped run records and downgrades unsupported PASS claims when costs or artifacts are missing. It does not execute the backtesting framework. The local Ollama transport is implemented in `engine/ollama_client.py`; it defaults to loopback-only HTTP and fails closed to `REVIEW`. Unit tests prove request formatting and failure handling, not that Ollama is installed or reachable on a deployed machine. `INTEGRATION-MAP.md` records source-audited upstream pins, licensing, and the TradingAgents/backtesting adapter boundary.
 
 ## Commercial products
 
