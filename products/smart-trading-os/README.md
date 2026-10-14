@@ -1,5 +1,7 @@
 # C6 Smart Trading OS
 
+**Visual start page:** [Open START-HERE.html](START-HERE.html) for the architecture map, implementation status, evidence boundaries, remaining gaps and source links. The page is a status/navigation view, not proof of live trading.
+
 Standalone C6 trading product governed by C6-Os and connected to C6Group.AiOS through explicit contracts.
 
 ## Operating rule
