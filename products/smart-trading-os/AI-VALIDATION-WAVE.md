@@ -12,3 +12,5 @@
 - The page labels code/contract work separately from runtime proof and explicitly lists venue adapters, Ollama runtime, TradingAgents runtime, backtesting, operations hardening, dashboard integration, Contabo/Cloudflare deployment and approval gates as open.
 - Post-merge GitHub Actions runs for Smart Trading OS and C6 QA Certification failed on `main` commit `11a1c4e23f6eeff6f5f98b183564edc7a9c81439` even though PR checks passed. Treat this as an unresolved regression until the failing steps are identified and a clean main run is captured.
 - No broker, demo, VPS or LIVE status is claimed.
+
+- Added `engine/ollama_client.py`: real local HTTP transport to Ollama `/api/chat`, loopback-only endpoint guard, bounded response size, timeout, and fail-closed `REVIEW` handling. Added mocked transport tests for success, invalid envelope, network failure, remote endpoint rejection and empty prompt. These tests do not prove a live Ollama model is installed/reachable.
