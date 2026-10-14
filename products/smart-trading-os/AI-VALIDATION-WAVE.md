@@ -23,3 +23,5 @@
 - Five isolated mocked Ollama client tests passed locally. GitHub Actions runs in this wave repeatedly failed before any steps started (`runner_id=0`, empty `steps`); therefore the full repository test suite remains UNVERIFIED, not failed by a demonstrated assertion.
 
 - Added `integrations/backtest_evidence.py` to normalize validation run metadata into the C6 evidence contract. It rejects invalid timestamps/metrics and downgrades PASS to INCOMPLETE when fees, slippage or reproducible artifacts are absent. It is not a backtest engine and does not replace the pending Investing Algorithm Framework integration.
+
+- Added `integrations/iaf_backtest_adapter.py` against the source-inspected framework example API. It forces paper mode, creates a report and emits C6 evidence; slippage defaults to unverified, keeping the run INCOMPLETE. This wrapper has not been exercised against the actual alpha package or real market data.
