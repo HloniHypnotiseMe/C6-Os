@@ -2,6 +2,8 @@
 
 This is the first document an agent should consult before beginning C6 work.
 
+**Smart Trading OS visual entry page:** [`products/smart-trading-os/START-HERE.html`](products/smart-trading-os/START-HERE.html). The HTML page is a navigation/status view; this Markdown file remains the canonical governance and execution contract.
+
 ## 1. Understand the task
 
 Determine:
