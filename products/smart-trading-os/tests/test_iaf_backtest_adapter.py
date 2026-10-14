@@ -6,12 +6,20 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from integrations.iaf_backtest_adapter import run_framework_backtest
 
 
+class FakeRow:
+    def to_dict(self):
+        return {"return_pct": 3.2, "trades": 4}
+
+
+class FakeILoc:
+    def __getitem__(self, index):
+        assert index == -1
+        return FakeRow()
+
+
 class FakeResults:
     def __init__(self):
-        self.df = SimpleNamespace(
-            empty=False,
-            iloc=SimpleNamespace(__getitem__=lambda i: SimpleNamespace(to_dict=lambda: {"return_pct": 3.2, "trades": 4})),
-        )
+        self.df = SimpleNamespace(empty=False, iloc=FakeILoc())
     def load_backtests(self, workers):
         assert workers == 1
         return ["bundle"]
