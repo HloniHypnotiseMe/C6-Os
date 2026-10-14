@@ -32,7 +32,7 @@ AI may propose or veto. Hard risk controls always win. The deterministic decisio
 
 Provider credentials are runtime secrets and never belong in Git.
 
-The local Ollama transport is implemented in `engine/ollama_client.py`; it defaults to loopback-only HTTP and fails closed to `REVIEW`. Unit tests prove request formatting and failure handling, not that Ollama is installed or reachable on a deployed machine. `INTEGRATION-MAP.md` records source-audited upstream pins, licensing, and the TradingAgents/backtesting adapter boundary.
+The validation evidence builder in `integrations/backtest_evidence.py` produces schema-shaped run records and downgrades unsupported PASS claims when costs or artifacts are missing. It does not execute the backtesting framework. The local Ollama transport is implemented in `engine/ollama_client.py`; it defaults to loopback-only HTTP and fails closed to `REVIEW`. Unit tests prove request formatting and failure handling, not that Ollama is installed or reachable on a deployed machine. `INTEGRATION-MAP.md` records source-audited upstream pins, licensing, and the TradingAgents/backtesting adapter boundary.
 
 ## Commercial products
 
