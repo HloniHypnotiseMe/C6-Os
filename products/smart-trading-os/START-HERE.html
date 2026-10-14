@@ -49,7 +49,7 @@ a{color:var(--lime);text-decoration:none}a:hover{text-decoration:underline}.wrap
       <div class="statusline"><span>Real backtest / walk-forward</span><b class="status s-partial">NOT PROVEN</b></div>
       <div class="statusline"><span>Out-of-sample / paper run evidence</span><b class="status s-partial">NOT PROVEN</b></div>
       <p style="margin-top:12px">Schema presence is not a completed experiment. Each run needs real data provenance, reproducible artifacts, limitations and PASS/FAIL/INCOMPLETE status.</p>
-      <a href="contracts/validation-evidence.schema.json">Open evidence schema</a>
+      <a href="contracts/validation-evidence.schema.json">Open evidence schema</a> · <a href="integrations/backtest_evidence.py">Evidence builder</a>
     </article>
   </div>
 </section>
@@ -98,6 +98,7 @@ a{color:var(--lime);text-decoration:none}a:hover{text-decoration:underline}.wrap
     <a data-search="tradingagents bridge research signal" href="integrations/tradingagents_bridge.py"><strong>TradingAgents bridge</strong><small>Maps upstream five-tier ratings into the C6 signal contract; unknown ratings stay non-actionable.</small></a>
     <a data-search="tradingagents runner runtime research graph" href="integrations/tradingagents_runner.py"><strong>TradingAgents runtime wrapper</strong><small>Lazy call to the inspected upstream graph contract; requires pinned package and explicit runtime config.</small></a>
     <a data-search="evidence schema backtest fees slippage" href="contracts/validation-evidence.schema.json"><strong>Validation evidence schema</strong><small>Backtest, walk-forward, out-of-sample, paper, shadow and demo evidence.</small></a>
+    <a data-search="evidence builder backtest provenance fees slippage" href="integrations/backtest_evidence.py"><strong>Validation evidence builder</strong><small>Enforces timestamp/provenance shape and downgrades unsupported PASS claims.</small></a>
     <a data-search="integration map TradingAgents backtest upstream license source audit" href="INTEGRATION-MAP.md"><strong>Upstream integration map</strong><small>Source-audited TradingAgents API, pinned repository revisions, license and backtesting integration boundary.</small></a>
     <a data-search="validation wave outstanding gates" href="AI-VALIDATION-WAVE.md"><strong>AI validation wave record</strong><small>What was built and what remains unverified.</small></a>
     <a data-search="github actions ci failure workflow tests" href="https://github.com/HloniHypnotiseMe/C6-Os/actions"><strong>GitHub Actions</strong><small>Check current CI status; main currently has failed runs requiring investigation.</small></a>
