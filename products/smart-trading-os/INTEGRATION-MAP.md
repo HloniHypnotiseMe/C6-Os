@@ -20,7 +20,8 @@
 - **Inspected package metadata:** `9.0.0a17` alpha; Apache-2.0 license.
 - **Useful source nuggets:** vector and event-driven backtest engines; study/backtest windows including holdout and walk-forward/time-OOS patterns; configurable market `fee_percentage`; performance reports and portable Open Backtest Format; CCXT is a declared dependency.
 - **Source-level example inspected:** `examples/simple_app.py` selects `BacktestEngine.VECTOR` or `EVENT_DRIVEN`, configures `fee_percentage`, declares a study/window, runs the backtest and writes an HTML report.
-- **C6 status:** selected for an integration spike, not wired into C6 Smart Trading OS yet. The alpha version and immutable SHA must be pinned in an isolated build environment; its API and results must be wrapped into C6's validation evidence schema. Do not treat upstream capability presence as C6 execution evidence.
+- **C6 adapter added:** `integrations/iaf_backtest_adapter.py` calls the inspected `create_app` / `add_market(fee_percentage=...)` / `run_backtest` / `load_backtests` / `BacktestReport.save` flow, with paper mode forced on. It writes a report and maps available scalar metrics to the C6 evidence record.
+- **Still unverified:** the optional alpha package is not installed or run in this environment; no real dataset/backtest output exists yet. Slippage is unverified by default and the adapter therefore marks the run INCOMPLETE. Pin/install the immutable SHA in an isolated environment, prove fee/slippage treatment, and validate data split integrity before any PASS claim.
 
 ## Capability-to-C6 contract
 
