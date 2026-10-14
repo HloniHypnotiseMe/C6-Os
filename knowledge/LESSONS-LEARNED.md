@@ -139,3 +139,5 @@ Source inspection of the C6-owned TradingAgents repository showed its research A
 The Investing Algorithm Framework has useful vector/event backtesting, fee configuration, study windows and report bundles, but repository presence is not integration. Pin its exact commit, install in an isolated environment, adapt results to the C6 evidence schema, and capture real fee/slippage-aware walk-forward and out-of-sample artifacts before calling it verified.
 
 GitHub Actions runs observed in this wave failed before starting any steps (runner ID 0, empty step list). This is insufficient evidence to diagnose a test assertion failure. Treat full CI as UNVERIFIED until jobs actually start and emit step-level results.
+
+The C6 evidence builder now downgrades a claimed PASS to INCOMPLETE if fees, slippage, or reproducible artifact references are missing. It validates record shape only; it does not certify the underlying backtest or prove that the data source was real. Runtime evidence remains a separate gate.
