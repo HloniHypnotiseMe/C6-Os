@@ -14,3 +14,10 @@
 - No broker, demo, VPS or LIVE status is claimed.
 
 - Added `engine/ollama_client.py`: real local HTTP transport to Ollama `/api/chat`, loopback-only endpoint guard, bounded response size, timeout, and fail-closed `REVIEW` handling. Added mocked transport tests for success, invalid envelope, network failure, remote endpoint rejection and empty prompt. These tests do not prove a live Ollama model is installed/reachable.
+
+
+## 2026-10-14 — upstream source sweep and signal confidence
+- Inspected the C6-owned TradingAgents repository source. The inspected `TradingAgentsGraph.propagate(ticker, trade_date, asset_type=...)` returns a `(final_state, rating)` pair; ratings are five-tier (Buy/Overweight/Hold/Underweight/Sell) or REVIEW. Added a lazy runner and explicit rating-to-C6 mapping; unknown ratings remain non-actionable.
+- Source-audited Investing Algorithm Framework as the validation candidate. Its current metadata declares alpha `9.0.0a17`; source exposes vector/event backtest examples, fee percentage, windows and report bundles. The inspected main SHA is recorded in `INTEGRATION-MAP.md`; integration is not yet implemented.
+- Added a default minimum signal confidence of 0.5 and fail-closed handling for missing, invalid, non-finite or out-of-range confidence. TradingAgents' categorical rating does not supply a numeric confidence, so the bridge does not fabricate one; the decision path returns REVIEW until a calibrated confidence is provided.
+- Five isolated mocked Ollama client tests passed locally. GitHub Actions runs in this wave repeatedly failed before any steps started (`runner_id=0`, empty `steps`); therefore the full repository test suite remains UNVERIFIED, not failed by a demonstrated assertion.
