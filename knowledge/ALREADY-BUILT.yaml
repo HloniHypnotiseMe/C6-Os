@@ -291,3 +291,28 @@ reverse_engineering_department:
       - "separately gated duplicate-safe PR creation before any automated repository write"
       - "human review/merge; separate newsletter consent and delivery controls"
     notes: "CI verifies repository contracts, not live n8n/orchestrator execution. Do not mark LIVE or activate until runtime evidence exists."
+
+
+  - id: c6_smart_trading_os_foundation
+    outcome: "Governed Smart Trading OS contracts, risk gate, paper adapter, AI gate, TradingAgents normalization boundary, validation evidence schema and visual start page"
+    system: "HloniHypnotiseMe/C6-Os + C6Group.AiOS runtime boundary"
+    status: EXISTS
+    artifacts:
+      - "products/smart-trading-os/README.md"
+      - "products/smart-trading-os/PRODUCT-MANIFEST.yaml"
+      - "products/smart-trading-os/engine/contracts.py"
+      - "products/smart-trading-os/engine/risk.py"
+      - "products/smart-trading-os/engine/paper.py"
+      - "products/smart-trading-os/engine/ai_gate.py"
+      - "products/smart-trading-os/integrations/tradingagents_bridge.py"
+      - "products/smart-trading-os/contracts/validation-evidence.schema.json"
+      - "products/smart-trading-os/START-HERE.html"
+    verification: "PR #19 checks passed; post-merge Smart Trading OS and C6 QA Certification workflows failed on main commit 11a1c4e23f6eeff6f5f98b183564edc7a9c81439. Main regression remains open."
+    remaining:
+      - "Resolve post-merge main CI failures"
+      - "Implement and verify real Deriv, MT5 and Binance/CCXT adapters"
+      - "Connect and test local Ollama/Qwen runtime"
+      - "Connect real TradingAgents runtime with pinned provenance"
+      - "Run reproducible fee/slippage-aware backtest, walk-forward and out-of-sample validation"
+      - "Prove demo execution, persistence, restart/recovery, monitoring, backup/restore and Contabo deployment"
+      - "Keep LIVE blocked until explicit human approval and authoritative runtime evidence"
