@@ -125,3 +125,9 @@ The Whatomate adapter was correctly merged, but the real production capability a
 The C6 content pipeline now has green CI coverage for exported-workflow contracts and the frontend/backend builds. That proves the tested repository contracts only. It does not prove the private n8n workflow is imported, credentials are valid, the orchestrator is reachable, the named agents are registered, or an end-to-end draft was generated. Keep the workflow inactive until those checks are evidenced.
 
 Do not add automated GitHub writes to a draft-generation workflow without a separate approval boundary, deterministic duplicate protection, strict repository/path allowlists, least-privilege credentials, schema validation and human merge review. Newsletter delivery is a separate capability with consent, unsubscribe, suppression, delivery and audit requirements.
+
+
+## 2026-10-14 — Smart Trading OS code presence is not runtime readiness
+The Smart Trading OS foundation now includes canonical contracts, a hard risk gate, paper execution, fail-closed AI decision parsing, a TradingAgents normalization boundary and a machine-readable validation-evidence schema. The TradingAgents bridge does not invoke the upstream runtime, the Ollama payload helper does not prove a local model call, and a schema does not prove a backtest was run. Keep each capability at the evidence level actually demonstrated.
+
+A visual HTML start page is a navigation and status surface, not a second source of truth. Keep governance in `START-HERE.md`, product scope in `products/smart-trading-os/README.md` and `PRODUCT-MANIFEST.yaml`, and reusable status in the knowledge registry. A post-merge regression occurred: PR #19 checks passed, but the Smart Trading OS and QA certification workflows failed on main commit `11a1c4e23f6eeff6f5f98b183564edc7a9c81439`. A successful PR run is not enough; inspect and resolve the main-branch failure before marking the wave fully verified.
