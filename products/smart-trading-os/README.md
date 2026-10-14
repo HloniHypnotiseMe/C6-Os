@@ -32,6 +32,8 @@ AI may propose or veto. Hard risk controls always win. No broker/exchange order 
 
 Provider credentials are runtime secrets and never belong in Git.
 
+The local Ollama transport is implemented in `engine/ollama_client.py`; it defaults to loopback-only HTTP and fails closed to `REVIEW`. Unit tests prove request formatting and failure handling, not that Ollama is installed or reachable on a deployed machine.
+
 ## Commercial products
 
 The core Control Centre stays clean. Commercial capabilities are packaged separately:
