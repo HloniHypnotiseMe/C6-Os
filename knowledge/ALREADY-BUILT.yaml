@@ -306,7 +306,6 @@ reverse_engineering_department:
       - "products/smart-trading-os/engine/ai_gate.py"
       - "products/smart-trading-os/engine/ollama_client.py"
       - "products/smart-trading-os/engine/decision.py"
-      - "products/smart-trading-os/engine/risk.py"
       - "products/smart-trading-os/tests/test_ollama_client.py"
       - "products/smart-trading-os/tests/test_tradingagents_runner.py"
       - "products/smart-trading-os/tests/test_tradingagents_bridge.py"
