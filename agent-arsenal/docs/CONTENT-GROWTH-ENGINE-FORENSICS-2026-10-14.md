@@ -257,3 +257,41 @@ Inventory existing implementations and evidence. Identify the real authority for
 6. No fabricated case studies, performance figures, customer stories, prices or capability claims.
 7. C6 is the first tenant; client support must use the same system with strict isolation.
 8. This document proves source inspection and architectural decisions only; it does not claim that live n8n, newsletter delivery, CRM attribution or production client isolation works.
+
+
+## Wave 0 follow-up verification — 2026-10-15
+
+This follow-up inspected the actual workflow JSON, SQL schema, campaign routes/provider adapter, mail API authorization and current PR workflow status. These details refine the initial gap register.
+
+### Confirmed implementation gaps
+
+**Content persistence is not a canonical asset store.** The website's `n8n-workflows/content/schema.sql` defines `content_usage` and `content_generations`, both keyed by `business_id`; it does not define the proposed tenant/brand/product/service/evidence/distribution contract. The content workflow assembles a draft in memory and returns it. Its README explicitly says it does not persist a content file, open a PR, merge or publish. Therefore the SQL archive must not be mistaken for the canonical content registry.
+
+**Marketing campaign endpoints have no visible authorization dependency.** In `C6-Mail-Services/api/v1/marketing.py`, the create, send and stats routes inject the BillionMail provider but do not depend on the `authorize` guard used by `api/v1/mail.py`. The handlers accept caller-supplied `template_id`, `list_ids` and `campaign_id`, then pass them directly to the provider. The inspected `Campaign` and `Subscriber` Pydantic models do not themselves enforce tenant ownership or consent. This is a production-blocking authorization/isolation gap unless a separately verified upstream boundary protects these routes; none was established by this source inspection. Do not expose or use these routes for client campaigns until the boundary and negative tests are proven.
+
+**Consent/unsubscribe/suppression is not implemented in the inspected send path.** The campaign send endpoint directly calls `provider.send_campaign(campaign_id)`; no recipient eligibility check, consent record lookup, unsubscribe/suppression gate, approval check or idempotency key is visible in that route. The provider adapter includes `add_subscriber`, but the inspected call only sends email/name to a list and does not carry consent provenance. No results were returned for targeted source search on unsubscribe/suppression/consent, so the accurate statement is that these controls were not found/proven in the inspected repository paths—not that no implementation could exist anywhere.
+
+**A second direct-SMTP path exists in the codebase.** The C6 website's `n8n-workflows/email/nurture-sequence.json` contains two `n8n-nodes-base.emailSend` nodes after generating promotional copy. It does not call C6 Mail Services in this export, and the shown workflow does not establish consent, unsubscribe, suppression, owner approval or tenant binding. The content README already says the draft workflow is inactive; this is a distinct workflow and its activation state/runtime must be checked independently. Keep it disabled for promotional use until it is migrated behind the governed mail boundary or formally retired.
+
+**Mail API authorization is configuration-sensitive.** `api/v1/mail.py` returns 503 if `MAIL_API_KEY` is absent and 401 for a bad key when configured. However, `C6-Mail-Services/README.md` describes `MAIL_API_KEY` as optional. Production deployment must require the key or establish a verified private-network service-auth boundary; a healthy SMTP configuration alone does not establish safe public exposure.
+
+### Existing blog mapping and current verification boundary
+
+- `app/src/data/blogPosts.ts` loads JSON content and exposes only entries with `status === "published"`; the article's service links remain route-shaped (`href`) rather than stable product/service IDs.
+- The approved calendar contains eight queued C6 topics, with source facts and allowed service routes. This is a useful seed backlog, not evidence that an automated publishing schedule is running.
+- `scripts/validate-content-pipeline.mjs` exercises exported workflow node code and schema contracts; it explicitly asserts that the workflow is inactive. This is valuable contract coverage but not a live n8n/orchestrator execution or newsletter delivery test.
+- The inspected C6 Mail Services tests cover mail API-key behavior, provider mocking and inbound webhook normalization; they do not cover marketing-route authorization, campaign tenant isolation, consent, unsubscribe, suppression, approval, idempotency or campaign delivery lifecycle.
+
+### CI evidence recorded 2026-10-15
+
+GitHub reported a completed **failed** C6 QA Certification Run for C6-Os commit `ec3d690c08fc8c8c531e971cbc75d25a80b5c992` (run ID `38589924130`, run number 48). The available run-job response only exposes the `certification` job as failed and provides no step details/log URL, so the failure cause cannot responsibly be inferred. This run is not a pass, and it does not establish that the documentation change caused the failure. Investigate the failed certification job before treating the branch as green.
+
+### Updated release gates
+
+1. Add authorization to every marketing campaign route, derive tenant identity from authenticated context, and verify template/list/campaign ownership before provider calls.
+2. Make consent provenance, unsubscribe and suppression enforceable at the send boundary, with fail-closed tests for both permitted and blocked recipients.
+3. Require campaign approval and idempotent send/retry semantics; reconcile provider events without conflating accepted with delivered.
+4. Resolve the mail API README/config mismatch and prove the actual network/auth boundary in production configuration.
+5. Replace route-only service links with a compatibility mapping to authoritative product/service IDs before cross-tenant reuse.
+6. Inspect/fix the failed C6-Os certification run with its actual job logs; do not claim CI green until a new successful run is visible.
+7. Keep all newsletter sending and the direct-send nurture workflow inactive until these gates are verified.
