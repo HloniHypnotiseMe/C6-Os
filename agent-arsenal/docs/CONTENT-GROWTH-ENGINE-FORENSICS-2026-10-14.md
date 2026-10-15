@@ -317,3 +317,28 @@ Verification status: source and test changes were fetched back from the feature 
 
 
 Follow-up CI update (2026-10-15, after PR #10 creation): C6 Mail Services CI run #73 for head commit `24f4a23e125ba6d22a5638ccb90f7722ac14c777` completed with conclusion **failure**; the `test` job failed. The job-log endpoint returned a missing-blob error, so the failing step and cause are not available through this retrieval path. Do not mark the patch as passing or merge it based on this evidence. PR #10 remains an open review item: https://github.com/HloniHypnotiseMe/C6-Mail-Services/pull/10. Next action is to obtain the actual Actions failure output or run the repository's documented CI command (`pip install -r requirements.txt`, `python -m compileall .`, `PYTHONPATH=. pytest -q`) in a working checkout, fix the specific failure, and verify a successful run before merge.
+
+
+## Wave 0/1 safety changes opened — 2026-10-15
+
+Two implementation PRs now exist; neither is merged, and neither should be described as production-live.
+
+1. **C6 Mail Services safety gate:** [PR #11](https://github.com/HloniHypnotiseMe/C6-Mail-Services/pull/11), branch `content-growth-safety-fix`, head `eaa5212fc523a303075fb9ee31fa90df795b72a1`.
+   - Adds the existing `X-C6-Mail-Key` authorization boundary to campaign endpoints.
+   - Campaign create/send/stats intentionally return 503 even for authenticated callers until tenant ownership, consent/unsubscribe/suppression, approval, idempotency and event reconciliation are implemented.
+   - Adds missing BillionMail API key/base URL settings and tests for fail-closed behavior.
+   - Corrects README/.env example mismatch about `MAIL_API_KEY`.
+2. **Website nurture safety gate:** [PR #73](https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/pull/73), branch `fix/nurture-direct-send-safety`, head `fc38b1a79341cb78a8a732eaa93dfaaa934e3951`.
+   - Marks the repository-exported nurture workflow inactive.
+   - Replaces both direct `emailSend` nodes with fail-closed code nodes and adds validator assertions to prevent reintroducing direct send nodes.
+   - This only changes the repository export. A separately imported workflow in the running n8n instance has not been inspected or deactivated.
+
+### Verification status — do not overstate
+
+A static source-contract check confirmed the expected safety structure in both branches. Full Python/Node CI has **not** been verified as passing. GitHub Actions runs for both PR heads completed as failures with `runner_id: 0` and empty job-step arrays, including unrelated website jobs; no runner actually started and no actionable test log was available. Treat this as an infrastructure/CI execution blocker of unknown cause, not evidence that the code tests passed or failed. Re-run CI when runner execution is available and investigate the repository Actions/runner configuration.
+
+### Remaining hard blockers
+
+- The campaign API is intentionally unavailable until real tenant-aware authorization and send-time consent/suppression are implemented; a shared service key is not tenant isolation.
+- The running n8n instance must be inspected for an already-imported/active nurture workflow. Repository changes alone cannot deactivate runtime state.
+- Do not send promotional newsletters or claim the Content & Growth Engine is live until tests execute successfully and the approval, consent, tenant, publication and delivery paths have production evidence.
