@@ -295,3 +295,22 @@ GitHub reported a completed **failed** C6 QA Certification Run for C6-Os commit 
 5. Replace route-only service links with a compatibility mapping to authoritative product/service IDs before cross-tenant reuse.
 6. Inspect/fix the failed C6-Os certification run with its actual job logs; do not claim CI green until a new successful run is visible.
 7. Keep all newsletter sending and the direct-send nurture workflow inactive until these gates are verified.
+
+
+## Wave 1 safety mitigation started — 2026-10-15
+
+A separate implementation PR has been opened in `HloniHypnotiseMe/C6-Mail-Services`:
+
+- PR #10: https://github.com/HloniHypnotiseMe/C6-Mail-Services/pull/10
+- Branch: `fix/marketing-campaigns-fail-closed-2026-10-15`
+- Latest commit at time of recording: `24f4a23e125ba6d22a5638ccb90f7722ac14c777`
+
+Changes in that PR:
+- All three marketing campaign routes (create, send, stats) now require the configured `X-C6-Mail-Key`; absent configuration returns 503 and a wrong/missing key returns 401.
+- Even after successful authentication, all three campaign routes return 503 until tenant ownership, recipient consent, unsubscribe/suppression, approval and idempotent-send controls are implemented. No BillionMail provider call is made by these endpoints.
+- Added tests for missing configuration, invalid/missing authentication and authenticated-but-disabled behavior.
+- Updated deployment documentation to describe the required API key and intentional campaign block.
+
+This is a **containment fix**, not the completed newsletter implementation: it prevents use of the currently ungoverned campaign endpoints rather than pretending the missing consent/tenant model already exists. It does not migrate the separate website n8n nurture workflow, whose direct-send nodes still require a separate inventory/disable-or-migrate decision.
+
+Verification status: source and test changes were fetched back from the feature branch for inspection. No workflow run was returned for the latest commit in the queried PR-triggered workflow list; therefore the tests have **not** been claimed as executed or passing. PR #10 was open at creation and must remain unmerged until its diff, CI/test results, and compatibility effects are reviewed. Keep marketing sends disabled meanwhile.
