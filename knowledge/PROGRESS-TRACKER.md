@@ -30,7 +30,7 @@
 - Branch: `build/c6-cybershield-foundation-20261102`
 - Head: `b20d92b16dc235f39c26162950008daa9f6f8fcf`
 - Scope: product charter, passive MVP plan, security capability register, high-risk Agent Arsenal policy, registry correction and build-memory updates.
-- CI: C6 Capability Router Tests run **41458877452** passed; C6 QA Certification run **41458877659** passed.
+- CI: C6 Capability Router Tests run **41460315893** passed; C6 QA Certification run **41460315851** passed after this tracker update.
 - Review: the policy finding about `vulnerability_research_reverse` was checked against the branch source and resolved; the required verified-asset, scope, isolation/egress and hard-timeout controls are present.
 - State: **BUILT / PROVEN / NOT MERGED / NOT LIVE**.
 
