@@ -67,3 +67,8 @@ The Agent-OS README describes a production-grade autonomous OS, but its current 
 ## Explicit exclusions
 
 This audit did not execute vulnerability scans against public targets, test customer systems, inspect every repository file, inspect all transitive dependencies, or independently verify the production state of every service. It must not be represented as a penetration test, compliance audit or security certification.
+
+
+### C6 SaaS Core source-of-truth correction
+
+The private C6-owned repository `HloniHypnotiseMe/c6-saas-core` exists and is accessible by direct repository URL. The connected installed-repository search did not return it. Current main HEAD observed: `82f40406797fa0d4f3b11c95420d89a2fc4b4c38`. The C6-Os registry records stale pin `02679b209e58e7be2d9b79665fd4cfd6e8a2286d`. Its README/source expose tenant context, runtime authorization/kill-switch, audit and evidence contracts; source-level presence is not proof of deployed runtime or complete tenant isolation. CyberShield must integrate after reviewing these guarantees and must not duplicate the shared controls.
