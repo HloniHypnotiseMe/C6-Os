@@ -260,3 +260,13 @@ Evidence state: SOURCE-VERIFIED / CI-UNCONFIRMED / NOT LIVE. GitHub reported no 
 - **Customer integration blocker:** C6 SaaS Core identity/tenant/evidence authorization is incomplete. See [c6-saas-core issue #28](https://github.com/HloniHypnotiseMe/c6-saas-core/issues/28). Do not use its current evidence routes for customer data or expose customer scans until authentication and cross-tenant isolation are verified.
 
 - Agent Arsenal policy update in PR #25 classifies active security testing, security operations and reverse-engineering capabilities as high risk; it adds verified-asset/scope, isolation/egress, hard-timeout/audit, sandbox and human-approval requirements. Feature branch only; not merged.
+
+
+## 2026-11-02 — Revenue Hunter security hardening
+
+- C6 Group PR [#80](https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/pull/80) restricts Revenue Hunter routes to authenticated ADMIN users and hardens website evidence inspection against SSRF, DNS rebinding, redirects, non-public IPs, unexpected content types, oversized HTML and slow requests.
+- Latest head: `e9e1f05359909d0b51f6ec17d4c06622296bb101`. GitHub Actions run [41458157531](https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/actions/runs/41458157531) passed all seven jobs. VPS TypeScript check passed; the two focused Jest suites passed 25/25 tests.
+- Node's DNS lookup `all: true` mode and an absolute request deadline were added after review and the corresponding review threads were resolved.
+- A fresh Codex review then found one remaining P2: non-2xx and non-HTML responses are resumed/drained after the deadline is cleared. Destroy the response/request before resolving and add regression tests before merge.
+- PR #80 is open, unmerged and not deployed. ADMIN-only is an internal boundary, not customer tenant authorization.
+- Existing Revenue Hunter provider/runtime gates remain: licensed lead discovery, paid contact enrichment and real C6 Mail delivery evidence.
