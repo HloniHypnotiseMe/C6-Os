@@ -253,7 +253,7 @@ Evidence state: SOURCE-VERIFIED / CI-UNCONFIRMED / NOT LIVE. GitHub reported no 
 
 - Product foundation: [C6-Os PR #25](https://github.com/HloniHypnotiseMe/C6-Os/pull/25) (open; feature branch only).
 - First isolated scanner engine: [C6 Group PR #79](https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/pull/79) (open; feature branch only), file `c6group-backend/src/services/cyberShieldPassiveScanner.ts`.
-- CI evidence: [run 41453471707](https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/actions/runs/41453471707) passed all 7 jobs; backend 17 suites / 86 tests and TypeScript build passed.
+- CI evidence: [run 41454178076](https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/actions/runs/41454178076) passed all 7 jobs; backend 17 suites / 87 tests and TypeScript build passed.
 - Engine scope: bare FQDN validation, all-answer public IPv4/IPv6 checks, pinned-IP HTTPS HEAD probe, selected security headers and TLS certificate metadata, no redirects/crawling, 16 KiB response-header cap, response destroyed after headers, 8-second wall-clock deadline covering DNS resolution and HTTPS.
 - Status: EXISTS / CI-VERIFIED CODE. Not merged, not deployed, no real network scan or customer scan performed. No public route is mounted.
 - Remaining scanner work: domain ownership TXT proof, explicit authorization/scope, isolated worker and egress enforcement, full DNS/SPF/DMARC, HTTP redirect and cookie checks, quotas/kill switch, reports and evidence.
