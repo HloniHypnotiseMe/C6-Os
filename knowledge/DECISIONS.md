@@ -83,3 +83,11 @@ Challenge-provider rules are represented as versioned profiles rather than assum
 - Whatomate is deployed as a self-hosted provider runtime inside the canonical C6 unified stack, with dedicated PostgreSQL/Redis persistence and Caddy HTTPS ingress.
 - Smart WhatsApp C6 authority remains separate from provider runtime: C6 owns customer identity, entitlement, metering and evidence; Whatomate owns WhatsApp execution and Meta-facing webhook handling.
 - Production images must be pinned by immutable digest; mutable `latest` tags are not acceptable for the production release.
+
+
+## 2026-11-02 — CyberShield passive scanning and customer-data gates
+
+- CyberShield's first scanner is passive-only: bare verified domain scope, public-IP DNS validation, pinned outbound connection, one HTTPS HEAD request, no redirects/crawling/exploit attempts, and a hard wall-clock deadline.
+- Do not expose a customer scan route or store customer evidence until domain ownership proof, explicit scan authorization, isolated worker/egress restrictions, tenant identity/isolation, audit/evidence controls, quotas and kill-switch behavior are verified.
+- C6 SaaS Core is the canonical shared control-plane direction, but its inspected identity/tenant/evidence authorization implementation is incomplete. Resolve c6-saas-core issue #28 before CyberShield customer integration; do not create a parallel tenant/auth/evidence subsystem in C6 Group.
+- CI passing for the isolated engine is code-level evidence only. It does not mean the engine is merged, network-tested, deployed or LIVE.
