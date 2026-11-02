@@ -19,7 +19,7 @@
 |---|---|---|---|
 | C6 Group backend | Helmet, CORS, JSON body limit, global express-rate-limit, health/readiness endpoints | `C6-Group-Final-Website/c6group-backend/src/server.ts` | EXISTS. Global limit is 1,000 requests / 15 minutes; not a tailored abuse policy. Runtime status not revalidated in this audit. |
 | C6 Group backend | JWT verification, active-user lookup, role authorization | `c6group-backend/src/middleware/auth.ts` | EXISTS. Prior inspected version includes a development-only fallback secret for non-production. Production requires `JWT_SECRET`. Must review refresh-token rotation, revocation and cookie/token handling separately. |
-| C6 Group AI catalogue | Security Scanner and SSL Checker entries | `app/src/data/aiTools.ts` | EXISTS as catalogue entries only. No scanning engine was found behind these entries in the inspected routes. |
+| C6 Group AI catalogue | Security Scanner and SSL Checker entries | `app/src/data/aiTools.ts`; `c6group-backend/src/routes/aiTools.ts` | EXISTS as catalogue entries only. The inspected use route only increments usage; it does not invoke a scanner. A separate isolated HTTPS prototype is now in feature-branch PR #79, not wired to the catalogue or customer routes. |
 | C6 Group seed data | Security Audit Helper description | `c6group-backend/prisma/seed.ts` | EXISTS as seeded metadata only. Not proof of an executing audit service. |
 | RemotePay | Fraud alert workflow checks high-value pending transactions every 15 minutes, calls an orchestrator and emails an administrator | `RemotePay-/n8n-workflows/fraud/fraud-alert.json` | EXISTS. Workflow JSON alone does not prove it is imported, enabled, connected or effective. It is not a general fraud detection platform. |
 | RemotePay | Production security gate explicitly lists auth, authorization, rate limits, audit logs, secret management, environment separation, monitoring and recovery | `RemotePay-/docs/REMOTE_PAY_PRODUCTION_VERIFICATION_GATE.md` | EXISTS as a documented gate. The document says these items remain required before live-money launch. |
@@ -41,13 +41,13 @@ The C6-Os Agent Arsenal already registers these capabilities:
 - `malware_analysis`
 - `vulnerability_research_reverse`
 
-The registry is a capability catalogue. The inspected provider list does not establish a ready-to-run commercial website vulnerability scanner. Do not create duplicate capabilities merely to give the product a new name.
+The registry is a capability catalogue. The inspected provider list does not establish a production-ready commercial website vulnerability scanner. C6 Group PR [#79](https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/pull/79) now contains an isolated passive HTTPS prototype with CI-verified unit tests, but it is not merged, network-tested, deployed or connected to the catalogue. Extend that implementation rather than starting a duplicate; do not present it as a live scanner.
 
 The Agent-OS README describes a production-grade autonomous OS, but its current security authentication module is explicitly a stub. The README's maturity claims must not be treated as security evidence.
 
 ## Confirmed gaps from this inspection
 
-1. No functioning C6-owned passive domain/TLS/HTTP security scanner was located.
+1. No production-ready, merged or runtime-verified C6 passive domain/TLS/HTTP scanner exists. PR #79 contains only an isolated HTTPS HEAD prototype with deterministic unit tests; no real network scan has been performed.
 2. No evidence of a verified vulnerability scanning engine in C6 Group's Security Scanner catalogue entry.
 3. No evidence of a production endpoint detection/response agent.
 4. No evidence of a C6-operated SIEM/SOC with tested alert triage and incident response.
@@ -62,7 +62,7 @@ The Agent-OS README describes a production-grade autonomous OS, but its current 
 3. Verify actual UFW, Docker port publishing, SSH policy, unattended upgrades, backups and restore procedure on the Contabo VPS.
 4. Verify Caddy/BillionMail/C6 Mail Services routing and service isolation before enabling public services.
 5. Establish an owned asset inventory and baseline evidence.
-6. Build the passive website/domain assessment MVP only after the scanner's SSRF/authorization threat model is implemented and tested.
+6. Extend PR #79 into the passive website/domain assessment MVP only after domain ownership, authorization, DNS/redirect safety, worker isolation and the C6 SaaS Core tenant/evidence gates are implemented and tested.
 
 ## Explicit exclusions
 
