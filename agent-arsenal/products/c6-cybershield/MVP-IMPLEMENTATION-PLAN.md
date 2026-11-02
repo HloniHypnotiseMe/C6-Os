@@ -9,7 +9,7 @@ Deliver a safe, evidence-backed passive website/domain security assessment as th
 - **Product experience:** C6 Group website/account and report UI.
 - **Existing backend candidate:** `C6-Group-Final-Website/c6group-backend`; inspect current branch and architecture before implementation.
 - **Scanner engine:** isolated, least-privilege worker/service. Do not execute customer-supplied code or run arbitrary shell commands in the API process.
-- **Control plane:** use the existing C6 authorization/evidence model where available. The C6-Os README and Agent-OS START-HERE refer to `c6-saas-core`, but that repository was not present in the connected GitHub repository inventory during this audit. Resolve the actual source of truth before relying on it.
+- **Control plane:** C6 SaaS Core exists as a private C6-owned repository. Direct repository access confirmed its current `main` HEAD as `82f40406797fa0d4f3b11c95420d89a2fc4b4c38`; the connected installed-repository search omitted it, and the C6-Os registry pin (`02679b209e58e7be2d9b79665fd4cfd6e8a2286d`) is stale. Its README and source expose tenant context, runtime authorization/kill-switch, audit and evidence contracts. Do not duplicate these controls. Before product integration, inspect the current authentication and tenant-isolation guarantees, update the C6-Os repository pin, and verify the control-plane integration in staging.
 - **Automation:** C6-controlled n8n only for notifications and scheduled jobs; scan authorization and findings remain in the application database.
 - **Mail:** C6 Mail Services owns outbound mail.
 - **Payments:** RemotePay owns payment state and settlement. Do not activate checkout until product entitlements and refund/chargeback handling are specified.
@@ -115,7 +115,7 @@ Use the existing database and migration conventions only after confirming the ac
 ## Work sequence
 
 1. Complete internal VPS and application baseline.
-2. Resolve C6 SaaS Core repository/control-plane availability and exact source of truth.
+2. Reconcile the stale C6 SaaS Core registry pin, inspect its current auth/tenant guarantees, and verify the control-plane integration contract in staging.
 3. Inspect the current C6 Group backend and existing business audit/report patterns.
 4. Implement domain verification and scan-job authorization.
 5. Implement isolated passive scanner checks with SSRF protections.
