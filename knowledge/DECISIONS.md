@@ -91,3 +91,6 @@ Challenge-provider rules are represented as versioned profiles rather than assum
 - Do not expose a customer scan route or store customer evidence until domain ownership proof, explicit scan authorization, isolated worker/egress restrictions, tenant identity/isolation, audit/evidence controls, quotas and kill-switch behavior are verified.
 - C6 SaaS Core is the canonical shared control-plane direction, but its inspected identity/tenant/evidence authorization implementation is incomplete. Resolve c6-saas-core issue #28 before CyberShield customer integration; do not create a parallel tenant/auth/evidence subsystem in C6 Group.
 - CI passing for the isolated engine is code-level evidence only. It does not mean the engine is merged, network-tested, deployed or LIVE.
+
+
+- C6 active security testing, malware analysis, security operations and reverse-engineering capabilities are high risk. They require explicit workflow authorization and scoped permissions; active testing requires verified ownership/written authority, isolated egress and auditable evidence; malware analysis defaults to isolated/no-network execution; destructive containment requires human approval.
