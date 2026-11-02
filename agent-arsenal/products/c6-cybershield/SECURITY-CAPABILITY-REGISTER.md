@@ -41,7 +41,7 @@ The C6-Os Agent Arsenal already registers these capabilities:
 - `malware_analysis`
 - `vulnerability_research_reverse`
 
-The registry is a capability catalogue. The inspected provider list does not establish a production-ready commercial website vulnerability scanner. C6 Group PR [#79](https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/pull/79) now contains an isolated passive HTTPS prototype with CI-verified unit tests, but it is not merged, network-tested, deployed or connected to the catalogue. Extend that implementation rather than starting a duplicate; do not present it as a live scanner.
+The registry is a capability catalogue. The inspected provider list does not establish a production-ready commercial website vulnerability scanner. C6 Group PR [#79](https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/pull/79) now contains an isolated passive HTTPS prototype with CI-verified unit tests, AbortSignal cancellation and a hard end-to-end deadline. Latest [CI run 41458580236](https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/actions/runs/41458580236) passed all seven jobs, including 17 backend suites / 93 tests and TypeScript build. It is not merged, network-tested, deployed or connected to the catalogue. Extend that implementation rather than starting a duplicate; do not present it as a live scanner.
 
 The Agent-OS README describes a production-grade autonomous OS, but its current security authentication module is explicitly a stub. The README's maturity claims must not be treated as security evidence.
 
