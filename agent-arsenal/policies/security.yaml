@@ -23,6 +23,12 @@ security:
       - network_disabled_by_default
       - no_execution_on_production_hosts
       - sample_provenance_and_audit_evidence
+    vulnerability_research_reverse:
+      - verified_asset_ownership_or_written_authorization
+      - explicit_scope_and_allowed_methods
+      - isolated_execution_and_egress_controls
+      - hard_timeouts_and_audit_evidence
+      - human_approval_for_active_validation
     security_operations:
       - explicit_incident_authorization
       - human_approval_for_destructive_containment
