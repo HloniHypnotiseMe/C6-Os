@@ -97,3 +97,12 @@ Challenge-provider rules are represented as versioned profiles rather than assum
 
 - CyberShield MVP DKIM checks are bounded to a maximum of five customer-supplied selectors (plus only versioned provider-specific hints if approved); no unbounded selector wordlists or brute-force discovery. Missing selector evidence is UNKNOWN, not FAIL.
 - Every network check has a hard wall-clock deadline covering DNS and HTTP(S); timeout must cancel the resolver and destroy the request. A separate inactivity timeout alone is insufficient. The MVP target is <=8 seconds per network check and <=60 seconds per scan job.
+
+
+## 2026-11-02 — Security scanner and Revenue Hunter release boundaries
+
+- Keep the CyberShield passive domain scanner and Revenue Hunter website evidence inspector as separate capabilities until a tested shared transport contract is justified. CyberShield's first tranche is a passive HTTPS HEAD probe; Revenue Hunter extracts bounded HTML evidence for prospect qualification.
+- Keep Revenue Hunter routes ADMIN-only while they remain internal. Any customer-facing route must derive tenant identity from verified credentials and membership; never remove the admin gate as a shortcut.
+- CyberShield remains internal-only until domain ownership proof, explicit scan scope, isolated worker/egress, cancellation/quotas/kill switch, secured tenant evidence storage, reports, audit and legal/security launch gates are evidenced.
+- Treat PR #79 and PR #80 as separate feature branches. Require combined CI on the resulting main before claiming the integrated website backend is verified.
+- The Contabo VPS is provisioned and root access is confirmed; this closes only the provisioning/access prerequisite. It does not close deployment, host hardening, DNS/TLS, backup/restore, observability or provider-runtime gates.
