@@ -59,15 +59,6 @@ entries:
     system: "C6-Os"
     status: WORKS
 
-reverse_engineering_department:
-  status: VERIFIED
-  source: agent-arsenal/registry/departments.yaml
-  machine_taxonomy_categories: 37
-  human_department: "Developers"
-  capability_category: reverse_engineering
-  registered_providers: [ghidra, reverse_skill, idassist]
-  verification: "Registry, provider, routing, provenance, department mapping, capability-router CI, and authenticated cross-repository reconciliation are green. Repository evidence enrichment completed for the authenticated estate."
-
   - id: c6_smart_solutions_execution
     outcome: "Entitlement-aware standalone Smart Solutions execution and capacity accounting"
     system: "C6-Group-Final-Website + c6group-backend"
@@ -291,3 +282,45 @@ reverse_engineering_department:
       - "separately gated duplicate-safe PR creation before any automated repository write"
       - "human review/merge; separate newsletter consent and delivery controls"
     notes: "CI verifies repository contracts, not live n8n/orchestrator execution. Do not mark LIVE or activate until runtime evidence exists."
+
+  - id: c6_cybershield_passive_scanner_engine
+    outcome: "SSRF-bounded passive HTTPS domain assessment engine"
+    system: "C6-Group-Final-Website/c6group-backend"
+    status: EXISTS
+    implementation:
+      branch: "build/c6-cybershield-passive-scanner-20261102"
+      pull_request: "https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/pull/79"
+      file: "c6group-backend/src/services/cyberShieldPassiveScanner.ts"
+    verification:
+      workflow_run: "https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/actions/runs/41448087116"
+      conclusion: "success"
+      jobs_passed: 7
+      backend_test_suites: 17
+      backend_tests: 85
+      backend_typescript_build: "success"
+    boundaries:
+      - "Accepts a bare fully-qualified domain only; rejects IP literals and local names."
+      - "Rejects the entire DNS answer set if any address is non-public."
+      - "Pins the HTTPS connection to a validated public IP; retains the domain for Host and TLS SNI."
+      - "Performs one HTTPS HEAD request on port 443 with a hard deadline; does not follow redirects or crawl."
+    not_implemented:
+      - "Domain ownership proof and explicit customer scan authorization."
+      - "Isolated worker, egress policy, quotas and global kill switch."
+      - "C6 SaaS Core tenant authorization, evidence persistence and customer reports."
+      - "DNS SPF/DMARC, HTTP redirect checks, cookie analysis and production deployment."
+    production_state: "INTERNAL_ONLY_NOT_MERGED_NOT_DEPLOYED"
+    notes: "CI verifies deterministic unit tests and TypeScript build only. No real network scan, customer scan or production deployment has been performed."
+  - id: c6_saas_core_tenant_auth_blocker
+    outcome: "Canonical C6 SaaS Core identity, tenant authorization and evidence access-control gap"
+    system: "HloniHypnotiseMe/c6-saas-core"
+    status: EXISTS
+    issue: "https://github.com/HloniHypnotiseMe/c6-saas-core/issues/28"
+    notes: "Tenant model exists, but user/auth/tenant modules are empty or unmounted; evidence create/read routes lack auth dependencies; runtime authorization trusts caller-supplied tenant/actor/action fields behind a shared control-plane key. Blocks customer-facing CyberShield integration."
+reverse_engineering_department:
+  status: VERIFIED
+  source: agent-arsenal/registry/departments.yaml
+  machine_taxonomy_categories: 37
+  human_department: "Developers"
+  capability_category: reverse_engineering
+  registered_providers: [ghidra, reverse_skill, idassist]
+  verification: "Registry, provider, routing, provenance, department mapping, capability-router CI, and authenticated cross-repository reconciliation are green. Repository evidence enrichment completed for the authenticated estate."
