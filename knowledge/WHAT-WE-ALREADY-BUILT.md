@@ -258,3 +258,5 @@ Evidence state: SOURCE-VERIFIED / CI-UNCONFIRMED / NOT LIVE. GitHub reported no 
 - Status: EXISTS / CI-VERIFIED CODE. Not merged, not deployed, no real network scan or customer scan performed. No public route is mounted.
 - Remaining scanner work: domain ownership TXT proof, explicit authorization/scope, isolated worker and egress enforcement, full DNS/SPF/DMARC, HTTP redirect and cookie checks, quotas/kill switch, reports and evidence.
 - **Customer integration blocker:** C6 SaaS Core identity/tenant/evidence authorization is incomplete. See [c6-saas-core issue #28](https://github.com/HloniHypnotiseMe/c6-saas-core/issues/28). Do not use its current evidence routes for customer data or expose customer scans until authentication and cross-tenant isolation are verified.
+
+- Agent Arsenal policy update in PR #25 classifies active security testing, security operations and reverse-engineering capabilities as high risk; it adds verified-asset/scope, isolation/egress, hard-timeout/audit, sandbox and human-approval requirements. Feature branch only; not merged.
