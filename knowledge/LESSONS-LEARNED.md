@@ -134,3 +134,6 @@ Do not add automated GitHub writes to a draft-generation workflow without a sepa
 - A catalogue item named Security Scanner is not an implementation. Trace the catalogue through its route and provider boundary; in C6 Group the AI-tool use route only increments usage and does not invoke a scanner.
 - A shared control-plane key plus caller-supplied tenant/actor/action fields is not user authentication or tenant membership. Evidence APIs without auth and tenant-scoped authorization must not hold customer records.
 - Keep the first scanner passive and internal-only until ownership proof, explicit authorization, isolated worker/egress, tenant isolation, audit/evidence and production controls are verified.
+
+
+- Active security testing, malware analysis and security operations must be explicitly classified and governed as high-risk capabilities. Require verified asset authority, narrow scope, isolated execution/egress, hard deadlines and evidence; malware analysis is network-disabled by default, and destructive incident containment requires human approval.
