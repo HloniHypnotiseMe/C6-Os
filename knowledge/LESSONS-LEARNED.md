@@ -141,3 +141,13 @@ Do not add automated GitHub writes to a draft-generation workflow without a sepa
 - Universal Arsenal YAML must be exercised through the actual router test, not only visually reviewed. The C6 repository registry had an internal-repository list accidentally nested under a scalar security note; the router parser caught it. Keep repository names under `internal_repositories` and keep `security_notes` as a list of strings.
 
 - Even a HEAD endpoint can violate expectations and stream a response body. If the scanner only needs headers, cap the header size and destroy the response immediately after collecting the required metadata rather than draining an unbounded body.
+
+
+## 2026-11-02 — Revenue Hunter website inspection and scanner boundary
+
+- Node's custom DNS `lookup` callback must support both the single-address callback and `all: true` array form when used by Node networking with family selection; test both paths.
+- `request.setTimeout()` is an inactivity timeout, not an absolute deadline. A separate wall-clock timer must destroy a request even when a peer keeps sending bytes.
+- If response content is not needed, do not call `response.resume()` and then clear the deadline. Draining an untrusted slow response can keep the socket alive; destroy the response/request before resolving, and test non-2xx and unsupported-content-type branches.
+- Keep the Revenue Hunter website evidence extractor distinct from the CyberShield passive HEAD scanner. Their objectives and response handling differ; share hardened transport primitives only where the contracts and tests prove the reuse safe.
+- ADMIN-only access is a valid internal boundary, not a substitute for tenant-scoped customer authorization. Do not relax it to ordinary users until verified identity, membership, tenant isolation and audit are enforced.
+- A green CI run on two independent PRs is not combined integration evidence. Re-run the complete suite after both changes are present on the same base.
