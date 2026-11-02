@@ -292,7 +292,7 @@ entries:
       pull_request: "https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/pull/79"
       file: "c6group-backend/src/services/cyberShieldPassiveScanner.ts"
     verification:
-      workflow_run: "https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/actions/runs/41450748773"
+      workflow_run: "https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/actions/runs/41453471707"
       conclusion: "success"
       jobs_passed: 7
       backend_test_suites: 17
@@ -303,6 +303,7 @@ entries:
       - "Rejects the entire DNS answer set if any address is non-public."
       - "Pins the HTTPS connection to a validated public IP; retains the domain for Host and TLS SNI."
       - "Performs one HTTPS HEAD request on port 443 with a single 8-second wall-clock deadline covering DNS and HTTPS; does not follow redirects or crawl."
+      - "Caps response headers at 16 KiB and destroys the response after headers; does not consume a response body."
     not_implemented:
       - "Domain ownership proof and explicit customer scan authorization."
       - "Isolated worker, egress policy, quotas and global kill switch."
