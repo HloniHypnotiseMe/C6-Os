@@ -125,3 +125,12 @@ The Whatomate adapter was correctly merged, but the real production capability a
 The C6 content pipeline now has green CI coverage for exported-workflow contracts and the frontend/backend builds. That proves the tested repository contracts only. It does not prove the private n8n workflow is imported, credentials are valid, the orchestrator is reachable, the named agents are registered, or an end-to-end draft was generated. Keep the workflow inactive until those checks are evidenced.
 
 Do not add automated GitHub writes to a draft-generation workflow without a separate approval boundary, deterministic duplicate protection, strict repository/path allowlists, least-privilege credentials, schema validation and human merge review. Newsletter delivery is a separate capability with consent, unsubscribe, suppression, delivery and audit requirements.
+
+
+## 2026-11-02 — CyberShield SSRF and tenant-boundary lessons
+
+- DNS validation alone does not stop DNS rebinding. Resolve all A/AAAA answers, reject the entire target if any answer is non-public, and connect directly to a validated/pinned IP while retaining the hostname only for TLS SNI and the HTTP Host header.
+- A socket inactivity timeout is not a hard execution deadline; a slow-trickle peer can keep resetting it. Use a separate wall-clock deadline that destroys the request.
+- A catalogue item named Security Scanner is not an implementation. Trace the catalogue through its route and provider boundary; in C6 Group the AI-tool use route only increments usage and does not invoke a scanner.
+- A shared control-plane key plus caller-supplied tenant/actor/action fields is not user authentication or tenant membership. Evidence APIs without auth and tenant-scoped authorization must not hold customer records.
+- Keep the first scanner passive and internal-only until ownership proof, explicit authorization, isolated worker/egress, tenant isolation, audit/evidence and production controls are verified.
