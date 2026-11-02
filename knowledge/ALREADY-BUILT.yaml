@@ -337,6 +337,32 @@ entries:
       - "Security operations requires explicit incident authorization and human approval for destructive containment."
     production_state: "FEATURE_BRANCH_NOT_MERGED"
 
+
+  - id: revenue_hunter_website_evidence_security
+    outcome: "ADMIN-only Revenue Hunter routes and SSRF-bounded website evidence inspection"
+    system: "C6-Group-Final-Website/c6group-backend"
+    status: EXISTS
+    implementation:
+      branch: "security/wya-revenue-hunter-hardening-20261102"
+      pull_request: "https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/pull/80"
+      commit: "e9e1f05359909d0b51f6ec17d4c06622296bb101"
+      files:
+        - "c6group-backend/src/routes/revenueHunter.ts"
+        - "c6group-backend/src/services/websiteEvidence.ts"
+    verification:
+      github_actions_run: 41458157531
+      github_actions_jobs_passed: 7
+      local_typescript: "passed"
+      focused_jest_suites: 2
+      focused_jest_tests: 25
+    remaining:
+      - "Resolve current P2: destroy non-2xx and non-HTML response bodies rather than draining after clearing the absolute deadline."
+      - "Merge and run combined CI with the CyberShield scanner changes."
+      - "Production deployment and live runtime verification."
+      - "Licensed lead-discovery and contact-enrichment providers."
+      - "C6 Mail live delivery evidence."
+    notes: "PR is open and unmerged. ADMIN-only protects the internal route; customer-facing use requires verified tenant identity and authorization. Do not mark LIVE."
+
 reverse_engineering_department:
   status: VERIFIED
   source: agent-arsenal/registry/departments.yaml
