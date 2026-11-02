@@ -292,17 +292,20 @@ entries:
       pull_request: "https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/pull/79"
       file: "c6group-backend/src/services/cyberShieldPassiveScanner.ts"
     verification:
-      workflow_run: "https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/actions/runs/41454178076"
+      workflow_run: "https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/actions/runs/41458580236"
+      workflow_run_id: 41458580236
+      verified_commit: "9ad53a255bf77d59c9cbfeda27ea6ac39b7f5b5f"
       conclusion: "success"
       jobs_passed: 7
       backend_test_suites: 17
-      backend_tests: 87
+      backend_tests: 93
       backend_typescript_build: "success"
     boundaries:
       - "Accepts a bare fully-qualified domain only; rejects IP literals and local names."
       - "Rejects the entire DNS answer set if any address is non-public."
       - "Pins the HTTPS connection to a validated public IP; retains the domain for Host and TLS SNI."
-      - "Performs one HTTPS HEAD request on port 443 with a single 8-second wall-clock deadline covering DNS and HTTPS; does not follow redirects or crawl."
+      - "Performs one HTTPS HEAD request on port 443 with an 8-second end-to-end wall-clock deadline across DNS and HTTPS; does not follow redirects or crawl."
+      - "Propagates AbortSignal cancellation to the system DNS resolver and active HTTPS request; deadline and job cancellation stop in-flight work."
       - "Caps response headers at 16 KiB and destroys the response after headers; does not consume a response body."
     not_implemented:
       - "Domain ownership proof and explicit customer scan authorization."
