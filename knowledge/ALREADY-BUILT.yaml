@@ -316,6 +316,23 @@ entries:
     status: EXISTS
     issue: "https://github.com/HloniHypnotiseMe/c6-saas-core/issues/28"
     notes: "Tenant model exists, but user/auth/tenant modules are empty or unmounted; evidence create/read routes lack auth dependencies; runtime authorization trusts caller-supplied tenant/actor/action fields behind a shared control-plane key. Blocks customer-facing CyberShield integration."
+  - id: c6_cybersecurity_high_risk_policy
+    outcome: "Explicit authorization, scope and isolation gates for high-risk cybersecurity capabilities"
+    system: "C6-Os Agent Arsenal"
+    status: EXISTS
+    implementation:
+      branch: "build/c6-cybershield-foundation-20261102"
+      pull_request: "https://github.com/HloniHypnotiseMe/C6-Os/pull/25"
+      files:
+        - "agent-arsenal/registry/capabilities.yaml"
+        - "agent-arsenal/policies/security.yaml"
+    controls:
+      - "Authorized security testing requires verified ownership or written authorization and explicit scope."
+      - "Active testing requires isolated execution, egress controls, hard timeouts and audit evidence."
+      - "Malware analysis requires an isolated sandbox with network disabled by default."
+      - "Security operations requires explicit incident authorization and human approval for destructive containment."
+    production_state: "FEATURE_BRANCH_NOT_MERGED"
+
 reverse_engineering_department:
   status: VERIFIED
   source: agent-arsenal/registry/departments.yaml
