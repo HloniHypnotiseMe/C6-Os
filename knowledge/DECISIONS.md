@@ -94,3 +94,6 @@ Challenge-provider rules are represented as versioned profiles rather than assum
 
 
 - C6 active security testing, malware analysis, security operations and reverse-engineering capabilities are high risk. They require explicit workflow authorization and scoped permissions; active testing requires verified ownership/written authority, isolated egress and auditable evidence; malware analysis defaults to isolated/no-network execution; destructive containment requires human approval.
+
+- CyberShield MVP DKIM checks are bounded to a maximum of five customer-supplied selectors (plus only versioned provider-specific hints if approved); no unbounded selector wordlists or brute-force discovery. Missing selector evidence is UNKNOWN, not FAIL.
+- Every network check has a hard wall-clock deadline covering DNS and HTTP(S); timeout must cancel the resolver and destroy the request. A separate inactivity timeout alone is insufficient. The MVP target is <=8 seconds per network check and <=60 seconds per scan job.
