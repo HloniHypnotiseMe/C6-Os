@@ -72,3 +72,16 @@ This audit did not execute vulnerability scans against public targets, test cust
 ### C6 SaaS Core source-of-truth correction
 
 The private C6-owned repository `HloniHypnotiseMe/c6-saas-core` exists and is accessible by direct repository URL. The connected installed-repository search did not return it. Current main HEAD observed: `82f40406797fa0d4f3b11c95420d89a2fc4b4c38`. The C6-Os registry records stale pin `02679b209e58e7be2d9b79665fd4cfd6e8a2286d`. Its README/source expose tenant context, runtime authorization/kill-switch, audit and evidence contracts; source-level presence is not proof of deployed runtime or complete tenant isolation. CyberShield must integrate after reviewing these guarantees and must not duplicate the shared controls.
+
+
+### C6 SaaS Core identity and evidence boundary — security blocker
+
+Follow-up source inspection found that the existing C6 SaaS Core code is not yet a complete customer identity or tenant-isolation system:
+
+- `app/models/tenant.py` contains a Tenant model, but `app/models/user.py` is empty.
+- `app/api/auth.py`, `app/api/tenants.py`, and `app/multi_tenant.py` are empty; the auth/tenant routers are not mounted in `app/main.py`.
+- Tenant context is a manually set `ContextVar`; inspected code does not bind it to a verified user/tenant membership.
+- `/api/v1/evidence` create/read routes have no authentication or tenant-scoped authorization dependency.
+- `/api/v1/runtime/authorize` checks a shared `X-C6-Control-Key`, but the caller supplies tenant_id, actor_id, action and allowed_actions. It is an internal control-plane gate, not proof of a user's identity or tenant membership.
+
+**Blocker:** Do not store customer evidence or expose CyberShield scans through C6 SaaS Core until issue [#28](https://github.com/HloniHypnotiseMe/c6-saas-core/issues/28) is resolved and cross-tenant isolation is verified. Reuse the canonical control plane once secured; do not build a parallel auth/tenant/evidence system in C6 Group.
