@@ -9,7 +9,7 @@ Deliver a safe, evidence-backed passive website/domain security assessment as th
 - **Product experience:** C6 Group website/account and report UI.
 - **Existing backend candidate:** `C6-Group-Final-Website/c6group-backend`; inspect current branch and architecture before implementation.
 - **Scanner engine:** isolated, least-privilege worker/service. Do not execute customer-supplied code or run arbitrary shell commands in the API process.
-- **Control plane:** C6 SaaS Core exists as a private C6-owned repository. Direct repository access confirmed its current `main` HEAD as `82f40406797fa0d4f3b11c95420d89a2fc4b4c38`; the connected installed-repository search omitted it, and the C6-Os registry pin (`02679b209e58e7be2d9b79665fd4cfd6e8a2286d`) is stale. Its README and source expose tenant context, runtime authorization/kill-switch, audit and evidence contracts. Do not duplicate these controls. Before product integration, inspect the current authentication and tenant-isolation guarantees, update the C6-Os repository pin, and verify the control-plane integration in staging.
+- **Control plane:** C6 SaaS Core exists as a private C6-owned repository. Direct access confirmed `main` HEAD `82f40406797fa0d4f3b11c95420d89a2fc4b4c38`; the C6-Os registry pin (`02679b209e58e7be2d9b79665fd4cfd6e8a2286d`) is stale. It has runtime authorization/kill-switch, audit and evidence route code, but the canonical identity/tenant boundary is incomplete: `app/models/user.py`, `app/api/auth.py`, `app/api/tenants.py` and `app/multi_tenant.py` are empty; auth/tenant routers are not mounted; `/api/v1/evidence` create/read routes have no auth dependency; and runtime authorization trusts tenant/actor/action fields supplied by a caller holding the shared control-plane key. This is not production tenant authentication or isolation. Block customer-facing CyberShield integration until C6 SaaS Core issue #28 is resolved and staging evidence exists. Do not duplicate the shared controls in C6 Group.
 - **Automation:** C6-controlled n8n only for notifications and scheduled jobs; scan authorization and findings remain in the application database.
 - **Mail:** C6 Mail Services owns outbound mail.
 - **Payments:** RemotePay owns payment state and settlement. Do not activate checkout until product entitlements and refund/chargeback handling are specified.
@@ -115,7 +115,7 @@ Use the existing database and migration conventions only after confirming the ac
 ## Work sequence
 
 1. Complete internal VPS and application baseline.
-2. Reconcile the stale C6 SaaS Core registry pin, inspect its current auth/tenant guarantees, and verify the control-plane integration contract in staging.
+2. Resolve C6 SaaS Core issue #28 (canonical identity, tenant authorization and evidence access control); reconcile its stale registry pin; then verify the integration contract in staging.
 3. Inspect the current C6 Group backend and existing business audit/report patterns.
 4. Implement domain verification and scan-job authorization.
 5. Implement isolated passive scanner checks with SSRF protections.
