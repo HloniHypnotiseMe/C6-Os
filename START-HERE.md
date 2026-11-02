@@ -20,6 +20,7 @@ Before designing or implementing anything, read:
 - `knowledge/ALREADY-BUILT.yaml` — machine-readable duplicate-prevention index;
 - `knowledge/LESSONS-LEARNED.md` — prior discoveries, failures and anti-patterns;
 - `knowledge/DECISIONS.md` — durable architecture and operating decisions.
+- `knowledge/PROGRESS-TRACKER.md` — current evidence-backed status of active security/revenue work and remaining external gates; it does not replace product-specific evidence.
 
 **Do not rebuild a capability merely because it is not in the current target repository.** Search the C6 estate first.
 
