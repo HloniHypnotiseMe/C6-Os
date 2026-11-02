@@ -130,7 +130,7 @@ Do not add automated GitHub writes to a draft-generation workflow without a sepa
 ## 2026-11-02 — CyberShield SSRF and tenant-boundary lessons
 
 - DNS validation alone does not stop DNS rebinding. Resolve all A/AAAA answers, reject the entire target if any answer is non-public, and connect directly to a validated/pinned IP while retaining the hostname only for TLS SNI and the HTTP Host header.
-- A socket inactivity timeout is not a hard execution deadline; a slow-trickle peer can keep resetting it. Use a separate wall-clock deadline that destroys the request.
+- A socket inactivity timeout is not a hard execution deadline; a slow-trickle peer can keep resetting it. Use a separate wall-clock deadline that destroys the request. Apply the same end-to-end deadline to DNS resolution; use a cancellable resolver so an unavailable DNS upstream cannot hold the worker indefinitely.
 - A catalogue item named Security Scanner is not an implementation. Trace the catalogue through its route and provider boundary; in C6 Group the AI-tool use route only increments usage and does not invoke a scanner.
 - A shared control-plane key plus caller-supplied tenant/actor/action fields is not user authentication or tenant membership. Evidence APIs without auth and tenant-scoped authorization must not hold customer records.
 - Keep the first scanner passive and internal-only until ownership proof, explicit authorization, isolated worker/egress, tenant isolation, audit/evidence and production controls are verified.
