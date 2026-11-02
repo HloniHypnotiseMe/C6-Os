@@ -302,7 +302,7 @@ entries:
       - "Accepts a bare fully-qualified domain only; rejects IP literals and local names."
       - "Rejects the entire DNS answer set if any address is non-public."
       - "Pins the HTTPS connection to a validated public IP; retains the domain for Host and TLS SNI."
-      - "Performs one HTTPS HEAD request on port 443 with a hard deadline; does not follow redirects or crawl."
+      - "Performs one HTTPS HEAD request on port 443 with a single 8-second wall-clock deadline covering DNS and HTTPS; does not follow redirects or crawl."
     not_implemented:
       - "Domain ownership proof and explicit customer scan authorization."
       - "Isolated worker, egress policy, quotas and global kill switch."
