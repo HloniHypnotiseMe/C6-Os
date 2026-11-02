@@ -665,6 +665,11 @@ internal_repositories:
     - ubernie
     - vps-audit
     - WiFiAudioStreaming-Desktop
+    - glta-os
+    - heretic
+    - hhm-eos
+    - wear-your-art
+    - weather_forecast_app
 c6_platform:
     - C6-Os
     - C6Group.AiOS
