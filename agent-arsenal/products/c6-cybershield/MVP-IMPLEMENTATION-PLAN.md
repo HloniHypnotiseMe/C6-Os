@@ -26,6 +26,7 @@ Deliver a safe, evidence-backed passive website/domain security assessment as th
 8. Worker performs bounded passive checks only:
    - DNS A/AAAA/CNAME/NS/MX/TXT observations.
    - SPF and DMARC syntax/posture checks.
+   - DKIM TXT checks for up to five customer-supplied selector names per verified domain; optional provider-specific hints may be used only from a versioned, bounded provider list. No unbounded selector wordlist or brute-force discovery. Missing/unprovided selectors are reported as UNKNOWN, not FAIL.
    - TLS certificate validity, hostname, chain and expiry.
    - HTTPS availability and HTTP-to-HTTPS redirect.
    - Selected response security headers.
@@ -42,8 +43,10 @@ Deliver a safe, evidence-backed passive website/domain security assessment as th
 - Defend against DNS rebinding by binding the validated resolution to the outbound connection where technically supported; do not validate one resolution and then allow the HTTP client to resolve again unchecked.
 - Restrict schemes to HTTP/HTTPS and ports to 80/443 for MVP.
 - Redirect count <= 3; redirect destination must remain in the verified domain boundary unless separately verified.
-- Connection timeout <= 5 seconds; total request timeout <= 10 seconds per check.
-- Response body cap <= 1 MiB; do not download or execute page assets.
+- One hard wall-clock deadline <= 8 seconds per network check, covering DNS resolution, connect, TLS negotiation and response headers; an inactivity timeout is supplementary and never substitutes for the hard deadline.
+- Deadline expiry must cancel the DNS resolver and destroy the outbound HTTP(S) request. Explicit job cancellation, tenant disable and global kill-switch cancellation must propagate to both; no orphaned resolver or request may continue.
+- Total MVP scan-job budget <= 60 seconds per domain, with bounded retries and concurrency.
+- Response headers <= 16 KiB. The MVP HEAD probe destroys the response immediately after headers; if a future check requires a body, stream with a <= 1 MiB cap and never execute or fetch page assets.
 - Per-host and per-tenant concurrency limits; global worker concurrency cap.
 - Retry policy bounded; no aggressive retries.
 - No port scanning, exploit payloads, brute force, authentication bypass, crawling, file downloads or POST/PUT/DELETE requests.
@@ -72,6 +75,7 @@ Use the existing database and migration conventions only after confirming the ac
 - Wrong token, expired token, replayed token and wrong tenant fail.
 - Domain ownership revoked/expired blocks new scans.
 - IDN/punycode and trailing-dot normalization tests.
+- DKIM selector validation enforces a maximum of five customer-supplied selectors; no unbounded selector discovery; missing selector evidence is UNKNOWN.
 
 ### SSRF / network boundary
 - IPv4 loopback/private/link-local/multicast/reserved/metadata denied.
@@ -82,7 +86,8 @@ Use the existing database and migration conventions only after confirming the ac
 - Unsupported schemes, ports and IP literals denied.
 
 ### Abuse resistance
-- Timeouts, response cap, redirect cap and concurrency cap enforced.
+- DNS and HTTPS slow-trickle tests prove the hard wall-clock deadline covers resolution and request I/O; expiry cancels the resolver and destroys the request.
+- Explicit job cancellation, response-header/body caps, redirect cap and concurrency cap enforced.
 - Per-tenant quotas and global kill switch tested.
 - Cancellation and worker crash recovery tested.
 - No credentials, cookies or sensitive page contents stored unnecessarily.
