@@ -137,3 +137,5 @@ Do not add automated GitHub writes to a draft-generation workflow without a sepa
 
 
 - Active security testing, malware analysis and security operations must be explicitly classified and governed as high-risk capabilities. Require verified asset authority, narrow scope, isolated execution/egress, hard deadlines and evidence; malware analysis is network-disabled by default, and destructive incident containment requires human approval.
+
+- Universal Arsenal YAML must be exercised through the actual router test, not only visually reviewed. The C6 repository registry had an internal-repository list accidentally nested under a scalar security note; the router parser caught it. Keep repository names under `internal_repositories` and keep `security_notes` as a list of strings.
