@@ -247,3 +247,14 @@ Evidence state: SOURCE-VERIFIED / CI-UNCONFIRMED / NOT LIVE. GitHub reported no 
 - Evidence level: repository contracts and CI VERIFIED. This does **not** prove a live n8n instance, orchestrator reachability, credentials, draft generation against runtime agents, PR creation, publication, or newsletter delivery.
 - Activation blockers: private n8n import/configuration, webhook Header Auth, repository-scoped read-only GitHub credential, network reachability to the orchestrator, confirmation that both agents are registered and return the expected `response` field, and safe runtime test evidence.
 - Next: validate runtime prerequisites; only then implement a separately gated, duplicate-safe, least-privilege GitHub PR stage. Keep human review/merge and newsletter consent/suppression/delivery controls separate.
+
+
+## C6 CyberShield — passive domain assessment (2026-11-02)
+
+- Product foundation: [C6-Os PR #25](https://github.com/HloniHypnotiseMe/C6-Os/pull/25) (open; feature branch only).
+- First isolated scanner engine: [C6 Group PR #79](https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/pull/79) (open; feature branch only), file `c6group-backend/src/services/cyberShieldPassiveScanner.ts`.
+- CI evidence: [run 41448087116](https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/actions/runs/41448087116) passed all 7 jobs; backend 17 suites / 85 tests and TypeScript build passed.
+- Engine scope: bare FQDN validation, all-answer public IPv4/IPv6 checks, pinned-IP HTTPS HEAD probe, selected security headers and TLS certificate metadata, no redirects/crawling, 8-second wall-clock deadline.
+- Status: EXISTS / CI-VERIFIED CODE. Not merged, not deployed, no real network scan or customer scan performed. No public route is mounted.
+- Remaining scanner work: domain ownership TXT proof, explicit authorization/scope, isolated worker and egress enforcement, full DNS/SPF/DMARC, HTTP redirect and cookie checks, quotas/kill switch, reports and evidence.
+- **Customer integration blocker:** C6 SaaS Core identity/tenant/evidence authorization is incomplete. See [c6-saas-core issue #28](https://github.com/HloniHypnotiseMe/c6-saas-core/issues/28). Do not use its current evidence routes for customer data or expose customer scans until authentication and cross-tenant isolation are verified.
