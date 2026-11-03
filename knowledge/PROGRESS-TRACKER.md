@@ -24,6 +24,7 @@
 | C6 SaaS Core tenant identity/evidence boundary | Issue #28 | Source audit recorded in CyberShield foundation | Open; blocks customer-facing CyberShield integration |
 | C6 SaaS Core generic evidence API containment | PR #29 | CI run 41596018427: all job steps passed, including migrations, production image build, smoke test and tests | Open; create/read disabled pending canonical tenant authorization |
 | C6 SaaS Core remaining generic tenant APIs | PR #30 | CI run 41597639834 passed; 53 tests passed | Open; evaluation, agent register, generic audit, runtime authorize and human override fail closed pending canonical tenant authorization |
+| C6 SaaS Core canonical tenant identity | PR #31 | CI run 41599444269 passed; migrations + production image + health/readiness + 54 tests | Open; independent review and production gates remain |
 | C6 repository registry reconciliation | C6-Os issue #26 | Stale repository pins identified | Open |
 
 ## Active pull requests
@@ -38,6 +39,19 @@
 - Canonical C6 SaaS Core identity adapter is not implemented. Protected operations remain unavailable until that boundary is reviewed and tested.
 - State: **BUILT / INITIAL CI-PROVEN / OPEN PR / NOT DEPLOYED**.
 
+
+### 0D. C6 SaaS Core — canonical tenant identity and scoped authorization
+
+- PR: https://github.com/HloniHypnotiseMe/c6-saas-core/pull/31
+- Branch: `security/canonical-tenant-identity-20261103`
+- Latest head: `ccf465a6eee2f741e79f241d86b829c28141d047`.
+- Stacked review order: PR #29 (evidence containment) → PR #30 (remaining generic API containment) → PR #31 (canonical identity).
+- Added tenant/user/membership/session/invitation schema; operator-key bootstrap; invitation-only onboarding; short-lived issuer/audience-bound JWTs with DB-backed revocable sessions; live membership/role checks.
+- Evidence and evaluation writes derive tenant from verified principal; evidence reads and agent-register access are tenant-scoped. Old global agent-register rows remain unassigned and inaccessible.
+- Runtime policy uses server-side role/action allowlists; caller-supplied `allowed_actions` is ignored. Human overrides use authenticated owner/admin identity. Generic audit ingestion remains disabled pending trusted service identity/integrity.
+- Full CI [41599444269](https://github.com/HloniHypnotiseMe/c6-saas-core/actions/runs/41599444269) passed: migrations, production image, health/readiness smoke tests, **54 tests passed (4 warnings)**.
+- Production gates remain: independent security review, gateway login rate limiting, email/invitation delivery and ownership policy, password recovery, MFA decision, secrets provisioning/rotation, staging migration/restore rehearsal, and Commodity Connect identity cutover plan.
+- State: **IMPLEMENTED / CI-PROVEN / OPEN PR / NOT MERGED / NOT DEPLOYED**.
 
 ### 0C. C6 SaaS Core — remaining generic tenant API containment
 
