@@ -22,6 +22,7 @@
 | Agent-OS local authentication stub | Agent-OS PR #8 | CI run 41461372875: 4/4 fail-closed boundary tests passed | Open; local stub disabled; canonical C6 identity adapter not implemented |
 | Agent-OS unauthenticated JARVIS server | Agent-OS PR #9 | CI run 41462579332 passed on prior revision; latest Origin-port regression tests added | Open; latest head awaits fresh CI; loopback-only source change not merged |
 | C6 SaaS Core tenant identity/evidence boundary | Issue #28 | Source audit recorded in CyberShield foundation | Open; blocks customer-facing CyberShield integration |
+| C6 SaaS Core generic evidence API containment | PR #29 | Regression test added; CI pending on latest head | Open; create/read disabled pending canonical tenant authorization |
 | C6 repository registry reconciliation | C6-Os issue #26 | Stale repository pins identified | Open |
 
 ## Active pull requests
@@ -36,6 +37,18 @@
 - Canonical C6 SaaS Core identity adapter is not implemented. Protected operations remain unavailable until that boundary is reviewed and tested.
 - State: **BUILT / INITIAL CI-PROVEN / OPEN PR / NOT DEPLOYED**.
 
+
+### 0B. C6 SaaS Core — generic evidence API fail-closed containment
+
+- PR: https://github.com/HloniHypnotiseMe/c6-saas-core/pull/29
+- Branch: `security/disable-unauthorized-evidence-api-20261103`
+- Latest head: `96b8d9ac5425782af85ab51431f1dfbf82edcccd`.
+- Source finding: generic evidence create/read accepted caller-supplied tenant IDs and had no authenticated identity or tenant-scoped authorization.
+- Interim containment: `POST /api/v1/evidence` and `GET /api/v1/evidence/{evidence_id}` now return HTTP 503 until canonical tenant authorization is implemented and verified. Schema-only `POST /validate` remains available.
+- Added regression coverage proving create/read fail closed without reaching the database; README documents the temporary boundary.
+- This is not the complete identity solution and does not close issue #28. Other product-specific evidence paths still require separate authorization review.
+- CI for the latest head is pending; do not merge until CI and security review pass.
+- State: **BUILT / TEST ADDED / CI PENDING / NOT MERGED / NOT DEPLOYED**.
 
 ### 0A. Agent-OS — unauthenticated JARVIS server restricted to localhost
 
