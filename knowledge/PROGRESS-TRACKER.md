@@ -1,6 +1,6 @@
 # C6 Progress Tracker — Security & Revenue Systems
 
-**Snapshot:** 2026-11-02  
+**Snapshot:** 2026-11-03  
 **Scope:** C6 CyberShield foundation/scanner, Revenue Hunter website inspection hardening, and their production dependencies.  
 **Authority:** This is an evidence snapshot, not a declaration that any service is production-live. Product-specific source files and GitHub PRs remain authoritative.
 
@@ -17,20 +17,31 @@
 | Workstream | Built | Evidence | Current state |
 |---|---|---|---|
 | CyberShield governance/foundation | C6-Os PR #25, feature branch | Capability Router Tests and QA Certification both passed | Open; not merged |
-| CyberShield passive scanner | C6 Group PR #79, feature branch | CI run 41458580236: 7/7 jobs; backend 17 suites / 93 tests; TypeScript build passed | Open; not merged; not network-tested or deployed |
+| CyberShield passive scanner | C6 Group PR #79, feature branch | CI run 41460425083: 7/7 jobs; backend 17 suites / 95 tests; TypeScript build passed | Open; not merged; not network-tested or deployed |
 | Revenue Hunter security hardening | C6 Group PR #80, feature branch | CI run 41458157531: 7/7 jobs; VPS TypeScript check passed; focused Jest suites 25/25 passed | Open; one fresh P2 review finding remains |
+| Agent-OS local authentication stub | Agent-OS PR #8 | CI run 41461372875: 4/4 fail-closed boundary tests passed | Open; local stub disabled; canonical C6 identity adapter not implemented |
 | C6 SaaS Core tenant identity/evidence boundary | Issue #28 | Source audit recorded in CyberShield foundation | Open; blocks customer-facing CyberShield integration |
 | C6 repository registry reconciliation | C6-Os issue #26 | Stale repository pins identified | Open |
 
 ## Active pull requests
 
+### 0. Agent-OS — unsafe local authentication stub disabled
+
+- PR: https://github.com/HloniHypnotiseMe/Agent-OS/pull/8
+- Branch: `security/disable-auth-stub-20261102`
+- Head before latest workflow-trigger refinement: `76a4fc84d00a1de8bdb6b936e2f930d04b4ede7e`; workflow trigger refinement is now committed separately and awaiting its fresh CI run.
+- The local stub now fails closed: authentication and permission checks return false; session creation raises an explicit disabled error. Four regression tests passed.
+- Canonical C6 SaaS Core identity adapter is not implemented. Protected operations remain unavailable until that boundary is reviewed and tested.
+- State: **BUILT / INITIAL CI-PROVEN / OPEN PR / NOT DEPLOYED**.
+
+
 ### 1. C6-Os — CyberShield foundation
 
 - PR: https://github.com/HloniHypnotiseMe/C6-Os/pull/25
 - Branch: `build/c6-cybershield-foundation-20261102`
-- Head: `b20d92b16dc235f39c26162950008daa9f6f8fcf`
+- Head: `f04fe7b06a72f92dad6ee8ec5685f54d932e645f`
 - Scope: product charter, passive MVP plan, security capability register, high-risk Agent Arsenal policy, registry correction and build-memory updates.
-- CI: C6 Capability Router Tests run **41460315893** passed; C6 QA Certification run **41460315851** passed after this tracker update.
+- Current-head CI: C6 Capability Router Tests run **41460631099** and C6 QA Certification run **41460630937** both passed on `f04fe7b06a72f92dad6ee8ec5685f54d932e645f`.
 - Review: the policy finding about `vulnerability_research_reverse` was checked against the branch source and resolved; the required verified-asset, scope, isolation/egress and hard-timeout controls are present.
 - State: **BUILT / PROVEN / NOT MERGED / NOT LIVE**.
 
@@ -38,11 +49,11 @@
 
 - PR: https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/pull/79
 - Branch: `build/c6-cybershield-passive-scanner-20261102`
-- Head: `9ad53a255bf77d59c9cbfeda27ea6ac39b7f5b5f`
+- Head: `bdab6a3cd4d3671d7761a4abe310ec945373a2c5`
 - File: `c6group-backend/src/services/cyberShieldPassiveScanner.ts`
-- CI run **41458580236** passed all 7 jobs; backend **17 suites / 93 tests** and TypeScript build passed.
+- Latest CI run **41460425083** passed all 7 jobs; backend **17 suites / 95 tests** and TypeScript build passed.
 - Review findings for hard HTTPS deadline, DNS deadline and job cancellation were checked against the latest source/tests and their threads resolved. The implementation now has an overall wall-clock deadline, cancellable DNS resolver, propagated AbortSignal and HTTPS request destruction.
-- Review freshness: the latest review receipt visible during this audit was for an earlier commit (`fd1dbe4`), not the current head. A fresh review of the current head and the separately requested security review still need confirmation.
+- Review freshness: the deadline, DNS cancellation and job-cancellation findings are resolved against the current implementation. A fresh independent review of the current head and the separately requested security review are still required before merge.
 - State: **BUILT / CI-PROVEN / NOT MERGED / NOT NETWORK-TESTED / NOT LIVE**.
 - No public/customer route is mounted; no real network or customer scan was performed.
 
