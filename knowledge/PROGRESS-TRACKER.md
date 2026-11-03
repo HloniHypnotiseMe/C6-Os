@@ -29,7 +29,8 @@
 
 - PR: https://github.com/HloniHypnotiseMe/Agent-OS/pull/8
 - Branch: `security/disable-auth-stub-20261102`
-- Head before latest workflow-trigger refinement: `76a4fc84d00a1de8bdb6b936e2f930d04b4ede7e`; workflow trigger refinement is now committed separately and awaiting its fresh CI run.
+- Latest head: `de537b3f142aab45c7ac5d00301c2eb232cf140a`.
+- CI: [Agent-OS Security Boundary Tests run 41594195055](https://github.com/HloniHypnotiseMe/Agent-OS/actions/runs/41594195055) and [Commercial Cost Ledger Tests run 41594195017](https://github.com/HloniHypnotiseMe/Agent-OS/actions/runs/41594195017) both passed. The security workflow now covers all Python source changes.
 - The local stub now fails closed: authentication and permission checks return false; session creation raises an explicit disabled error. Four regression tests passed.
 - Canonical C6 SaaS Core identity adapter is not implemented. Protected operations remain unavailable until that boundary is reviewed and tested.
 - State: **BUILT / INITIAL CI-PROVEN / OPEN PR / NOT DEPLOYED**.
