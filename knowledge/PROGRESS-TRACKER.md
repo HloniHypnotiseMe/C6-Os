@@ -20,6 +20,7 @@
 | CyberShield passive scanner | C6 Group PR #79, feature branch | CI run 41460425083: 7/7 jobs; backend 17 suites / 95 tests; TypeScript build passed | Open; not merged; not network-tested or deployed |
 | Revenue Hunter security hardening | C6 Group PR #80, feature branch | CI run 41458157531: 7/7 jobs; VPS TypeScript check passed; focused Jest suites 25/25 passed | Open; one fresh P2 review finding remains |
 | Agent-OS local authentication stub | Agent-OS PR #8 | CI run 41461372875: 4/4 fail-closed boundary tests passed | Open; local stub disabled; canonical C6 identity adapter not implemented |
+| Agent-OS unauthenticated JARVIS server | Agent-OS PR #9 | CI run 41462579332 passed on prior revision; latest Origin-port regression tests added | Open; latest head awaits fresh CI; loopback-only source change not merged |
 | C6 SaaS Core tenant identity/evidence boundary | Issue #28 | Source audit recorded in CyberShield foundation | Open; blocks customer-facing CyberShield integration |
 | C6 repository registry reconciliation | C6-Os issue #26 | Stale repository pins identified | Open |
 
@@ -35,6 +36,18 @@
 - Canonical C6 SaaS Core identity adapter is not implemented. Protected operations remain unavailable until that boundary is reviewed and tested.
 - State: **BUILT / INITIAL CI-PROVEN / OPEN PR / NOT DEPLOYED**.
 
+
+### 0A. Agent-OS — unauthenticated JARVIS server restricted to localhost
+
+- PR: https://github.com/HloniHypnotiseMe/Agent-OS/pull/9
+- Branch: `security/loopback-only-server-20261102`
+- Latest head: `de5ca5efefe8c2ea1b9e3fb52a12e55d69e7affd`.
+- Finding: the original web server bound to `0.0.0.0` and exposed real-agent chat, agent metadata and recent memory without authentication; chat also emitted wildcard CORS.
+- Implemented on the PR branch: bind to `127.0.0.1`, reject non-local Host/Origin values, remove wildcard CORS, cap POST bodies at 16 KiB, update README and remove remote-exposure instructions.
+- Follow-up: fixed default HTTP Origin port normalization (implicit port 80) and added tests for implicit and invalid ports. The P2 review thread is resolved against the code change.
+- CI run [41462579332](https://github.com/HloniHypnotiseMe/Agent-OS/actions/runs/41462579332) passed on the previous revision. **Fresh CI for latest head is pending; do not merge until it passes.**
+- No production deployment or runtime exposure check is claimed.
+- State: **BUILT / PRIOR-REVISION CI-PROVEN / OPEN PR / LATEST CI PENDING / NOT DEPLOYED**.
 
 ### 1. C6-Os — CyberShield foundation
 
