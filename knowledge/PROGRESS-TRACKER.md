@@ -20,7 +20,7 @@
 | CyberShield passive scanner | C6 Group PR #79, feature branch | CI run 41460425083: 7/7 jobs; backend 17 suites / 95 tests; TypeScript build passed | Open; not merged; not network-tested or deployed |
 | Revenue Hunter security hardening | C6 Group PR #80, feature branch | CI run 41458157531: 7/7 jobs; VPS TypeScript check passed; focused Jest suites 25/25 passed | Open; one fresh P2 review finding remains |
 | Agent-OS local authentication stub | Agent-OS PR #8 | CI run 41461372875: 4/4 fail-closed boundary tests passed | Open; local stub disabled; canonical C6 identity adapter not implemented |
-| Agent-OS unauthenticated JARVIS server | Agent-OS PR #9 | CI run 41462579332 passed on prior revision; latest Origin-port regression tests added | Open; latest head awaits fresh CI; loopback-only source change not merged |
+| Agent-OS unauthenticated JARVIS server | Agent-OS PR #9 | CI run 41462579332 passed on prior revision; latest Origin-port regression tests added | Open; latest head CI passed; loopback-only source change not merged |
 | C6 SaaS Core tenant identity/evidence boundary | Issue #28 | Source audit recorded in CyberShield foundation | Open; blocks customer-facing CyberShield integration |
 | C6 SaaS Core generic evidence API containment | PR #29 | Regression test added; CI pending on latest head | Open; create/read disabled pending canonical tenant authorization |
 | C6 repository registry reconciliation | C6-Os issue #26 | Stale repository pins identified | Open |
@@ -60,7 +60,7 @@
 - Follow-up: fixed default HTTP Origin port normalization (implicit port 80) and added tests for implicit and invalid ports. The P2 review thread is resolved against the code change.
 - CI run [41462579332](https://github.com/HloniHypnotiseMe/Agent-OS/actions/runs/41462579332) passed on the previous revision. **Fresh CI for latest head is pending; do not merge until it passes.**
 - No production deployment or runtime exposure check is claimed.
-- State: **BUILT / PRIOR-REVISION CI-PROVEN / OPEN PR / LATEST CI PENDING / NOT DEPLOYED**.
+- State: **BUILT / LATEST CI-PROVEN / OPEN PR / NOT DEPLOYED**.
 
 ### 1. C6-Os — CyberShield foundation
 
