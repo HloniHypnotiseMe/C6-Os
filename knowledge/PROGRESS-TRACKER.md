@@ -23,6 +23,7 @@
 | Agent-OS unauthenticated JARVIS server | Agent-OS PR #9 | CI run 41462579332 passed on prior revision; latest Origin-port regression tests added | Open; latest head CI passed; loopback-only source change not merged |
 | C6 SaaS Core tenant identity/evidence boundary | Issue #28 | Source audit recorded in CyberShield foundation | Open; blocks customer-facing CyberShield integration |
 | C6 SaaS Core generic evidence API containment | PR #29 | CI run 41596018427: all job steps passed, including migrations, production image build, smoke test and tests | Open; create/read disabled pending canonical tenant authorization |
+| C6 SaaS Core remaining generic tenant APIs | PR #30 | Regression tests added; CI run 41597639834 queued | Open; evaluation, agent register, generic audit, runtime authorize and human override fail closed pending canonical tenant authorization |
 | C6 repository registry reconciliation | C6-Os issue #26 | Stale repository pins identified | Open |
 
 ## Active pull requests
@@ -37,6 +38,17 @@
 - Canonical C6 SaaS Core identity adapter is not implemented. Protected operations remain unavailable until that boundary is reviewed and tested.
 - State: **BUILT / INITIAL CI-PROVEN / OPEN PR / NOT DEPLOYED**.
 
+
+### 0C. C6 SaaS Core — remaining generic tenant API containment
+
+- PR: https://github.com/HloniHypnotiseMe/c6-saas-core/pull/30
+- Branch: `security/close-generic-tenant-api-gaps-20261103`
+- Head: `7c07d39569c870ceeb96583ac2a0b6f4b74e84fb`.
+- Generic evaluation writes, agent-register create/read, generic audit writes, runtime authorization and human override now fail closed with HTTP 503 pending canonical tenant identity and server-side policy.
+- The kill-switch remains control-plane-only and its audit actor is taken from server-side `CONTROL_PLANE_OPERATOR_ID`, not caller input.
+- Added regression tests and documented the temporary boundary. CI run [41597639834](https://github.com/HloniHypnotiseMe/c6-saas-core/actions/runs/41597639834) is queued.
+- This is containment, not canonical identity. No user/membership/session system or customer access has been enabled.
+- State: **BUILT / CI QUEUED / OPEN PR / NOT MERGED / NOT DEPLOYED**.
 
 ### 0B. C6 SaaS Core — generic evidence API fail-closed containment
 
