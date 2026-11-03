@@ -22,7 +22,7 @@
 | Agent-OS local authentication stub | Agent-OS PR #8 | CI run 41461372875: 4/4 fail-closed boundary tests passed | Open; local stub disabled; canonical C6 identity adapter not implemented |
 | Agent-OS unauthenticated JARVIS server | Agent-OS PR #9 | CI run 41462579332 passed on prior revision; latest Origin-port regression tests added | Open; latest head CI passed; loopback-only source change not merged |
 | C6 SaaS Core tenant identity/evidence boundary | Issue #28 | Source audit recorded in CyberShield foundation | Open; blocks customer-facing CyberShield integration |
-| C6 SaaS Core generic evidence API containment | PR #29 | Regression test added; CI pending on latest head | Open; create/read disabled pending canonical tenant authorization |
+| C6 SaaS Core generic evidence API containment | PR #29 | CI run 41596018427: all job steps passed, including migrations, production image build, smoke test and tests | Open; create/read disabled pending canonical tenant authorization |
 | C6 repository registry reconciliation | C6-Os issue #26 | Stale repository pins identified | Open |
 
 ## Active pull requests
@@ -47,8 +47,8 @@
 - Interim containment: `POST /api/v1/evidence` and `GET /api/v1/evidence/{evidence_id}` now return HTTP 503 until canonical tenant authorization is implemented and verified. Schema-only `POST /validate` remains available.
 - Added regression coverage proving create/read fail closed without reaching the database; README documents the temporary boundary.
 - This is not the complete identity solution and does not close issue #28. Other product-specific evidence paths still require separate authorization review.
-- Initial CI [41595803836](https://github.com/HloniHypnotiseMe/c6-saas-core/actions/runs/41595803836) built the image and passed health/readiness smoke tests, then failed one legacy test that expected the now-disabled unauthenticated round-trip. That test was replaced with a fail-closed/no-database-access test. Fresh CI [41596018427](https://github.com/HloniHypnotiseMe/c6-saas-core/actions/runs/41596018427) is in progress; do not merge until it passes and security review is complete.
-- State: **BUILT / TEST ADDED / CI PENDING / NOT MERGED / NOT DEPLOYED**.
+- Initial CI [41595803836](https://github.com/HloniHypnotiseMe/c6-saas-core/actions/runs/41595803836) built the image and passed health/readiness smoke tests, then failed one legacy test that expected the now-disabled unauthenticated round-trip. That test was replaced with a fail-closed/no-database-access test. Fresh CI [41596018427](https://github.com/HloniHypnotiseMe/c6-saas-core/actions/runs/41596018427) completed successfully: migrations, production image build, health/readiness smoke test and test step all passed. Security review and issue #28 authorization gaps remain before merge/customer use.
+- State: **BUILT / CI-PROVEN / OPEN PR / NOT MERGED / NOT DEPLOYED**.
 
 ### 0A. Agent-OS — unauthenticated JARVIS server restricted to localhost
 
@@ -94,7 +94,7 @@
 - VPS verification: TypeScript compile passed; focused route and website-inspection suites passed **25/25 tests**.
 - Initial Codex findings (Node lookup `all: true` and absolute timeout) are fixed and their threads resolved.
 - **Current merge blocker:** fresh Codex review found that non-2xx and non-HTML responses call `response.resume()` and resolve immediately, clearing the absolute deadline while the response may still be draining. A slow-trickle response can therefore keep the connection open. Destroy the response/request before resolving (or keep the deadline active) and add regression tests for both response branches.
-- The PR description still needs its test count refreshed from 24 to 25 and the latest CI run recorded.
+- PR description records the current 25-test focused verification and full CI run; the P2 response-draining finding remains open.
 - State: **BUILT / CI-PROVEN / MERGE-BLOCKED / NOT DEPLOYED**.
 
 ## What is missing or being overlooked
