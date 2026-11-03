@@ -47,7 +47,7 @@
 - Interim containment: `POST /api/v1/evidence` and `GET /api/v1/evidence/{evidence_id}` now return HTTP 503 until canonical tenant authorization is implemented and verified. Schema-only `POST /validate` remains available.
 - Added regression coverage proving create/read fail closed without reaching the database; README documents the temporary boundary.
 - This is not the complete identity solution and does not close issue #28. Other product-specific evidence paths still require separate authorization review.
-- CI for the latest head is pending; do not merge until CI and security review pass.
+- Initial CI [41595803836](https://github.com/HloniHypnotiseMe/c6-saas-core/actions/runs/41595803836) built the image and passed health/readiness smoke tests, then failed one legacy test that expected the now-disabled unauthenticated round-trip. That test was replaced with a fail-closed/no-database-access test. Fresh CI [41596018427](https://github.com/HloniHypnotiseMe/c6-saas-core/actions/runs/41596018427) is in progress; do not merge until it passes and security review is complete.
 - State: **BUILT / TEST ADDED / CI PENDING / NOT MERGED / NOT DEPLOYED**.
 
 ### 0A. Agent-OS — unauthenticated JARVIS server restricted to localhost
