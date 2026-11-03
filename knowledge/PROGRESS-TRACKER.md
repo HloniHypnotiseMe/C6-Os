@@ -17,7 +17,7 @@
 | Workstream | Built | Evidence | Current state |
 |---|---|---|---|
 | CyberShield governance/foundation | C6-Os PR #25, feature branch | Capability Router Tests and QA Certification both passed | Open; not merged |
-| CyberShield passive scanner | C6 Group PR #79, feature branch | CI run 41460425083: 7/7 jobs; backend 17 suites / 95 tests; TypeScript build passed | Open; not merged; not network-tested or deployed |
+| CyberShield passive scanner + DNS-control/consent boundary | C6 Group PR #79, feature branch | CI run 41642749313: backend 19 suites / 110 tests; TypeScript/frontend builds passed; Production Stack Validation 41642749364 passed | Open; not merged; no worker or customer scans; not deployed |
 | Revenue Hunter security hardening | C6 Group PR #80, feature branch | CI run 41458157531: 7/7 jobs; VPS TypeScript check passed; focused Jest suites 25/25 passed | Open; one fresh P2 review finding remains |
 | Agent-OS local authentication stub | Agent-OS PR #8 | CI run 41461372875: 4/4 fail-closed boundary tests passed | Open; local stub disabled; canonical C6 identity adapter not implemented |
 | Agent-OS unauthenticated JARVIS server | Agent-OS PR #9 | CI run 41462579332 passed on prior revision; latest Origin-port regression tests added | Open; latest head CI passed; loopback-only source change not merged |
@@ -102,13 +102,14 @@
 
 - PR: https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/pull/79
 - Branch: `build/c6-cybershield-passive-scanner-20261102`
-- Head: `bdab6a3cd4d3671d7761a4abe310ec945373a2c5`
+- Latest PR head: `91a833b5334edf888e7b9dfd8d4e225c6ebad216` (documentation-only follow-up). Code-bearing head tested: `b24971ed065ba79f9bb95f87905f5b4387f344ff`.
 - File: `c6group-backend/src/services/cyberShieldPassiveScanner.ts`
-- Latest CI run **41460425083** passed all 7 jobs; backend **17 suites / 95 tests** and TypeScript build passed.
+- Latest code-bearing CI [41642749313](https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/actions/runs/41642749313) passed all 7 jobs; backend **19 suites / 110 tests**, TypeScript and frontend builds passed. [Production Stack Validation 41642749364](https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/actions/runs/41642749364) passed shell syntax, safe-update checks, secret-ignore checks and unified Compose validation.
 - Review findings for hard HTTPS deadline, DNS deadline and job cancellation were checked against the latest source/tests and their threads resolved. The implementation now has an overall wall-clock deadline, cancellable DNS resolver, propagated AbortSignal and HTTPS request destruction.
 - Review freshness: the deadline, DNS cancellation and job-cancellation findings are resolved against the current implementation. A fresh independent review of the current head and the separately requested security review are still required before merge.
 - State: **BUILT / CI-PROVEN / NOT MERGED / NOT NETWORK-TESTED / NOT LIVE**.
-- No public/customer route is mounted; no real network or customer scan was performed.
+- Authenticated domain APIs are mounted, but there is no scan-execution endpoint. TXT challenge proves control of the challenge record at verification time, not legal ownership or corporate authority; the authority declaration is self-attested. The scan authorization route requires the `cybershield.passive_scan` entitlement (none has been granted), is exact-domain/purpose/terms bound, expires after one hour and can be consumed atomically once.
+- Challenge expires after 30 minutes; DNS-control verification expires after 30 days; challenge rotation/revocation are atomic; per-account and per-IP rate limits are enforced. No real network or customer scan was performed.
 
 ### 3. C6 Group — Revenue Hunter website inspection hardening
 
@@ -128,12 +129,14 @@
 ### Critical customer/security gates
 
 1. **C6 SaaS Core identity and tenant authorization — OPEN.** Issue https://github.com/HloniHypnotiseMe/c6-saas-core/issues/28. The inspected user/auth/tenant modules are incomplete or unmounted; evidence create/read routes lack authentication and tenant-scoped authorization; the shared control key is not proof of a customer's identity or membership. Do not put customer scan evidence there or expose customer scans until this is fixed and cross-tenant tests pass. A further source audit also found unauthenticated `/api/v1/evaluation/cases` (caller-supplied tenant_id), unauthenticated `/api/v1/agent-register` create/read, and `/api/v1/runtime/authorize` trusting caller-supplied `allowed_actions` behind the shared control-plane key. These are now recorded on issue #28 and remain open; PR #29 only contains generic evidence API containment.
-2. **Domain ownership proof — NOT IMPLEMENTED.** Require a single-use DNS TXT challenge (or reviewed equivalent), tenant binding, expiry and replay protection before scanning.
-3. **Explicit scan authorization and scope — NOT IMPLEMENTED.** Record actor, target, allowed checks, terms version and accepted timestamp.
-4. **Worker isolation and egress enforcement — NOT IMPLEMENTED.** The scanner must run in an isolated worker with independent network denial of private/internal/metadata ranges; application-level IP validation alone is not the complete boundary.
+2. **DNS-control proof — IMPLEMENTED / CI-PROVEN; legal authority NOT VERIFIED.** A single-use DNS TXT challenge, user binding, 30-minute expiry, hashed token, 30-day verification, and atomic challenge-rotation protection are in PR #79. This proves current control of the challenge record, not legal ownership or corporate authority; the customer's authority declaration is self-attested.
+3. **Explicit scan authorization and scope — IMPLEMENTED / CI-PROVEN; no execution.** The API records actor, exact verified domain, purpose, terms version/hash and accepted timestamp; authorizations expire after one hour, can be atomically consumed once, and are revoked with the domain. Authorization is gated by `cybershield.passive_scan`; no package entitlement has been granted. There is no scan-execution route.
+4. **Worker isolation and egress enforcement — NOT IMPLEMENTED.** The scanner must run in an isolated worker with independently enforced denial of private/internal/metadata ranges and a strict outbound policy. Application-level IP validation alone is not the complete boundary.
 5. **Job lifecycle controls — NOT IMPLEMENTED.** Add durable queue/job state, per-tenant and global concurrency limits, quotas, cancellation, retries, tenant disable and a global kill switch; prove cancellation and worker-crash recovery.
 6. **Evidence and report lifecycle — NOT IMPLEMENTED.** Persist raw observations, versioned findings, immutable reports, audit events, retention/deletion and retest comparison only behind the secured tenant boundary.
-7. **Independent security and legal launch gates — NOT DONE.** Threat-model review, external SSRF/isolation review, POPIA/privacy and authorization terms, retention policy, incident response and support ownership remain required.
+7. **Canonical identity — OPEN.** CyberShield API currently uses C6 Group's local JWT/user database (24-hour access tokens; no request-time token revocation). C6 SaaS Core PRs #29–#31 are open/unmerged; no canonical cross-product identity adapter is connected.
+8. **Customer product surface — NOT IMPLEMENTED.** No customer UI for DNS TXT instructions, domain status, authorization consent, reports or revocation; no paid entitlement package/price has been approved or seeded.
+9. **Independent security and legal launch gates — NOT DONE.** Independent threat-model/SSRF/egress review, POPIA/privacy notice, authority/authorization policy, retention/deletion schedule, incident response and support ownership remain required.
 
 ### Revenue Hunter capability gates
 
@@ -156,7 +159,7 @@
 2. Request fresh Codex and security review against the current PR #79 head; retain the scanner as internal-only until all launch gates pass.
 3. Finish PR #25 review, then merge the governance/memory update only after its checks and review are clean.
 4. Reconcile C6-Os issue #26 and C6 SaaS Core issue #28; the latter is a hard customer-data/security dependency.
-5. Implement domain proof, authorization/scope, isolated worker/egress, queue/cancellation/quotas/kill switch, evidence/report lifecycle and tenant-safe APIs.
+5. Build and independently review the isolated worker/egress boundary, queue/cancellation/quotas/kill switch, durable evidence/report lifecycle, canonical identity integration and customer UI; retain scan execution disabled until all are proven.
 6. Run a VPS baseline and runtime evidence matrix: firewall/SSH, Docker exposure, service inventory, Caddy/TLS/DNS, database/auth, mail send/receive, payment/webhooks, secrets, backups plus a successful restore, monitoring/alerts and recovery.
 7. Only after those gates, stage an authorized internal scan, capture evidence, then consider a limited customer pilot and RemotePay-backed commercial activation.
 
@@ -164,6 +167,7 @@
 
 - No PR in this snapshot is merged by this tracker update.
 - No production deployment or service restart was performed.
+- VPS deployment hardening changes are CI-proven only: legacy deploy entrypoint disabled, obsolete nested AWS ECS workflow removed, VPS Git updates changed to fast-forward-only, and `deploy/unified.env` plus `.runtime/` are explicitly Git-ignored.
 - No customer or third-party scan was performed.
 - CyberShield remains **NOT LIVE**.
 - Revenue Hunter security hardening remains **NOT DEPLOYED**.
