@@ -247,3 +247,17 @@ Evidence state: SOURCE-VERIFIED / CI-UNCONFIRMED / NOT LIVE. GitHub reported no 
 - Evidence level: repository contracts and CI VERIFIED. This does **not** prove a live n8n instance, orchestrator reachability, credentials, draft generation against runtime agents, PR creation, publication, or newsletter delivery.
 - Activation blockers: private n8n import/configuration, webhook Header Auth, repository-scoped read-only GitHub credential, network reachability to the orchestrator, confirmation that both agents are registered and return the expected `response` field, and safe runtime test evidence.
 - Next: validate runtime prerequisites; only then implement a separately gated, duplicate-safe, least-privilege GitHub PR stage. Keep human review/merge and newsletter consent/suppression/delivery controls separate.
+
+
+## 2026-11-05 — C6 Education OS Grades 8–12 foundation
+
+- Product module: `HloniHypnotiseMe/C6Group.AiOS/products/education-os/`.
+- Branch: `feature/c6-education-os-grade-8-12`.
+- Added product brief, reverse-engineered build plan, logical data model, CAPS source register, security/privacy baseline, source-level integration audit and interactive local-only prototype.
+- The prototype demonstrates Grade 8–12 switching, Senior/FET phase distinction, configurable sample subject catalogue, learner/guardian view switch, sample planner, formative quiz and demo tutor interface. It stores only sample planner state in browser localStorage.
+- Source inspection: C6Group.AiOS START-HERE; canonical C6-Os START-HERE; C6Group.AiOS Flask dashboard/model config; C6-Group-Final-Website Express/TypeScript/Prisma/PostgreSQL backend, Prisma schema, JWT auth middleware and route registry; C6 Mail Services API/deployment README.
+- Architecture: C6-Os remains governance/capability registry; C6Group.AiOS owns product runtime; C6 SaaS Core is the candidate shared identity/database/subscription service; RemotePay remains payment authority; C6 Mail Services handles transactional notifications; n8n is bounded orchestration; Cloudflare + Contabo/self-hosted C6 remains deployment direction.
+- Important gap found: current inspected C6 User roles are USER/ADMIN/SUPPORT and the inspected Prisma schema has no household, guardian membership, learner, guardian consent, curriculum or assessment domain. Existing JWT middleware authenticates users but does not prove household-level authorisation. Education OS must implement and test household membership, guardian authority and resource-level RBAC before real learner data.
+- Evidence level: EXISTS / initial prototype only. No production API, real auth, tenant isolation, AI provider, official curriculum import, formal assessment, RemotePay product billing or production deployment has been verified.
+- CAPS starting sources: DBE CAPS landing page and DBE policy register. Subject-by-subject ingestion, license review and human verification remain open.
+- Do not claim CAPS compliance, accreditation, NSC certification, POPIA compliance or LIVE status from this foundation.
