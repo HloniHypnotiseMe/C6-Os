@@ -392,7 +392,7 @@ reverse_engineering_department:
     status: EXISTS
     branch: "security/canonical-tenant-identity-main-20261105"
     pull_request: 33
-    verification: "Rebased PR #33 CI run 41989971258 passed."
+    verification: "Current PR #33 head 66c9c62d99f1c5897e760e8b193333a58acf8149; CI run 41991426936 passed with 54 tests and 4 warnings. Includes authenticated GET /api/v1/identity/me for product adapters and row-locked single-use invitation acceptance."
     notes: "Open and not merged. Independent security review, persistent login rate limiting, account recovery/MFA decision, invitation delivery/email verification policy, secret rotation, migration/restore rehearsal and product identity cutover remain gates."
 
   - id: c6_cybershield_passive_scanner
