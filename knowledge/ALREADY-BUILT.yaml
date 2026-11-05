@@ -401,5 +401,5 @@ reverse_engineering_department:
     status: EXISTS
     branch: "build/c6-cybershield-passive-scanner-20261102"
     pull_request: 79
-    verification: "Earlier code-bearing CI run 41642749313 passed 19 backend suites / 110 tests. Dependency remediation and clean-install verification are being rerun on current head 3b41eb44f8dcd1b20ba4d035f3f63a7e048452fa."
+    verification: "Current clean-install CI run 41990742804 passed all 7 jobs on head 3b41eb44f8dcd1b20ba4d035f3f63a7e048452fa: 19 backend suites / 110 tests, Prisma validation, all migrations on a fresh database, existing-baseline adoption, TypeScript/frontend builds. Production Stack Validation run 41990742964 passed. Six non-critical dependency advisories remain (2 high, 4 moderate)."
     notes: "No scan execution endpoint, isolated worker, egress policy, durable queue/report store, customer UI, production deployment or customer scan. DNS TXT proves control of the challenge record, not legal ownership or corporate authority."
