@@ -13,15 +13,23 @@ This section is the current evidence snapshot. Older PR numbers and statuses in 
 | Agent-OS local auth stub | PR #8 merged to main as `60e44f83509ad23aa857c04ab27c4ecd67c76235`; post-merge Security Boundary Tests run `41989187321` passed | MERGED / CI-PROVEN / NOT DEPLOYED |
 | SaaS Core evidence containment | PR #29 merged as `a989680e2d9cb48c91d35e036d1ca316b74a84ba` | MERGED / FAIL-CLOSED |
 | SaaS Core remaining tenant API containment | PR #32 merged as `c8c256929152ac6fbf783f4387456d3feb99445f`; fresh CI run `41989412240` passed | MERGED / CI-PROVEN |
-| SaaS Core canonical identity | Active PR #33, head `1839b2369923ef8609ba57ed8ce12e6f399df79b`; CI run `41989971258` passed | OPEN / CI-PROVEN / SECURITY-REVIEW-BLOCKED |
+| SaaS Core canonical identity | Active PR #33, current head `66c9c62d99f1c5897e760e8b193333a58acf8149`; fresh CI run `41991426936` passed (54 tests, 4 warnings) | OPEN / CI-PROVEN / SECURITY-REVIEW-BLOCKED |
 | CyberShield scanner + domain proof | Active C6 Group PR #79; latest branch head `3b41eb44f8dcd1b20ba4d035f3f63a7e048452fa`; clean-install CI run `41990742804` passed all 7 jobs (19 backend suites / 110 tests, fresh and baseline migrations, Prisma validation, TypeScript/frontend builds); Production Stack Validation `41990742964` passed | OPEN / NOT MERGED / NOT LIVE |
 | CyberShield product foundation | C6-Os PR #25; current head `d2ea531cda55f44d9528bb0290eeb6b6364a5525`; Capability Router Tests run `41990887346` and QA Certification run `41990887271` passed on docs-equivalent head `b621480880aada9003c372ed550562d0ce0b52b2`; subsequent `d2ea...` changed only build-memory documentation | OPEN / CI-PROVEN / INDEPENDENT REVIEW REQUIRED |
+
+### Latest identity adapter contract update — 2026-11-05
+
+- Active PR #33 head is now `66c9c62d99f1c5897e760e8b193333a58acf8149`.
+- Added authenticated `GET /api/v1/identity/me` to return database-verified user, tenant, email and role for product API adapters. The integration test verifies the principal and verifies that logout/revocation causes the endpoint to return 401.
+- Invitation acceptance now uses a row-level lock to serialize consumption of a single-use invitation token.
+- Fresh CI [41991426936](https://github.com/HloniHypnotiseMe/c6-saas-core/actions/runs/41991426936) passed: **54 tests passed, 4 warnings**, SQL migrations and production-container smoke test passed.
+- C6 Group and Agent-OS adapters are still not integrated. Persistent login rate limiting, recovery/MFA, independent security review and production cutover gates remain open.
 
 ### Current security and launch boundaries
 
 - The old Agent-OS local authentication stub is now disabled on `main`. Agent-OS still has no canonical C6 identity adapter; protected operations must remain unavailable until integration is reviewed.
 - SaaS Core now has merged fail-closed containment for evidence, evaluation, agent-register, generic audit, runtime authorization and human override APIs. The new identity implementation is isolated in PR #33 and is not yet approved for production.
-- PR #33 implements short-lived signed tokens, database-backed revocable sessions, tenant membership/role checks, invitations and tenant-scoped evidence APIs. Production gates remain: independent security review, persistent login/gateway rate limiting, account recovery/MFA policy, invitation delivery and email ownership policy, secret rotation, staging migration/restore rehearsal, and Commodity Connect identity cutover.
+- PR #33 implements short-lived signed tokens, database-backed revocable sessions, tenant membership/role checks, invitations, tenant-scoped evidence APIs and authenticated `GET /api/v1/identity/me` for product-adapter introspection. Invitation acceptance now locks the single-use invitation row. Fresh CI run `41991426936` passed (54 tests, 4 warnings). Production gates remain: independent security review, persistent login/gateway rate limiting, account recovery/MFA policy, invitation delivery and email ownership policy, secret rotation, staging migration/restore rehearsal, and Commodity Connect identity cutover.
 - Codex review automation currently reports its usage limit reached. This is not an independent security review; PR #33 and CyberShield PR #79 remain review-blocked.
 - C6 Group PR #79 now includes a committed workflow correction for the Prisma/psql URL mismatch and a committed npm lockfile remediation candidate. The latest CI must pass on the exact current head before the change is called verified.
 - CI identified and the lockfile update addresses critical `proxy-addr` 2.0.7 → 2.0.8 plus patched `body-parser`, `follow-redirects`, `qs` and `brace-expansion`. Remaining high/moderate advisories (including Zod/OpenAI and UUID) still require triage; no `npm audit fix --force` was used.
