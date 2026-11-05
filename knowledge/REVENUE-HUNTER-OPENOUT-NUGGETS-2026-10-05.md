@@ -117,3 +117,47 @@ New Revenue Hunter endpoints:
 The application changes are committed, but the GitHub connector reported no workflow runs for the latest test commit at capture time. Therefore this wave is **BUILT / SOURCE-VERIFIED / CI-UNCONFIRMED**, not falsely marked green.
 
 Next win: run the C6 backend build/test workflow and, once the production provider is selected/configured, prove real discovery → qualification → enrichment → owner-approved C6 Mail delivery with evidence at each boundary.
+
+
+## Standalone `ai-outreach-agent(1).zip` forensic review — 2026-10-06
+
+**Source:** local ZIP snapshot reviewed from the supplied 30-chunk source inventory/code excerpts. The ZIP is a standalone Python/Click/SQLAlchemy/SQLite/Streamlit outreach agent and is not C6-native.
+
+### Decision: REJECT as a standalone C6 implementation; do not vendor or fork it into C6-Os.
+
+The ZIP overlaps heavily with capabilities already represented by the OpenOut family and already adapted into C6 Revenue Hunter:
+
+- ICP research / qualification -> existing C6 Revenue Hunter qualification boundary.
+- Lead discovery / dedup / enrichment -> existing Revenue Hunter discovery/enrichment boundary; provider remains explicit.
+- Email generation -> OpenOutSend/C6 outreach planning boundary.
+- SMTP sending / pacing / warmup / suppression -> C6 Mail boundary and existing OpenOutSend-derived guards.
+- Reply handling / opt-out / follow-up -> existing C6 outreach planning and mail boundary.
+- Dashboard / SQLite state -> not sufficient reason to introduce a second C6 runtime.
+
+### Paid/external dependencies found in the ZIP
+
+OpenAI, Anthropic, Hunter.io, Apollo.io, Google Maps API, optional Playwright browser automation, Cal.com and Gmail SMTP/IMAP are implementation dependencies in the standalone design.
+
+**C6 replacement rule:** these must not become C6 authority boundaries merely because the ZIP names them. C6-owned boundaries remain the authority for mail, tenant identity, evidence, payment and production execution. External lead discovery/enrichment remains PROVIDER_REQUIRED until a provider is actually admitted and verified.
+
+### Defects / gaps confirmed from the supplied source
+
+**Confirmed defects/gaps**
+1. Follow-up scheduler passes `in_reply_to_id` to an `Email` model whose field is `in_reply_to`.
+2. Dashboard Replies page references `reply.from_name`, absent from the Reply model.
+3. Google Maps Playwright scraping is DOM-fragile.
+4. Reply/config validation does not validate the IMAP credentials specifically.
+5. The test suite is mostly unit/model parsing coverage; it does not prove real SMTP, IMAP, provider discovery, browser scraping, or end-to-end pipeline execution.
+6. The standalone SQLite/runtime model conflicts with the C6 PostgreSQL/central-boundary architecture.
+7. The ZIP's compliance checklist is not production evidence; controls are asserted but not externally/runtime verified.
+
+**Reviewed items that are not defects**
+- The CSV variable naming noted in the supplied issue list is internally consistent.
+- `force` is accepted by `MailSender.send_email`, so that item is not a defect.
+- The IMAP `SINCE %d-%b-%Y` date format is valid.
+
+### Reuse conclusion
+
+**Do not import code from the ZIP.** Its useful concepts are already captured by the C6/OpenOut capability sweep. The smallest sufficient action is to retain the ZIP as a rejected reference artifact and continue through C6 Revenue Hunter + C6 Mail rather than creating another outreach runtime.
+
+Status: **EXISTS (reference) / SOURCE-REVIEWED / REJECTED FOR DUPLICATE RUNTIME / NO CODE IMPORTED**.
