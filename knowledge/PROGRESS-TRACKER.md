@@ -15,7 +15,7 @@ This section is the current evidence snapshot. Older PR numbers and statuses in 
 | SaaS Core remaining tenant API containment | PR #32 merged as `c8c256929152ac6fbf783f4387456d3feb99445f`; fresh CI run `41989412240` passed | MERGED / CI-PROVEN |
 | SaaS Core canonical identity | Active PR #33, head `1839b2369923ef8609ba57ed8ce12e6f399df79b`; CI run `41989971258` passed | OPEN / CI-PROVEN / SECURITY-REVIEW-BLOCKED |
 | CyberShield scanner + domain proof | Active C6 Group PR #79; latest branch head `3b41eb44f8dcd1b20ba4d035f3f63a7e048452fa`; clean-install CI run `41990742804` passed all 7 jobs (19 backend suites / 110 tests, fresh and baseline migrations, Prisma validation, TypeScript/frontend builds); Production Stack Validation `41990742964` passed | OPEN / NOT MERGED / NOT LIVE |
-| CyberShield product foundation | C6-Os PR #25; latest head `3b501169c67abf6c3b035d80c2e1219734a3ed76`; capability-router and QA certification passed | OPEN / CI-PROVEN / INDEPENDENT REVIEW REQUIRED |
+| CyberShield product foundation | C6-Os PR #25; current head `d2ea531cda55f44d9528bb0290eeb6b6364a5525`; Capability Router Tests run `41990887346` and QA Certification run `41990887271` passed on docs-equivalent head `b621480880aada9003c372ed550562d0ce0b52b2`; subsequent `d2ea...` changed only build-memory documentation | OPEN / CI-PROVEN / INDEPENDENT REVIEW REQUIRED |
 
 ### Current security and launch boundaries
 
