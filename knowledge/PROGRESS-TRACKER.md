@@ -4,6 +4,40 @@
 **Scope:** C6 CyberShield foundation/scanner, Revenue Hunter website inspection hardening, and their production dependencies.  
 **Authority:** This is an evidence snapshot, not a declaration that any service is production-live. Product-specific source files and GitHub PRs remain authoritative.
 
+## 2026-11-05 authoritative update — supersedes stale rows below
+
+This section is the current evidence snapshot. Older PR numbers and statuses in the historical sections below are retained for provenance only.
+
+| Workstream | Current evidence | State |
+|---|---|---|
+| Agent-OS local auth stub | PR #8 merged to main as `60e44f83509ad23aa857c04ab27c4ecd67c76235`; post-merge Security Boundary Tests run `41989187321` passed | MERGED / CI-PROVEN / NOT DEPLOYED |
+| SaaS Core evidence containment | PR #29 merged as `a989680e2d9cb48c91d35e036d1ca316b74a84ba` | MERGED / FAIL-CLOSED |
+| SaaS Core remaining tenant API containment | PR #32 merged as `c8c256929152ac6fbf783f4387456d3feb99445f`; fresh CI run `41989412240` passed | MERGED / CI-PROVEN |
+| SaaS Core canonical identity | Active PR #33, head `1839b2369923ef8609ba57ed8ce12e6f399df79b`; CI run `41989971258` passed | OPEN / CI-PROVEN / SECURITY-REVIEW-BLOCKED |
+| CyberShield scanner + domain proof | Active C6 Group PR #79; latest branch head `3b41eb44f8dcd1b20ba4d035f3f63a7e048452fa`; current clean-install CI run `41990742804` is in progress at snapshot time | OPEN / NOT MERGED / NOT LIVE |
+| CyberShield product foundation | C6-Os PR #25; latest head `3b501169c67abf6c3b035d80c2e1219734a3ed76`; capability-router and QA certification passed | OPEN / CI-PROVEN / INDEPENDENT REVIEW REQUIRED |
+
+### Current security and launch boundaries
+
+- The old Agent-OS local authentication stub is now disabled on `main`. Agent-OS still has no canonical C6 identity adapter; protected operations must remain unavailable until integration is reviewed.
+- SaaS Core now has merged fail-closed containment for evidence, evaluation, agent-register, generic audit, runtime authorization and human override APIs. The new identity implementation is isolated in PR #33 and is not yet approved for production.
+- PR #33 implements short-lived signed tokens, database-backed revocable sessions, tenant membership/role checks, invitations and tenant-scoped evidence APIs. Production gates remain: independent security review, persistent login/gateway rate limiting, account recovery/MFA policy, invitation delivery and email ownership policy, secret rotation, staging migration/restore rehearsal, and Commodity Connect identity cutover.
+- Codex review automation currently reports its usage limit reached. This is not an independent security review; PR #33 and CyberShield PR #79 remain review-blocked.
+- C6 Group PR #79 now includes a committed workflow correction for the Prisma/psql URL mismatch and a committed npm lockfile remediation candidate. The latest CI must pass on the exact current head before the change is called verified.
+- CI identified and the lockfile update addresses critical `proxy-addr` 2.0.7 → 2.0.8 plus patched `body-parser`, `follow-redirects`, `qs` and `brace-expansion`. Remaining high/moderate advisories (including Zod/OpenAI and UUID) still require triage; no `npm audit fix --force` was used.
+- No scan-execution endpoint, isolated worker, egress firewall, durable queue/report store, customer UI, entitlement pricing, production deployment or real customer scan is proven.
+- Contabo VPS state, Caddy, mail, firewall, backup and restore have not been revalidated in this execution. Do not label any service LIVE.
+
+### Review and release gates
+
+1. Obtain an independent security review of PR #33 identity/session/invitation/runtime authorization code and PR #79 scanner/ownership boundary.
+2. Complete persistent login rate limiting and decide the invitation/email verification, password recovery and MFA policies.
+3. Integrate C6 Group with the canonical SaaS Core principal contract; do not retain a parallel local identity store for CyberShield.
+4. Implement isolated worker + egress deny policy, durable queue, quotas/concurrency controls, cancellation and global kill switch.
+5. Persist immutable scan evidence/reports with retention/deletion controls and audit access.
+6. Pass clean-install CI, dependency triage, migration rehearsal, backup restore and staging end-to-end verification.
+7. Verify the actual VPS, TLS, firewall, service isolation, monitoring and rollback before any customer enablement.
+
 ## Status legend
 
 - **BUILT** — implementation exists in a repository or feature branch.
