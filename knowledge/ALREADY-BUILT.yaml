@@ -298,6 +298,10 @@ reverse_engineering_department:
     system: "HloniHypnotiseMe/C6Group.AiOS/products/education-os"
     status: EXISTS
     branch: "feature/c6-education-os-grade-8-12"
+    backend_branch: "feature/education-os-household-guardian-foundation"
+    backend_pr: "https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/pull/81"
+    backend_status: "EXISTS_CI_PENDING"
+    backend_capabilities: ["household", "guardian membership", "learner profile", "consent attestation", "consent withdrawal"]
     capabilities:
       - "product brief and reverse-engineered build plan"
       - "logical household/guardian/learner/curriculum/assessment data model"
