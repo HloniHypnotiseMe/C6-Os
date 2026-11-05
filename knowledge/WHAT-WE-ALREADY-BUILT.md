@@ -262,3 +262,13 @@ Evidence state: SOURCE-VERIFIED / CI-UNCONFIRMED / NOT LIVE. GitHub reported no 
 - Prototype CI evidence: GitHub Actions run `41995452199` passed Node syntax validation and Python prototype contract tests on commit `979a9c7c125067cb5988aa0b7b9bf859e270437a`. This verifies the prototype checks only; it does not change the product's overall EXISTS-only status.
 - CAPS starting sources: DBE CAPS landing page and DBE policy register. Subject-by-subject ingestion, license review and human verification remain open.
 - Do not claim CAPS compliance, accreditation, NSC certification, POPIA compliance or LIVE status from this foundation.
+
+
+### Education OS backend domain foundation — 2026-11-05
+
+- Backend repository: `HloniHypnotiseMe/C6-Group-Final-Website`; branch `feature/education-os-household-guardian-foundation`; draft PR #81: https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/pull/81.
+- Added additive Prisma/PostgreSQL household, membership, learner-profile and purpose-specific guardian-consent models, migration SQL, authenticated guardian-scoped routes and route contract tests.
+- Initial API supports household creation/listing, guardian-scoped Grade 8–12 learner profile creation/listing, consent attestation and consent withdrawal.
+- Learner records begin `PENDING_CONSENT`; CORE_LEARNING consent attestation moves them to ACTIVE; withdrawal of the final active core consent suspends the profile.
+- CI run https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/actions/runs/41995748527: frontend build and non-backend checks passed; backend dependency installation was still running at time of memory update. Jest and TypeScript build are not yet proven.
+- This is an EXISTS-level domain/API foundation only. No production migration was applied. The guardian-authority flag is an attestation, not independent legal verification. Do not store production learner data or claim POPIA compliance until legal/privacy and security gates are complete.
