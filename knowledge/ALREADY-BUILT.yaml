@@ -291,3 +291,32 @@ reverse_engineering_department:
       - "separately gated duplicate-safe PR creation before any automated repository write"
       - "human review/merge; separate newsletter consent and delivery controls"
     notes: "CI verifies repository contracts, not live n8n/orchestrator execution. Do not mark LIVE or activate until runtime evidence exists."
+
+
+  - id: c6_education_os_grade_8_12_foundation
+    outcome: "South African homeschooling product foundation for Grades 8–12"
+    system: "HloniHypnotiseMe/C6Group.AiOS/products/education-os"
+    status: EXISTS
+    branch: "feature/c6-education-os-grade-8-12"
+    capabilities:
+      - "product brief and reverse-engineered build plan"
+      - "logical household/guardian/learner/curriculum/assessment data model"
+      - "CAPS source register and curriculum provenance policy"
+      - "security/privacy baseline"
+      - "interactive local-only Grade 8–12 prototype"
+    reuse:
+      - "C6-Os governance and capability registry"
+      - "C6Group.AiOS product runtime conventions"
+      - "C6 SaaS Core Express/TypeScript/Prisma/PostgreSQL candidate"
+      - "RemotePay payment boundary"
+      - "C6 Mail Services notification boundary"
+      - "n8n bounded workflow orchestration"
+      - "Cloudflare + Contabo/self-hosted C6 deployment doctrine"
+    blockers:
+      - "household tenancy and guardian/learner RBAC"
+      - "guardian authority and consent lifecycle"
+      - "curriculum source ingestion, licensing and human review"
+      - "assessment evidence and formal-mark authority"
+      - "safe live AI tutor provider and evaluation"
+      - "production deployment, backup/restore and security evidence"
+    notes: "EXISTS only. Prototype uses sample data and browser localStorage. No production learner data, live AI, official curriculum coverage, accreditation, NSC certification or POPIA compliance claim."
