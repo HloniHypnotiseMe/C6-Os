@@ -125,3 +125,10 @@ The Whatomate adapter was correctly merged, but the real production capability a
 The C6 content pipeline now has green CI coverage for exported-workflow contracts and the frontend/backend builds. That proves the tested repository contracts only. It does not prove the private n8n workflow is imported, credentials are valid, the orchestrator is reachable, the named agents are registered, or an end-to-end draft was generated. Keep the workflow inactive until those checks are evidenced.
 
 Do not add automated GitHub writes to a draft-generation workflow without a separate approval boundary, deterministic duplicate protection, strict repository/path allowlists, least-privilege credentials, schema validation and human merge review. Newsletter delivery is a separate capability with consent, unsubscribe, suppression, delivery and audit requirements.
+
+
+## 2026-11-05 — Education platform must not inherit account auth as learner authorisation
+
+The existing C6 SaaS auth middleware authenticates a user account, but the inspected schema's roles (USER, ADMIN, SUPPORT) do not establish a guardian-to-learner relationship or household-level access policy. A learner product requires a separate, explicit household membership and guardian authority model. Every learner-owned resource must resolve the household from authenticated server context and enforce membership/role checks on every request. Do not trust browser-supplied householdId or learnerId. Do not store real learner records until these controls and cross-tenant IDOR tests are proven.
+
+A learning dashboard prototype is not a learning platform. Mark sample data clearly and keep curriculum, assessment, AI, formal marks and certification claims evidence-gated.
