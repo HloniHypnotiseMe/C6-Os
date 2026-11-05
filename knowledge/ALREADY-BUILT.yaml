@@ -371,3 +371,35 @@ reverse_engineering_department:
   capability_category: reverse_engineering
   registered_providers: [ghidra, reverse_skill, idassist]
   verification: "Registry, provider, routing, provenance, department mapping, capability-router CI, and authenticated cross-repository reconciliation are green. Repository evidence enrichment completed for the authenticated estate."
+
+  - id: agent_os_auth_fail_closed
+    outcome: "Unsafe Agent-OS local authentication stub disabled"
+    system: "HloniHypnotiseMe/Agent-OS"
+    status: WORKS
+    verification: "PR #8 merged to main as 60e44f83509ad23aa857c04ab27c4ecd67c76235; post-merge Security Boundary Tests run 41989187321 passed."
+    notes: "Authentication and permission checks deny; local session creation raises. Canonical SaaS Core adapter is not yet integrated; protected operations remain unavailable."
+
+  - id: c6_saas_core_tenant_api_containment
+    outcome: "Fail-closed tenant API containment for evidence and generic governance APIs"
+    system: "HloniHypnotiseMe/c6-saas-core"
+    status: WORKS
+    verification: "PR #29 merged a989680e2d9cb48c91d35e036d1ca316b74a84ba; PR #32 merged c8c256929152ac6fbf783f4387456d3feb99445f; fresh CI run 41989412240 passed."
+    notes: "Evidence, evaluation, agent-register, generic audit, runtime authorization and human override remain unavailable until canonical identity/service identity is reviewed and enabled."
+
+  - id: c6_saas_core_canonical_tenant_identity
+    outcome: "Canonical multi-tenant identity, membership, revocable sessions and scoped evidence authorization"
+    system: "HloniHypnotiseMe/c6-saas-core"
+    status: EXISTS
+    branch: "security/canonical-tenant-identity-main-20261105"
+    pull_request: 33
+    verification: "Rebased PR #33 CI run 41989971258 passed."
+    notes: "Open and not merged. Independent security review, persistent login rate limiting, account recovery/MFA decision, invitation delivery/email verification policy, secret rotation, migration/restore rehearsal and product identity cutover remain gates."
+
+  - id: c6_cybershield_passive_scanner
+    outcome: "Bounded passive HTTPS scanner and DNS-control/scan-consent boundary"
+    system: "HloniHypnotiseMe/C6-Group-Final-Website"
+    status: EXISTS
+    branch: "build/c6-cybershield-passive-scanner-20261102"
+    pull_request: 79
+    verification: "Earlier code-bearing CI run 41642749313 passed 19 backend suites / 110 tests. Dependency remediation and clean-install verification are being rerun on current head 3b41eb44f8dcd1b20ba4d035f3f63a7e048452fa."
+    notes: "No scan execution endpoint, isolated worker, egress policy, durable queue/report store, customer UI, production deployment or customer scan. DNS TXT proves control of the challenge record, not legal ownership or corporate authority."
