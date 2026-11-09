@@ -14,9 +14,9 @@ concurrency:
 
 jobs:
   static-security-audit:
-    name: Gitleaks + Semgrep + Trivy (report-only)
+    name: Gitleaks + Semgrep + Trivy
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 30
     steps:
       - name: Checkout full history
         uses: actions/checkout@v4
@@ -27,31 +27,34 @@ jobs:
         run: mkdir -p security-review-reports
 
       - name: Scan Git history for exposed secrets
-        continue-on-error: true
+        id: gitleaks
+        if: always()
         run: |
           docker run --rm \
             -v "$GITHUB_WORKSPACE:/repo" \
             zricethezav/gitleaks:v8.24.3 \
-            git --redact --report-format json \
+            git --redact --exit-code 0 --report-format json \
             --report-path /repo/security-review-reports/gitleaks.json \
             /repo
 
       - name: Scan source for security weaknesses
-        continue-on-error: true
+        id: semgrep
+        if: always()
         run: |
           docker run --rm \
             -v "$GITHUB_WORKSPACE:/repo" \
-            semgrep/semgrep:1.99.0 \
-            scan --config p/security-audit \
+            semgrep/semgrep:1.184.0 \
+            semgrep scan --config p/security-audit \
             --json --output /repo/security-review-reports/semgrep.json \
             /repo
 
       - name: Scan dependencies, secrets and configuration
-        continue-on-error: true
+        id: trivy
+        if: always()
         run: |
           docker run --rm \
             -v "$GITHUB_WORKSPACE:/repo" \
-            aquasec/trivy:0.58.2 \
+            aquasec/trivy:0.76.2 \
             fs --scanners vuln,misconfig,secret \
             --severity CRITICAL,HIGH \
             --format json \
@@ -67,9 +70,18 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
 
-      - name: State scan limitations
+      - name: Summarize scanner execution
         if: always()
+        env:
+          GITLEAKS_OUTCOME: ${{ steps.gitleaks.outcome }}
+          SEMGREP_OUTCOME: ${{ steps.semgrep.outcome }}
+          TRIVY_OUTCOME: ${{ steps.trivy.outcome }}
         run: |
-          echo "Automated findings are evidence for triage, not a security certification."
-          echo "This workflow does not perform dynamic testing, authorization testing, penetration testing, or production scans."
-          echo "Review scanner exit codes and reports before treating this run as complete."
+          {
+            echo "## Security scanner execution"
+            echo "- Gitleaks execution: $GITLEAKS_OUTCOME (findings are in the report; this is not a clean bill of health)"
+            echo "- Semgrep execution: $SEMGREP_OUTCOME"
+            echo "- Trivy execution: $TRIVY_OUTCOME"
+            echo "- Reports are private artifacts retained for 14 days."
+            echo "- This workflow is static analysis only; it is not a penetration test or independent security certification."
+          } >> "$GITHUB_STEP_SUMMARY"
