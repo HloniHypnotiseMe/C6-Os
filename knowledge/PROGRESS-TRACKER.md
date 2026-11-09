@@ -1,8 +1,31 @@
 # C6 Progress Tracker — Security & Revenue Systems
 
-**Snapshot:** 2026-11-03  
+**Snapshot:** 2026-11-09  
 **Scope:** C6 CyberShield foundation/scanner, Revenue Hunter website inspection hardening, and their production dependencies.  
 **Authority:** This is an evidence snapshot, not a declaration that any service is production-live. Product-specific source files and GitHub PRs remain authoritative.
+
+
+## 2026-11-09 authoritative update — supersedes earlier current-state rows
+
+| Workstream | Current head / evidence | State |
+|---|---|---|
+| C6 Group CyberShield scanner PR #79 | Head `3b41eb44f8dcd1b20ba4d035f3f63a7e048452fa`; Build Verification `41990742804` passed (19 backend suites / 110 tests, migrations, Prisma, TypeScript and frontend); Production Stack Validation `41990742964` passed | OPEN / MERGEABLE / NOT LIVE |
+| C6-Os CyberShield foundation PR #25 | Reconciled with current main in merge commit `4a50545ba56c3bc8f2e649c8b72e3ca32cf556cd`; additive merge preserves Education OS updates and CyberShield knowledge; Capability Router `42579289427` and QA Certification `42579289533` both passed | OPEN / CLEAN / CI-PROVEN |
+| Agent-OS auth stub PR #8 | Merged to main as `60e44f83509ad23aa857c04ab27c4ecd67c76235` | MERGED / FAIL-CLOSED |
+| Agent-OS local server PR #9 | Head `de5ca5efefe8c2ea1b9e3fb52a12e55d69e7affd`; Local Server Security `41595615667` and Cost Ledger `41595615994` passed | OPEN / MERGEABLE / NOT DEPLOYED |
+| SaaS Core canonical identity PR #33 | Reconciled with current main in merge commit `807d42b22b55c43163bc02241927b3abb6127aa3`; payment-status hardening, payment tests, payment config and routes preserved; CI `42579388383`: 116 tests passed, 5 warnings | OPEN / MERGEABLE / CI-PROVEN |
+| SaaS Core password recovery PR #36 | Rebased onto reconciled identity head in merge commit `b1fc0db01d5470d6ea283c53da9133b0d6096a7b`; CI `42579436222`: 117 tests passed, 5 warnings | OPEN / MERGEABLE / CI-PROVEN |
+| SaaS Core mandatory MFA PR #37 | Reconciled onto recovery; PostgreSQL audit parameter typing fixed; production startup now enforces MFA and a valid dedicated Fernet key distinct from JWT signing key; CI `42579923822` on head `79ffd92d3a4db60183570526e32d724f36b04972`: 120 tests passed, 5 warnings | OPEN / MERGEABLE / CI-PROVEN |
+
+### Current release boundaries
+
+- The three SaaS Core PRs are still feature branches; no merge to `main`, production deployment, customer enablement or Commodity Connect identity cutover has occurred.
+- PR #33 has persistent PostgreSQL-backed authentication throttling, Argon2id password hashing, tenant-scoped sessions/membership and an explicit manual out-of-band invitation boundary. PR #36 adds single-use password recovery. PR #37 enforces TOTP MFA by default and fails production startup when mandatory MFA or its dedicated encryption key is misconfigured.
+- The recorded PR #33 security-review comment was authored by the PR owner; it is not an independent review. Existing Codex reviews are on older commits. Fresh review requests were submitted for C6 Group PR #79 and SaaS Core PR #33, but no new review was returned in this verification window. Independent security review remains open.
+- CyberShield still has no scan-execution endpoint, isolated worker, independently enforced egress firewall, durable queue, tenant quotas/concurrency controls, global kill switch, immutable report store or customer-facing report lifecycle. No customer or external-domain scan was performed.
+- Remaining operational gates include staging migration and backup/restore rehearsal, secret and MFA-key custody/rotation, production-class Argon2id benchmarking, invitation delivery/recipient-confirmation SOP, SMTP configuration/delivery validation for recovery, Commodity Connect identity migration/cutover and rollback, independent security review, POPIA/legal review, and VPS runtime/firewall/monitoring/restore evidence.
+- CI success proves the tested repository revisions only. It does not prove production deployment, live integrations, customer isolation in a deployed environment or readiness for customer use.
+
 
 ## 2026-11-05 authoritative update — supersedes stale rows below
 
