@@ -2,7 +2,7 @@ schema_version: "1.0"
 registry_id: c6-universal-agent-arsenal
 purpose: "Universal quick-reference for C6-Os, C6Group.AiOS, and connected C6 agents."
 source: "HloniHypnotiseMe GitHub profile fork inventory + C6 internal repositories"
-last_reconciled: "2026-11-02"
+last_reconciled: "2026-11-09"
 
 rules:
   - "Consult this registry before building, installing, or selecting a provider."
@@ -128,6 +128,7 @@ capabilities:
     - repowise
     - activepieces
     - MeiGen-AI-Design-MCP
+    - google-ads-write-mcp
   memory_rag:
     - Acontext
     - anything-llm
@@ -252,6 +253,11 @@ capabilities:
     - C6-Group-Video-Generator-AI
     - watchtower
     - OpenEnv
+    - facesdk-android-java
+    - FaceSDK-documentation
+    - facesdk-flutter
+    - facesdk-rust
+    - facesdk-windows-dotnet-csharp
   communications:
     - agentic-inbox
     - Arkesel
@@ -407,6 +413,7 @@ capabilities:
     - youtube-skills
     - golive-skill
     - OpenOutLearn
+    - tensorflow
   reverse_engineering:
     - ghidra
     - IDAssist
@@ -460,6 +467,7 @@ capabilities:
     - C6-Group-Final-Website
     - OpenExecutive
     - ServerKit
+    - facesdk-react-native
   game_engine:
     - athena-crisis
     - BotW-BetterVR
@@ -702,3 +710,5 @@ security_notes:
     - hhm-eos
     - wear-your-art
     - weather_forecast_app
+    - luxand-llm-sdk
+    - shala-creations-website
