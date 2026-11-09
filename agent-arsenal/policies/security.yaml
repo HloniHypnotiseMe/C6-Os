@@ -6,12 +6,33 @@ security:
     environment_only: true
   default_posture: deny_by_default
   destructive_operations: human_approval_required
-  high_risk_capabilities: [trading_analysis, financial_research, browser_automation, web_scraping, sandbox_execution]
+  high_risk_capabilities: [trading_analysis, financial_research, browser_automation, web_scraping, sandbox_execution, authorized_security_testing, security_operations, binary_executable_analysis, malware_analysis, protocol_network_reverse_engineering, application_api_reverse_engineering, firmware_embedded_analysis, decompilation_disassembly, vulnerability_research_reverse, digital_forensics_reverse]
   high_risk_requires:
     - explicit_workflow_authorization
     - scoped_permissions
     - execution_logging
     - result_verification
+  capability_specific_requirements:
+    authorized_security_testing:
+      - verified_asset_ownership_or_written_authorization
+      - explicit_scope_and_allowed_methods
+      - isolated_execution_and_egress_controls
+      - hard_timeouts_and_audit_evidence
+    malware_analysis:
+      - isolated_sandbox
+      - network_disabled_by_default
+      - no_execution_on_production_hosts
+      - sample_provenance_and_audit_evidence
+    vulnerability_research_reverse:
+      - verified_asset_ownership_or_written_authorization
+      - explicit_scope_and_allowed_methods
+      - isolated_execution_and_egress_controls
+      - hard_timeouts_and_audit_evidence
+      - human_approval_for_active_validation
+    security_operations:
+      - explicit_incident_authorization
+      - human_approval_for_destructive_containment
+      - auditable_actions_and_rollback_path
   production_requirements:
     - immutable_dependency_pin
     - health_check

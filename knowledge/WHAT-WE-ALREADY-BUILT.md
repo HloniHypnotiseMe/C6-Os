@@ -272,3 +272,35 @@ Evidence state: SOURCE-VERIFIED / CI-UNCONFIRMED / NOT LIVE. GitHub reported no 
 - Learner records begin `PENDING_CONSENT`; CORE_LEARNING consent attestation moves them to ACTIVE; withdrawal of the final active core consent suspends the profile.
 - CI run https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/actions/runs/41995748527 completed successfully: backend `npm ci`, Jest suite and TypeScript build passed; frontend build, n8n workflow checks, content pipeline, blog calendar/content and orchestrator tests also passed. This verifies repository code/tests, not live database migration or production runtime.
 - This is an EXISTS-level domain/API foundation only. No production migration was applied. The guardian-authority flag is an attestation, not independent legal verification. Do not store production learner data or claim POPIA compliance until legal/privacy and security gates are complete.
+
+
+## C6 CyberShield — passive domain assessment (2026-11-02)
+
+- Product foundation: [C6-Os PR #25](https://github.com/HloniHypnotiseMe/C6-Os/pull/25) (open; feature branch only).
+- First isolated scanner engine: [C6 Group PR #79](https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/pull/79) (open; feature branch only), file `c6group-backend/src/services/cyberShieldPassiveScanner.ts`.
+- Latest CI evidence: [run 41458580236](https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/actions/runs/41458580236) passed all 7 jobs on scanner commit `9ad53a255bf77d59c9cbfeda27ea6ac39b7f5b5f`; backend 17 suites / 93 tests and TypeScript build passed.
+- Engine scope: bare FQDN validation, all-answer public IPv4/IPv6 checks, pinned-IP HTTPS HEAD probe, selected security headers and TLS certificate metadata, no redirects/crawling, 16 KiB response-header cap, response destroyed after headers, 8-second end-to-end deadline, AbortSignal propagation, DNS resolver cancellation and HTTPS request destruction.
+- Status: EXISTS / CI-VERIFIED CODE. Cancellation/deadline hardening is covered by deterministic tests. Not merged, not deployed, no real network scan or customer scan performed. No public route is mounted.
+- Remaining scanner work: domain ownership TXT proof, explicit authorization/scope, isolated worker and egress enforcement, full DNS/SPF/DMARC, HTTP redirect and cookie checks, quotas/kill switch, reports and evidence.
+- **Customer integration blocker:** C6 SaaS Core identity/tenant/evidence authorization is incomplete. See [c6-saas-core issue #28](https://github.com/HloniHypnotiseMe/c6-saas-core/issues/28). Do not use its current evidence routes for customer data or expose customer scans until authentication and cross-tenant isolation are verified.
+
+- Agent Arsenal policy update in PR #25 classifies active security testing, security operations and reverse-engineering capabilities as high risk; it adds verified-asset/scope, isolation/egress, hard-timeout/audit, sandbox and human-approval requirements. Feature branch only; not merged.
+
+
+## 2026-11-02 — Revenue Hunter security hardening
+
+- C6 Group PR [#80](https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/pull/80) restricts Revenue Hunter routes to authenticated ADMIN users and hardens website evidence inspection against SSRF, DNS rebinding, redirects, non-public IPs, unexpected content types, oversized HTML and slow requests.
+- Latest head: `e9e1f05359909d0b51f6ec17d4c06622296bb101`. GitHub Actions run [41458157531](https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/actions/runs/41458157531) passed all seven jobs. VPS TypeScript check passed; the two focused Jest suites passed 25/25 tests.
+- Node's DNS lookup `all: true` mode and an absolute request deadline were added after review and the corresponding review threads were resolved.
+- A fresh Codex review then found one remaining P2: non-2xx and non-HTML responses are resumed/drained after the deadline is cleared. Destroy the response/request before resolving and add regression tests before merge.
+- PR #80 is open, unmerged and not deployed. ADMIN-only is an internal boundary, not customer tenant authorization.
+- Existing Revenue Hunter provider/runtime gates remain: licensed lead discovery, paid contact enrichment and real C6 Mail delivery evidence.
+
+## C6 CyberShield and canonical security boundary — 2026-11-05
+
+- **Agent-OS authentication containment:** the unsafe in-memory local auth stub is disabled on Agent-OS main (PR #8 merged, SHA `60e44f83509ad23aa857c04ab27c4ecd67c76235`). This does not implement the canonical identity adapter; protected operations remain fail-closed until integration.
+- **C6 SaaS Core containment:** evidence create/read and the remaining generic tenant/evaluation/agent-register/audit/runtime APIs have been fail-closed on main (PR #29 merge `a989680e2d9cb48c91d35e036d1ca316b74a84ba`; PR #32 merge `c8c256929152ac6fbf783f4387456d3feb99445f`). Fresh CI passed for the containment branch.
+- **Canonical tenant identity:** active C6 SaaS Core PR #33 (head `66c9c62d99f1c5897e760e8b193333a58acf8149`); fresh CI passed (run `41991426936`, 54 tests / 4 warnings). It includes short-lived signed tokens, database-backed revocable sessions, tenant membership/role checks, invitations, scoped evidence and authenticated `GET /api/v1/identity/me` for product-adapter introspection. Invitation acceptance uses a row lock for single-use consumption. It is not merged or production-approved; independent security review, persistent login rate limiting, account recovery/MFA decision, invitation delivery/email ownership policy, secret rotation, migration/restore rehearsal and product cutover remain gates.
+- **CyberShield scanner:** C6 Group PR #79 contains a bounded passive HTTPS HEAD engine, SSRF/DNS-pinning protections, cancellation/deadline handling, DNS-control proof and explicit single-use authorization. It does not expose scan execution and has no worker, queue, egress firewall, durable reports or customer UI. The current branch passed clean-install CI run `41990742804` (19 backend suites / 110 tests, fresh and baseline migration validation, Prisma, TypeScript and frontend builds) plus Production Stack Validation `41990742964`. Six non-critical dependency advisories remain (2 high, 4 moderate), so dependency triage and independent security review remain merge gates.
+- **Dependency security:** the C6 Group backend's critical `proxy-addr` advisory was traced to 2.0.7 and the lockfile now updates it to 2.0.8 alongside patched `body-parser`, `follow-redirects`, `qs` and `brace-expansion`. High/moderate advisories remain under triage; no breaking `npm audit fix --force` was used.
+- **Production reality:** none of these changes establishes a live CyberShield service. No external/customer scan, VPS deployment, staging migration/restore, firewall/egress proof or production backup restoration has been demonstrated.

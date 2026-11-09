@@ -59,15 +59,6 @@ entries:
     system: "C6-Os"
     status: WORKS
 
-reverse_engineering_department:
-  status: VERIFIED
-  source: agent-arsenal/registry/departments.yaml
-  machine_taxonomy_categories: 37
-  human_department: "Developers"
-  capability_category: reverse_engineering
-  registered_providers: [ghidra, reverse_skill, idassist]
-  verification: "Registry, provider, routing, provenance, department mapping, capability-router CI, and authenticated cross-repository reconciliation are green. Repository evidence enrichment completed for the authenticated estate."
-
   - id: c6_smart_solutions_execution
     outcome: "Entitlement-aware standalone Smart Solutions execution and capacity accounting"
     system: "C6-Group-Final-Website + c6group-backend"
@@ -336,3 +327,124 @@ reverse_engineering_department:
       checks: ["Node JavaScript syntax", "Python prototype contract tests"]
       conclusion: "success"
 
+
+  - id: c6_cybershield_passive_scanner_engine
+    outcome: "SSRF-bounded passive HTTPS domain assessment engine"
+    system: "C6-Group-Final-Website/c6group-backend"
+    status: EXISTS
+    implementation:
+      branch: "build/c6-cybershield-passive-scanner-20261102"
+      pull_request: "https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/pull/79"
+      file: "c6group-backend/src/services/cyberShieldPassiveScanner.ts"
+    verification:
+      workflow_run: "https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/actions/runs/41458580236"
+      workflow_run_id: 41458580236
+      verified_commit: "9ad53a255bf77d59c9cbfeda27ea6ac39b7f5b5f"
+      conclusion: "success"
+      jobs_passed: 7
+      backend_test_suites: 17
+      backend_tests: 93
+      backend_typescript_build: "success"
+    boundaries:
+      - "Accepts a bare fully-qualified domain only; rejects IP literals and local names."
+      - "Rejects the entire DNS answer set if any address is non-public."
+      - "Pins the HTTPS connection to a validated public IP; retains the domain for Host and TLS SNI."
+      - "Performs one HTTPS HEAD request on port 443 with an 8-second end-to-end wall-clock deadline across DNS and HTTPS; does not follow redirects or crawl."
+      - "Propagates AbortSignal cancellation to the system DNS resolver and active HTTPS request; deadline and job cancellation stop in-flight work."
+      - "Caps response headers at 16 KiB and destroys the response after headers; does not consume a response body."
+    not_implemented:
+      - "Domain ownership proof and explicit customer scan authorization."
+      - "Isolated worker, egress policy, quotas and global kill switch."
+      - "C6 SaaS Core tenant authorization, evidence persistence and customer reports."
+      - "DNS SPF/DMARC, HTTP redirect checks, cookie analysis and production deployment."
+    production_state: "INTERNAL_ONLY_NOT_MERGED_NOT_DEPLOYED"
+    notes: "CI verifies deterministic unit tests and TypeScript build only. No real network scan, customer scan or production deployment has been performed."
+  - id: c6_saas_core_tenant_auth_blocker
+    outcome: "Canonical C6 SaaS Core identity, tenant authorization and evidence access-control gap"
+    system: "HloniHypnotiseMe/c6-saas-core"
+    status: EXISTS
+    issue: "https://github.com/HloniHypnotiseMe/c6-saas-core/issues/28"
+    notes: "Tenant model exists, but user/auth/tenant modules are empty or unmounted; evidence create/read routes lack auth dependencies; runtime authorization trusts caller-supplied tenant/actor/action fields behind a shared control-plane key. Blocks customer-facing CyberShield integration."
+  - id: c6_cybersecurity_high_risk_policy
+    outcome: "Explicit authorization, scope and isolation gates for high-risk cybersecurity capabilities"
+    system: "C6-Os Agent Arsenal"
+    status: EXISTS
+    implementation:
+      branch: "build/c6-cybershield-foundation-20261102"
+      pull_request: "https://github.com/HloniHypnotiseMe/C6-Os/pull/25"
+      files:
+        - "agent-arsenal/registry/capabilities.yaml"
+        - "agent-arsenal/policies/security.yaml"
+    controls:
+      - "Authorized security testing requires verified ownership or written authorization and explicit scope."
+      - "Active testing requires isolated execution, egress controls, hard timeouts and audit evidence."
+      - "Malware analysis requires an isolated sandbox with network disabled by default."
+      - "Security operations requires explicit incident authorization and human approval for destructive containment."
+    production_state: "FEATURE_BRANCH_NOT_MERGED"
+
+
+  - id: revenue_hunter_website_evidence_security
+    outcome: "ADMIN-only Revenue Hunter routes and SSRF-bounded website evidence inspection"
+    system: "C6-Group-Final-Website/c6group-backend"
+    status: EXISTS
+    implementation:
+      branch: "security/wya-revenue-hunter-hardening-20261102"
+      pull_request: "https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/pull/80"
+      commit: "e9e1f05359909d0b51f6ec17d4c06622296bb101"
+      files:
+        - "c6group-backend/src/routes/revenueHunter.ts"
+        - "c6group-backend/src/services/websiteEvidence.ts"
+    verification:
+      github_actions_run: 41458157531
+      github_actions_jobs_passed: 7
+      local_typescript: "passed"
+      focused_jest_suites: 2
+      focused_jest_tests: 25
+    remaining:
+      - "Resolve current P2: destroy non-2xx and non-HTML response bodies rather than draining after clearing the absolute deadline."
+      - "Merge and run combined CI with the CyberShield scanner changes."
+      - "Production deployment and live runtime verification."
+      - "Licensed lead-discovery and contact-enrichment providers."
+      - "C6 Mail live delivery evidence."
+    notes: "PR is open and unmerged. ADMIN-only protects the internal route; customer-facing use requires verified tenant identity and authorization. Do not mark LIVE."
+
+reverse_engineering_department:
+  status: VERIFIED
+  source: agent-arsenal/registry/departments.yaml
+  machine_taxonomy_categories: 37
+  human_department: "Developers"
+  capability_category: reverse_engineering
+  registered_providers: [ghidra, reverse_skill, idassist]
+  verification: "Registry, provider, routing, provenance, department mapping, capability-router CI, and authenticated cross-repository reconciliation are green. Repository evidence enrichment completed for the authenticated estate."
+
+  - id: agent_os_auth_fail_closed
+    outcome: "Unsafe Agent-OS local authentication stub disabled"
+    system: "HloniHypnotiseMe/Agent-OS"
+    status: WORKS
+    verification: "PR #8 merged to main as 60e44f83509ad23aa857c04ab27c4ecd67c76235; post-merge Security Boundary Tests run 41989187321 passed."
+    notes: "Authentication and permission checks deny; local session creation raises. Canonical SaaS Core adapter is not yet integrated; protected operations remain unavailable."
+
+  - id: c6_saas_core_tenant_api_containment
+    outcome: "Fail-closed tenant API containment for evidence and generic governance APIs"
+    system: "HloniHypnotiseMe/c6-saas-core"
+    status: WORKS
+    verification: "PR #29 merged a989680e2d9cb48c91d35e036d1ca316b74a84ba; PR #32 merged c8c256929152ac6fbf783f4387456d3feb99445f; fresh CI run 41989412240 passed."
+    notes: "Evidence, evaluation, agent-register, generic audit, runtime authorization and human override remain unavailable until canonical identity/service identity is reviewed and enabled."
+
+  - id: c6_saas_core_canonical_tenant_identity
+    outcome: "Canonical multi-tenant identity, membership, revocable sessions and scoped evidence authorization"
+    system: "HloniHypnotiseMe/c6-saas-core"
+    status: EXISTS
+    branch: "security/canonical-tenant-identity-main-20261105"
+    pull_request: 33
+    verification: "Current PR #33 head 66c9c62d99f1c5897e760e8b193333a58acf8149; CI run 41991426936 passed with 54 tests and 4 warnings. Includes authenticated GET /api/v1/identity/me for product adapters and row-locked single-use invitation acceptance."
+    notes: "Open and not merged. Independent security review, persistent login rate limiting, account recovery/MFA decision, invitation delivery/email verification policy, secret rotation, migration/restore rehearsal and product identity cutover remain gates."
+
+  - id: c6_cybershield_passive_scanner
+    outcome: "Bounded passive HTTPS scanner and DNS-control/scan-consent boundary"
+    system: "HloniHypnotiseMe/C6-Group-Final-Website"
+    status: EXISTS
+    branch: "build/c6-cybershield-passive-scanner-20261102"
+    pull_request: 79
+    verification: "Current clean-install CI run 41990742804 passed all 7 jobs on head 3b41eb44f8dcd1b20ba4d035f3f63a7e048452fa: 19 backend suites / 110 tests, Prisma validation, all migrations on a fresh database, existing-baseline adoption, TypeScript/frontend builds. Production Stack Validation run 41990742964 passed. Six non-critical dependency advisories remain (2 high, 4 moderate)."
+    notes: "No scan execution endpoint, isolated worker, egress policy, durable queue/report store, customer UI, production deployment or customer scan. DNS TXT proves control of the challenge record, not legal ownership or corporate authority."

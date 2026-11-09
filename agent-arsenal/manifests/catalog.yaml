@@ -28,10 +28,14 @@ domains:
     capabilities: [workflow_automation, scheduling, browser_automation]
   business:
     capabilities: [workflow_automation, backend_services, analytics, document_signing, scheduling]
+  cybersecurity:
+    capabilities: [application_security, security_architecture, authorized_security_testing, security_operations, ai_generated_code_security, vulnerability_research_reverse, malware_analysis]
 
 selection_rules:
   - "Prefer a confirmed local resource when it satisfies the requirement."
-  - "Prefer the least-privileged provider that can complete the task."
+  - "Prefer the least-privileged provider that can complete the requirement."
   - "Do not activate high-risk capabilities without an explicit workflow authorization."
   - "Do not treat registered as installed or healthy."
   - "Do not promote an unpinned provider to production."
+  - "Customer security scans require verified asset ownership, explicit scope, isolated execution and auditable authorization."
+  - "Passive website/domain assessment is the initial C6 CyberShield product boundary; exploit testing is excluded from MVP."

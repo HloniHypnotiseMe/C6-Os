@@ -132,3 +132,29 @@ Do not add automated GitHub writes to a draft-generation workflow without a sepa
 The existing C6 SaaS auth middleware authenticates a user account, but the inspected schema's roles (USER, ADMIN, SUPPORT) do not establish a guardian-to-learner relationship or household-level access policy. A learner product requires a separate, explicit household membership and guardian authority model. Every learner-owned resource must resolve the household from authenticated server context and enforce membership/role checks on every request. Do not trust browser-supplied householdId or learnerId. Do not store real learner records until these controls and cross-tenant IDOR tests are proven.
 
 A learning dashboard prototype is not a learning platform. Mark sample data clearly and keep curriculum, assessment, AI, formal marks and certification claims evidence-gated.
+
+
+## 2026-11-02 — CyberShield SSRF and tenant-boundary lessons
+
+- DNS validation alone does not stop DNS rebinding. Resolve all A/AAAA answers, reject the entire target if any answer is non-public, and connect directly to a validated/pinned IP while retaining the hostname only for TLS SNI and the HTTP Host header.
+- A socket inactivity timeout is not a hard execution deadline; a slow-trickle peer can keep resetting it. Use a separate wall-clock deadline that destroys the request. Apply the same end-to-end deadline to DNS resolution; use a cancellable resolver so an unavailable DNS upstream cannot hold the worker indefinitely.
+- A catalogue item named Security Scanner is not an implementation. Trace the catalogue through its route and provider boundary; in C6 Group the AI-tool use route only increments usage and does not invoke a scanner.
+- A shared control-plane key plus caller-supplied tenant/actor/action fields is not user authentication or tenant membership. Evidence APIs without auth and tenant-scoped authorization must not hold customer records.
+- Keep the first scanner passive and internal-only until ownership proof, explicit authorization, isolated worker/egress, tenant isolation, audit/evidence and production controls are verified.
+
+
+- Active security testing, malware analysis and security operations must be explicitly classified and governed as high-risk capabilities. Require verified asset authority, narrow scope, isolated execution/egress, hard deadlines and evidence; malware analysis is network-disabled by default, and destructive incident containment requires human approval.
+
+- Universal Arsenal YAML must be exercised through the actual router test, not only visually reviewed. The C6 repository registry had an internal-repository list accidentally nested under a scalar security note; the router parser caught it. Keep repository names under `internal_repositories` and keep `security_notes` as a list of strings.
+
+- Even a HEAD endpoint can violate expectations and stream a response body. If the scanner only needs headers, cap the header size and destroy the response immediately after collecting the required metadata rather than draining an unbounded body.
+
+
+## 2026-11-02 — Revenue Hunter website inspection and scanner boundary
+
+- Node's custom DNS `lookup` callback must support both the single-address callback and `all: true` array form when used by Node networking with family selection; test both paths.
+- `request.setTimeout()` is an inactivity timeout, not an absolute deadline. A separate wall-clock timer must destroy a request even when a peer keeps sending bytes.
+- If response content is not needed, do not call `response.resume()` and then clear the deadline. Draining an untrusted slow response can keep the socket alive; destroy the response/request before resolving, and test non-2xx and unsupported-content-type branches.
+- Keep the Revenue Hunter website evidence extractor distinct from the CyberShield passive HEAD scanner. Their objectives and response handling differ; share hardened transport primitives only where the contracts and tests prove the reuse safe.
+- ADMIN-only access is a valid internal boundary, not a substitute for tenant-scoped customer authorization. Do not relax it to ordinary users until verified identity, membership, tenant isolation and audit are enforced.
+- A green CI run on two independent PRs is not combined integration evidence. Re-run the complete suite after both changes are present on the same base.

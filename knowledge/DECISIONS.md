@@ -83,3 +83,26 @@ Challenge-provider rules are represented as versioned profiles rather than assum
 - Whatomate is deployed as a self-hosted provider runtime inside the canonical C6 unified stack, with dedicated PostgreSQL/Redis persistence and Caddy HTTPS ingress.
 - Smart WhatsApp C6 authority remains separate from provider runtime: C6 owns customer identity, entitlement, metering and evidence; Whatomate owns WhatsApp execution and Meta-facing webhook handling.
 - Production images must be pinned by immutable digest; mutable `latest` tags are not acceptable for the production release.
+
+
+## 2026-11-02 — CyberShield passive scanning and customer-data gates
+
+- CyberShield's first scanner is passive-only: bare verified domain scope, public-IP DNS validation, pinned outbound connection, one HTTPS HEAD request, no redirects/crawling/exploit attempts, and a hard wall-clock deadline.
+- Do not expose a customer scan route or store customer evidence until domain ownership proof, explicit scan authorization, isolated worker/egress restrictions, tenant identity/isolation, audit/evidence controls, quotas and kill-switch behavior are verified.
+- C6 SaaS Core is the canonical shared control-plane direction, but its inspected identity/tenant/evidence authorization implementation is incomplete. Resolve c6-saas-core issue #28 before CyberShield customer integration; do not create a parallel tenant/auth/evidence subsystem in C6 Group.
+- CI passing for the isolated engine is code-level evidence only. It does not mean the engine is merged, network-tested, deployed or LIVE.
+
+
+- C6 active security testing, malware analysis, security operations and reverse-engineering capabilities are high risk. They require explicit workflow authorization and scoped permissions; active testing requires verified ownership/written authority, isolated egress and auditable evidence; malware analysis defaults to isolated/no-network execution; destructive containment requires human approval.
+
+- CyberShield MVP DKIM checks are bounded to a maximum of five customer-supplied selectors (plus only versioned provider-specific hints if approved); no unbounded selector wordlists or brute-force discovery. Missing selector evidence is UNKNOWN, not FAIL.
+- Every network check has a hard wall-clock deadline covering DNS and HTTP(S); timeout must cancel the resolver and destroy the request. A separate inactivity timeout alone is insufficient. The MVP target is <=8 seconds per network check and <=60 seconds per scan job.
+
+
+## 2026-11-02 — Security scanner and Revenue Hunter release boundaries
+
+- Keep the CyberShield passive domain scanner and Revenue Hunter website evidence inspector as separate capabilities until a tested shared transport contract is justified. CyberShield's first tranche is a passive HTTPS HEAD probe; Revenue Hunter extracts bounded HTML evidence for prospect qualification.
+- Keep Revenue Hunter routes ADMIN-only while they remain internal. Any customer-facing route must derive tenant identity from verified credentials and membership; never remove the admin gate as a shortcut.
+- CyberShield remains internal-only until domain ownership proof, explicit scan scope, isolated worker/egress, cancellation/quotas/kill switch, secured tenant evidence storage, reports, audit and legal/security launch gates are evidenced.
+- Treat PR #79 and PR #80 as separate feature branches. Require combined CI on the resulting main before claiming the integrated website backend is verified.
+- The Contabo VPS is provisioned and root access is confirmed; this closes only the provisioning/access prerequisite. It does not close deployment, host hardening, DNS/TLS, backup/restore, observability or provider-runtime gates.

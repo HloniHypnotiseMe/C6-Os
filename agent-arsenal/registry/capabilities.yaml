@@ -157,10 +157,12 @@ capabilities:
   - id: authorized_security_testing
     purpose: "Perform explicitly authorized security testing and remediation retesting."
     providers: [c6_os]
+    risk: high
 
   - id: security_operations
     purpose: "Monitor runtime security signals, triage incidents, and document containment."
     providers: [c6_os]
+    risk: high
 
   - id: api_testing
     purpose: "Test API contracts, endpoints, authentication, negative paths, and compatibility."

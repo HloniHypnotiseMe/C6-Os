@@ -1,5 +1,5 @@
 schema_version: "1.0"
-date: "2026-10-02"
+date: "2026-11-02"
 purpose: "Machine-readable final-mile closure register. Repository closure is never substituted for external/runtime evidence."
 
 status_semantics:
@@ -91,5 +91,6 @@ gates:
 production_rule:
   "No CLOSED control above is a LIVE claim. LIVE requires direct production evidence from the authoritative runtime/provider."
 
+# 2026-11-02: Contabo VPS provisioning and root access are confirmed; do not count this as deployment or runtime proof.
 next_win:
-  "Provision Contabo, deploy the unified stack, populate authorized production secrets, then execute the runtime evidence matrix."
+  "Verify VPS host hardening and service inventory, deploy/validate the unified stack, then execute the runtime evidence matrix for DNS/TLS, database/auth, mail, payments, backups/restore, observability and customer fulfilment. CyberShield additionally requires tenant authorization, domain proof, isolated scanning and report evidence."
