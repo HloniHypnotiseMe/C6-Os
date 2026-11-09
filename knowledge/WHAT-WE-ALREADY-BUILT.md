@@ -249,6 +249,31 @@ Evidence state: SOURCE-VERIFIED / CI-UNCONFIRMED / NOT LIVE. GitHub reported no 
 - Next: validate runtime prerequisites; only then implement a separately gated, duplicate-safe, least-privilege GitHub PR stage. Keep human review/merge and newsletter consent/suppression/delivery controls separate.
 
 
+## 2026-11-05 — C6 Education OS Grades 8–12 foundation
+
+- Product module: `HloniHypnotiseMe/C6Group.AiOS/products/education-os/`.
+- Branch: `feature/c6-education-os-grade-8-12`.
+- Added product brief, reverse-engineered build plan, logical data model, CAPS source register, security/privacy baseline, source-level integration audit and interactive local-only prototype.
+- The prototype demonstrates Grade 8–12 switching, Senior/FET phase distinction, configurable sample subject catalogue, learner/guardian view switch, sample planner, formative quiz and demo tutor interface. It stores only sample planner state in browser localStorage.
+- Source inspection: C6Group.AiOS START-HERE; canonical C6-Os START-HERE; C6Group.AiOS Flask dashboard/model config; C6-Group-Final-Website Express/TypeScript/Prisma/PostgreSQL backend, Prisma schema, JWT auth middleware and route registry; C6 Mail Services API/deployment README.
+- Architecture: C6-Os remains governance/capability registry; C6Group.AiOS owns product runtime; C6 SaaS Core is the candidate shared identity/database/subscription service; RemotePay remains payment authority; C6 Mail Services handles transactional notifications; n8n is bounded orchestration; Cloudflare + Contabo/self-hosted C6 remains deployment direction.
+- Important gap found: current inspected C6 User roles are USER/ADMIN/SUPPORT and the inspected Prisma schema has no household, guardian membership, learner, guardian consent, curriculum or assessment domain. Existing JWT middleware authenticates users but does not prove household-level authorisation. Education OS must implement and test household membership, guardian authority and resource-level RBAC before real learner data.
+- Evidence level: EXISTS / initial prototype only. No production API, real auth, tenant isolation, AI provider, official curriculum import, formal assessment, RemotePay product billing or production deployment has been verified.
+- Prototype CI evidence: GitHub Actions run `41995452199` passed Node syntax validation and Python prototype contract tests on commit `979a9c7c125067cb5988aa0b7b9bf859e270437a`. This verifies the prototype checks only; it does not change the product's overall EXISTS-only status.
+- CAPS starting sources: DBE CAPS landing page and DBE policy register. Subject-by-subject ingestion, license review and human verification remain open.
+- Do not claim CAPS compliance, accreditation, NSC certification, POPIA compliance or LIVE status from this foundation.
+
+
+### Education OS backend domain foundation — 2026-11-05
+
+- Backend repository: `HloniHypnotiseMe/C6-Group-Final-Website`; branch `feature/education-os-household-guardian-foundation`; draft PR #81: https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/pull/81.
+- Added additive Prisma/PostgreSQL household, membership, learner-profile and purpose-specific guardian-consent models, migration SQL, authenticated guardian-scoped routes and route contract tests.
+- Initial API supports household creation/listing, guardian-scoped Grade 8–12 learner profile creation/listing, consent attestation and consent withdrawal.
+- Learner records begin `PENDING_CONSENT`; CORE_LEARNING consent attestation moves them to ACTIVE; withdrawal of the final active core consent suspends the profile.
+- CI run https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/actions/runs/41995748527 completed successfully: backend `npm ci`, Jest suite and TypeScript build passed; frontend build, n8n workflow checks, content pipeline, blog calendar/content and orchestrator tests also passed. This verifies repository code/tests, not live database migration or production runtime.
+- This is an EXISTS-level domain/API foundation only. No production migration was applied. The guardian-authority flag is an attestation, not independent legal verification. Do not store production learner data or claim POPIA compliance until legal/privacy and security gates are complete.
+
+
 ## C6 CyberShield — passive domain assessment (2026-11-02)
 
 - Product foundation: [C6-Os PR #25](https://github.com/HloniHypnotiseMe/C6-Os/pull/25) (open; feature branch only).
