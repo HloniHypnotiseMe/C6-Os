@@ -126,6 +126,6 @@ WHY IT IS NEEDED: accelerate a bank-neutral South African beneficiary experience
 DEPENDENCIES TAKEN: none approved for extraction yet; dependency closure must be reviewed in the standalone repo  
 LICENCE: MIT source repository; retain licence and notices  
 C6 ADAPTATION: South African product boundaries, provider-neutral interfaces, demo-only records, security/privacy controls  
-FILES IMPORTED: README.md, START-HERE.md, docs/IMPLEMENTATION-PLAN.md, docs/SECURITY-AND-INTEGRATION-BOUNDARIES.md, docs/PROVIDER-ADAPTER-CONTRACT.md, lib/providers/banking/types.ts, lib/providers/banking/demo-data.ts  
+FILES IMPORTED: LICENSE (MIT attribution), README.md, START-HERE.md, docs/THUSO-CAPABILITY-MAP.md, docs/IMPLEMENTATION-PLAN.md, docs/SECURITY-AND-INTEGRATION-BOUNDARIES.md, docs/PROVIDER-ADAPTER-CONTRACT.md, lib/providers/banking/types.ts, lib/providers/banking/demo-data.ts  
 FILES DELIBERATELY NOT IMPORTED: Plaid/Dwolla live paths, US SSN/address forms, hard-coded sandbox tokens, USD transfers  
 TEST / PROOF: destination repo existence verified; seven product foundation files created on main and commit SHAs recorded; no build/tests run  
