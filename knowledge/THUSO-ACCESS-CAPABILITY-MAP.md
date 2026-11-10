@@ -3,17 +3,17 @@
 **Product:** Thuso Access  
 **Purpose:** Independent, bank-neutral financial-access and beneficiary-protection platform for SASSA beneficiaries.  
 **Relationship:** Not SASSA, a bank, card issuer, payment switch, or government service. No endorsement or affiliation is implied.  
-**Status:** FOUNDATION / DESIGN AND SOURCE AUDIT. No live bank integration, biometric authentication, WhatsApp integration, or production deployment is claimed.
+**Status:** DEDICATED PRIVATE REPOSITORY CREATED; FOUNDATION IMPORTED. No live bank integration, biometric authentication, WhatsApp integration, or production deployment is claimed.
 
 ## 1. Product repository and source provenance
 
-- Intended standalone repository: `HloniHypnotiseMe/thuso-access`.
+- Standalone product repository: `HloniHypnotiseMe/thuso-access` (private; created 10 November 2026).
 - Source/staging repository: `HloniHypnotiseMe/banking`.
 - Source branch: `feat/sassa-access-foundation`.
 - Source PR: https://github.com/HloniHypnotiseMe/banking/pull/1 (draft; not merged).
 - The source is an MIT-licensed Next.js 14 / React 18 / TypeScript banking dashboard fork.
 - The first foundation wave added five files only: implementation plan, security/integration boundaries, provider adapter contract, provider-neutral banking types, and synthetic ZAR demo data. It did not alter or remove the existing source files.
-- The GitHub integration available to this execution can fetch/create files and branches but does not expose a repository-creation operation. Therefore the standalone repository is **NOT CREATED** yet. Do not claim the intended repo URL exists. Keep the source PR intact until the new repo is created and provenance-preserving extraction is performed.
+- The standalone repository was created by the repository owner and verified through GitHub. The first five foundation files were copied into it with brand text updated from SASSA ACCESS to Thuso Access. The source PR remains open as provenance; it is not the product's primary repository.
 
 ## 2. Capability decisions
 
@@ -107,8 +107,8 @@ Lost-card support:
 
 ## 8. Next execution sequence
 
-1. Create the standalone `thuso-access` GitHub repository; preserve source PR #1 and MIT attribution.
-2. Extract the five foundation files and only the audited UI components into the standalone repo; do not copy Plaid/Dwolla/SSN/US money-movement paths.
+1. Preserve source PR #1 and MIT attribution while using the standalone Thuso Access repository as the product home.
+2. Continue importing only audited UI components; do not copy Plaid/Dwolla/SSN/US money-movement paths.
 3. Establish South African beneficiary identity, consent, passkey and recovery flows.
 4. Build accessible account overview and clearly marked demo/statement-import states.
 5. Build lost-card guided support, verified issuer directory and auditable case workflow.
@@ -126,6 +126,6 @@ WHY IT IS NEEDED: accelerate a bank-neutral South African beneficiary experience
 DEPENDENCIES TAKEN: none approved for extraction yet; dependency closure must be reviewed in the standalone repo  
 LICENCE: MIT source repository; retain licence and notices  
 C6 ADAPTATION: South African product boundaries, provider-neutral interfaces, demo-only records, security/privacy controls  
-FILES IMPORTED: none into a standalone repo yet  
+FILES IMPORTED: README.md, START-HERE.md, docs/IMPLEMENTATION-PLAN.md, docs/SECURITY-AND-INTEGRATION-BOUNDARIES.md, docs/PROVIDER-ADAPTER-CONTRACT.md, lib/providers/banking/types.ts, lib/providers/banking/demo-data.ts  
 FILES DELIBERATELY NOT IMPORTED: Plaid/Dwolla live paths, US SSN/address forms, hard-coded sandbox tokens, USD transfers  
-TEST / PROOF: five foundation files were fetched back from source branch; no build/tests run  
+TEST / PROOF: destination repo existence verified; seven product foundation files created on main and commit SHAs recorded; no build/tests run  
