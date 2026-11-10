@@ -132,3 +132,14 @@ Do not add automated GitHub writes to a draft-generation workflow without a sepa
 The existing C6 SaaS auth middleware authenticates a user account, but the inspected schema's roles (USER, ADMIN, SUPPORT) do not establish a guardian-to-learner relationship or household-level access policy. A learner product requires a separate, explicit household membership and guardian authority model. Every learner-owned resource must resolve the household from authenticated server context and enforce membership/role checks on every request. Do not trust browser-supplied householdId or learnerId. Do not store real learner records until these controls and cross-tenant IDOR tests are proven.
 
 A learning dashboard prototype is not a learning platform. Mark sample data clearly and keep curriculum, assessment, AI, formal marks and certification claims evidence-gated.
+
+
+## 2026-11-10 — Thuso Access: bank-neutral beneficiary platform
+
+- A US banking dashboard is a useful UI/domain-pattern source, not a South African bank integration. Plaid US, Dwolla, SSN, US address fields, USD transfer paths and hard-coded sandbox credentials must not cross into the South African product.
+- Account visibility and card-loss assistance are different capabilities: balance/transaction data requires a contracted, consented bank/provider integration; card blocking/replacement requires issuer authority and confirmation.
+- Whatomate is a reusable WhatsApp communications provider, not the product's identity, case, consent or financial authority. Use it for guided support and human handoff only behind product-owned authorization and audit.
+- C6 Mail Services is the transactional notification boundary; do not build a second mail sender or confuse the API with mailbox hosting.
+- Biometric repositories in the estate are not a permission to process beneficiary biometrics. Prefer passkeys/WebAuthn with device-local biometric unlock and server-side cryptographic proof. FaceX is a research candidate; Luxand FaceSDK is commercial/licensed. Neither is integrated.
+- For financial access products, demo data must be unmistakably labelled; provider freshness/source must be visible; stale or unavailable data must not appear live.
+- Lost-card workflows must distinguish REQUESTED / SUBMITTED / ISSUER_CONFIRMED. Never show BLOCKED or REPLACED without authoritative issuer evidence.
