@@ -339,7 +339,7 @@ reverse_engineering_department:
 
   - id: thuso_access_foundation
     outcome: "Independent South African bank-neutral beneficiary access and lost-card assistance platform foundation"
-    system: "intended: HloniHypnotiseMe/thuso-access; source: HloniHypnotiseMe/banking"
+    system: "product: HloniHypnotiseMe/thuso-access (private); source: HloniHypnotiseMe/banking"
     status: EXISTS
     source_branch: "feat/sassa-access-foundation"
     source_pr: "https://github.com/HloniHypnotiseMe/banking/pull/1"
@@ -364,11 +364,10 @@ reverse_engineering_department:
       decision: "Prefer device-native passkeys/WebAuthn; no central biometric processing in MVP"
       candidates_not_integrated: ["FaceX (Apache-2.0 research source)", "Luxand FaceSDK (commercial licence required)"]
     blockers:
-      - "standalone GitHub repository creation"
       - "South African bank/provider agreements and documented APIs"
       - "issuer-authoritative card-block/replacement integration"
       - "POPIA/privacy impact assessment and regulatory/legal review"
       - "passkey/auth implementation and accessibility fallback"
       - "Whatomate and C6 Mail Services product adapters and live runtime proof"
       - "build, tests, security review and deployment verification"
-    notes: "Five foundation files exist on the source banking branch. No live bank data, card-block action, biometric integration, WhatsApp integration or production runtime is proven. See knowledge/THUSO-ACCESS-CAPABILITY-MAP.md. Do not treat this record as production readiness."
+    notes: "Standalone private repository created; README, START-HERE, capability map, three design docs, provider types and synthetic demo data imported. No live bank data, card-block action, biometric integration, WhatsApp integration or production runtime is proven. See docs/THUSO-CAPABILITY-MAP.md in the product repo."
