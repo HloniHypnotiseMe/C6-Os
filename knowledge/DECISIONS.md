@@ -83,3 +83,15 @@ Challenge-provider rules are represented as versioned profiles rather than assum
 - Whatomate is deployed as a self-hosted provider runtime inside the canonical C6 unified stack, with dedicated PostgreSQL/Redis persistence and Caddy HTTPS ingress.
 - Smart WhatsApp C6 authority remains separate from provider runtime: C6 owns customer identity, entitlement, metering and evidence; Whatomate owns WhatsApp execution and Meta-facing webhook handling.
 - Production images must be pinned by immutable digest; mutable `latest` tags are not acceptable for the production release.
+
+
+## 2026-11-10 — Thuso Access product boundaries
+
+- Product identity is **Thuso Access**; intended standalone repository is `HloniHypnotiseMe/thuso-access`. The repository is not created yet; `HloniHypnotiseMe/banking` remains source/staging only.
+- Product serves SASSA beneficiaries across banks but is independent and must not imply SASSA, bank or issuer affiliation.
+- First release prioritises both account visibility and lost/stolen-card assistance.
+- No funds movement, no bank PIN/password/CVV/OTP collection, and no claim of card blocking/replacement without authoritative issuer confirmation.
+- Reuse Whatomate for WhatsApp communication/human handoff and C6 Mail Services for transactional notifications only after tenant authorization, consent and runtime verification.
+- Reuse C6 SaaS Core only through verified endpoints; its README currently documents evidence/audit/evaluation/runtime endpoints disabled pending tenant authorization.
+- Prefer device-native passkeys/WebAuthn with local biometric unlock. Do not centrally store biometric templates or raw face/fingerprint data in MVP. FaceX/Luxand are not integrated; Luxand requires commercial licensing.
+- Live bank account aggregation remains provider/partner-required. Demo data is synthetic and must be labelled.

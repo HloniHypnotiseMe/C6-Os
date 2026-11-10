@@ -330,3 +330,17 @@ The final gap register distinguishes:
 - NOT_IMPLEMENTED = capability has not been built and must not be sold as executable.
 
 **Never promote a CLOSED structural control to LIVE without direct production evidence.**
+
+
+## Thuso Access — South African beneficiary platform
+
+When working on **Thuso Access** (`HloniHypnotiseMe/thuso-access`, private standalone repository), read first:
+
+- `C6-Os/knowledge/THUSO-ACCESS-CAPABILITY-MAP.md` — source provenance, capability reuse/exclusions, biometrics decision, security boundaries and next execution sequence.
+- Source/staging: `HloniHypnotiseMe/banking`, branch `feat/sassa-access-foundation`, draft PR #1. This is not the final product repository.
+- C6 capabilities to consider: `c6-saas-core` (tenant/auth/control plane, subject to its fail-closed disabled endpoints), `C6-Mail-Services` (transactional notifications), `whatomate` (WhatsApp support and human handoff), and the existing self-hosted Docker/PostgreSQL/Redis/Caddy deployment stack.
+- Biometrics: do not centrally collect biometric data in MVP. Prefer device-native passkeys/WebAuthn; FaceX and Luxand are research candidates only, not integrated or approved.
+
+Product scope: bank-neutral account visibility plus lost/stolen-card assistance for SASSA beneficiaries. No funds movement, no bank credentials/OTP collection, and no claim of issuer card blocking without issuer confirmation. Do not imply SASSA affiliation or endorsement.
+
+The standalone private GitHub repository now exists at https://github.com/HloniHypnotiseMe/thuso-access. Its README, START-HERE, capability map and five foundation files have been imported. Continue product implementation there; keep the banking repository as source provenance only.

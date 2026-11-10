@@ -272,3 +272,13 @@ Evidence state: SOURCE-VERIFIED / CI-UNCONFIRMED / NOT LIVE. GitHub reported no 
 - Learner records begin `PENDING_CONSENT`; CORE_LEARNING consent attestation moves them to ACTIVE; withdrawal of the final active core consent suspends the profile.
 - CI run https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/actions/runs/41995748527 completed successfully: backend `npm ci`, Jest suite and TypeScript build passed; frontend build, n8n workflow checks, content pipeline, blog calendar/content and orchestrator tests also passed. This verifies repository code/tests, not live database migration or production runtime.
 - This is an EXISTS-level domain/API foundation only. No production migration was applied. The guardian-authority flag is an attestation, not independent legal verification. Do not store production learner data or claim POPIA compliance until legal/privacy and security gates are complete.
+
+
+## Thuso Access — South African beneficiary platform foundation
+
+- Product identity selected: Thuso Access; standalone private repo `HloniHypnotiseMe/thuso-access` now exists; initial foundation imported.
+- Source/staging is `HloniHypnotiseMe/banking`, branch `feat/sassa-access-foundation`, draft PR #1. Five foundation files were copied into the standalone repo; the original source files remain unchanged.
+- The detailed reuse/exclusion and security map is `knowledge/THUSO-ACCESS-CAPABILITY-MAP.md`.
+- Reuse candidates: C6 SaaS Core (fail-closed endpoints must be respected), C6 Mail Services (transactional mail API), Whatomate (WhatsApp support/human handoff), and self-hosted Docker/PostgreSQL/Redis/Caddy patterns.
+- Biometrics: no central biometric collection. Prefer device-native passkeys/WebAuthn; FaceX and Luxand are not integrated. Luxand requires commercial licensing.
+- No live bank integration, issuer card blocking, WhatsApp integration or production deployment is claimed. The standalone repo contains README, START-HERE, capability map, three design documents, provider types and synthetic demo data.
