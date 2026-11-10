@@ -276,9 +276,9 @@ Evidence state: SOURCE-VERIFIED / CI-UNCONFIRMED / NOT LIVE. GitHub reported no 
 
 ## Thuso Access — South African beneficiary platform foundation
 
-- Product identity selected: Thuso Access; standalone repo `HloniHypnotiseMe/thuso-access` is intended but not yet created.
-- Source/staging is `HloniHypnotiseMe/banking`, branch `feat/sassa-access-foundation`, draft PR #1. Five foundation files exist there; no existing source files were changed.
+- Product identity selected: Thuso Access; standalone private repo `HloniHypnotiseMe/thuso-access` now exists; initial foundation imported.
+- Source/staging is `HloniHypnotiseMe/banking`, branch `feat/sassa-access-foundation`, draft PR #1. Five foundation files were copied into the standalone repo; the original source files remain unchanged.
 - The detailed reuse/exclusion and security map is `knowledge/THUSO-ACCESS-CAPABILITY-MAP.md`.
 - Reuse candidates: C6 SaaS Core (fail-closed endpoints must be respected), C6 Mail Services (transactional mail API), Whatomate (WhatsApp support/human handoff), and self-hosted Docker/PostgreSQL/Redis/Caddy patterns.
 - Biometrics: no central biometric collection. Prefer device-native passkeys/WebAuthn; FaceX and Luxand are not integrated. Luxand requires commercial licensing.
-- No live bank integration, issuer card blocking, WhatsApp integration or production deployment is claimed.
+- No live bank integration, issuer card blocking, WhatsApp integration or production deployment is claimed. The standalone repo contains README, START-HERE, capability map, three design documents, provider types and synthetic demo data.
