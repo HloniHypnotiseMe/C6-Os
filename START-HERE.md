@@ -334,7 +334,7 @@ The final gap register distinguishes:
 
 ## Thuso Access — South African beneficiary platform
 
-When working on **Thuso Access** (`HloniHypnotiseMe/thuso-access`, intended standalone repository), read first:
+When working on **Thuso Access** (`HloniHypnotiseMe/thuso-access`, private standalone repository), read first:
 
 - `C6-Os/knowledge/THUSO-ACCESS-CAPABILITY-MAP.md` — source provenance, capability reuse/exclusions, biometrics decision, security boundaries and next execution sequence.
 - Source/staging: `HloniHypnotiseMe/banking`, branch `feat/sassa-access-foundation`, draft PR #1. This is not the final product repository.
@@ -343,4 +343,4 @@ When working on **Thuso Access** (`HloniHypnotiseMe/thuso-access`, intended stan
 
 Product scope: bank-neutral account visibility plus lost/stolen-card assistance for SASSA beneficiaries. No funds movement, no bank credentials/OTP collection, and no claim of issuer card blocking without issuer confirmation. Do not imply SASSA affiliation or endorsement.
 
-The standalone GitHub repository has not yet been created because the available GitHub execution interface does not expose repository creation. Do not invent a repository URL or report it as created. Preserve the source PR and continue capability/design work until the repo-creation action is available.
+The standalone private GitHub repository now exists at https://github.com/HloniHypnotiseMe/thuso-access. Its README, START-HERE, capability map and five foundation files have been imported. Continue product implementation there; keep the banking repository as source provenance only.
