@@ -336,3 +336,39 @@ reverse_engineering_department:
       checks: ["Node JavaScript syntax", "Python prototype contract tests"]
       conclusion: "success"
 
+
+  - id: thuso_access_foundation
+    outcome: "Independent South African bank-neutral beneficiary access and lost-card assistance platform foundation"
+    system: "intended: HloniHypnotiseMe/thuso-access; source: HloniHypnotiseMe/banking"
+    status: EXISTS
+    source_branch: "feat/sassa-access-foundation"
+    source_pr: "https://github.com/HloniHypnotiseMe/banking/pull/1"
+    product_name: "Thuso Access"
+    priorities:
+      - "bank-neutral account visibility"
+      - "lost/stolen-card guided assistance"
+    reuse_candidates:
+      - "C6-Os capability governance and evidence-first build protocol"
+      - "C6 SaaS Core tenant/auth/control-plane patterns, subject to endpoint verification"
+      - "C6 Mail Services transactional notification API"
+      - "Whatomate WhatsApp communication, workflows and human handoff"
+      - "C6 self-hosted Docker/PostgreSQL/Redis/Caddy patterns"
+    excluded:
+      - "Plaid US integration"
+      - "Dwolla US funding-source and USD transfer flows"
+      - "SSN and US-specific address fields"
+      - "hard-coded Plaid sandbox tokens"
+      - "beneficiary funds movement"
+      - "central biometric template storage"
+    biometrics:
+      decision: "Prefer device-native passkeys/WebAuthn; no central biometric processing in MVP"
+      candidates_not_integrated: ["FaceX (Apache-2.0 research source)", "Luxand FaceSDK (commercial licence required)"]
+    blockers:
+      - "standalone GitHub repository creation"
+      - "South African bank/provider agreements and documented APIs"
+      - "issuer-authoritative card-block/replacement integration"
+      - "POPIA/privacy impact assessment and regulatory/legal review"
+      - "passkey/auth implementation and accessibility fallback"
+      - "Whatomate and C6 Mail Services product adapters and live runtime proof"
+      - "build, tests, security review and deployment verification"
+    notes: "Five foundation files exist on the source banking branch. No live bank data, card-block action, biometric integration, WhatsApp integration or production runtime is proven. See knowledge/THUSO-ACCESS-CAPABILITY-MAP.md. Do not treat this record as production readiness."
