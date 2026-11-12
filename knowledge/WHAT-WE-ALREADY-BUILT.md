@@ -272,3 +272,13 @@ Evidence state: SOURCE-VERIFIED / CI-UNCONFIRMED / NOT LIVE. GitHub reported no 
 - Learner records begin `PENDING_CONSENT`; CORE_LEARNING consent attestation moves them to ACTIVE; withdrawal of the final active core consent suspends the profile.
 - CI run https://github.com/HloniHypnotiseMe/C6-Group-Final-Website/actions/runs/41995748527 completed successfully: backend `npm ci`, Jest suite and TypeScript build passed; frontend build, n8n workflow checks, content pipeline, blog calendar/content and orchestrator tests also passed. This verifies repository code/tests, not live database migration or production runtime.
 - This is an EXISTS-level domain/API foundation only. No production migration was applied. The guardian-authority flag is an attestation, not independent legal verification. Do not store production learner data or claim POPIA compliance until legal/privacy and security gates are complete.
+
+
+## Reusable small-store build pattern — Wear Your Art reference
+
+- Playbook: `knowledge/STORE-BUILD-PLAYBOOK.md` in this repository.
+- Purpose: repeatable C6 small-store build from business intake through catalogue/inventory, checkout/admin, server-side order/payment invariants, verification, safe VPS release and owner handover.
+- Reuse pattern: one approved product manifest -> generated gallery/SKU register -> idempotent stock import -> customer checkout -> role-scoped admin -> evidence-backed fulfilment/payment reconciliation.
+- WYA production evidence: 94 approved designs, 564 active SKUs and 5,640 opening units were imported and database totals checked; one controlled pickup order was created, surfaced in the admin dashboard, cancelled and stock restored. Public intake was returned to OFF; no payment was taken.
+- Known gaps at capture: dashboard showed `Record payment` on a cancelled order despite backend rejection guard; UI fix/regression test pending. Dedicated PostgreSQL concurrency test DB and test remained pending. Isolated restore, external payment settlement, courier E2E and full owner handover sign-off remain separate gates.
+- Status: reusable DOCUMENTED PLAYBOOK EXISTS; WYA's individual store state must not be promoted to fully LIVE from these checks alone.
