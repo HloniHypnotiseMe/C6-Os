@@ -132,3 +132,21 @@ Do not add automated GitHub writes to a draft-generation workflow without a sepa
 The existing C6 SaaS auth middleware authenticates a user account, but the inspected schema's roles (USER, ADMIN, SUPPORT) do not establish a guardian-to-learner relationship or household-level access policy. A learner product requires a separate, explicit household membership and guardian authority model. Every learner-owned resource must resolve the household from authenticated server context and enforce membership/role checks on every request. Do not trust browser-supplied householdId or learnerId. Do not store real learner records until these controls and cross-tenant IDOR tests are proven.
 
 A learning dashboard prototype is not a learning platform. Mark sample data clearly and keep curriculum, assessment, AI, formal marks and certification claims evidence-gated.
+
+
+## 2026-11-12 — Store build acceleration and WYA launch lessons
+
+Wear Your Art established a reusable small-store pattern, but the work exposed avoidable discovery and handover cost. The reusable implementation/acceptance sequence is now documented in `knowledge/STORE-BUILD-PLAYBOOK.md`.
+
+Key lessons:
+- Find the canonical START-HERE in GitHub/C6-Os before assuming it exists on the target VPS. Search repository trees and project docs first.
+- Freeze one approved catalogue manifest; derive gallery, SKU register and import from it; make imports idempotent and verify database totals plus physical stock reconciliation.
+- Test UI and API together. WYA's backend correctly rejects payment creation for cancelled orders, while the dashboard still rendered `Record payment`; the frontend must hide actions that are invalid for the current state and have a regression test.
+- Provision a real isolated PostgreSQL test target. A skipped concurrency test is BLOCKED/UNKNOWN, not PASS.
+- Use a controlled no-payment production order to prove customer checkout, admin visibility, cancellation and stock restoration; keep public intake OFF outside the approved test/launch window.
+- A manual payment record/evidence note is pending reconciliation, not proof of settlement. Carrier fields and payment UI are not proof of external integration.
+- Keep owner handover generated from current runtime evidence. The WYA handover contained stale product, stock, checkout and payment claims.
+- Avoid printing resolved secrets (including full compose config); rotate any secret exposed in terminal output and protect old-secret backups.
+- Keep operator runbooks to short, sequential commands; read-only inspection before edits.
+
+WYA evidence boundary at capture: controlled pickup order creation, admin visibility, cancellation and stock restoration were verified; no payment was taken. Backend cancelled-order payment guards were inspected; the dashboard action visibility defect was identified but not yet patched or browser-regression-tested. PostgreSQL concurrency test remained skipped without a dedicated test database. Do not mark those remaining items PASS.
