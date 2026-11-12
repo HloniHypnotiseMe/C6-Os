@@ -336,3 +336,26 @@ reverse_engineering_department:
       checks: ["Node JavaScript syntax", "Python prototype contract tests"]
       conclusion: "success"
 
+
+  - id: reusable_small_store_build_playbook
+    outcome: "Repeatable C6 small-store build and launch acceptance pattern"
+    system: "C6-Os knowledge/STORE-BUILD-PLAYBOOK.md"
+    status: EXISTS
+    source_case: "HloniHypnotiseMe/wear-your-art — Wear Your Art, November 2026"
+    capabilities:
+      - "business contract and reuse-first intake"
+      - "canonical catalogue manifest and idempotent SKU/stock import"
+      - "customer checkout and role-scoped admin"
+      - "server-side order, cancellation, stock and payment invariants"
+      - "UI/API and browser E2E acceptance gates"
+      - "safe VPS rollout, backups, restore, monitoring and rollback"
+      - "evidence-based owner handover"
+    evidence:
+      - "WYA: 94 approved designs, 564 active SKUs, 5,640 units; production database totals verified"
+      - "WYA: one controlled pickup order created, visible in admin, cancelled and stock restored"
+      - "WYA: public order intake returned to OFF; no payment taken"
+    known_gaps:
+      - "WYA dashboard still displayed Record payment for a cancelled order although backend rejects cancelled-order payment creation"
+      - "WYA PostgreSQL concurrency test skipped because isolated test DB was not configured"
+      - "WYA isolated restore, external payment settlement, courier E2E and owner handover sign-off not proven"
+    notes: "Playbook documentation EXISTS; it is not a deployable store product or proof that every future store is LIVE. Follow C6 START-HERE and update evidence per store."
