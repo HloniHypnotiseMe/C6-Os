@@ -421,3 +421,15 @@ reverse_engineering_department:
             - "database/seeders/CategorySeeder.php"
             - "database/seeders/SmartDrinkerSeeder.php"
     notes: "Smart Drinker = Chauffeur drives YOU home in YOUR car. OTP + Selfie + PDP + Insurance + Live Share. Demand pricing: Base R150, Fri 11pm 1.8x, Rain 2.2x. Search output: Shows on every Drinking Well search after 18:00. 18+ only. POPIA: ID / Licence hashed, not plain text. Do NOT rebuild."
+
+    - id: ubernie_business_in_a_box_wired
+    outcome: "Business in a Box wired as one product - R9500 + R750/mo - One checkout = Website + Listing + WhatsApp + CRM + Deals + RemotePay"
+    system: "ubernie"
+    status: WORKS
+    commit: "Business in a Box migration 2026_11_13_000006 on feature/ubernie-intelligence-acquisition"
+    verification: "Table business_in_a_box_orders created, API checkout + webhook + status added, KWMDC as first Box seeder"
+    files:
+            - "database/migrations/2026_11_13_000006_create_business_in_a_box_orders.php"
+            - "routes/api_ubernie.php"
+            - "database/seeders/BusinessInABoxSeeder.php"
+    notes: "Box was sales pitch + 8 separate pieces. Now it is one table + one checkout flow. Still needs real Laravel distro to run webhook -> SiteGenerator -> Listing -> WhatsApp provisioning. Do NOT rebuild."
