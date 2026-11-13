@@ -359,3 +359,17 @@ reverse_engineering_department:
       - "WYA PostgreSQL concurrency test skipped because isolated test DB was not configured"
       - "WYA isolated restore, external payment settlement, courier E2E and owner handover sign-off not proven"
     notes: "Playbook documentation EXISTS; it is not a deployable store product or proof that every future store is LIVE. Follow C6 START-HERE and update evidence per store."
+
+    - id: daycare_template_ubernie_e79055e
+    outcome: "Day Care & Creche category + daycare Web Department template + KWMDC first listing"
+    system: "ubernie + web-department"
+    status: WORKS
+    commit: "e79055e on feature/ubernie-intelligence-acquisition"
+    verification: "25/25 Web Department contract + catalogue pricing tests passed. Generator returns daycare / #FF6B35 / Book FREE Tour CTA."
+    files:
+            - "database/migrations/2026_11_13_000001_create_categories_table.php"
+            - "database/seeders/CategorySeeder.php"
+            - "database/seeders/KwmdcBusinessSeeder.php"
+            - "web-department/builder/site_generator.py"
+    package: "R9500 once-off + R750/mo = Website + Hosting + WhatsApp via Whatomate + Funnel + CRM + RemotePay payment-links SimplyBlu + Ubernie Featured 1 Year"
+    notes: "Categories table was missing - created it. Day Care parent + 8 subcategories. Web Department is production path. Laravel layer is product source, not complete distro - migrate on real Laravel deployment. BusinessCandidate remains pending_review until human review - POPIA. Do NOT rebuild."
