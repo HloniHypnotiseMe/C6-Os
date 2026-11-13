@@ -373,3 +373,16 @@ reverse_engineering_department:
             - "web-department/builder/site_generator.py"
     package: "R9500 once-off + R750/mo = Website + Hosting + WhatsApp via Whatomate + Funnel + CRM + RemotePay payment-links SimplyBlu + Ubernie Featured 1 Year"
     notes: "Categories table was missing - created it. Day Care parent + 8 subcategories. Web Department is production path. Laravel layer is product source, not complete distro - migrate on real Laravel deployment. BusinessCandidate remains pending_review until human review - POPIA. Do NOT rebuild."
+
+    - id: ubernie_wave2_categories_deals_eKhaya
+    outcome: "Wave 2 categories + Deals Corner Thursday Deals + Vouchers + eKhaya Property"
+    system: "ubernie"
+    status: WORKS
+    commit: "Wave 2 on feature/ubernie-intelligence-acquisition"
+    verification: "CategorySeeder extended, Deals table + DealsSeeder created, Thursday 00:00 - Sunday 23:59 logic"
+    files:
+            - "database/seeders/CategorySeeder.php"
+            - "database/migrations/2026_11_13_000002_create_deals_table.php"
+            - "database/seeders/DealsSeeder.php"
+    package: "Deals Corner = 1 free deal/week if Featured, R99 if not. Vouchers server-side count."
+    notes: "Real Estate name = eKhaya, not AI slop. Car-La-Hurry kept as township slang. BBLA is tenant, not new product. Thursday = Deals Day per SPAR/Shoprite/ClicFlyer proof. Do NOT rebuild."
