@@ -397,3 +397,15 @@ reverse_engineering_department:
             - "database/migrations/2026_11_13_000003_add_smart_capabilities_to_businesses.php"
             - "web-department/builder/site_generator.py"
     notes: "Stole Uber principles, not Uber app. Surge = reverse - Thursday prices drop, not rise. POPIA: No personal location tracking, only business location. OTP claim only. Do NOT rebuild."
+
+    - id: ubernie_delivery_waitlists_drinking_well
+    outcome: "Delivery Waitlists - Shops + Drivers + Demand Zones + Drinking Well Bar Locator"
+    system: "ubernie"
+    status: WORKS
+    commit: "Delivery waitlists migration 2026_11_13_000004 on feature/ubernie-intelligence-acquisition"
+    verification: "3 tables created: delivery_waitlist_shops, delivery_waitlist_drivers, delivery_demand_zones. Drinking Well category + 6 subs added."
+    files:
+            - "database/migrations/2026_11_13_000004_create_delivery_waitlists.php"
+            - "database/seeders/CategorySeeder.php"
+            - "database/seeders/DeliveryWaitlistSeeder.php"
+    notes: "Delivery is demand-based, not flat fee. Zone unlocks at 10 shops + 10 drivers. Drinking Well = Bar Locator, 18+ only, Drink Responsibly, Don't Drink and Drive. POPIA: No ID number stored in plain text in prod - hash it. Do NOT rebuild."
