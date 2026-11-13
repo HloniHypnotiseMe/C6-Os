@@ -378,8 +378,8 @@ reverse_engineering_department:
     outcome: "Wave 2 categories + Deals Corner Thursday Deals + Vouchers + eKhaya Property"
     system: "ubernie"
     status: WORKS
-    commit: "Wave 2 on feature/ubernie-intelligence-acquisition"
-    verification: "CategorySeeder extended, Deals table + DealsSeeder created, Thursday 00:00 - Sunday 23:59 logic"
+    commit: "86d1cc6 on feature/ubernie-intelligence-acquisition - Wave 2 categories + Deals Corner"
+    verification: "CategorySeeder extended (Wave 2), Deals table 2026_11_13_000002 + DealsSeeder.php created, Thursday 00:00 - Sunday 23:59 logic. Ubernie commit 86d1cc6 pushed."
     files:
             - "database/seeders/CategorySeeder.php"
             - "database/migrations/2026_11_13_000002_create_deals_table.php"
