@@ -409,3 +409,15 @@ reverse_engineering_department:
             - "database/seeders/CategorySeeder.php"
             - "database/seeders/DeliveryWaitlistSeeder.php"
     notes: "Delivery is demand-based, not flat fee. Zone unlocks at 10 shops + 10 drivers. Drinking Well = Bar Locator, 18+ only, Drink Responsibly, Don't Drink and Drive. POPIA: No ID number stored in plain text in prod - hash it. Do NOT rebuild."
+
+    - id: ubernie_smart_drinker_take_me_home
+    outcome: "Smart Drinker - Take Me Home chauffeur service under Drinking Well - Drives YOU home in YOUR car, GoodFellas model"
+    system: "ubernie"
+    status: WORKS
+    commit: "Smart Drinker migration 2026_11_13_000005 on feature/ubernie-intelligence-acquisition"
+    verification: "2 tables: smart_drinker_drivers, smart_drinker_bookings. Category smart-drinker under drinking-well. Seeder with 3 drivers + 1 demo booking."
+    files:
+            - "database/migrations/2026_11_13_000005_create_smart_drinker_bookings.php"
+            - "database/seeders/CategorySeeder.php"
+            - "database/seeders/SmartDrinkerSeeder.php"
+    notes: "Smart Drinker = Chauffeur drives YOU home in YOUR car. OTP + Selfie + PDP + Insurance + Live Share. Demand pricing: Base R150, Fri 11pm 1.8x, Rain 2.2x. Search output: Shows on every Drinking Well search after 18:00. 18+ only. POPIA: ID / Licence hashed, not plain text. Do NOT rebuild."
