@@ -443,3 +443,14 @@ reverse_engineering_department:
     files:
             - "database/migrations/2026_11_13_000007_add_tavern_compliance.php"
     notes: "Do NOT pitch SAB as directory. Pitch as SAB Sharp Compliance + Smart Drinker + Shebeen Queens. Proof first: 10 taverns live, then pitch SAB / Heineken / NLT. Do NOT rebuild."
+
+    - id: ubernie_homepage_cloudflare
+    outcome: "Ubernie homepage live - index.html + wrangler.toml - Cloudflare Pages - Directory + Drinking Well + Smart Drinker + Business in a Box"
+    system: "ubernie"
+    status: WORKS
+    commit: "Homepage index.html on feature/ubernie-intelligence-acquisition"
+    verification: "index.html created with all categories, Drinking Well 18+ banner, Smart Drinker CTA, Delivery Waitlist, Business in a Box. wrangler.toml for Cloudflare Pages."
+    files:
+            - "index.html"
+            - "wrangler.toml"
+    notes: "Domain hosted on Cloudflare. Deploy via Pages Upload or wrangler pages deploy. Custom domain ubernie.co.za. Do NOT rebuild."
