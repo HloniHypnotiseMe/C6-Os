@@ -433,3 +433,13 @@ reverse_engineering_department:
             - "routes/api_ubernie.php"
             - "database/seeders/BusinessInABoxSeeder.php"
     notes: "Box was sales pitch + 8 separate pieces. Now it is one table + one checkout flow. Still needs real Laravel distro to run webhook -> SiteGenerator -> Listing -> WhatsApp provisioning. Do NOT rebuild."
+
+    - id: ubernie_drinking_well_tavern_compliance_sab_sharp
+    outcome: "Drinking Well Tavern Compliance - RTP Silver/Gold/Platinum, Licence, ID Check, Smart Drinker, Zero Alcohol - SAB Sharp ready"
+    system: "ubernie"
+    status: WORKS
+    commit: "Tavern compliance migration 2026_11_13_000007 on feature/ubernie-intelligence-acquisition"
+    verification: "7 fields added to businesses table: liquor_licence_number, liquor_licence_expiry, rtp_status, id_check_at_door, no_under18_sign, smart_drinker_offered, sells_zero_alcohol"
+    files:
+            - "database/migrations/2026_11_13_000007_add_tavern_compliance.php"
+    notes: "Do NOT pitch SAB as directory. Pitch as SAB Sharp Compliance + Smart Drinker + Shebeen Queens. Proof first: 10 taverns live, then pitch SAB / Heineken / NLT. Do NOT rebuild."
