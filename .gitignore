@@ -49,3 +49,7 @@ c6group-backend/prisma/migrations/dev.db*
 app/dist/
 *.bak*
 *.bak_pre_batch3
+
+# Python generated cache files
+__pycache__/
+*.py[cod]

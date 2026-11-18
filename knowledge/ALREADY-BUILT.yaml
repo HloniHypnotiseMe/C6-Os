@@ -59,14 +59,6 @@ entries:
     system: "C6-Os"
     status: WORKS
 
-reverse_engineering_department:
-  status: VERIFIED
-  source: agent-arsenal/registry/departments.yaml
-  machine_taxonomy_categories: 37
-  human_department: "Developers"
-  capability_category: reverse_engineering
-  registered_providers: [ghidra, reverse_skill, idassist]
-  verification: "Registry, provider, routing, provenance, department mapping, capability-router CI, and authenticated cross-repository reconciliation are green. Repository evidence enrichment completed for the authenticated estate."
 
   - id: c6_smart_solutions_execution
     outcome: "Entitlement-aware standalone Smart Solutions execution and capacity accounting"
@@ -360,97 +352,106 @@ reverse_engineering_department:
       - "WYA isolated restore, external payment settlement, courier E2E and owner handover sign-off not proven"
     notes: "Playbook documentation EXISTS; it is not a deployable store product or proof that every future store is LIVE. Follow C6 START-HERE and update evidence per store."
 
-    - id: daycare_template_ubernie_e79055e
+  - id: daycare_template_ubernie_e79055e
     outcome: "Day Care & Creche category + daycare Web Department template + KWMDC first listing"
     system: "ubernie + web-department"
     status: WORKS
     commit: "e79055e on feature/ubernie-intelligence-acquisition"
     verification: "25/25 Web Department contract + catalogue pricing tests passed. Generator returns daycare / #FF6B35 / Book FREE Tour CTA."
     files:
-            - "database/migrations/2026_11_13_000001_create_categories_table.php"
-            - "database/seeders/CategorySeeder.php"
-            - "database/seeders/KwmdcBusinessSeeder.php"
-            - "web-department/builder/site_generator.py"
+      - "database/migrations/2026_11_13_000001_create_categories_table.php"
+      - "database/seeders/CategorySeeder.php"
+      - "database/seeders/KwmdcBusinessSeeder.php"
+      - "web-department/builder/site_generator.py"
     package: "R9500 once-off + R750/mo = Website + Hosting + WhatsApp via Whatomate + Funnel + CRM + RemotePay payment-links SimplyBlu + Ubernie Featured 1 Year"
     notes: "Categories table was missing - created it. Day Care parent + 8 subcategories. Web Department is production path. Laravel layer is product source, not complete distro - migrate on real Laravel deployment. BusinessCandidate remains pending_review until human review - POPIA. Do NOT rebuild."
 
-    - id: ubernie_wave2_categories_deals_eKhaya
+  - id: ubernie_wave2_categories_deals_eKhaya
     outcome: "Wave 2 categories + Deals Corner Thursday Deals + Vouchers + eKhaya Property"
     system: "ubernie"
     status: WORKS
     commit: "86d1cc6 on feature/ubernie-intelligence-acquisition - Wave 2 categories + Deals Corner"
     verification: "CategorySeeder extended (Wave 2), Deals table 2026_11_13_000002 + DealsSeeder.php created, Thursday 00:00 - Sunday 23:59 logic. Ubernie commit 86d1cc6 pushed."
     files:
-            - "database/seeders/CategorySeeder.php"
-            - "database/migrations/2026_11_13_000002_create_deals_table.php"
-            - "database/seeders/DealsSeeder.php"
+      - "database/seeders/CategorySeeder.php"
+      - "database/migrations/2026_11_13_000002_create_deals_table.php"
+      - "database/seeders/DealsSeeder.php"
     package: "Deals Corner = 1 free deal/week if Featured, R99 if not. Vouchers server-side count."
     notes: "Real Estate name = eKhaya, not AI slop. Car-La-Hurry kept as township slang. BBLA is tenant, not new product. Thursday = Deals Day per SPAR/Shoprite/ClicFlyer proof. Do NOT rebuild."
 
-    - id: ubernie_uber_smart_capabilities_86d1cc6_plus
+  - id: ubernie_uber_smart_capabilities_86d1cc6_plus
     outcome: "Uber Smart Capabilities mapped to Ubernie categories - Geo Matching, Upfront Pricing, Verified, Two-Way Ratings, Lead State Machine, Batch Matching, Thursday Surge Reverse, Featured Membership, Multi-Location"
     system: "ubernie"
     status: WORKS
     commit: "Smart capabilities migration 2026_11_13_000003 on feature/ubernie-intelligence-acquisition"
     verification: "Leads table = Uber trip state machine. Businesses table = verified + rating + tier + share + whatsapp. Web Department SMART_CAPABILITIES constant added."
     files:
-            - "database/migrations/2026_11_13_000003_add_smart_capabilities_to_businesses.php"
-            - "web-department/builder/site_generator.py"
+      - "database/migrations/2026_11_13_000003_add_smart_capabilities_to_businesses.php"
+      - "web-department/builder/site_generator.py"
     notes: "Stole Uber principles, not Uber app. Surge = reverse - Thursday prices drop, not rise. POPIA: No personal location tracking, only business location. OTP claim only. Do NOT rebuild."
 
-    - id: ubernie_delivery_waitlists_drinking_well
+  - id: ubernie_delivery_waitlists_drinking_well
     outcome: "Delivery Waitlists - Shops + Drivers + Demand Zones + Drinking Well Bar Locator"
     system: "ubernie"
     status: WORKS
     commit: "Delivery waitlists migration 2026_11_13_000004 on feature/ubernie-intelligence-acquisition"
     verification: "3 tables created: delivery_waitlist_shops, delivery_waitlist_drivers, delivery_demand_zones. Drinking Well category + 6 subs added."
     files:
-            - "database/migrations/2026_11_13_000004_create_delivery_waitlists.php"
-            - "database/seeders/CategorySeeder.php"
-            - "database/seeders/DeliveryWaitlistSeeder.php"
+      - "database/migrations/2026_11_13_000004_create_delivery_waitlists.php"
+      - "database/seeders/CategorySeeder.php"
+      - "database/seeders/DeliveryWaitlistSeeder.php"
     notes: "Delivery is demand-based, not flat fee. Zone unlocks at 10 shops + 10 drivers. Drinking Well = Bar Locator, 18+ only, Drink Responsibly, Don't Drink and Drive. POPIA: No ID number stored in plain text in prod - hash it. Do NOT rebuild."
 
-    - id: ubernie_smart_drinker_take_me_home
+  - id: ubernie_smart_drinker_take_me_home
     outcome: "Smart Drinker - Take Me Home chauffeur service under Drinking Well - Drives YOU home in YOUR car, GoodFellas model"
     system: "ubernie"
     status: WORKS
     commit: "Smart Drinker migration 2026_11_13_000005 on feature/ubernie-intelligence-acquisition"
     verification: "2 tables: smart_drinker_drivers, smart_drinker_bookings. Category smart-drinker under drinking-well. Seeder with 3 drivers + 1 demo booking."
     files:
-            - "database/migrations/2026_11_13_000005_create_smart_drinker_bookings.php"
-            - "database/seeders/CategorySeeder.php"
-            - "database/seeders/SmartDrinkerSeeder.php"
+      - "database/migrations/2026_11_13_000005_create_smart_drinker_bookings.php"
+      - "database/seeders/CategorySeeder.php"
+      - "database/seeders/SmartDrinkerSeeder.php"
     notes: "Smart Drinker = Chauffeur drives YOU home in YOUR car. OTP + Selfie + PDP + Insurance + Live Share. Demand pricing: Base R150, Fri 11pm 1.8x, Rain 2.2x. Search output: Shows on every Drinking Well search after 18:00. 18+ only. POPIA: ID / Licence hashed, not plain text. Do NOT rebuild."
 
-    - id: ubernie_business_in_a_box_wired
+  - id: ubernie_business_in_a_box_wired
     outcome: "Business in a Box wired as one product - R9500 + R750/mo - One checkout = Website + Listing + WhatsApp + CRM + Deals + RemotePay"
     system: "ubernie"
     status: WORKS
     commit: "Business in a Box migration 2026_11_13_000006 on feature/ubernie-intelligence-acquisition"
     verification: "Table business_in_a_box_orders created, API checkout + webhook + status added, KWMDC as first Box seeder"
     files:
-            - "database/migrations/2026_11_13_000006_create_business_in_a_box_orders.php"
-            - "routes/api_ubernie.php"
-            - "database/seeders/BusinessInABoxSeeder.php"
+      - "database/migrations/2026_11_13_000006_create_business_in_a_box_orders.php"
+      - "routes/api_ubernie.php"
+      - "database/seeders/BusinessInABoxSeeder.php"
     notes: "Box was sales pitch + 8 separate pieces. Now it is one table + one checkout flow. Still needs real Laravel distro to run webhook -> SiteGenerator -> Listing -> WhatsApp provisioning. Do NOT rebuild."
 
-    - id: ubernie_drinking_well_tavern_compliance_sab_sharp
+  - id: ubernie_drinking_well_tavern_compliance_sab_sharp
     outcome: "Drinking Well Tavern Compliance - RTP Silver/Gold/Platinum, Licence, ID Check, Smart Drinker, Zero Alcohol - SAB Sharp ready"
     system: "ubernie"
     status: WORKS
     commit: "Tavern compliance migration 2026_11_13_000007 on feature/ubernie-intelligence-acquisition"
     verification: "7 fields added to businesses table: liquor_licence_number, liquor_licence_expiry, rtp_status, id_check_at_door, no_under18_sign, smart_drinker_offered, sells_zero_alcohol"
     files:
-            - "database/migrations/2026_11_13_000007_add_tavern_compliance.php"
+      - "database/migrations/2026_11_13_000007_add_tavern_compliance.php"
     notes: "Do NOT pitch SAB as directory. Pitch as SAB Sharp Compliance + Smart Drinker + Shebeen Queens. Proof first: 10 taverns live, then pitch SAB / Heineken / NLT. Do NOT rebuild."
 
-    - id: ubernie_homepage_cloudflare
+  - id: ubernie_homepage_cloudflare
     outcome: "Ubernie homepage live - index.html + wrangler.toml - Cloudflare Pages - Directory + Drinking Well + Smart Drinker + Business in a Box"
     system: "ubernie"
     status: WORKS
     commit: "Homepage index.html on feature/ubernie-intelligence-acquisition"
     verification: "index.html created with all categories, Drinking Well 18+ banner, Smart Drinker CTA, Delivery Waitlist, Business in a Box. wrangler.toml for Cloudflare Pages."
     files:
-            - "index.html"
-            - "wrangler.toml"
+      - "index.html"
+      - "wrangler.toml"
     notes: "Domain hosted on Cloudflare. Deploy via Pages Upload or wrangler pages deploy. Custom domain ubernie.co.za. Do NOT rebuild."
+
+reverse_engineering_department:
+  status: VERIFIED
+  source: agent-arsenal/registry/departments.yaml
+  machine_taxonomy_categories: 37
+  human_department: "Developers"
+  capability_category: reverse_engineering
+  registered_providers: [ghidra, reverse_skill, idassist]
+  verification: "Registry, provider, routing, provenance, department mapping, capability-router CI, and authenticated cross-repository reconciliation are green. Repository evidence enrichment completed for the authenticated estate."
