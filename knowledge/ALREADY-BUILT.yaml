@@ -9,6 +9,15 @@ status_semantics:
   REPLACED: "Superseded."
   FAILED: "Attempted and did not satisfy the requirement."
   DO_NOT_REPEAT: "Known anti-pattern or rejected approach."
+reverse_engineering_department:
+  status: VERIFIED
+  source: agent-arsenal/registry/departments.yaml
+  machine_taxonomy_categories: 37
+  human_department: "Developers"
+  capability_category: reverse_engineering
+  registered_providers: [ghidra, reverse_skill, idassist]
+  verification: "Registry, provider, routing, provenance, department mapping, capability-router CI, and authenticated cross-repository reconciliation are green. Repository evidence enrichment completed for the authenticated estate."
+
 entries:
   - id: c6_os_arsenal
     outcome: "Universal capability and repository discovery"
@@ -58,15 +67,6 @@ entries:
     outcome: "Evidence-backed completion and claim verification"
     system: "C6-Os"
     status: WORKS
-
-reverse_engineering_department:
-  status: VERIFIED
-  source: agent-arsenal/registry/departments.yaml
-  machine_taxonomy_categories: 37
-  human_department: "Developers"
-  capability_category: reverse_engineering
-  registered_providers: [ghidra, reverse_skill, idassist]
-  verification: "Registry, provider, routing, provenance, department mapping, capability-router CI, and authenticated cross-repository reconciliation are green. Repository evidence enrichment completed for the authenticated estate."
 
   - id: c6_smart_solutions_execution
     outcome: "Entitlement-aware standalone Smart Solutions execution and capacity accounting"

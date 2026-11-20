@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { access, readFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { createRequire } from "node:module";
 import { suggestCapabilities, suggestCapabilityById } from "../router/suggest.mjs";
 
 const args = process.argv.slice(2);
@@ -32,6 +33,8 @@ async function inspectRepo(root) {
 
 const startHere = resolve(repo, "START-HERE.md");
 const osRoot = resolve(repo);
+const requireFromArsenal = createRequire(new URL("../mcp-server/package.json", import.meta.url));
+const { parse: parseYAML } = requireFromArsenal("yaml");
 const knowledgeFiles = [
   "knowledge/WHAT-WE-ALREADY-BUILT.md",
   "knowledge/ALREADY-BUILT.yaml",
@@ -55,6 +58,28 @@ for (const required of ["Inspect before building","Resolve capability","Benchmar
 
 if (Object.values(knowledgeStatus).some((present) => !present)) {
   console.error(JSON.stringify({status:"BLOCKED",reason:"prior_build_memory_missing",knowledge:knowledgeStatus}, null, 2));
+  process.exit(4);
+}
+
+try {
+  const index = parseYAML(await readFile(resolve(osRoot, "knowledge/ALREADY-BUILT.yaml"), "utf8"));
+  if (!index || typeof index !== "object" || !Array.isArray(index.entries)) {
+    throw new Error("ALREADY-BUILT.yaml must contain an entries list");
+  }
+  const ids = index.entries.map((entry) => entry?.id);
+  if (ids.some((id) => typeof id !== "string" || !id.trim())) {
+    throw new Error("Every ALREADY-BUILT entry must have a non-empty string id");
+  }
+  if (new Set(ids).size !== ids.length) {
+    throw new Error("ALREADY-BUILT entry IDs must be unique");
+  }
+} catch (error) {
+  console.error(JSON.stringify({
+    status:"BLOCKED",
+    reason:"prior_build_memory_invalid",
+    file:"knowledge/ALREADY-BUILT.yaml",
+    detail:error.message
+  }, null, 2));
   process.exit(4);
 }
 
